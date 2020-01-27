@@ -8,14 +8,20 @@ public class InterpolatedLine : MonoBehaviour
     [SerializeField]
     private LineRenderer LineRenderer;
 
-    [SerializeField]
+    //[SerializeField]
     private Vector3[] ControlPoints;
 
-    private List<Vector3> InterpolatedPoints = new List<Vector3>();
+    [SerializeField]
+    private GameObject[] ControlPointObjects;
+
+    private List<Vector3> InterpolatedPoints;
     private int steps = 20;
+
+    //public bool regenerate = true;
     // Start is called before the first frame update
-    void Start()
+    void GenerateInterpolatedPoints()
     {
+        InterpolatedPoints = new List<Vector3>();
         if (ControlPoints.Length < 3) {
             return;        
         }
@@ -53,5 +59,17 @@ public class InterpolatedLine : MonoBehaviour
         }
         LineRenderer.positionCount = InterpolatedPoints.Count;
         LineRenderer.SetPositions(InterpolatedPoints.ToArray());
+    }
+
+    private void Update()
+    {
+        ControlPoints = new Vector3[ControlPointObjects.Length];
+        for (int i = 0; i < ControlPointObjects.Length; i++) {
+            ControlPoints[i] = ControlPointObjects[i].transform.position;
+        }
+        //if (regenerate) {
+        //    regenerate = !regenerate;
+            GenerateInterpolatedPoints();
+        //}
     }
 }
