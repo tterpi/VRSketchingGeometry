@@ -17,17 +17,13 @@ public class InterpolatedLine : MonoBehaviour
     private GameObject[] ControlPointObjects;
 
     private List<Vector3> InterpolatedPoints;
-    public int steps = 20;
+    //public int steps = 20;
 
     //public bool regenerate = true;
     // Start is called before the first frame update
     void GenerateInterpolatedPoints()
     {
-        kochanekBartelsSpline.ControlPoints.Clear();
-        foreach (Vector3 controlPoint in ControlPoints) {
-            kochanekBartelsSpline.ControlPoints.Add(controlPoint);
-        }
-        InterpolatedPoints = kochanekBartelsSpline.InterpolateSpline(steps);
+        kochanekBartelsSpline.setControlPoints(ControlPoints);
         LineRenderer.positionCount = InterpolatedPoints.Count;
         LineRenderer.SetPositions(InterpolatedPoints.ToArray());
     }
@@ -35,6 +31,7 @@ public class InterpolatedLine : MonoBehaviour
     private void Start()
     {
         kochanekBartelsSpline = new KochanekBartelsSpline();
+        InterpolatedPoints = kochanekBartelsSpline.InterpolatedPoints;
     }
 
     private void Update()
