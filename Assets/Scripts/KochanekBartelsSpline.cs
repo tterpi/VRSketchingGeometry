@@ -22,8 +22,47 @@ namespace KochanekBartelsSplines
         /// </summary>
         /// <param name="index"></param>
         /// <param name="controlPoints"></param>
-        public void setControlPoint(int index, Vector3 controlPoints) {
-            throw new NotImplementedException();
+        public void setControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+            ControlPoints[index] = controlPoint;
+
+            int start = (index - 2) >= 0 ? (index-2) : 0 ;
+            int end = (index + 1) <= (ControlPoints.Count -2) ? (index + 1) : (ControlPoints.Count - 2);
+
+            for (int i = start; i <= end; i++) {
+                try
+                {
+                    InterpolatedPoints.RemoveRange(i * Steps, Steps);
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+                }
+                catch (ArgumentException exception)
+                {
+                    Debug.LogError("Can't set control point that doesnt exist yet, add instead!\n" + exception);
+                }
+            }
+        }
+
+        public void insertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+            ControlPoints.Insert(index, controlPoint);
+
+            int start = (index - 2) >= 0 ? (index - 2) : 0;
+            int end = (index + 1) <= (ControlPoints.Count - 2) ? (index + 1) : (ControlPoints.Count - 2);
+
+            for (int i = start; i <= end; i++)
+            {
+                try
+                {
+                    if (i != index) {
+                        //dont remove at added index so a new segment is added
+                        InterpolatedPoints.RemoveRange(i * Steps, Steps);
+                    }   
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+
+                }
+                catch (ArgumentException exception)
+                {
+                    Debug.LogError("Can't insert control point at index that doesnt exist yet, add instead!\n" + exception);
+                }
+            }
         }
 
         /// <summary>
@@ -55,9 +94,9 @@ namespace KochanekBartelsSplines
             Vector3 point2DestinationTangent = point2.CalculateDestinationTangent(point1, point3);
             Vector3 point3SourceTangent = point3.CalculateSourceTangent(point2, point4);
 
-            for (var i = 0; i < steps; i++)
+            for (var i = 0; i < steps-1; i++)
             {
-                var s = i / (float)(steps);
+                var s = i / (float)(steps-1);
 
                 float h1 = (float)(2 * Math.Pow(s, 3) - 3 * Math.Pow(s, 2) + 1);
                 float h2 = (float)((-2) * Math.Pow(s, 3) + 3 * Math.Pow(s, 2));
@@ -69,9 +108,20 @@ namespace KochanekBartelsSplines
                 interpolatedPoints.Add(newPoint);
             }
 
-            //interpolatedPoints.Add(point3.Position);
+            interpolatedPoints.Add(point3.Position);
 
             return interpolatedPoints;
+        }
+
+        private static List<Vector3> InterpolateSegment(List<KochanekBartelsControlPoint> controlPoints, int steps) {
+            if (controlPoints != null && controlPoints.Count == 4)
+            {
+                return InterpolateSegment(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], steps);
+            }
+            else {
+                Debug.LogError("List must have 4 control points");
+                return null;
+            }
         }
 
         /// <summary>
@@ -85,48 +135,21 @@ namespace KochanekBartelsSplines
             {
                 Debug.LogError("Not enough control points! Minimum is 3.");
             }
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < ControlPoints.Count-1; i++)
             {
-                InterpolateSegmentAtIndex(i);
-                ////first control point
-                //if (i == 0)
-                //{
-                //    KochanekBartelsControlPoint point1 = ControlPoints[i];
-                //    KochanekBartelsControlPoint point2 = ControlPoints[i];
-                //    KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                //    KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
-
-                //    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                //}
-                ////middle control point
-                //else if (i + 2 < ControlPoints.Count)
-                //{
-                //    KochanekBartelsControlPoint point1 = ControlPoints[i - 1];
-                //    KochanekBartelsControlPoint point2 = ControlPoints[i];
-                //    KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                //    KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
-
-                //    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                //}
-                ////last control point
-                //else if (i + 1 < ControlPoints.Count)
-                //{
-                //    KochanekBartelsControlPoint point1 = ControlPoints[i - 1];
-                //    KochanekBartelsControlPoint point2 = ControlPoints[i];
-                //    KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                //    KochanekBartelsControlPoint point4 = ControlPoints[i + 1];
-
-                //    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                //    InterpolatedPoints.Add(point3.Position);
-                //}
+                List<Vector3> points = InterpolateSegment(getControlPointsForSegment(i), Steps);
+                if (points != null && points.Count > 0) {
+                    InterpolatedPoints.AddRange(points);
+                }
             }
         }
 
-        private void InterpolateSegmentAtIndex(int index) {
+        private List<KochanekBartelsControlPoint> getControlPointsForSegment(int index) {
             int i = index;
 
-            if (i > ControlPoints.Count - 1) {
+            if (i >= ControlPoints.Count - 1) {
                 Debug.LogError("Index out of range! Last segment is at number of control points minus one.");
+                return null;
             }
 
             //first control point
@@ -137,15 +160,7 @@ namespace KochanekBartelsSplines
                 KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
                 KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
 
-                try
-                {
-                    InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    InterpolatedPoints.InsertRange(i * Steps, KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                }
-                catch (ArgumentException exception)
-                {
-                    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                }
+                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
             }
             //middle control point
             else if (i + 2 < ControlPoints.Count)
@@ -155,15 +170,7 @@ namespace KochanekBartelsSplines
                 KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
                 KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
 
-                try
-                {
-                    InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    InterpolatedPoints.InsertRange(i * Steps, KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                }
-                catch (ArgumentException exception)
-                {
-                    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                }
+                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
             }
             //last control point
             else if (i + 1 < ControlPoints.Count)
@@ -173,19 +180,12 @@ namespace KochanekBartelsSplines
                 KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
                 KochanekBartelsControlPoint point4 = ControlPoints[i + 1];
 
-                try
-                {
-                    InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    InterpolatedPoints.InsertRange(i * Steps, KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                    InterpolatedPoints[(i + 1) * Steps] = point3.Position;
-                }
-                catch (ArgumentException exception) {
-                    InterpolatedPoints.AddRange(KochanekBartelsSpline.InterpolateSegment(point1, point2, point3, point4, Steps));
-                    InterpolatedPoints.Add(point3.Position);
-                }
-                
-            }
+                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
 
+            }
+            else {
+                return null;
+            }
         }
     }
 }
