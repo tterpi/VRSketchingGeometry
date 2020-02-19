@@ -44,7 +44,8 @@ public class InterpolatedLine : MonoBehaviour
 
         InterpolatedPoints = kochanekBartelsSpline.InterpolatedPoints;
         kochanekBartelsSpline.setControlPoints(ControlPoints);
-        //kochanekBartelsSpline.insertControlPoint(10, extraControlPoint.transform.position);
+        //kochanekBartelsSpline.insertControlPoint(0, extraControlPoint.transform.position);
+        kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
     }
 
     private void Update()

@@ -41,9 +41,23 @@ namespace KochanekBartelsSplines
             }
         }
 
+        /// <summary>
+        /// Add control point at the end of the curve.
+        /// </summary>
+        /// <param name="controlPoint"></param>
+        public void addControlPoint(KochanekBartelsControlPoint controlPoint) {
+            insertControlPoint(ControlPoints.Count, controlPoint);
+        }
+
+        /// <summary>
+        /// Insert a control point at index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="controlPoint"></param>
         public void insertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
             ControlPoints.Insert(index, controlPoint);
 
+            //determine which segments have to be reinterpolated
             int start = (index - 2) >= 0 ? (index - 2) : 0;
             int end = (index + 1) <= (ControlPoints.Count - 2) ? (index + 1) : (ControlPoints.Count - 2);
 
@@ -51,10 +65,23 @@ namespace KochanekBartelsSplines
             {
                 try
                 {
-                    if (i != index) {
-                        //dont remove at added index so a new segment is added
-                        InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    }   
+                    if (index == ControlPoints.Count-1)
+                    {
+                        //if we are inserting the control point as the new last element
+                        //dont try to remove the segment before the new control point because it doesnt exist yet
+                        if (i != index - 1)
+                        {
+                            //dont remove at added index so a new segment is added
+                            InterpolatedPoints.RemoveRange(i * Steps, Steps);
+                        }
+                    }
+                    else {
+                        if (i != index)
+                        {
+                            //dont remove at added index so a new segment is added
+                            InterpolatedPoints.RemoveRange(i * Steps, Steps);
+                        }
+                    }
                     InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
 
                 }
