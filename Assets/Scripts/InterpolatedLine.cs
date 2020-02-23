@@ -27,7 +27,7 @@ public class InterpolatedLine : MonoBehaviour
     // Start is called before the first frame update
     void GenerateInterpolatedPoints()
     {
-        kochanekBartelsSpline.setControlPoint(0,ControlPoints[0]);
+        //kochanekBartelsSpline.setControlPoint(1,ControlPoints[2]);
         LineRenderer.positionCount = InterpolatedPoints.Count;
         LineRenderer.SetPositions(InterpolatedPoints.ToArray());
     }
@@ -46,6 +46,7 @@ public class InterpolatedLine : MonoBehaviour
         kochanekBartelsSpline.setControlPoints(ControlPoints);
         //kochanekBartelsSpline.insertControlPoint(0, extraControlPoint.transform.position);
         kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
+        kochanekBartelsSpline.deleteControlPoint(9);
     }
 
     private void Update()

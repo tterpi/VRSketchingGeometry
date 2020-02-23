@@ -93,6 +93,46 @@ namespace KochanekBartelsSplines
         }
 
         /// <summary>
+        /// Delete the control point at index.
+        /// If the index is not the first or last control point the curve will skip the deleted control point and connect the control point before and after the deleted one.
+        /// </summary>
+        /// <param name="index"></param>
+        public void deleteControlPoint(int index) {
+
+            if ((ControlPoints.Count - 1) < 3) {
+                Debug.LogError("Cannot remove more control points, minimum number is 3.");
+                return;
+            }
+
+            if (index == (ControlPoints.Count - 1))
+            {
+                InterpolatedPoints.RemoveRange((index -1) * Steps, Steps);
+            }
+            else {
+                InterpolatedPoints.RemoveRange(index * Steps, Steps);
+            }
+
+            ControlPoints.RemoveAt(index);
+
+            //determine which segments have to be reinterpolated
+            int start = (index - 2) >= 0 ? (index - 2) : 0;
+            int end = (index + 1) <= (ControlPoints.Count - 2) ? (index + 1) : (ControlPoints.Count - 2);
+
+            for (int i = start; i <= end; i++)
+            {
+                try
+                {
+                    InterpolatedPoints.RemoveRange(i * Steps, Steps);
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+                }
+                catch (ArgumentException exception)
+                {
+                    Debug.LogError("Can't delete control point at index that doesnt exist yet!\n" + exception);
+                }
+            }
+        }
+
+        /// <summary>
         /// Set all control points and recalculate.
         /// </summary>
         /// <param name="controlPoints"></param>
