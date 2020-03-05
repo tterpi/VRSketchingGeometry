@@ -161,9 +161,9 @@ namespace KochanekBartelsSplines
             Vector3 point2DestinationTangent = point2.CalculateDestinationTangent(point1, point3);
             Vector3 point3SourceTangent = point3.CalculateSourceTangent(point2, point4);
 
-            for (var i = 0; i < steps-1; i++)
+            for (var i = 0; i < steps; i++)
             {
-                var s = i / (float)(steps-1);
+                var s = i / (float)(steps);
 
                 float h1 = (float)(2 * Math.Pow(s, 3) - 3 * Math.Pow(s, 2) + 1);
                 float h2 = (float)((-2) * Math.Pow(s, 3) + 3 * Math.Pow(s, 2));
@@ -175,7 +175,7 @@ namespace KochanekBartelsSplines
                 interpolatedPoints.Add(newPoint);
             }
 
-            interpolatedPoints.Add(point3.Position);
+            //interpolatedPoints.Add(point3.Position);
 
             return interpolatedPoints;
         }
