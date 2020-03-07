@@ -14,6 +14,8 @@ public class ExtrudeTest : MonoBehaviour
 
     private List<Vector3> InterpolatedPoints;
 
+    [SerializeField]
+    private GameObject extraControlPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,10 @@ public class ExtrudeTest : MonoBehaviour
         kochanekBartelsSpline.setControlPoints(ControlPoints);
 
         Meshing.LineExtruder lineExtruder = new Meshing.LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
-        Mesh mesh = lineExtruder.getMesh(InterpolatedPoints, true);
+        Mesh mesh = lineExtruder.getMesh(InterpolatedPoints, false);
+        kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
+        mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(InterpolatedPoints.Count - 40, 40),InterpolatedPoints.Count-40, 20);
+
 
         MeshFilter meshFilter = GetComponent<MeshFilter>();
 

@@ -183,6 +183,73 @@ namespace Meshing {
             return mesh;
         }
 
+        /// <summary>
+        /// This will replace a section of the already calculated mesh by a new section calculated from the given points.
+        /// This should only be called when getMesh was called before at least once.
+        /// </summary>
+        /// <param name="points">The new points of the line to insert.</param>
+        /// <param name="replaceIndex">First index to be replaced by the new points.</param>
+        /// <param name="numOfPoints">Number of points to be replaced.</param>
+        /// <returns></returns>
+        public Mesh replacePoints(List<Vector3> points, int replaceIndex, int numOfPoints) {
+            int insertIndex = (replaceIndex) * crossSectionShape.Count;
+
+            //remove invalid vertices and normals
+            vertices.RemoveRange((replaceIndex) *  crossSectionShape.Count, numOfPoints * crossSectionShape.Count);
+            normals.RemoveRange((replaceIndex) * crossSectionNormals.Count, numOfPoints * crossSectionShape.Count);
+
+            //generate and add new vertices and normals
+            List<Vector3> newVertices, newNormals, verticesToInsert, normalsToInsert;
+            verticesToInsert = new List<Vector3>();
+            normalsToInsert = new List<Vector3>();
+
+            (newVertices, newNormals) = transformCrossSection(points[0], points[0], points[1]);
+
+            verticesToInsert.AddRange(newVertices);
+            normalsToInsert.AddRange(newNormals);
+
+            for (int i = 1; i < points.Count-1; i++)
+            {
+                (newVertices, newNormals) = transformCrossSection(points[i-1], points[i], points[i+1]);
+
+                verticesToInsert.AddRange(newVertices);
+                normalsToInsert.AddRange(newNormals);
+            }
+
+            (newVertices, newNormals) = transformCrossSection(points[points.Count-2], points[points.Count-1], points[points.Count-1]);
+
+            verticesToInsert.AddRange(newVertices);
+            normalsToInsert.AddRange(newNormals);
+
+            vertices.InsertRange(insertIndex, verticesToInsert);
+            normals.InsertRange(insertIndex, normalsToInsert);
+
+            //update triangles
+            triangles = generateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
+
+            Mesh mesh = new Mesh();
+
+            mesh.SetVertices(vertices);
+            mesh.SetNormals(normals);
+            mesh.subMeshCount = 1;
+            mesh.SetTriangles(triangles.ToArray(), 0);
+
+            return mesh;
+
+        }
+
+        /// <summary>
+        /// This function transforms both vertices and normals of the cross section for point2.
+        /// The tangent at point2 is calculated with poin1 and point3.
+        /// </summary>
+        /// <param name="point1">The point before point2 in the line.</param>
+        /// <param name="point2">The position of the calculated cross section.</param>
+        /// <param name="point3">The point after point2 in the line.</param>
+        /// <returns>(points, normals)</returns>
+        private (List<Vector3>, List<Vector3>) transformCrossSection(Vector3 point1, Vector3 point2, Vector3 point3) {
+            Vector3 tangent = (point2 - point1) + (point3 - point2) / 2f;
+            return (transformCrossSection(point2, tangent),transformNormals(crossSectionNormals, tangent));
+        }
     }
 }
 
