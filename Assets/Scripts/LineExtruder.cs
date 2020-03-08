@@ -10,6 +10,11 @@ namespace Meshing {
         private List<Vector3> vertices;
         private List<Vector3> normals;
         private List<int> triangles;
+        private bool generateCaps;
+
+        private List<Vector3> capVertices;
+        private List<Vector3> capNormals;
+        private List<int> capTriangles;
 
         private List<Vector3> crossSectionShape;
         private List<Vector3> crossSectionNormals;
@@ -79,10 +84,11 @@ namespace Meshing {
             return triangles;
         }
 
-        public LineExtruder(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale) {
+        public LineExtruder(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
             this.crossSectionShape = crossSectionShape;
             this.crossSectionNormals = crossSectionNormals;
             this.crossSectionScale = crossSectionScale;
+            this.generateCaps = generateCaps;
 
             this.vertices = new List<Vector3>();
             this.normals = new List<Vector3>();
@@ -93,7 +99,7 @@ namespace Meshing {
             return transformPoints(crossSectionShape, position, tangent, crossSectionScale);
         }
 
-        public Mesh getMesh(List<Vector3> points, bool generateEndCaps = false) {
+        public Mesh getMesh(List<Vector3> points) {
 
             //first segment
             Vector3 tangent = (points[1] - points[0]);
@@ -117,60 +123,14 @@ namespace Meshing {
             vertices.AddRange(lastCrossSectionVertices);
             normals.AddRange(lastCrossSectionNormals);
 
-            List<int> triangles = generateTriangles(crossSectionShape.Count, points.Count - 1);
+            triangles = generateTriangles(crossSectionShape.Count, points.Count - 1);
 
             Mesh mesh = new Mesh();
 
-            if (generateEndCaps)
+            if (generateCaps)
             {
-                //generate caps
-                //begin cap
-
-                List<int> beginCapTriangles = new List<int>();
-
-                for (int i = 1; i <= crossSectionShape.Count - 2; i++)
-                {
-                    int firstVertex = vertices.Count;
-
-                    beginCapTriangles.Add(firstVertex);
-                    beginCapTriangles.Add(firstVertex + i);
-                    beginCapTriangles.Add(firstVertex + i + 1);
-                }
-
-                vertices.AddRange(firstCrossSectionVertices);
-
-                Vector3 beginCapNormal = Vector3.Cross(firstCrossSectionVertices[1] - firstCrossSectionVertices[0], firstCrossSectionVertices[2] - firstCrossSectionVertices[0]).normalized;
-                for (int i = 0; i < crossSectionShape.Count; i++)
-                {
-                    normals.Add(beginCapNormal);
-                }
-
-                //end cap
-
-                List<int> endCapTriangles = new List<int>();
-
-                for (int i = 1; i <= crossSectionShape.Count - 2; i++)
-                {
-                    int firstVertex = vertices.Count;
-
-                    endCapTriangles.Add(firstVertex);
-                    endCapTriangles.Add(firstVertex + i + 1);
-                    endCapTriangles.Add(firstVertex + i);
-                }
-
-                vertices.AddRange(lastCrossSectionVertices);
-                Vector3 endCapNormal = -Vector3.Cross(lastCrossSectionVertices[1] - lastCrossSectionVertices[0], lastCrossSectionVertices[2] - lastCrossSectionVertices[0]).normalized;
-                for (int i = 0; i < lastCrossSectionVertices.Count; i++)
-                {
-                    normals.Add(endCapNormal);
-                }
-
-                mesh.SetVertices(vertices);
-                mesh.SetNormals(normals);
-                mesh.subMeshCount = 3;
-                mesh.SetTriangles(triangles.ToArray(), 0);
-                mesh.SetTriangles(beginCapTriangles.ToArray(), 1);
-                mesh.SetTriangles(endCapTriangles.ToArray(), 2);
+                generateCapsMesh(firstCrossSectionVertices, lastCrossSectionVertices);
+                mesh = getMeshWithCaps();
 
             }
             else {
@@ -227,12 +187,22 @@ namespace Meshing {
             //update triangles
             triangles = generateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
 
-            Mesh mesh = new Mesh();
+            Mesh mesh;
 
-            mesh.SetVertices(vertices);
-            mesh.SetNormals(normals);
-            mesh.subMeshCount = 1;
-            mesh.SetTriangles(triangles.ToArray(), 0);
+            if (generateCaps)
+            {
+                generateCapsMesh(vertices.GetRange(0, crossSectionShape.Count), vertices.GetRange(vertices.Count - crossSectionShape.Count, crossSectionShape.Count));
+                mesh = getMeshWithCaps();
+            }
+            else {
+                mesh = new Mesh();
+                mesh.SetVertices(vertices);
+                mesh.SetNormals(normals);
+                mesh.subMeshCount = 1;
+                mesh.SetTriangles(triangles.ToArray(), 0);
+
+            }
+
 
             return mesh;
 
@@ -249,6 +219,76 @@ namespace Meshing {
         private (List<Vector3>, List<Vector3>) transformCrossSection(Vector3 point1, Vector3 point2, Vector3 point3) {
             Vector3 tangent = (point2 - point1) + (point3 - point2) / 2f;
             return (transformCrossSection(point2, tangent),transformNormals(crossSectionNormals, tangent));
+        }
+
+        private void generateCapsMesh(List<Vector3> firstCrossSectionVertices,List<Vector3> lastCrossSectionVertices) {
+
+            capVertices = new List<Vector3>();
+            capNormals = new List<Vector3>();
+            capTriangles = new List<int>();
+            //generate caps
+            //begin cap
+            List<int> beginCapTriangles = new List<int>();
+
+            for (int i = 1; i <= firstCrossSectionVertices.Count - 2; i++)
+            {
+                int firstVertex = vertices.Count;
+
+                beginCapTriangles.Add(firstVertex);
+                beginCapTriangles.Add(firstVertex + i);
+                beginCapTriangles.Add(firstVertex + i + 1);
+            }
+            capTriangles.AddRange(beginCapTriangles);
+
+            capVertices.AddRange(firstCrossSectionVertices);
+
+            Vector3 beginCapNormal = Vector3.Cross(firstCrossSectionVertices[1] - firstCrossSectionVertices[0], firstCrossSectionVertices[2] - firstCrossSectionVertices[0]).normalized;
+            for (int i = 0; i < firstCrossSectionVertices.Count; i++)
+            {
+                capNormals.Add(beginCapNormal);
+            }
+
+            //end cap
+
+            List<int> endCapTriangles = new List<int>();
+
+            for (int i = 1; i <= lastCrossSectionVertices.Count - 2; i++)
+            {
+                int firstVertex = vertices.Count + capVertices.Count;
+
+                endCapTriangles.Add(firstVertex);
+                endCapTriangles.Add(firstVertex + i + 1);
+                endCapTriangles.Add(firstVertex + i);
+            }
+            capTriangles.AddRange(endCapTriangles);
+
+            capVertices.AddRange(lastCrossSectionVertices);
+            Vector3 endCapNormal = -Vector3.Cross(lastCrossSectionVertices[1] - lastCrossSectionVertices[0], lastCrossSectionVertices[2] - lastCrossSectionVertices[0]).normalized;
+            for (int i = 0; i < lastCrossSectionVertices.Count; i++)
+            {
+                capNormals.Add(endCapNormal);
+            }
+        }
+
+        private Mesh getMeshWithCaps() {
+
+            List<Vector3> allVertices = new List<Vector3>(vertices);
+            allVertices.AddRange(capVertices);
+
+            List<Vector3> allNormals = new List<Vector3>(normals);
+            allNormals.AddRange(capNormals);
+
+            List<int> allTriangles = new List<int>(triangles);
+            allTriangles.AddRange(capTriangles);
+
+            Mesh mesh = new Mesh();
+
+            mesh.SetVertices(allVertices);
+            mesh.SetNormals(allNormals);
+            mesh.subMeshCount = 1;
+            mesh.SetTriangles(allTriangles.ToArray(), 0);
+
+            return mesh;
         }
     }
 }

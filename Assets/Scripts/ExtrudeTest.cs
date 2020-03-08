@@ -38,7 +38,7 @@ public class ExtrudeTest : MonoBehaviour
         kochanekBartelsSpline.setControlPoints(ControlPoints);
 
         Meshing.LineExtruder lineExtruder = new Meshing.LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
-        Mesh mesh = lineExtruder.getMesh(InterpolatedPoints, false);
+        Mesh mesh = lineExtruder.getMesh(InterpolatedPoints);
         kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
         mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(InterpolatedPoints.Count - 40, 40),InterpolatedPoints.Count-40, 20);
 
