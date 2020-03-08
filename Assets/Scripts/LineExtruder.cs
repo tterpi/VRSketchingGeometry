@@ -101,6 +101,10 @@ namespace Meshing {
 
         public Mesh getMesh(List<Vector3> points) {
 
+            vertices.Clear();
+            normals.Clear();
+            triangles.Clear();
+
             //first segment
             Vector3 tangent = (points[1] - points[0]);
             List<Vector3> firstCrossSectionVertices = transformCrossSection(points[0], tangent);
@@ -202,10 +206,7 @@ namespace Meshing {
                 mesh.SetTriangles(triangles.ToArray(), 0);
 
             }
-
-
             return mesh;
-
         }
 
         /// <summary>

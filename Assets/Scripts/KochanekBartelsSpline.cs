@@ -4,6 +4,22 @@ using UnityEngine;
 
 namespace KochanekBartelsSplines
 {
+    public struct SplineModificationInfo{
+        public int Index { get; private set; }
+        public int RemoveCount { get; private set; }
+        public int AddCount { get; private set; }
+
+        public SplineModificationInfo(int index, int removeCount, int addCount) {
+            Index = index;
+            RemoveCount = removeCount;
+            AddCount = addCount;
+        }
+
+        public override string ToString() {
+            return "Index: " + Index + "; RemoveCount: " + RemoveCount + "; AddCount: " + AddCount;
+        }
+    }
+
     public class KochanekBartelsSpline
     {
         private List<KochanekBartelsControlPoint> ControlPoints { get; set; }
@@ -22,7 +38,7 @@ namespace KochanekBartelsSplines
         /// </summary>
         /// <param name="index"></param>
         /// <param name="controlPoints"></param>
-        public void setControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+        public SplineModificationInfo setControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
             ControlPoints[index] = controlPoint;
 
             int start = (index - 2) >= 0 ? (index-2) : 0 ;
@@ -39,14 +55,16 @@ namespace KochanekBartelsSplines
                     Debug.LogError("Can't set control point that doesnt exist yet, add instead!\n" + exception);
                 }
             }
+
+            return new SplineModificationInfo(start * Steps, (end - start + 1) * Steps, (end - start + 1) * Steps);
         }
 
         /// <summary>
         /// Add control point at the end of the curve.
         /// </summary>
         /// <param name="controlPoint"></param>
-        public void addControlPoint(KochanekBartelsControlPoint controlPoint) {
-            insertControlPoint(ControlPoints.Count, controlPoint);
+        public SplineModificationInfo addControlPoint(KochanekBartelsControlPoint controlPoint) {
+            return insertControlPoint(ControlPoints.Count, controlPoint);
         }
 
         /// <summary>
@@ -54,7 +72,7 @@ namespace KochanekBartelsSplines
         /// </summary>
         /// <param name="index"></param>
         /// <param name="controlPoint"></param>
-        public void insertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+        public SplineModificationInfo insertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
             ControlPoints.Insert(index, controlPoint);
 
             //determine which segments have to be reinterpolated
@@ -90,6 +108,8 @@ namespace KochanekBartelsSplines
                     Debug.LogError("Can't insert control point at index that doesnt exist yet, add instead!\n" + exception);
                 }
             }
+
+            return new SplineModificationInfo(start * Steps, (end - start) * Steps, (end - start + 1) * Steps);
         }
 
         /// <summary>
@@ -97,11 +117,11 @@ namespace KochanekBartelsSplines
         /// If the index is not the first or last control point the curve will skip the deleted control point and connect the control point before and after the deleted one.
         /// </summary>
         /// <param name="index"></param>
-        public void deleteControlPoint(int index) {
+        public SplineModificationInfo deleteControlPoint(int index) {
 
             if ((ControlPoints.Count - 1) < 3) {
                 Debug.LogError("Cannot remove more control points, minimum number is 3.");
-                return;
+                return new SplineModificationInfo(0,0,0);
             }
 
             if (index == (ControlPoints.Count - 1))
@@ -116,7 +136,7 @@ namespace KochanekBartelsSplines
 
             //determine which segments have to be reinterpolated
             int start = (index - 2) >= 0 ? (index - 2) : 0;
-            int end = (index + 1) <= (ControlPoints.Count - 2) ? (index + 1) : (ControlPoints.Count - 2);
+            int end = (index +1) <= (ControlPoints.Count - 2) ? (index+1) : (ControlPoints.Count - 2);
 
             for (int i = start; i <= end; i++)
             {
@@ -130,6 +150,8 @@ namespace KochanekBartelsSplines
                     Debug.LogError("Can't delete control point at index that doesnt exist yet!\n" + exception);
                 }
             }
+
+            return new SplineModificationInfo(start * Steps, (end - start + 2) * Steps, (end - start+1) * Steps);
         }
 
         /// <summary>

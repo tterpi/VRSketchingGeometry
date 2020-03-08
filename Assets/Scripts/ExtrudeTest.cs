@@ -16,6 +16,8 @@ public class ExtrudeTest : MonoBehaviour
 
     [SerializeField]
     private GameObject extraControlPoint;
+
+    private Meshing.LineExtruder lineExtruder;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +39,31 @@ public class ExtrudeTest : MonoBehaviour
         InterpolatedPoints = kochanekBartelsSpline.InterpolatedPoints;
         kochanekBartelsSpline.setControlPoints(ControlPoints);
 
-        Meshing.LineExtruder lineExtruder = new Meshing.LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
+        lineExtruder = new Meshing.LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
         Mesh mesh = lineExtruder.getMesh(InterpolatedPoints);
-        kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
-        mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(InterpolatedPoints.Count - 40, 40),InterpolatedPoints.Count-40, 20);
+        //SplineModificationInfo addInfo = kochanekBartelsSpline.insertControlPoint(0, extraControlPoint.transform.position);
+        //SplineModificationInfo addInfo = kochanekBartelsSpline.deleteControlPoint(6);
+        //SplineModificationInfo addInfo = kochanekBartelsSpline.setControlPoint(0,extraControlPoint.transform.position);
+        //Debug.Log(addInfo);
+        //mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(InterpolatedPoints.Count - 40, 40),InterpolatedPoints.Count-40, 20);
+        //mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(addInfo.Index, addInfo.AddCount), addInfo.Index, addInfo.RemoveCount);
+
+
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+
+        //mesh.UploadMeshData(false);
+        meshFilter.mesh = mesh;
+    }
+
+    private void Update()
+    {
+        Mesh mesh = lineExtruder.getMesh(InterpolatedPoints);
+        //SplineModificationInfo addInfo = kochanekBartelsSpline.insertControlPoint(0, extraControlPoint.transform.position);
+        //SplineModificationInfo addInfo = kochanekBartelsSpline.deleteControlPoint(6);
+        SplineModificationInfo addInfo = kochanekBartelsSpline.setControlPoint(4,ControlPointObjects[4].transform.position);
+        //Debug.Log(addInfo);
+        //mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(InterpolatedPoints.Count - 40, 40),InterpolatedPoints.Count-40, 20);
+        mesh = lineExtruder.replacePoints(InterpolatedPoints.GetRange(addInfo.Index, addInfo.AddCount), addInfo.Index, addInfo.RemoveCount);
 
 
         MeshFilter meshFilter = GetComponent<MeshFilter>();
