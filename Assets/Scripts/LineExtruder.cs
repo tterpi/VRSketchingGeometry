@@ -115,7 +115,7 @@ namespace Meshing {
             //middle segments
             for (int i = 1; i < points.Count - 1; i++)
             {
-                tangent = (points[i] - points[i - 1]) + (points[i + 1] - points[i]) / 2f;
+                tangent = (points[i] - points[i - 1]) + (points[i + 1] - points[i]);
                 vertices.AddRange(transformCrossSection(points[i], tangent));
                 normals.AddRange(transformNormals(crossSectionNormals, tangent));
             }
@@ -218,7 +218,7 @@ namespace Meshing {
         /// <param name="point3">The point after point2 in the line.</param>
         /// <returns>(points, normals)</returns>
         private (List<Vector3>, List<Vector3>) transformCrossSection(Vector3 point1, Vector3 point2, Vector3 point3) {
-            Vector3 tangent = (point2 - point1) + (point3 - point2) / 2f;
+            Vector3 tangent = (point2 - point1) + (point3 - point2);
             return (transformCrossSection(point2, tangent),transformNormals(crossSectionNormals, tangent));
         }
 
