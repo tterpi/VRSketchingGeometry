@@ -211,7 +211,7 @@ namespace Meshing {
 
         /// <summary>
         /// This function transforms both vertices and normals of the cross section for point2.
-        /// The tangent at point2 is calculated with poin1 and point3.
+        /// The tangent at point2 is calculated with point1 and point3.
         /// </summary>
         /// <param name="point1">The point before point2 in the line.</param>
         /// <param name="point2">The position of the calculated cross section.</param>

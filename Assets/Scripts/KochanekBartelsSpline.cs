@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KochanekBartelsSplines
+namespace Splines
 {
     public struct SplineModificationInfo{
         public int Index { get; private set; }
@@ -25,8 +25,11 @@ namespace KochanekBartelsSplines
         private List<KochanekBartelsControlPoint> ControlPoints { get; set; }
         public List<Vector3> InterpolatedPoints { get; private set; }
         private int Steps;
-        //private List<Vector3> InterpolatedTangents;
 
+        /// <summary>
+        /// Constructor for the KochanekBartelsSpline class.
+        /// </summary>
+        /// <param name="steps">Number of interpolation steps for each segment.</param>
         public KochanekBartelsSpline(int steps = 20) {
             ControlPoints = new List<KochanekBartelsControlPoint>();
             InterpolatedPoints = new List<Vector3>();
@@ -164,6 +167,12 @@ namespace KochanekBartelsSplines
             {
                 ControlPoints.Add(controlPoint);
             }
+            InterpolateSpline();
+        }
+
+        public void setControlPoints(KochanekBartelsControlPoint[] controlPoints) {
+            ControlPoints.Clear();
+            ControlPoints.AddRange(controlPoints);
             InterpolateSpline();
         }
 

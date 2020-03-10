@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KochanekBartelsSplines {
+namespace Splines {
     public class KochanekBartelsControlPoint {
         public Vector3 Position { get; set; }
 
