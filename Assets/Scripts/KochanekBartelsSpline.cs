@@ -20,10 +20,9 @@ namespace Splines
         }
     }
 
-    public class KochanekBartelsSpline
+    public class KochanekBartelsSpline : Spline
     {
         private List<KochanekBartelsControlPoint> ControlPoints { get; set; }
-        public List<Vector3> InterpolatedPoints { get; private set; }
         private int Steps;
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace Splines
         /// If the index is not the first or last control point the curve will skip the deleted control point and connect the control point before and after the deleted one.
         /// </summary>
         /// <param name="index"></param>
-        public SplineModificationInfo deleteControlPoint(int index) {
+        public override SplineModificationInfo deleteControlPoint(int index) {
 
             if ((ControlPoints.Count - 1) < 3) {
                 Debug.LogError("Cannot remove more control points, minimum number is 3.");
@@ -161,7 +160,7 @@ namespace Splines
         /// Set all control points and recalculate.
         /// </summary>
         /// <param name="controlPoints"></param>
-        public void setControlPoints(Vector3[] controlPoints) {
+        public override void setControlPoints(Vector3[] controlPoints) {
             ControlPoints.Clear();
             foreach (Vector3 controlPoint in controlPoints)
             {
@@ -284,6 +283,22 @@ namespace Splines
             else {
                 return null;
             }
+        }
+
+        //Adapters for the interface
+        public override SplineModificationInfo addControlPoint(Vector3 controlPoint)
+        {
+            return this.addControlPoint(controlPoint);
+        }
+
+        public override SplineModificationInfo setControlPoint(int index, Vector3 controlPoint)
+        {
+            return this.setControlPoint(index, controlPoint);
+        }
+
+        public override SplineModificationInfo insertControlPoint(int index, Vector3 controlPoint)
+        {
+            return this.insertControlPoint(index, controlPoint);
         }
     }
 }

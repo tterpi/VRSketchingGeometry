@@ -12,7 +12,7 @@ public class ExtrudeTest : MonoBehaviour
     private Vector3[] ControlPoints;
 
     [SerializeField]
-    private KochanekBartelsSplineMesh SplineMesh;
+    private SplineMesh SplineMesh;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +23,15 @@ public class ExtrudeTest : MonoBehaviour
             ControlPoints[i] = ControlPointObjects[i].transform.position;
         }
 
+        SplineMesh = new SplineMesh(new KochanekBartelsSpline(),GetComponent<MeshFilter>());
         SplineMesh.setControlPoints(ControlPoints);
+        SplineMesh.deleteControlPoint(9);
+        SplineMesh.addControlPoint(extraControlPoint.transform.position);
+        SplineMesh.insertControlPoint(1, extraControlPoint.transform.position);
     }
 
     private void Update()
     {
-        SplineMesh.setControlPoint(4, ControlPointObjects[4].transform.position);
+        //SplineMesh.setControlPoint(4, ControlPointObjects[4].transform.position);
     }
 }

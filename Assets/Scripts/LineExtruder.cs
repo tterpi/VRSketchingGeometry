@@ -101,50 +101,7 @@ namespace Meshing {
 
         public Mesh getMesh(List<Vector3> points) {
 
-            vertices.Clear();
-            normals.Clear();
-            triangles.Clear();
-
-            //first segment
-            Vector3 tangent = (points[1] - points[0]);
-            List<Vector3> firstCrossSectionVertices = transformCrossSection(points[0], tangent);
-            List<Vector3> firstCrossSectionNormals = transformNormals(crossSectionNormals, tangent);
-            vertices.AddRange(firstCrossSectionVertices);
-            normals.AddRange(firstCrossSectionNormals);
-
-            //middle segments
-            for (int i = 1; i < points.Count - 1; i++)
-            {
-                tangent = (points[i] - points[i - 1]) + (points[i + 1] - points[i]);
-                vertices.AddRange(transformCrossSection(points[i], tangent));
-                normals.AddRange(transformNormals(crossSectionNormals, tangent));
-            }
-
-            //last segment
-            tangent = (points[points.Count - 1] - points[points.Count - 2]);
-            List<Vector3> lastCrossSectionVertices = transformCrossSection(points[points.Count - 1], tangent);
-            List<Vector3> lastCrossSectionNormals = transformNormals(crossSectionNormals, tangent);
-            vertices.AddRange(lastCrossSectionVertices);
-            normals.AddRange(lastCrossSectionNormals);
-
-            triangles = generateTriangles(crossSectionShape.Count, points.Count - 1);
-
-            Mesh mesh = new Mesh();
-
-            if (generateCaps)
-            {
-                generateCapsMesh(firstCrossSectionVertices, lastCrossSectionVertices);
-                mesh = getMeshWithCaps();
-
-            }
-            else {
-                mesh.SetVertices(vertices);
-                mesh.SetNormals(normals);
-                mesh.subMeshCount = 1;
-                mesh.SetTriangles(triangles.ToArray(), 0);
-            }
-
-            return mesh;
+            return replacePoints(points, 0, points.Count, vertices.Count / crossSectionShape.Count);
         }
 
         /// <summary>
@@ -152,41 +109,63 @@ namespace Meshing {
         /// This should only be called when getMesh was called before at least once.
         /// </summary>
         /// <param name="points">The new points of the line to insert.</param>
-        /// <param name="replaceIndex">First index to be replaced by the new points.</param>
+        /// <param name="index">First index to be replaced by the new points.</param>
         /// <param name="numOfPoints">Number of points to be replaced.</param>
         /// <returns></returns>
-        public Mesh replacePoints(List<Vector3> points, int replaceIndex, int numOfPoints) {
-            int insertIndex = (replaceIndex) * crossSectionShape.Count;
+        public Mesh replacePoints(List<Vector3> points, int index, int addCount, int removeCount) {
+
+            int pointIndex = 0;
+            int verticesIndex = 0;
+            int pointAddCount = 0;
+            int verticesRemoveCount = 0;
+
+            //if there is a point before or after the section to be replaced, they have to be recalculated also to correct their orientation 
+            int padding = 0;
+
+            //if it doesn't replace the first point 
+            if (index > 0) {
+                verticesIndex = (index - 1) * crossSectionShape.Count;
+                pointIndex = index -1;
+                padding++;
+            }
+            //if it doesn't replace the last point
+            if ((index + removeCount) * crossSectionShape.Count != vertices.Count)
+            {
+                padding++;
+            }
+
+            verticesRemoveCount = (removeCount + padding) * crossSectionShape.Count;
+            pointAddCount = (addCount + padding);
 
             //remove invalid vertices and normals
-            vertices.RemoveRange((replaceIndex) *  crossSectionShape.Count, numOfPoints * crossSectionShape.Count);
-            normals.RemoveRange((replaceIndex) * crossSectionNormals.Count, numOfPoints * crossSectionShape.Count);
+            vertices.RemoveRange(verticesIndex, verticesRemoveCount);
+            normals.RemoveRange(verticesIndex, verticesRemoveCount);
 
             //generate and add new vertices and normals
             List<Vector3> newVertices, newNormals, verticesToInsert, normalsToInsert;
             verticesToInsert = new List<Vector3>();
             normalsToInsert = new List<Vector3>();
 
-            (newVertices, newNormals) = transformCrossSection(points[0], points[0], points[1]);
-
-            verticesToInsert.AddRange(newVertices);
-            normalsToInsert.AddRange(newNormals);
-
-            for (int i = 1; i < points.Count-1; i++)
+            for (int i = pointIndex; i < pointIndex + pointAddCount; i++)
             {
-                (newVertices, newNormals) = transformCrossSection(points[i-1], points[i], points[i+1]);
-
+                if (i == 0)
+                {
+                    (newVertices, newNormals) = transformCrossSection(points[i], points[i], points[i+1]);
+                }
+                else if (i == points.Count - 1)
+                {
+                    (newVertices, newNormals) = transformCrossSection(points[i-1], points[i], points[i]);
+                }
+                else {
+                    (newVertices, newNormals) = transformCrossSection(points[i - 1], points[i], points[i + 1]);
+                }
+                
                 verticesToInsert.AddRange(newVertices);
                 normalsToInsert.AddRange(newNormals);
             }
 
-            (newVertices, newNormals) = transformCrossSection(points[points.Count-2], points[points.Count-1], points[points.Count-1]);
-
-            verticesToInsert.AddRange(newVertices);
-            normalsToInsert.AddRange(newNormals);
-
-            vertices.InsertRange(insertIndex, verticesToInsert);
-            normals.InsertRange(insertIndex, normalsToInsert);
+            vertices.InsertRange(verticesIndex, verticesToInsert);
+            normals.InsertRange(verticesIndex, normalsToInsert);
 
             //update triangles
             triangles = generateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
