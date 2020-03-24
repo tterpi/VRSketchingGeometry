@@ -197,7 +197,7 @@ namespace Meshing {
         /// <param name="point3">The point after point2 in the line.</param>
         /// <returns>(points, normals)</returns>
         private (List<Vector3>, List<Vector3>) transformCrossSection(Vector3 point1, Vector3 point2, Vector3 point3) {
-            Vector3 tangent = (point2 - point1) + (point3 - point2);
+            Vector3 tangent = ((point2 - point1).normalized + (point3 - point2).normalized).normalized;
             return (transformCrossSection(point2, tangent),transformNormals(crossSectionNormals, tangent));
         }
 
