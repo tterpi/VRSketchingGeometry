@@ -19,6 +19,38 @@ namespace Meshing {
         private List<Vector3> crossSectionShape;
         private List<Vector3> crossSectionNormals;
 
+        /// <summary>
+        /// Projects the points placed at position1 onto a plane at position2 with normal tangent.
+        /// The points are oriented perpendicular to the vector between position1 and position2.
+        /// </summary>
+        /// <param name="points">Points to project.</param>
+        /// <param name="position1">Position from where the points are projected.</param>
+        /// <param name="position2">Position where the plane to project onto is placed.</param>
+        /// <param name="tangent">Normal of the plane. Tangent to the line at position2.</param>
+        /// <param name="scale">Scale to be applied to the points.</param>
+        /// <returns></returns>
+        public static List<Vector3> projectPoints(List<Vector3> points, Vector3 position1, Vector3 position2, Vector3 tangent, Vector3 scale)
+        {
+            List<Vector3> projectionPoints = transformPoints(points, position1, position2 - position1, scale);
+
+            Plane projectionPlane = new Plane(tangent, position2);
+
+            List<Vector3> projectedPoints = new List<Vector3>();
+
+            foreach (Vector3 point in projectionPoints) {
+
+                Ray ray = new Ray(point, position2 - position1);
+
+                float projectionFactor;
+
+                projectionPlane.Raycast(ray, out projectionFactor);
+
+                projectedPoints.Add(ray.GetPoint(projectionFactor));
+            }
+
+            return projectedPoints;
+        }
+
         public static List<Vector3> transformPoints(List<Vector3> points, Vector3 position, Vector3 tangent, Vector3 scale)
         {
 
@@ -95,8 +127,8 @@ namespace Meshing {
             this.triangles = new List<int>();
         }
 
-        private List<Vector3> transformCrossSection(Vector3 position, Vector3 tangent) {
-            return transformPoints(crossSectionShape, position, tangent, crossSectionScale);
+        private List<Vector3> transformCrossSectionWithTangent(Vector3 position1, Vector3 position2, Vector3 tangent) {
+            return projectPoints(crossSectionShape, position1, position2, tangent, crossSectionScale);
         }
 
         public Mesh getMesh(List<Vector3> points) {
@@ -150,11 +182,13 @@ namespace Meshing {
             {
                 if (i == 0)
                 {
-                    (newVertices, newNormals) = transformCrossSection(points[i], points[i], points[i+1]);
+                    //(newVertices, newNormals) = transformCrossSection(points[i], points[i], points[i+1]);
+                    (newVertices, newNormals) = transformFirstCrossSection(points[i], points[i+1]);
                 }
                 else if (i == points.Count - 1)
                 {
                     (newVertices, newNormals) = transformCrossSection(points[i-1], points[i], points[i]);
+                    //(newVertices, newNormals) = transformFirstCrossSection(points[i], points[i -1]);
                 }
                 else {
                     (newVertices, newNormals) = transformCrossSection(points[i - 1], points[i], points[i + 1]);
@@ -198,7 +232,13 @@ namespace Meshing {
         /// <returns>(points, normals)</returns>
         private (List<Vector3>, List<Vector3>) transformCrossSection(Vector3 point1, Vector3 point2, Vector3 point3) {
             Vector3 tangent = ((point2 - point1).normalized + (point3 - point2).normalized).normalized;
-            return (transformCrossSection(point2, tangent),transformNormals(crossSectionNormals, tangent));
+            return (transformCrossSectionWithTangent(point1, point2, tangent),transformNormals(crossSectionNormals, tangent));
+        }
+
+        private (List<Vector3>, List<Vector3>) transformFirstCrossSection(Vector3 point1, Vector3 point2)
+        {
+            Vector3 tangent = (point2 - point1).normalized;
+            return (transformPoints(crossSectionShape, point1, tangent, crossSectionScale), transformNormals(crossSectionNormals, tangent));
         }
 
         private void generateCapsMesh(List<Vector3> firstCrossSectionVertices,List<Vector3> lastCrossSectionVertices) {
