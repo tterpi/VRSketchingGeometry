@@ -50,7 +50,7 @@ namespace Splines
                 try
                 {
                     InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(i));
                 }
                 catch (ArgumentException exception)
                 {
@@ -102,7 +102,7 @@ namespace Splines
                             InterpolatedPoints.RemoveRange(i * Steps, Steps);
                         }
                     }
-                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(i));
 
                 }
                 catch (ArgumentException exception)
@@ -145,7 +145,7 @@ namespace Splines
                 try
                 {
                     InterpolatedPoints.RemoveRange(i * Steps, Steps);
-                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(getControlPointsForSegment(i), Steps));
+                    InterpolatedPoints.InsertRange(i * Steps, InterpolateSegment(i));
                 }
                 catch (ArgumentException exception)
                 {
@@ -175,6 +175,16 @@ namespace Splines
             InterpolateSpline();
         }
 
+        private List<Vector3> InterpolateSegment(int controlPointIndex) {
+            if (controlPointIndex == ControlPoints.Count - 2)
+            {
+                return InterpolateSegment(getControlPointsForSegment(controlPointIndex), Steps, true);
+            }
+            else {
+                return InterpolateSegment(getControlPointsForSegment(controlPointIndex), Steps);
+            }
+        }
+
         /// <summary>
         /// Calculate one segment.
         /// </summary>
@@ -184,7 +194,7 @@ namespace Splines
         /// <param name="point4"></param>
         /// <param name="steps">Steps for this segement, between point2 and point3.</param>
         /// <returns></returns>
-        private static List<Vector3> InterpolateSegment(KochanekBartelsControlPoint point1, KochanekBartelsControlPoint point2, KochanekBartelsControlPoint point3, KochanekBartelsControlPoint point4, int steps)
+        private static List<Vector3> InterpolateSegment(KochanekBartelsControlPoint point1, KochanekBartelsControlPoint point2, KochanekBartelsControlPoint point3, KochanekBartelsControlPoint point4, int steps, bool isLastSegment = false)
         {
             var interpolatedPoints = new List<Vector3>();
 
@@ -193,27 +203,52 @@ namespace Splines
 
             for (var i = 0; i < steps; i++)
             {
-                var s = i / (float)(steps);
+                float s;
+                if (isLastSegment)
+                {
+                    s = i / (float)(steps - 1);
+                }
+                else {
+                    s = i / (float)(steps);
+                }
 
-                float h1 = (float)(2 * Math.Pow(s, 3) - 3 * Math.Pow(s, 2) + 1);
-                float h2 = (float)((-2) * Math.Pow(s, 3) + 3 * Math.Pow(s, 2));
-                float h3 = (float)(Math.Pow(s, 3) - 2 * Math.Pow(s, 2) + s);
-                float h4 = (float)(Math.Pow(s, 3) - Math.Pow(s, 2));
-
-                var newPoint = h1 * point2.Position + h2 * point3.Position + h3 * point2DestinationTangent + h4 * point3SourceTangent;
+                var newPoint = calculateInterpolatedPoint(point2.Position, point3.Position, point2DestinationTangent, point3SourceTangent, s);
 
                 interpolatedPoints.Add(newPoint);
             }
 
-            //interpolatedPoints.Add(point3.Position);
-
             return interpolatedPoints;
         }
 
-        private static List<Vector3> InterpolateSegment(List<KochanekBartelsControlPoint> controlPoints, int steps) {
+        /// <summary>
+        /// Calculate a single interpolated point between two control points.
+        /// </summary>
+        /// <param name="point1"></param>
+        /// <param name="point2"></param>
+        /// <param name="tangent1"></param>
+        /// <param name="tangent2"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        private static Vector3 calculateInterpolatedPoint(Vector3 point1, Vector3 point2, Vector3 tangent1, Vector3 tangent2, float parameter) {
+
+            float h1 = (float)(2 * Math.Pow(parameter, 3) - 3 * Math.Pow(parameter, 2) + 1);
+            float h2 = (float)((-2) * Math.Pow(parameter, 3) + 3 * Math.Pow(parameter, 2));
+            float h3 = (float)(Math.Pow(parameter, 3) - 2 * Math.Pow(parameter, 2) + parameter);
+            float h4 = (float)(Math.Pow(parameter, 3) - Math.Pow(parameter, 2));
+
+            return h1 * point1 + h2 * point2 + h3 * tangent1 + h4 * tangent2;
+        }
+
+        private static List<Vector3> InterpolateSegment(List<KochanekBartelsControlPoint> controlPoints, int steps, bool isLastSegment = false) {
             if (controlPoints != null && controlPoints.Count == 4)
             {
-                return InterpolateSegment(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], steps);
+                if (isLastSegment)
+                {
+                    return InterpolateSegment(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], steps, true);
+                }
+                else {
+                    return InterpolateSegment(controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3], steps);
+                }
             }
             else {
                 Debug.LogError("List must have 4 control points");
@@ -234,7 +269,7 @@ namespace Splines
             }
             for (int i = 0; i < ControlPoints.Count-1; i++)
             {
-                List<Vector3> points = InterpolateSegment(getControlPointsForSegment(i), Steps);
+                List<Vector3> points = InterpolateSegment(i);
                 if (points != null && points.Count > 0) {
                     InterpolatedPoints.AddRange(points);
                 }
@@ -244,45 +279,38 @@ namespace Splines
         private List<KochanekBartelsControlPoint> getControlPointsForSegment(int index) {
             int i = index;
 
-            if (i >= ControlPoints.Count - 1) {
+            if (i< 0 || i >= ControlPoints.Count - 1) {
                 Debug.LogError("Index out of range! Last segment is at number of control points minus one.");
                 return null;
             }
 
+            List<KochanekBartelsControlPoint> controlPointsOfSegment = new List<KochanekBartelsControlPoint>(4);
+
             //first control point
             if (i == 0)
             {
-                KochanekBartelsControlPoint point1 = ControlPoints[i];
-                KochanekBartelsControlPoint point2 = ControlPoints[i];
-                KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
-
-                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
+                controlPointsOfSegment.Add(ControlPoints[i]);
+                controlPointsOfSegment.Add(ControlPoints[i]);
+                controlPointsOfSegment.Add(ControlPoints[i + 1]);
+                controlPointsOfSegment.Add(ControlPoints[i + 2]);
             }
             //middle control point
             else if (i + 2 < ControlPoints.Count)
             {
-                KochanekBartelsControlPoint point1 = ControlPoints[i - 1];
-                KochanekBartelsControlPoint point2 = ControlPoints[i];
-                KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                KochanekBartelsControlPoint point4 = ControlPoints[i + 2];
-
-                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
+                controlPointsOfSegment.Add(ControlPoints[i - 1]);
+                controlPointsOfSegment.Add(ControlPoints[i]);
+                controlPointsOfSegment.Add(ControlPoints[i + 1]);
+                controlPointsOfSegment.Add(ControlPoints[i + 2]);
             }
             //last control point
             else if (i + 1 < ControlPoints.Count)
             {
-                KochanekBartelsControlPoint point1 = ControlPoints[i - 1];
-                KochanekBartelsControlPoint point2 = ControlPoints[i];
-                KochanekBartelsControlPoint point3 = ControlPoints[i + 1];
-                KochanekBartelsControlPoint point4 = ControlPoints[i + 1];
-
-                return new List<KochanekBartelsControlPoint>(new KochanekBartelsControlPoint[] { point1, point2, point3, point4 });
-
+                controlPointsOfSegment.Add(ControlPoints[i - 1]);
+                controlPointsOfSegment.Add(ControlPoints[i]);
+                controlPointsOfSegment.Add(ControlPoints[i + 1]);
+                controlPointsOfSegment.Add(ControlPoints[i + 1]);
             }
-            else {
-                return null;
-            }
+            return controlPointsOfSegment;
         }
 
         //Adapters for the interface
