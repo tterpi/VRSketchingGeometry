@@ -58,4 +58,8 @@ public class SplineMesh
         Spline.setControlPoints(controlPoints);
         meshFilter.mesh = lineExtruder.getMesh(interpolatedPoints);
     }
+
+    public int getNumberOfControlPoints() {
+        return Spline.getNumberOfControlPoints();
+    }
 }

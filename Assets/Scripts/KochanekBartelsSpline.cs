@@ -313,6 +313,10 @@ namespace Splines
             return controlPointsOfSegment;
         }
 
+        public override int getNumberOfControlPoints() {
+            return ControlPoints.Count;
+        }
+
         //Adapters for the interface
         public override SplineModificationInfo addControlPoint(Vector3 controlPoint)
         {
@@ -328,5 +332,7 @@ namespace Splines
         {
             return this.insertControlPoint(index, controlPoint);
         }
+
+
     }
 }

@@ -36,6 +36,11 @@ namespace Splines {
             ControlPoints.Insert(index, controlPoint);
             return new SplineModificationInfo(index, 0, 1);
         }
+
+        public override int getNumberOfControlPoints()
+        {
+            return ControlPoints.Count;
+        }
     }
 }
 

@@ -15,6 +15,8 @@ namespace Splines {
         public abstract SplineModificationInfo addControlPoint(Vector3 controlPoint);
 
         public abstract SplineModificationInfo insertControlPoint(int index, Vector3 controlPoint);
+
+        public abstract int getNumberOfControlPoints();
     }
 }
 
