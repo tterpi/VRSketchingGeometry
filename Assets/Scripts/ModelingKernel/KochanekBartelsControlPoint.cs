@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//-----------------------------------------------------------------------
+//
+// Original repository: https://github.com/tterpi/VRSketchingGeometry
+//
+//-----------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,8 +1,17 @@
-﻿using System.Collections;
+﻿//-----------------------------------------------------------------------
+//
+// Original repository: https://github.com/tterpi/VRSketchingGeometry
+//
+//-----------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Splines {
+    /// <summary>
+    /// Spline that directly represents the provided control points, does not perform any interpolation
+    /// </summary>
     public class LinearInterpolationSpline: Spline
     {
         private List<Vector3> ControlPoints;
@@ -40,6 +49,11 @@ namespace Splines {
         public override int getNumberOfControlPoints()
         {
             return ControlPoints.Count;
+        }
+
+        public override List<Vector3> getControlPoints()
+        {
+            return ControlPoints;
         }
     }
 }

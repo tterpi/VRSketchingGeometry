@@ -1,9 +1,19 @@
-﻿using System.Collections;
+﻿//-----------------------------------------------------------------------
+//
+// Original repository: https://github.com/tterpi/VRSketchingGeometry
+//
+//-----------------------------------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Splines;
 using Meshing;
 
+/// <summary>
+/// Manages the communication between a spline object and the corresponding mesh.
+/// Provides methods to manipulate the spline and mesh simultaneously.
+/// </summary>
 public class SplineMesh
 {
     private Spline Spline;
@@ -31,7 +41,10 @@ public class SplineMesh
 
     private void updateMesh(SplineModificationInfo info) {
         //Debug.Log(info);
-        meshFilter.mesh = lineExtruder.replacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
+        Mesh newMesh = lineExtruder.replacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
+        if (newMesh != null) {
+            meshFilter.mesh = newMesh;
+        }
     }
 
     public void addControlPoint(Vector3 controlPoint) {
@@ -61,5 +74,9 @@ public class SplineMesh
 
     public int getNumberOfControlPoints() {
         return Spline.getNumberOfControlPoints();
+    }
+
+    public List<Vector3> getControlPoints() {
+        return Spline.getControlPoints();
     }
 }
