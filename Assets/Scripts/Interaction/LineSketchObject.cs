@@ -79,6 +79,15 @@ public class LineSketchObject : MonoBehaviour
         }
     }
 
+    public void setLineDiameter(float diameter) {
+        LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
+        SplineMesh.setCrossSectionScale(Vector3.one * diameter);
+
+        sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
+
+        chooseDisplayMethod();
+    }
+
     /// <summary>
     /// Deletes the last control point of the spline.
     /// </summary>
@@ -93,7 +102,7 @@ public class LineSketchObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Determines how to display the spline depending on the number of contro points that are present.
+    /// Determines how to display the spline depending on the number of control points that are present.
     /// </summary>
     private void chooseDisplayMethod() {
         sphereObject.SetActive(false);

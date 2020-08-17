@@ -22,11 +22,15 @@ public class SplineMesh
     private LineExtruder lineExtruder;
     private MeshFilter meshFilter;
 
+    private List<Vector3> crossSectionShape;
+    private List<Vector3> crossSectionShapeNormals;
+    private float nativeCrossSectionShapeDiameter = 2f;
+
     public SplineMesh(Spline spline, MeshFilter meshFilter)
     {
-        List<Vector3> crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f) };
+        crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f) };
         crossSectionShape.Reverse();
-        List<Vector3> crossSectionShapeNormals = new List<Vector3>();
+        crossSectionShapeNormals = new List<Vector3>();
         foreach (Vector3 point in crossSectionShape) {
             crossSectionShapeNormals.Add(point.normalized);
         }
@@ -78,5 +82,14 @@ public class SplineMesh
 
     public List<Vector3> getControlPoints() {
         return Spline.getControlPoints();
+    }
+
+    /// <summary>
+    /// At scale 1 the line will have an diameter of 1.
+    /// </summary>
+    /// <param name="scale"></param>
+    public void setCrossSectionScale(Vector3 scale) {
+        lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale / nativeCrossSectionShapeDiameter);
+        meshFilter.mesh = lineExtruder.getMesh(interpolatedPoints);
     }
 }
