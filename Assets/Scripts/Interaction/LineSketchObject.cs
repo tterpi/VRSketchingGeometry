@@ -18,17 +18,17 @@ public class LineSketchObject : MonoBehaviour
     /// <summary>
     /// The instance of the smoothly interpolated Catmul-Rom spline mesh
     /// </summary>
-    private SplineMesh SplineMesh;
+    protected SplineMesh SplineMesh;
 
     /// <summary>
     /// Mesh filter for the mesh of the spline
     /// </summary>
-    private MeshFilter meshFilter;
+    protected MeshFilter meshFilter;
 
     /// <summary>
     /// Collider for the mesh of the spline
     /// </summary>
-    private MeshCollider meshCollider;
+    protected MeshCollider meshCollider;
 
     /// <summary>
     /// Linierly interpolated spline for displaying a segment only two control points
@@ -40,11 +40,11 @@ public class LineSketchObject : MonoBehaviour
     /// </summary>
     [SerializeField]
 #pragma warning disable CS0649
-    private GameObject sphereObject;
+    protected GameObject sphereObject;
 #pragma warning restore CS0649
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
@@ -82,7 +82,7 @@ public class LineSketchObject : MonoBehaviour
         }
     }
 
-    public void setLineDiameter(float diameter) {
+    public virtual void setLineDiameter(float diameter) {
         meshFilter.mesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter) ?? LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
         
 
@@ -107,7 +107,7 @@ public class LineSketchObject : MonoBehaviour
     /// <summary>
     /// Determines how to display the spline depending on the number of control points that are present.
     /// </summary>
-    private void chooseDisplayMethod() {
+    protected virtual void chooseDisplayMethod() {
         sphereObject.SetActive(false);
         if (SplineMesh.getNumberOfControlPoints() == 0) {
             //display nothing
