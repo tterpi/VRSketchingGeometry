@@ -20,13 +20,15 @@ public class SplineMesh
     private List<Vector3> interpolatedPoints;
 
     private LineExtruder lineExtruder;
-    private MeshFilter meshFilter;
+    private Mesh mesh;
 
     private List<Vector3> crossSectionShape;
     private List<Vector3> crossSectionShapeNormals;
     private float nativeCrossSectionShapeDiameter = 2f;
 
-    public SplineMesh(Spline spline, MeshFilter meshFilter)
+    public Mesh Mesh { get => mesh; private set => mesh = value; }
+
+    public SplineMesh(Spline spline)
     {
         crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f) };
         crossSectionShape.Reverse();
@@ -40,40 +42,38 @@ public class SplineMesh
 
         lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
 
-        this.meshFilter = meshFilter;
+        //this.meshFilter = meshFilter;
     }
 
-    private void updateMesh(SplineModificationInfo info) {
+    private Mesh updateMesh(SplineModificationInfo info) {
         //Debug.Log(info);
         Mesh newMesh = lineExtruder.replacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
-        if (newMesh != null) {
-            meshFilter.mesh = newMesh;
-        }
+        return newMesh;
     }
 
-    public void addControlPoint(Vector3 controlPoint) {
+    public Mesh addControlPoint(Vector3 controlPoint) {
         SplineModificationInfo info = Spline.addControlPoint(controlPoint);
-        updateMesh(info);
+        return updateMesh(info);
     }
 
-    public void deleteControlPoint(int index) {
+    public Mesh deleteControlPoint(int index) {
         SplineModificationInfo info = Spline.deleteControlPoint(index);
-        updateMesh(info);
+        return updateMesh(info);
     }
 
-    public void insertControlPoint(int index, Vector3 controlPoint) {
+    public Mesh insertControlPoint(int index, Vector3 controlPoint) {
         SplineModificationInfo info = Spline.insertControlPoint(index, controlPoint);
-        updateMesh(info);
+        return updateMesh(info);
     }
 
-    public void setControlPoint(int index, Vector3 controlPoint) {
+    public Mesh setControlPoint(int index, Vector3 controlPoint) {
         SplineModificationInfo info = Spline.setControlPoint(index, controlPoint);
-        updateMesh(info);
+        return updateMesh(info);
     }
 
-    public void setControlPoints(Vector3[] controlPoints) {
+    public Mesh setControlPoints(Vector3[] controlPoints) {
         Spline.setControlPoints(controlPoints);
-        meshFilter.mesh = lineExtruder.getMesh(interpolatedPoints);
+        return lineExtruder.getMesh(interpolatedPoints);
     }
 
     public int getNumberOfControlPoints() {
@@ -88,8 +88,8 @@ public class SplineMesh
     /// At scale 1 the line will have an diameter of 1.
     /// </summary>
     /// <param name="scale"></param>
-    public void setCrossSectionScale(Vector3 scale) {
+    public Mesh setCrossSectionScale(Vector3 scale) {
         lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale / nativeCrossSectionShapeDiameter);
-        meshFilter.mesh = lineExtruder.getMesh(interpolatedPoints);
+        return lineExtruder.getMesh(interpolatedPoints);
     }
 }

@@ -46,8 +46,8 @@ public class LineSketchObject : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
 
-        SplineMesh = new SplineMesh(new KochanekBartelsSpline(), meshFilter);
-        LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), meshFilter);
+        SplineMesh = new SplineMesh(new KochanekBartelsSpline());
+        LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline());
 
         meshCollider.sharedMesh = meshFilter.sharedMesh;
     }
@@ -59,7 +59,7 @@ public class LineSketchObject : MonoBehaviour
     public void addControlPoint(Vector3 point) {
         //Transform the new control point from world to local space of sketch object
         Vector3 transformedPoint = transform.InverseTransformPoint(point);
-        SplineMesh.addControlPoint(transformedPoint);
+        meshFilter.mesh = SplineMesh.addControlPoint(transformedPoint);
         chooseDisplayMethod();
         
     }
@@ -80,8 +80,8 @@ public class LineSketchObject : MonoBehaviour
     }
 
     public void setLineDiameter(float diameter) {
-        LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
-        SplineMesh.setCrossSectionScale(Vector3.one * diameter);
+        meshFilter.mesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter) ?? LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
+        
 
         sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
@@ -93,7 +93,7 @@ public class LineSketchObject : MonoBehaviour
     /// </summary>
     public void deleteControlPoint() {
         //delete the last control point of the spline
-        SplineMesh.deleteControlPoint(SplineMesh.getNumberOfControlPoints() - 1);
+        meshFilter.mesh = SplineMesh.deleteControlPoint(SplineMesh.getNumberOfControlPoints() - 1);
         chooseDisplayMethod();
     }
 
@@ -124,8 +124,8 @@ public class LineSketchObject : MonoBehaviour
         {
             //display linearly interpolated segment if there are two control points
             List<Vector3> controlPoints = SplineMesh.getControlPoints();
-            //set the two control points, this will overwrite the mesh in mesh filter
-            LinearSplineMesh.setControlPoints(controlPoints.ToArray());
+            //set the two control points
+            meshFilter.mesh = LinearSplineMesh.setControlPoints(controlPoints.ToArray());
             //update collider
             meshCollider.sharedMesh = meshFilter.sharedMesh;
         }
