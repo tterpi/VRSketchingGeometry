@@ -129,6 +129,11 @@ namespace Meshing {
                 return null;
             }
 
+            if (points.Count < 2) {
+                Debug.LogWarning("Mesh generation failed. Points contains less than 2 points.");
+                return null;
+            }
+
             int pointIndex = 0;
             int verticesIndex = 0;
             int pointAddCount = 0;
