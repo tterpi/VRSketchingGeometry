@@ -23,8 +23,8 @@ public class ExtrudeTest : MonoBehaviour
             ControlPoints[i] = ControlPointObjects[i].transform.position;
         }
 
-        SplineMesh = new SplineMesh(new KochanekBartelsSpline(),GetComponent<MeshFilter>());
-        SplineMesh.setControlPoints(ControlPoints);
+        SplineMesh = new SplineMesh(new KochanekBartelsSpline());
+        GetComponent<MeshFilter>().mesh = SplineMesh.setControlPoints(ControlPoints);
         //SplineMesh.deleteControlPoint(9);
         //SplineMesh.addControlPoint(extraControlPoint.transform.position);
         //SplineMesh.insertControlPoint(1, extraControlPoint.transform.position);

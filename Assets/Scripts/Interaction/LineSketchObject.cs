@@ -12,6 +12,7 @@ using Splines;
 /// <summary>
 /// Provides methods to interact with a line game object in the scene.
 /// </summary>
+[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
 public class LineSketchObject : MonoBehaviour
 {
     /// <summary>
@@ -38,7 +39,9 @@ public class LineSketchObject : MonoBehaviour
     /// Object to be displayed for a line of a single control point
     /// </summary>
     [SerializeField]
+#pragma warning disable CS0649
     private GameObject sphereObject;
+#pragma warning restore CS0649
 
     // Start is called before the first frame update
     void Start()
