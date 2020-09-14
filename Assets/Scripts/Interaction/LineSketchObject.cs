@@ -13,7 +13,7 @@ using Splines;
 /// Provides methods to interact with a line game object in the scene.
 /// </summary>
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-public class LineSketchObject : MonoBehaviour
+public class LineSketchObject : SketchObject
 {
     /// <summary>
     /// The instance of the smoothly interpolated Catmul-Rom spline mesh
@@ -43,6 +43,13 @@ public class LineSketchObject : MonoBehaviour
     protected GameObject sphereObject;
 #pragma warning restore CS0649
 
+    private MeshRenderer meshRenderer;
+
+    private Material originalMaterial;
+
+    [SerializeField]
+    private Material highlightMaterial;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -53,6 +60,7 @@ public class LineSketchObject : MonoBehaviour
         LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline());
 
         meshCollider.sharedMesh = meshFilter.sharedMesh;
+        setUpOriginalMaterialAndMeshRenderer();
     }
 
     /// <summary>
@@ -141,4 +149,18 @@ public class LineSketchObject : MonoBehaviour
 
     }
 
+    protected void setUpOriginalMaterialAndMeshRenderer() {
+        meshRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = meshRenderer.sharedMaterial;
+    }
+
+    public override void highlight()
+    {
+        meshRenderer.sharedMaterial = highlightMaterial;
+    }
+
+    public override void revertHighlight()
+    {
+        meshRenderer.sharedMaterial = originalMaterial;
+    }
 }

@@ -6,6 +6,7 @@ public class LineSketchObjectTest : MonoBehaviour
 {
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
+    private LineSketchObject lineSketchObject2;
 
     private bool ranOnce = false;
 
@@ -13,11 +14,17 @@ public class LineSketchObjectTest : MonoBehaviour
     void Start()
     {
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
     }
 
     IEnumerator changeDiameter() {
             yield return new WaitForSeconds(5);
             lineSketchObject.setLineDiameter(.1f);
+    }
+
+    IEnumerator deactivateSelection(SketchObjectSelection selection) {
+        yield return new WaitForSeconds(3);
+        selection.deactivate();
     }
 
     private void lineSketchObjectTest() {
@@ -29,6 +36,18 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject.setLineDiameter(.7f);
 
         StartCoroutine(changeDiameter());
+
+        lineSketchObject2.addControlPoint(new Vector3(1,0,0));
+        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.addControlPoint(new Vector3(3, 1, 0));
+
+        GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
+        SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
+        selection.addToSelection(lineSketchObject);
+        selection.addToSelection(lineSketchObject2);
+        selection.activate();
+        StartCoroutine(deactivateSelection(selection));
     }
 
     // Update is called once per frame

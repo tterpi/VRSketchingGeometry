@@ -202,3 +202,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereObject: {fileID: 1415086077552610675}
+  highlightMaterial: {fileID: 2100000, guid: 9463805ee6ca2344397c6628a80a84d3, type: 2}

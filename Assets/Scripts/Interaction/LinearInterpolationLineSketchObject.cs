@@ -14,6 +14,7 @@ public class LinearInterpolationLineSketchObject : LineSketchObject
         SplineMesh = new SplineMesh(new LinearInterpolationSpline());
 
         meshCollider.sharedMesh = meshFilter.sharedMesh;
+        setUpOriginalMaterialAndMeshRenderer();
     }
 
     public override void setLineDiameter(float diameter)

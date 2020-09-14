@@ -7,7 +7,7 @@ public class SketchObjectSelection : MonoBehaviour
 {
     private static SketchObjectSelection activeSketchObjectSelection;
 
-    private List<GameObject> sketchObjectsOfSelection;
+    private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
 
     public static SketchObjectSelection ActiveSketchObjectSelection
     {
@@ -68,18 +68,26 @@ public class SketchObjectSelection : MonoBehaviour
 
     public void activate() {
         if (ActiveSketchObjectSelection != this) {
-            ActiveSketchObjectSelection.deactivate();
+            if (ActiveSketchObjectSelection != null) {
+                ActiveSketchObjectSelection.deactivate();
+            }
             ActiveSketchObjectSelection = this;
         }
-        //todo highlight objects of selection
+
+        foreach (GameObject gameObject in sketchObjectsOfSelection) {
+            gameObject.BroadcastMessage(nameof(SketchObject.highlight));
+        }
     }
 
     public void deactivate() {
         if (ActiveSketchObjectSelection == this) {
             ActiveSketchObjectSelection = null;
         }
-        //todo revert highlighting of selection
-        //gameObject.BroadcastMessage
+
+        foreach (GameObject gameObject in sketchObjectsOfSelection)
+        {
+            gameObject.BroadcastMessage(nameof(SketchObject.revertHighlight));
+        }
     }
 
 }
