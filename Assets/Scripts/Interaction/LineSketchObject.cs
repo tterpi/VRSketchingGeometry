@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Splines;
+using SketchObjectManagement;
 
 /// <summary>
 /// Provides methods to interact with a line game object in the scene.

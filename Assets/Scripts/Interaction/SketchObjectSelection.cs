@@ -3,91 +3,82 @@ using System.Collections.Generic;
 using UnityEngine;
 using SketchObjectManagement;
 
-public class SketchObjectSelection : MonoBehaviour
+namespace SketchObjectManagement
 {
-    private static SketchObjectSelection activeSketchObjectSelection;
-
-    private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
-
-    public static SketchObjectSelection ActiveSketchObjectSelection
+    public class SketchObjectSelection : MonoBehaviour
     {
-        get { return activeSketchObjectSelection; }
-        set
+        private static SketchObjectSelection activeSketchObjectSelection;
+
+        //private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
+
+        public static SketchObjectSelection ActiveSketchObjectSelection
         {
-            activeSketchObjectSelection = value;
-        }
-    }
-
-    public void addToSelection(SketchObject sketchObject) {
-        addToSelection(sketchObject.gameObject);
-    }
-
-    public void addToSelection(SketchObjectGroup sketchObjectGroup) {
-        //should check if any of the sketch objects of the group are already in the selection first
-        //is child of
-        foreach (Transform child in sketchObjectGroup.transform) {
-            if (sketchObjectsOfSelection.Contains(child.gameObject))
+            get { return activeSketchObjectSelection; }
+            set
             {
-                //remove from selection if part of group, it will be added again as part of the group
-                sketchObjectsOfSelection.Remove(child.gameObject);
+                activeSketchObjectSelection = value;
             }
-            else {
-                foreach (GameObject goInSelection in sketchObjectsOfSelection) {
-                    if (child.transform.IsChildOf(goInSelection.transform)) {
-                        Debug.LogWarning("Selection already contains game objects from group.");
-                    }
+        }
+
+        public void addToSelection(SketchObject sketchObject)
+        {
+            addToSelection(sketchObject.gameObject);
+        }
+
+        public void addToSelection(SketchObjectGroup sketchObjectGroup)
+        {
+            addToSelection(sketchObjectGroup.gameObject);
+        }
+
+        private void addToSelection(GameObject gameObject)
+        {
+            gameObject.transform.SetParent(this.transform);
+        }
+
+        public void removeFromSelection(SketchObject sketchObject)
+        {
+            //removeFromSelection(sketchObject.gameObject);
+            sketchObject.transform.SetParent(sketchObject.parentGroup.transform);
+        }
+
+        public void removeFromSelection(SketchObjectGroup sketchObjectGroup)
+        {
+            //removeFromSelection(sketchObjectGroup.gameObject);
+            sketchObjectGroup.transform.SetParent(sketchObjectGroup.parentGroup.transform);
+        }
+
+        public void deleteObjectsOfSelection()
+        {
+            foreach (Transform child in this.transform) {
+                SketchWorld.ActiveSketchWorld.deleteObject(child.gameObject);
+            }
+            //deactivate game objects
+            //parent to bin object
+        }
+
+        public void activate()
+        {
+            if (ActiveSketchObjectSelection != this)
+            {
+                if (ActiveSketchObjectSelection != null)
+                {
+                    ActiveSketchObjectSelection.deactivate();
                 }
+                ActiveSketchObjectSelection = this;
             }
 
-        }
-        addToSelection(sketchObjectGroup.gameObject);
-    }
-
-    private void addToSelection(GameObject gameObject) {
-        if (!sketchObjectsOfSelection.Contains(gameObject))
-        {
-            sketchObjectsOfSelection.Add(gameObject);
-        }
-        else
-        {
-            Debug.LogWarning("SketchObjectSelection already contains object");
-        }
-    }
-
-    public void removeFromSelection(SketchObject sketchObject)
-    {
-        removeFromSelection(sketchObject.gameObject);
-    }
-
-    private void removeFromSelection(GameObject gameObject) {
-        if (sketchObjectsOfSelection.Contains(gameObject))
-        {
-            sketchObjectsOfSelection.Remove(gameObject);
-        }
-    }
-
-    public void activate() {
-        if (ActiveSketchObjectSelection != this) {
-            if (ActiveSketchObjectSelection != null) {
-                ActiveSketchObjectSelection.deactivate();
-            }
-            ActiveSketchObjectSelection = this;
-        }
-
-        foreach (GameObject gameObject in sketchObjectsOfSelection) {
             gameObject.BroadcastMessage(nameof(SketchObject.highlight));
         }
-    }
 
-    public void deactivate() {
-        if (ActiveSketchObjectSelection == this) {
-            ActiveSketchObjectSelection = null;
-        }
-
-        foreach (GameObject gameObject in sketchObjectsOfSelection)
+        public void deactivate()
         {
+            if (ActiveSketchObjectSelection == this)
+            {
+                ActiveSketchObjectSelection = null;
+            }
+
             gameObject.BroadcastMessage(nameof(SketchObject.revertHighlight));
         }
-    }
 
+    }
 }
