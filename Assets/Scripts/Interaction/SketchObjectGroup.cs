@@ -8,13 +8,15 @@ namespace SketchObjectManagement {
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
     /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
     /// </summary>
-    public class SketchObjectGroup : MonoBehaviour
+    public class SketchObjectGroup : MonoBehaviour, IGroupable
     {
-        public GameObject parentGroup;
+        private GameObject parentGroup;
+
+        public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
 
         public void addToGroup(SketchObject sketchObject) {
             sketchObject.transform.SetParent(this.transform);
-            sketchObject.parentGroup = this.gameObject;
+            sketchObject.ParentGroup = this.gameObject;
         }
 
         public void addToGroup(SketchObjectGroup sketchObjectGroup) {
@@ -46,6 +48,10 @@ namespace SketchObjectManagement {
         {
             //puts it back to the top level of the scene, should be the currently active sketch world in the future
             sketchObjectGroup.transform.SetParent(null);
+        }
+
+        public void resetToParentGroup() {
+            this.transform.SetParent(ParentGroup?.transform);
         }
     }
 }

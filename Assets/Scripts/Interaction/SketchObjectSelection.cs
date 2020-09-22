@@ -9,7 +9,7 @@ namespace SketchObjectManagement
     {
         private static SketchObjectSelection activeSketchObjectSelection;
 
-        //private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
+        private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
 
         public static SketchObjectSelection ActiveSketchObjectSelection
         {
@@ -32,28 +32,42 @@ namespace SketchObjectManagement
 
         private void addToSelection(GameObject gameObject)
         {
-            gameObject.transform.SetParent(this.transform);
+            //gameObject.transform.SetParent(this.transform);
+            sketchObjectsOfSelection.Add(gameObject);
         }
 
         public void removeFromSelection(SketchObject sketchObject)
         {
             //removeFromSelection(sketchObject.gameObject);
-            sketchObject.transform.SetParent(sketchObject.parentGroup.transform);
+            sketchObject.revertHighlight();
+            sketchObject.transform.SetParent(sketchObject.ParentGroup.transform);
+            removeFromSelection(sketchObject.gameObject);
         }
 
         public void removeFromSelection(SketchObjectGroup sketchObjectGroup)
         {
             //removeFromSelection(sketchObjectGroup.gameObject);
-            sketchObjectGroup.transform.SetParent(sketchObjectGroup.parentGroup.transform);
+            sketchObjectGroup.BroadcastMessage(nameof(SketchObject.revertHighlight));
+            sketchObjectGroup.transform.SetParent(sketchObjectGroup.ParentGroup.transform);
+            removeFromSelection(sketchObjectGroup.gameObject);
+        }
+
+        private void removeFromSelection(GameObject gameObject) {
+            sketchObjectsOfSelection.Remove(gameObject);
+        }
+
+        public void removeAllFromSelection() {
+            deactivate();
+            sketchObjectsOfSelection.Clear();
         }
 
         public void deleteObjectsOfSelection()
         {
+            //deactivate game objects
+            //parent to bin object
             foreach (Transform child in this.transform) {
                 SketchWorld.ActiveSketchWorld.deleteObject(child.gameObject);
             }
-            //deactivate game objects
-            //parent to bin object
         }
 
         public void activate()
@@ -67,7 +81,11 @@ namespace SketchObjectManagement
                 ActiveSketchObjectSelection = this;
             }
 
-            gameObject.BroadcastMessage(nameof(SketchObject.highlight));
+            foreach (GameObject selected in sketchObjectsOfSelection) {
+                selected.transform.SetParent(this.transform);
+            }
+
+            this.gameObject.BroadcastMessage(nameof(SketchObject.highlight));
         }
 
         public void deactivate()
@@ -78,6 +96,12 @@ namespace SketchObjectManagement
             }
 
             gameObject.BroadcastMessage(nameof(SketchObject.revertHighlight));
+
+            foreach (GameObject selected in sketchObjectsOfSelection)
+            {
+                selected.GetComponent<IGroupable>().resetToParentGroup();
+            }
+
         }
 
     }

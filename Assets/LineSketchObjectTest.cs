@@ -44,6 +44,7 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject2.addControlPoint(new Vector3(3, 1, 0));
 
         GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
+        GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
         selection.addToSelection(lineSketchObject);
         selection.addToSelection(lineSketchObject2);

@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SketchObjectManagement {
-    public abstract class SketchObject : MonoBehaviour
+    public abstract class SketchObject : MonoBehaviour, IGroupable
     {
-        public GameObject parentGroup;
+        private GameObject parentGroup;
+
+        public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
+
+        public void resetToParentGroup()
+        {
+            this.transform.SetParent(ParentGroup?.transform);
+        }
+
         public abstract void highlight();
         public abstract void revertHighlight();
     }
