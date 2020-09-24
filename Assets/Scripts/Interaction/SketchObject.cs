@@ -9,13 +9,33 @@ namespace SketchObjectManagement {
 
         public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
 
+        protected MeshRenderer meshRenderer;
+
+        protected Material originalMaterial;
+
+        [SerializeField]
+        protected Material highlightMaterial;
+
         public void resetToParentGroup()
         {
             this.transform.SetParent(ParentGroup?.transform);
         }
 
-        public abstract void highlight();
-        public abstract void revertHighlight();
+        protected void setUpOriginalMaterialAndMeshRenderer()
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+            originalMaterial = meshRenderer.sharedMaterial;
+        }
+
+        public virtual void highlight()
+        {
+            meshRenderer.sharedMaterial = highlightMaterial;
+        }
+
+        public virtual void revertHighlight()
+        {
+            meshRenderer.sharedMaterial = originalMaterial;
+        }
     }
 }
 

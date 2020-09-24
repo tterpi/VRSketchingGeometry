@@ -44,13 +44,6 @@ public class LineSketchObject : SketchObject
     protected GameObject sphereObject;
 #pragma warning restore CS0649
 
-    private MeshRenderer meshRenderer;
-
-    private Material originalMaterial;
-
-    [SerializeField]
-    private Material highlightMaterial;
-
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -148,20 +141,5 @@ public class LineSketchObject : SketchObject
             meshCollider.sharedMesh = meshFilter.sharedMesh;
         }
 
-    }
-
-    protected void setUpOriginalMaterialAndMeshRenderer() {
-        meshRenderer = GetComponent<MeshRenderer>();
-        originalMaterial = meshRenderer.sharedMaterial;
-    }
-
-    public override void highlight()
-    {
-        meshRenderer.sharedMaterial = highlightMaterial;
-    }
-
-    public override void revertHighlight()
-    {
-        meshRenderer.sharedMaterial = originalMaterial;
     }
 }
