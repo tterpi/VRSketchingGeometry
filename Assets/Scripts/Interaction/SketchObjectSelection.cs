@@ -20,6 +20,9 @@ namespace SketchObjectManagement
             }
         }
 
+        [SerializeField]
+        private GameObject boundsVisualizationObject;
+
         public void addToSelection(SketchObject sketchObject)
         {
             addToSelection(sketchObject.gameObject);
@@ -85,6 +88,7 @@ namespace SketchObjectManagement
                 selected.transform.SetParent(this.transform);
             }
 
+            setUpBoundingBoxVisualization(getBoundsOfSelection(this));
             this.gameObject.BroadcastMessage(nameof(SketchObject.highlight));
         }
 
@@ -96,12 +100,34 @@ namespace SketchObjectManagement
             }
 
             gameObject.BroadcastMessage(nameof(SketchObject.revertHighlight));
+            boundsVisualizationObject.SetActive(false);
 
             foreach (GameObject selected in sketchObjectsOfSelection)
             {
                 selected.GetComponent<IGroupable>().resetToParentGroup();
             }
 
+        }
+
+        private void setUpBoundingBoxVisualization(Bounds bounds) {
+            //boundsVisualizationObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            boundsVisualizationObject.transform.SetParent(null);
+
+            boundsVisualizationObject.transform.position = bounds.center;
+            boundsVisualizationObject.transform.localScale = bounds.size;
+
+            boundsVisualizationObject.transform.SetParent(this.transform, true);
+        }
+
+        private static Bounds getBoundsOfSelection(SketchObjectSelection selection) {
+            Bounds selectionBounds = new Bounds();
+            MeshRenderer[] renderers = selection.gameObject.GetComponentsInChildren<MeshRenderer>();
+
+            foreach (MeshRenderer renderer in renderers) {
+                selectionBounds.Encapsulate(renderer.bounds);
+            }
+
+            return selectionBounds;
         }
 
     }

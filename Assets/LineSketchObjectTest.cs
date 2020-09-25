@@ -5,6 +5,7 @@ using SketchObjectManagement;
 
 public class LineSketchObjectTest : MonoBehaviour
 {
+    public GameObject selectionPrefab;
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
@@ -36,14 +37,15 @@ public class LineSketchObjectTest : MonoBehaviour
 
         lineSketchObject.setLineDiameter(.7f);
 
-        StartCoroutine(changeDiameter());
+        //StartCoroutine(changeDiameter());
 
         lineSketchObject2.addControlPoint(new Vector3(1,0,0));
         lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
         lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
         lineSketchObject2.addControlPoint(new Vector3(3, 1, 0));
 
-        GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
+        //GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
+        GameObject selectionGO = Instantiate(selectionPrefab);
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
         selection.addToSelection(lineSketchObject);
