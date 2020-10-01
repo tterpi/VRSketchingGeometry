@@ -8,7 +8,7 @@ namespace SketchObjectManagement {
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
     /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
     /// </summary>
-    public class SketchObjectGroup : MonoBehaviour, IGroupable
+    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable
     {
         private GameObject parentGroup;
 
@@ -39,19 +39,38 @@ namespace SketchObjectManagement {
             }
         }
 
+
         public void removeFromGroup(SketchObject sketchObject) {
-            //puts it back to the top level of the scene, should be the currently active sketch world in the future
-            sketchObject.transform.SetParent(null);
+            removeFromGroup(sketchObject.gameObject);
         }
 
         public void removeFromGroup(SketchObjectGroup sketchObjectGroup)
         {
-            //puts it back to the top level of the scene, should be the currently active sketch world in the future
-            sketchObjectGroup.transform.SetParent(null);
+            removeFromGroup(sketchObjectGroup.gameObject);
+        }
+
+        private void removeFromGroup(GameObject gameObject) {
+            if (SketchWorld.ActiveSketchWorld != null)
+            {
+                gameObject.transform.SetParent(SketchWorld.ActiveSketchWorld.transform);
+            }
+            else {
+                gameObject.transform.SetParent(null);
+            }
         }
 
         public void resetToParentGroup() {
             this.transform.SetParent(ParentGroup?.transform);
+        }
+
+        public void highlight()
+        {
+            this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
+        }
+
+        public void revertHighlight()
+        {
+            this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
         }
     }
 }

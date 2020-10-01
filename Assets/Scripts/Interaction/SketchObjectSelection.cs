@@ -5,6 +5,12 @@ using SketchObjectManagement;
 
 namespace SketchObjectManagement
 {
+    /// <summary>
+    /// Represents a selection of SketchObjects and SketchObjectGroups.
+    /// When the selection is activated the game objects are parented to the selection game object and highlighted.
+    /// When deactivating the object return to their original position in the hierarchy.
+    /// There can only be one active selection at a time.
+    /// </summary>
     public class SketchObjectSelection : MonoBehaviour
     {
         private static SketchObjectSelection activeSketchObjectSelection;
@@ -89,7 +95,7 @@ namespace SketchObjectManagement
             }
 
             setUpBoundingBoxVisualization(getBoundsOfSelection(this));
-            this.gameObject.BroadcastMessage(nameof(SketchObject.highlight));
+            this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
         }
 
         public void deactivate()
@@ -99,7 +105,7 @@ namespace SketchObjectManagement
                 ActiveSketchObjectSelection = null;
             }
 
-            gameObject.BroadcastMessage(nameof(SketchObject.revertHighlight));
+            gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
             boundsVisualizationObject.SetActive(false);
 
             foreach (GameObject selected in sketchObjectsOfSelection)

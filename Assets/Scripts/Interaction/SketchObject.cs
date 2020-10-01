@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SketchObjectManagement {
-    public abstract class SketchObject : MonoBehaviour, IGroupable
+    /// <summary>
+    /// Base class for diferent kinds of SketchObjects.
+    /// </summary>
+    public abstract class SketchObject : MonoBehaviour, IGroupable, IHighlightable
     {
         private GameObject parentGroup;
 

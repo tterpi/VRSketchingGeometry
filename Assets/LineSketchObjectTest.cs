@@ -30,7 +30,7 @@ public class LineSketchObjectTest : MonoBehaviour
     }
 
     private void lineSketchObjectTest() {
-        lineSketchObject.addControlPoint(Vector3.zero);
+        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
         lineSketchObject.addControlPoint(Vector3.one);
         lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
         lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
