@@ -100,17 +100,30 @@ public class KochanekBartelsPatch : MonoBehaviour
     /// <param name="height">Number of control points in y direction</param>
     public void UpdatePatchMesh(List<Vector3> controlPoints, int width, int height) {
         Mesh patchMesh = GeneratePatchMesh(controlPoints, width, height, this.resolutionWidth, this.resolutionHeight);
+        Mesh oldMesh = this.GetComponent<MeshFilter>().sharedMesh;
+        Destroy(oldMesh);
         this.GetComponent<MeshFilter>().mesh = patchMesh;
     }
 
-    public void Start()
-    {
+    private IEnumerator updatePatchMeshContinuously() {
+        UpdatePatchMeshWithControlPointGameObjects();
+        yield return new WaitForSeconds(.5f);
+        StartCoroutine(nameof(updatePatchMeshContinuously));
+    }
+
+    private void UpdatePatchMeshWithControlPointGameObjects() {
         List<Vector3> controlPoints = new List<Vector3>();
 
-        foreach (GameObject go in controlPointObjects) {
+        foreach (GameObject go in controlPointObjects)
+        {
             controlPoints.Add(go.transform.position);
         }
 
         UpdatePatchMesh(controlPoints, width, height);
+    }
+
+    public void Start()
+    {
+        StartCoroutine(updatePatchMeshContinuously());
     }
 }
