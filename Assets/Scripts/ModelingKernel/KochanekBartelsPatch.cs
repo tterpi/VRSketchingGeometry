@@ -31,7 +31,6 @@ public class KochanekBartelsPatch : MonoBehaviour
             horizontalSplines.Add(horizontalSpline);
         }
 
-
         //create vertical splines through the generated interpolated points of the horizontal splines
         List<KochanekBartelsSpline> verticalSplines = new List<KochanekBartelsSpline>();
         for (int i = 0; i < (width-1) *(resolutionWidth); i++) {
@@ -53,6 +52,57 @@ public class KochanekBartelsPatch : MonoBehaviour
         return vertices.ToArray();
     }
 
+    /// <summary>
+    /// Generate an indices array that defines a triangle topology for a quadrilateral patch
+    /// </summary>
+    /// <param name="numOfVerticalVertices"></param>
+    /// <param name="numOfHorizontalVertices"></param>
+    /// <returns></returns>
+    public static int[] GenerateTrianglesOfPatch(int numOfVerticalVertices, int numOfHorizontalVertices) {
+        List<int> triangles = new List<int>();
+
+        for (int i = 0; i < numOfVerticalVertices - 1; i++)
+        {
+            for (int y = 0; y < numOfHorizontalVertices - 1; y++)
+            {
+                int index = i * numOfHorizontalVertices + y;
+                triangles.Add(index);
+                triangles.Add(index + 1);
+                triangles.Add(index + numOfHorizontalVertices);
+
+                triangles.Add(index + 1);
+                triangles.Add(index + 1 + numOfHorizontalVertices);
+                triangles.Add(index + numOfHorizontalVertices);
+            }
+        }
+        return triangles.ToArray();
+    }
+
+    public static Mesh GeneratePatchMesh(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight) {
+        Vector3[] vertices = getVerticesOfPatch(controlPoints, width, height, resolutionWidth, resolutionHeight);
+
+        int[] trianglesArray = GenerateTrianglesOfPatch((width - 1) * resolutionWidth, (height - 1) * resolutionHeight);
+
+        Mesh patchMesh = new Mesh();
+        patchMesh.SetVertices(vertices);
+        patchMesh.SetTriangles(trianglesArray, 0);
+
+        patchMesh.RecalculateNormals();
+
+        return patchMesh;
+    }
+
+    /// <summary>
+    /// Generates the patch mesh and assigns it to the MeshFilter of this GameObject.
+    /// </summary>
+    /// <param name="controlPoints"></param>
+    /// <param name="width">Number of control points in x direction</param>
+    /// <param name="height">Number of control points in y direction</param>
+    public void UpdatePatchMesh(List<Vector3> controlPoints, int width, int height) {
+        Mesh patchMesh = GeneratePatchMesh(controlPoints, width, height, this.resolutionWidth, this.resolutionHeight);
+        this.GetComponent<MeshFilter>().mesh = patchMesh;
+    }
+
     public void Start()
     {
         List<Vector3> controlPoints = new List<Vector3>();
@@ -61,39 +111,6 @@ public class KochanekBartelsPatch : MonoBehaviour
             controlPoints.Add(go.transform.position);
         }
 
-        Vector3[] vertices = getVerticesOfPatch(controlPoints, width, height, resolutionWidth, resolutionHeight);
-        //List<Vector3> normals = new List<Vector3>();
-
-        //for (int i = 0; i < vertices.Length; i++)
-        //{
-        //    normals.Add(Vector3.up);
-        //}
-
-        List<int> triangles = new List<int>();
-
-        for (int i = 0; i < (width - 1) * resolutionWidth - 1; i++)
-        {
-            for (int y = 0; y < (height - 1) * resolutionHeight - 1; y++)
-            {
-                int index = i * (height - 1) * resolutionHeight + y;
-                triangles.Add(index);
-                triangles.Add(index + 1);
-                triangles.Add(index + (height - 1) * resolutionHeight);
-
-                triangles.Add(index + 1);
-                triangles.Add(index + 1 + (height - 1) * resolutionHeight);
-                triangles.Add(index + (height - 1) * resolutionHeight);
-            }
-        }
-
-        Mesh patchMesh = new Mesh();
-        patchMesh.SetVertices(vertices);
-        //patchMesh.SetNormals(normals);
-        patchMesh.SetTriangles(triangles.ToArray(), 0);
-
-        patchMesh.RecalculateNormals();
-        this.GetComponent<MeshFilter>().mesh = patchMesh;
-
-
+        UpdatePatchMesh(controlPoints, width, height);
     }
 }
