@@ -9,7 +9,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Splines
+namespace VRSketchingGeometry.Splines
 {
     /// <summary>
     /// Contains information about what parts of the spline were modified

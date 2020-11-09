@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SketchObjectManagement
+namespace VRSketchingGeometry.SketchObjectManagement
 {
     public interface IHighlightable
     {

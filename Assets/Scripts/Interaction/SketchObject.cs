@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SketchObjectManagement {
+namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
     /// Base class for diferent kinds of SketchObjects.
     /// </summary>

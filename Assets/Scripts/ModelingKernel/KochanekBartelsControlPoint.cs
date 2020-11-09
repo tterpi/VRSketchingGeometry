@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Splines {
+namespace VRSketchingGeometry.Splines {
     public class KochanekBartelsControlPoint {
         public Vector3 Position { get; set; }
 

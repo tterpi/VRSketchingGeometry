@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Splines;
+using VRSketchingGeometry.Splines;
+using VRSketchingGeometry.Meshing;
 
 public class ExtrudeTest : MonoBehaviour
 {

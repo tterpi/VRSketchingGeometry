@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SketchObjectManagement {
+namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
     /// Represents a group of SketchObjects.
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.

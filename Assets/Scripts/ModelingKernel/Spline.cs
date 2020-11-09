@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Splines {
+namespace VRSketchingGeometry.Splines {
     /// <summary>
     /// Interface for a spline implementation
     /// </summary>
