@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRSketchingGeometry.Commands{
+    /// <summary>
+    /// This class manages all commands that have been executed. It offers methods to undo and redo commands.
+    /// </summary>
     public class CommandInvoker
     {
         private Stack<Command> undoStack = new Stack<Command>();

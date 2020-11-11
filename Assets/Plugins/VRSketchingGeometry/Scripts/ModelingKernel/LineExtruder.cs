@@ -114,12 +114,13 @@ namespace VRSketchingGeometry.Meshing {
         }
 
         /// <summary>
-        /// This will replace a section of the already calculated mesh by a new section calculated from the given points.
+        /// Replaces and/or removes points from an existing mesh.
         /// This should only be called when getMesh was called before at least once.
         /// </summary>
-        /// <param name="points">The new points of the line to insert.</param>
-        /// <param name="index">First index to be replaced by the new points.</param>
-        /// <param name="numOfPoints">Number of points to be replaced.</param>
+        /// <param name="points">All points of the complete line.</param>
+        /// <param name="index">First point to be added or removed.</param>
+        /// <param name="addCount">Number of points to add at index.</param>
+        /// <param name="removeCount">Number of points to remove at index before adding the new ones.</param>
         /// <returns></returns>
         public Mesh replacePoints(List<Vector3> points, int index, int addCount, int removeCount) {
 
