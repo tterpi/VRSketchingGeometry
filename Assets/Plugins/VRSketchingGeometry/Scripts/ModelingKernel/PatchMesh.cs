@@ -1,20 +1,13 @@
-﻿using VRSketchingGeometry.Splines;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.Splines;
+
 
 namespace VRSketchingGeometry.Meshing
 {
-
-    public class KochanekBartelsPatch : MonoBehaviour
+    public class PatchMesh
     {
-        public int width = 4;
-        public int height = 4;
-        public int resolutionWidth = 4;
-        public int resolutionHeight = 4;
-
-        public List<GameObject> controlPointObjects;
-
         /// <summary>
         /// Generate the vertices of a patch surface from a grid of control points.
         /// </summary>
@@ -100,44 +93,6 @@ namespace VRSketchingGeometry.Meshing
             patchMesh.RecalculateNormals();
 
             return patchMesh;
-        }
-
-        /// <summary>
-        /// Generates the patch mesh and assigns it to the MeshFilter of this GameObject.
-        /// </summary>
-        /// <param name="controlPoints"></param>
-        /// <param name="width">Number of control points in x direction</param>
-        /// <param name="height">Number of control points in y direction</param>
-        public void UpdatePatchMesh(List<Vector3> controlPoints, int width, int height)
-        {
-            Mesh patchMesh = GeneratePatchMesh(controlPoints, width, height, this.resolutionWidth, this.resolutionHeight);
-            Mesh oldMesh = this.GetComponent<MeshFilter>().sharedMesh;
-            Destroy(oldMesh);
-            this.GetComponent<MeshFilter>().mesh = patchMesh;
-        }
-
-        private IEnumerator updatePatchMeshContinuously()
-        {
-            UpdatePatchMeshWithControlPointGameObjects();
-            yield return new WaitForSeconds(.5f);
-            StartCoroutine(nameof(updatePatchMeshContinuously));
-        }
-
-        private void UpdatePatchMeshWithControlPointGameObjects()
-        {
-            List<Vector3> controlPoints = new List<Vector3>();
-
-            foreach (GameObject go in controlPointObjects)
-            {
-                controlPoints.Add(go.transform.position);
-            }
-
-            UpdatePatchMesh(controlPoints, width, height);
-        }
-
-        public void Start()
-        {
-            StartCoroutine(updatePatchMeshContinuously());
         }
     }
 }
