@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KochanekBartelsPatchTest : MonoBehaviour
+public class KochanekBartelsPatchInteractive : MonoBehaviour
 {
     public int width = 4;
     public int height = 4;

@@ -17,7 +17,7 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="resolutionWidth">Number of points to generate between two control points horizontally</param>
         /// <param name="resolutionHeight">Number of points to generate between two control points vertically</param>
         /// <returns></returns>
-        public static Vector3[] getVerticesOfPatch(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
+        public static Vector3[] GenerateVerticesOfPatch(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
 
             //create horizontal splines through the control points
@@ -82,7 +82,7 @@ namespace VRSketchingGeometry.Meshing
 
         public static Mesh GeneratePatchMesh(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
-            Vector3[] vertices = getVerticesOfPatch(controlPoints, width, height, resolutionWidth, resolutionHeight);
+            Vector3[] vertices = GenerateVerticesOfPatch(controlPoints, width, height, resolutionWidth, resolutionHeight);
 
             int[] trianglesArray = GenerateTrianglesOfPatch((width - 1) * resolutionWidth, (height - 1) * resolutionHeight);
 

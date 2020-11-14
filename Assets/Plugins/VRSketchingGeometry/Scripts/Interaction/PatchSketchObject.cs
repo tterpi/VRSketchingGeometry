@@ -8,12 +8,12 @@ namespace VRSketchingGeometry.SketchObjectManagement
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class PatchSketchObject : SketchObject
     {
-        public int width = 4;
-        public int height = 0;
-        public int resolutionWidth = 4;
-        public int resolutionHeight = 4;
+        public int Width = 4;
+        public int Height = 0;
+        public int ResolutionWidth = 4;
+        public int ResolutionHeight = 4;
 
-        private List<Vector3> controlPoints;
+        private List<Vector3> ControlPoints = new List<Vector3>();
 
         /// <summary>
         /// Generates the patch mesh and assigns it to the MeshFilter of this GameObject.
@@ -27,7 +27,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 Debug.LogWarning("The amount of control points is invalid. It's not a multiple of width.");
                 return;
             }
-            Mesh patchMesh = PatchMesh.GeneratePatchMesh(controlPoints, width, height, this.resolutionWidth, this.resolutionHeight);
+            Mesh patchMesh = PatchMesh.GeneratePatchMesh(controlPoints, width, height, this.ResolutionWidth, this.ResolutionHeight);
             Mesh oldMesh = this.GetComponent<MeshFilter>().sharedMesh;
             Destroy(oldMesh);
             this.GetComponent<MeshFilter>().mesh = patchMesh;
@@ -37,26 +37,32 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Add a segement to the patch at the end of the patch.
         /// </summary>
-        /// <param name="controlPoints"></param>
-        public void addPatchSegment(List<Vector3> controlPoints) {
-            if (controlPoints.Count != width)
+        /// <param name="newControlPoints"></param>
+        public void AddPatchSegment(List<Vector3> newControlPoints) {
+            if (newControlPoints.Count != Width)
             {
                 Debug.LogWarning("Segment has to have width number of control points.");
                 return;
             }
-            controlPoints.AddRange(controlPoints);
-            height++;
-            UpdatePatchMesh(controlPoints, width, height);
+            this.ControlPoints.AddRange(newControlPoints);
+            Height++;
+            if (Height >= 3 && Width >= 3)
+            {
+                UpdatePatchMesh(this.ControlPoints, Width, Height);
+            }
+            else {
+                Debug.LogError("Width and Height have to be at least 3.");
+            }
         }
 
 
         /// <summary>
         /// Remove a segement at the end of the patch.
         /// </summary>
-        public void removePatchSegment() {
-            controlPoints.RemoveRange(controlPoints.Count - width, width);
-            height--;
-            UpdatePatchMesh(controlPoints, width, height);
+        public void RemovePatchSegment() {
+            ControlPoints.RemoveRange(ControlPoints.Count - Width, Width);
+            Height--;
+            UpdatePatchMesh(ControlPoints, Width, Height);
         }
 
         /// <summary>
@@ -64,7 +70,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <returns></returns>
         public List<Vector3> getControlPoints() {
-            return new List<Vector3>(controlPoints);
+            return new List<Vector3>(ControlPoints);
         }
     }
 }
