@@ -46,14 +46,22 @@ namespace VRSketchingGeometry.SketchObjectManagement
         protected GameObject sphereObject;
 #pragma warning restore CS0649
 
+        /// <summary>
+        /// The minimal distance a new control point has to have to the last control point.
+        /// This is used by addControlPointContinuous.
+        /// </summary>
+        public float minimumControlPointDistance = 1f;
+
+        protected float lineDiameter = .2f;
+
         // Start is called before the first frame update
         protected virtual void Start()
         {
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
 
-            SplineMesh = new SplineMesh(new KochanekBartelsSpline());
-            LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline());
+            SplineMesh = new SplineMesh(new KochanekBartelsSpline(), Vector3.one * lineDiameter);
+            LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
             meshCollider.sharedMesh = meshFilter.sharedMesh;
             setUpOriginalMaterialAndMeshRenderer();
@@ -74,6 +82,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         /// <summary>
         /// Adds a control point to the spline if it is far enough away from the previous control point.
+        /// The distance is controlled by minimumControlPointDistance.
         /// </summary>
         /// <param name="point"></param>
         public void addControlPointContinuous(Vector3 point)
@@ -81,7 +90,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             //Check that new control point is far enough away from previous control point
             if (
                 SplineMesh.getNumberOfControlPoints() == 0 ||
-                (transform.InverseTransformPoint(point) - SplineMesh.getControlPoints()[SplineMesh.getNumberOfControlPoints() - 1]).magnitude > 1f
+                (transform.InverseTransformPoint(point) - SplineMesh.getControlPoints()[SplineMesh.getNumberOfControlPoints() - 1]).magnitude > minimumControlPointDistance
                )
             {
                 addControlPoint(point);
@@ -90,8 +99,16 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public virtual void setLineDiameter(float diameter)
         {
-            meshFilter.mesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter) ?? LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
+            this.lineDiameter = diameter;
 
+            if (SplineMesh == null || LinearSplineMesh == null) {
+                return;
+            }
+
+            Mesh smoothMesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter);
+            Mesh linearMesh = LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
+
+            meshFilter.mesh = smoothMesh ?? linearMesh;
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 

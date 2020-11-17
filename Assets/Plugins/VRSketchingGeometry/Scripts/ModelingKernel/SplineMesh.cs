@@ -31,7 +31,10 @@ namespace VRSketchingGeometry.Meshing
 
         public Mesh Mesh { get => mesh; private set => mesh = value; }
 
-        public SplineMesh(Spline spline)
+        public SplineMesh(Spline spline) : this(spline, new Vector3(.4f, .4f, .4f))
+        {}
+
+        public SplineMesh(Spline spline, Vector3 crossSectionScale)
         {
             crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f) };
             crossSectionShape.Reverse();
@@ -44,9 +47,7 @@ namespace VRSketchingGeometry.Meshing
             Spline = spline;
             interpolatedPoints = Spline.InterpolatedPoints;
 
-            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, new Vector3(.2f, .2f, .2f));
-
-            //this.meshFilter = meshFilter;
+            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, crossSectionScale / nativeCrossSectionShapeDiameter);
         }
 
         private Mesh updateMesh(SplineModificationInfo info)

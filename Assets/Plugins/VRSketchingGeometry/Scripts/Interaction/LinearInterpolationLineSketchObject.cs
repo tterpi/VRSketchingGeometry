@@ -15,7 +15,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
 
-            SplineMesh = new SplineMesh(new LinearInterpolationSpline());
+            SplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
             meshCollider.sharedMesh = meshFilter.sharedMesh;
             setUpOriginalMaterialAndMeshRenderer();
@@ -23,6 +23,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public override void setLineDiameter(float diameter)
         {
+            this.lineDiameter = diameter;
+
+            if (SplineMesh == null) return;
+
             meshFilter.mesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter);
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
