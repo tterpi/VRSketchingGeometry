@@ -75,7 +75,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             //deactivate game objects
             //parent to bin object
             foreach (Transform child in this.transform) {
-                SketchWorld.ActiveSketchWorld.deleteObject(child.gameObject);
+                SketchWorld.ActiveSketchWorld.DeleteObject(child.gameObject);
             }
         }
 
