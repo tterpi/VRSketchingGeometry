@@ -130,7 +130,7 @@ namespace VRSketchingGeometry.Meshing {
                 return null;
             }
 
-            if (points.Count < 2) {
+            if (points.Count < 2 && addCount > 0) {
                 Debug.LogWarning("Mesh generation failed. Points contains less than 2 points.");
                 return null;
             }

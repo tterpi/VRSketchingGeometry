@@ -19,6 +19,7 @@ namespace VRSketchingGeometry.Commands{
 
         public void Undo() {
             if (undoStack.Count <= 0) {
+                Debug.LogWarning("No commands to undo saved.");
                 return;
             }
             Command executedCommand = undoStack.Pop();
@@ -29,6 +30,7 @@ namespace VRSketchingGeometry.Commands{
         public void Redo() {
             if (redoStack.Count <= 0)
             {
+                Debug.LogWarning("No commands to redo saved.");
                 return;
             }
             Command undoneCommand = redoStack.Pop();

@@ -10,13 +10,19 @@ public class CommandsTest : MonoBehaviour
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
+    public SketchWorld sketchWorld;
+    private CommandInvoker invoker;
 
     private bool ranOnce = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        invoker = new CommandInvoker();
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        invoker.ExecuteCommand(new CreateSketchObjectCommand(lineSketchObject, sketchWorld));
+
         lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
     }
 
@@ -60,20 +66,37 @@ public class CommandsTest : MonoBehaviour
 
     private void commandsTest() {
 
-        CommandInvoker invoker = new CommandInvoker();
+        //CommandInvoker invoker = new CommandInvoker();
         invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(-2, 1, 0)));
         invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(1, 1, 1)));
         invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 2, 0)));
-        //invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 3, 0)));
+        invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 3, 0)));
         invoker.ExecuteCommand(new DeleteControlPointCommand(lineSketchObject));
 
         invoker.Undo();
         invoker.Undo();
-        invoker.Redo();
+        invoker.Undo();
+        invoker.Undo();
+        invoker.Undo();
         invoker.Undo();
 
-        invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 3, 0)));
         invoker.Redo();
+        invoker.Redo();
+        invoker.Redo();
+        invoker.Redo();
+        invoker.Redo();
+        invoker.Redo();
+
+
+        //invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 3, 0)));
+        //invoker.Redo();
+
+        //invoker.Undo();
+        //invoker.Undo();
+        //invoker.Undo();
+        //invoker.Redo();
+        //invoker.Redo();
+        //invoker.Redo();
     }
 
     // Update is called once per frame

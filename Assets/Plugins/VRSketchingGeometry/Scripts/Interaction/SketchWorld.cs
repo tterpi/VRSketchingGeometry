@@ -61,7 +61,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             if (gameObject.transform.IsChildOf(this.deletedBin.transform))
             {
                 IGroupable groupableObject = gameObject.GetComponent<IGroupable>();
-                if (groupableObject != null)
+                if (groupableObject != null && groupableObject.ParentGroup != null)
                 {
                     groupableObject.resetToParentGroup();
                 }
