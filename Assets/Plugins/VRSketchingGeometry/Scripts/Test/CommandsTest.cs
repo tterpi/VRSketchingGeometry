@@ -87,6 +87,12 @@ public class CommandsTest : MonoBehaviour
         invoker.Redo();
         invoker.Redo();
 
+        invoker.ExecuteCommand(new DeleteSketchObjectCommand(lineSketchObject, sketchWorld));
+
+        invoker.Undo();
+        invoker.Redo();
+        //invoker.Undo();
+
 
         //invoker.ExecuteCommand(new AddControlPointCommand(lineSketchObject, new Vector3(2, 3, 0)));
         //invoker.Redo();
