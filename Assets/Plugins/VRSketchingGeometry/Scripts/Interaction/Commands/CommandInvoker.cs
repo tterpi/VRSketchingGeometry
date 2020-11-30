@@ -8,10 +8,10 @@ namespace VRSketchingGeometry.Commands{
     /// </summary>
     public class CommandInvoker
     {
-        private Stack<Command> undoStack = new Stack<Command>();
-        private Stack<Command> redoStack = new Stack<Command>();
+        private Stack<ICommand> undoStack = new Stack<ICommand>();
+        private Stack<ICommand> redoStack = new Stack<ICommand>();
 
-        public void ExecuteCommand(Command command) {
+        public void ExecuteCommand(ICommand command) {
             command.Execute();
             undoStack.Push(command);
             redoStack.Clear();
@@ -22,7 +22,7 @@ namespace VRSketchingGeometry.Commands{
                 Debug.LogWarning("No commands to undo saved.");
                 return;
             }
-            Command executedCommand = undoStack.Pop();
+            ICommand executedCommand = undoStack.Pop();
             executedCommand.Undo();
             redoStack.Push(executedCommand);
         }
@@ -33,7 +33,7 @@ namespace VRSketchingGeometry.Commands{
                 Debug.LogWarning("No commands to redo saved.");
                 return;
             }
-            Command undoneCommand = redoStack.Pop();
+            ICommand undoneCommand = redoStack.Pop();
             undoneCommand.Redo();
             undoStack.Push(undoneCommand);
         }

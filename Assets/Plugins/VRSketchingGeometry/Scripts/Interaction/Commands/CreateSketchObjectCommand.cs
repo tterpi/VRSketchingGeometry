@@ -8,7 +8,7 @@ namespace VRSketchingGeometry.Commands
     /// <summary>
     /// Delete control point at the end of spline.
     /// </summary>
-    public class CreateSketchObjectCommand : Command
+    public class CreateSketchObjectCommand : ICommand
     {
         private SketchObject SketchObject = null;
         private SketchWorld SketchWorld;
@@ -19,17 +19,17 @@ namespace VRSketchingGeometry.Commands
             this.SketchWorld = sketchWorld;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             SketchWorld.AddObject(this.SketchObject.gameObject);
         }
 
-        public override void Redo()
+        public void Redo()
         {
             SketchWorld.RestoreObject(this.SketchObject.gameObject);
         }
 
-        public override void Undo()
+        public void Undo()
         {
             SketchWorld.DeleteObject(this.SketchObject.gameObject);
         }

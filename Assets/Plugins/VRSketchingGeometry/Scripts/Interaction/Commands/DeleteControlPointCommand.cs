@@ -8,7 +8,7 @@ namespace VRSketchingGeometry.Commands
     /// <summary>
     /// Delete control point at the end of spline.
     /// </summary>
-    public class DeleteControlPointCommand : Command
+    public class DeleteControlPointCommand : ICommand
     {
         private LineSketchObject LineSketchObject;
         private Vector3 OldControlPoint;
@@ -18,18 +18,18 @@ namespace VRSketchingGeometry.Commands
             this.LineSketchObject = lineSketchObject;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             this.OldControlPoint = LineSketchObject.getControlPoints()[LineSketchObject.getNumberOfControlPoints() - 1];
             LineSketchObject.deleteControlPoint();
         }
 
-        public override void Redo()
+        public void Redo()
         {
             this.Execute();
         }
 
-        public override void Undo()
+        public void Undo()
         {
             LineSketchObject.addControlPoint(OldControlPoint);
         }

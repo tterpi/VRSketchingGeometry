@@ -7,7 +7,7 @@ namespace VRSketchingGeometry.Commands {
     /// <summary>
     /// Add control point at the end of spline.
     /// </summary>
-    public class AddControlPointCommand : Command
+    public class AddControlPointCommand : ICommand
     {
         private LineSketchObject LineSketchObject;
         private Vector3 NewControlPoint;
@@ -17,17 +17,17 @@ namespace VRSketchingGeometry.Commands {
             this.NewControlPoint = controlPoint;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             LineSketchObject.addControlPoint(NewControlPoint);
         }
 
-        public override void Redo()
+        public void Redo()
         {
             this.Execute();
         }
 
-        public override void Undo()
+        public void Undo()
         {
             LineSketchObject.deleteControlPoint();
         }
