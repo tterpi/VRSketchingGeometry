@@ -55,7 +55,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         protected float lineDiameter = .2f;
 
         // Start is called before the first frame update
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
@@ -97,6 +97,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
+        public void SetControlPoints(List<Vector3> controlPoints) {
+            meshFilter.mesh = this.SplineMesh.setControlPoints(controlPoints.ToArray());
+            chooseDisplayMethod();
+        }
+
         public virtual void setLineDiameter(float diameter)
         {
             this.lineDiameter = diameter;
@@ -123,6 +128,58 @@ namespace VRSketchingGeometry.SketchObjectManagement
             //delete the last control point of the spline
             meshFilter.mesh = SplineMesh.deleteControlPoint(SplineMesh.getNumberOfControlPoints() - 1);
             chooseDisplayMethod();
+        }
+
+        /// <summary>
+        /// Delete the control points of this line that are within the radius around point.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="radius"></param>
+        public void DeleteControlPoints(Vector3 point, float radius) {
+            List<List<Vector3>> contiguousSections = new List<List<Vector3>>();
+            List<Vector3> contiguousSection = new List<Vector3>();
+
+            //find contiguous sections of control points that are not in the radius
+            foreach (Vector3 controlPoint in getControlPoints()) {
+                if (!IsInRadius(controlPoint, this.transform.InverseTransformPoint(point), radius * this.transform.lossyScale.x))
+                {
+                    contiguousSection.Add(controlPoint);
+                }
+                else {
+                    if (contiguousSection.Count > 0) {
+                        contiguousSections.Add(contiguousSection);
+                        contiguousSection = new List<Vector3>();
+                    }
+                }
+            }
+            if (contiguousSection.Count > 0)
+            {
+                contiguousSections.Add(contiguousSection);
+            }
+
+            //create lines from the sections
+            if (contiguousSections.Count > 0)
+            {
+                //this line becomes the first section
+                this.SetControlPoints(contiguousSections[0]);
+                contiguousSections.RemoveAt(0);
+
+                //create new lines for each additional section
+                foreach (List<Vector3> section in contiguousSections)
+                {
+                    LineSketchObject newLine = Instantiate(this, this.transform.parent);
+                    newLine.SetControlPoints(section);
+                    newLine.setLineDiameter(this.lineDiameter);
+                }
+            }
+            else {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.gameObject);
+            }
+
+        }
+
+        private bool IsInRadius(Vector3 a, Vector3 b, float radius) {
+            return (a - b).sqrMagnitude <= radius * radius;
         }
 
         public int getNumberOfControlPoints()

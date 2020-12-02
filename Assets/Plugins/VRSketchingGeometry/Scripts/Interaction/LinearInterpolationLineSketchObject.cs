@@ -10,7 +10,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     public class LinearInterpolationLineSketchObject : LineSketchObject
     {
         // Start is called before the first frame update
-        protected override void Start()
+        protected override void Awake()
         {
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
