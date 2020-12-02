@@ -36,7 +36,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Disables the game object and places it under the deleted bin.
         /// </summary>
         /// <param name="gameObject"></param>
-        public void deleteObject(GameObject gameObject)
+        public void DeleteObject(GameObject gameObject)
         {
             gameObject.SetActive(false);
             gameObject.transform.SetParent(deletedBin.transform);
@@ -47,15 +47,39 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// 
         /// </summary>
         /// <param name="gameObject"></param>
-        public void addObject(GameObject gameObject)
+        public void AddObject(GameObject gameObject)
         {
             gameObject.transform.SetParent(this.transform);
+        }
+
+
+        /// <summary>
+        /// Restores a previously deleted object.
+        /// </summary>
+        /// <param name="gameObject"></param>
+        public void RestoreObject(GameObject gameObject) {
+            if (gameObject.transform.IsChildOf(this.deletedBin.transform))
+            {
+                IGroupable groupableObject = gameObject.GetComponent<IGroupable>();
+                if (groupableObject != null && groupableObject.ParentGroup != null)
+                {
+                    groupableObject.resetToParentGroup();
+                }
+                else
+                {
+                    gameObject.transform.SetParent(this.transform);
+                }
+                gameObject.SetActive(true);
+            }
+            else {
+                Debug.LogWarning("Object can not be restored because it was not deleted before.");
+            }
         }
 
         /// <summary>
         /// Serializes the sketching game objects that are children of this sketch world. 
         /// </summary>
-        public void saveSketchWorld()
+        public void SaveSketchWorld()
         {
             throw new System.NotImplementedException();
         }
@@ -64,7 +88,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Export sketch world as .obj file.
         /// </summary>
         /// <param name="path"></param>
-        public void exportSketchWorld(string path)
+        public void ExportSketchWorld(string path)
         {
             throw new System.NotImplementedException();
         }
@@ -74,7 +98,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SketchWorld loadSketchWorld(string path)
+        public static SketchWorld LoadSketchWorld(string path)
         {
             throw new System.NotImplementedException();
         }

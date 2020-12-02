@@ -130,6 +130,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
             return SplineMesh.getNumberOfControlPoints();
         }
 
+        public List<Vector3> getControlPoints() {
+            return SplineMesh.getControlPoints();
+        }
+
         /// <summary>
         /// Determines how to display the spline depending on the number of control points that are present.
         /// </summary>

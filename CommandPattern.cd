@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VRSketchingGeometry.Commands.AddControlPointCommand">
+    <Position X="0.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAQAAAAAAAABAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\AddControlPointCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRSketchingGeometry.Commands.Command">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRSketchingGeometry.Commands.CommandInvoker">
+    <Position X="2" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAABAAAAAAAAAADAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\CommandInvoker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRSketchingGeometry.Commands.CreateSketchObjectCommand">
+    <Position X="6.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAABAQAAAAAAAABABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\CreateSketchObjectCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRSketchingGeometry.Commands.DeleteControlPointCommand">
+    <Position X="3.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAQAAAQAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\DeleteControlPointCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VRSketchingGeometry.Commands.DeleteSketchObjectCommand">
+    <Position X="9.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAABAQAAAAAAAABABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Plugins\VRSketchingGeometry\Scripts\Interaction\Commands\DeleteSketchObjectCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

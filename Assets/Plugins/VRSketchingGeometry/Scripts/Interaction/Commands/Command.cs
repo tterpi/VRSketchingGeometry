@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRSketchingGeometry.Commands {
-    public abstract class Command
+    public interface ICommand
     {
-        public abstract void Execute();
-        public abstract void Undo();
-        public abstract void Redo();
+        void Execute();
+        void Undo();
+        void Redo();
     }
 }

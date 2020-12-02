@@ -96,6 +96,11 @@ namespace VRSketchingGeometry.Splines
                 Debug.LogWarning("Control point was added but the line can only be interpolated when there are at least 3 control points.");
                 return new SplineModificationInfo(0, 0, 0);
             }
+            else if (ControlPoints.Count == 3 && InterpolatedPoints.Count == Steps)
+            {
+                this.setControlPoints(ControlPoints.ToArray());
+                return new SplineModificationInfo(0, Steps, 2 * Steps);
+            }
             else if (ControlPoints.Count == 3) {
                 this.setControlPoints(ControlPoints.ToArray());
                 return new SplineModificationInfo(0, 0, 2 * Steps);
