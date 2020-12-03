@@ -141,7 +141,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             //find contiguous sections of control points that are not in the radius
             foreach (Vector3 controlPoint in getControlPoints()) {
-                if (!IsInRadius(controlPoint, this.transform.InverseTransformPoint(point), radius * this.transform.lossyScale.x))
+                if (!IsInRadius(controlPoint, this.transform.InverseTransformPoint(point), radius / this.transform.lossyScale.x))
                 {
                     contiguousSection.Add(controlPoint);
                 }
@@ -160,6 +160,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
             //create lines from the sections
             if (contiguousSections.Count > 0)
             {
+                if (contiguousSections.Count == 1 && contiguousSections[0].Count == this.getNumberOfControlPoints()) {
+                    //if this is the case, no control points were deleted and the line stays unchanged
+                    return;
+                }
+
                 //this line becomes the first section
                 this.SetControlPoints(contiguousSections[0]);
                 contiguousSections.RemoveAt(0);
@@ -173,7 +178,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
             }
             else {
-                SketchWorld.ActiveSketchWorld.DeleteObject(this.gameObject);
+                if (SketchWorld.ActiveSketchWorld)
+                {
+                    SketchWorld.ActiveSketchWorld.DeleteObject(this.gameObject);
+                }
+                else {
+                    Destroy(this.gameObject);
+                }
             }
 
         }
@@ -210,7 +221,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 sphereObject.SetActive(true);
                 sphereObject.transform.localPosition = SplineMesh.getControlPoints()[0];
                 //update collider
-                meshCollider.sharedMesh = sphereObject.GetComponent<MeshFilter>().sharedMesh;
+                meshCollider.sharedMesh = null;
             }
             else if (SplineMesh.getNumberOfControlPoints() == 2)
             {
