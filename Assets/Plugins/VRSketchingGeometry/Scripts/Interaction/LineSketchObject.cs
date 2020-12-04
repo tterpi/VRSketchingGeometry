@@ -133,8 +133,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Delete the control points of this line that are within the radius around point.
         /// </summary>
-        /// <param name="point"></param>
-        /// <param name="radius"></param>
+        /// <param name="point">Point in world space.</param>
+        /// <param name="radius">Radius in world space.</param>
         public void DeleteControlPoints(Vector3 point, float radius) {
             List<List<Vector3>> contiguousSections = new List<List<Vector3>>();
             List<Vector3> contiguousSection = new List<Vector3>();
@@ -189,7 +189,26 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         }
 
-        private bool IsInRadius(Vector3 a, Vector3 b, float radius) {
+        /// <summary>
+        /// Checks if gameObject is a LineSketchObject, then deletes control points of this LineSketchObject within radius
+        /// </summary>
+        /// <param name="gameObject">LineSketchObject of which control points should be deleted.</param>
+        /// <param name="point">Point in world space.</param>
+        /// <param name="radius">Radius in world space.</param>
+        public static void DeleteControlPoints(GameObject gameObject, Vector3 point, float radius) {
+            LineSketchObject line = gameObject.GetComponent<LineSketchObject>();
+
+            //When there is only one control point, a sphere that is a child of the LineSketchObject is shown
+            //This code checks if this child sphere of a LineSketchObject was collided with
+            if (line == null && gameObject.GetComponent<SphereCollider>() && gameObject.transform.parent.GetComponent<LineSketchObject>())
+            {
+                line = gameObject.transform.parent.GetComponent<LineSketchObject>();
+            }
+
+            line?.DeleteControlPoints(point, radius);
+        }
+
+        private static bool IsInRadius(Vector3 a, Vector3 b, float radius) {
             return (a - b).sqrMagnitude <= radius * radius;
         }
 

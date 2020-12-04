@@ -19,14 +19,6 @@ public class DeleteToolTest : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log("Collided !");
-
-        LineSketchObject line = other.gameObject.GetComponent<LineSketchObject>();
-
-        if(line == null && other is SphereCollider && other.transform.parent.GetComponent<LineSketchObject>()){
-            line = other.transform.parent.GetComponent<LineSketchObject>();
-        }
-
-        line?.DeleteControlPoints(transform.position, transform.lossyScale.x / 2);
+        LineSketchObject.DeleteControlPoints(other.gameObject, transform.position, transform.lossyScale.x / 2);
     }
 }
