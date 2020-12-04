@@ -53,7 +53,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 sphereObject.SetActive(true);
                 sphereObject.transform.localPosition = SplineMesh.getControlPoints()[0];
                 //update collider
-                meshCollider.sharedMesh = sphereObject.GetComponent<MeshFilter>().sharedMesh;
+                meshCollider.sharedMesh = null;
             }
             else if (SplineMesh.getNumberOfControlPoints() == 2)
             {
