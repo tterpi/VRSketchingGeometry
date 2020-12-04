@@ -93,7 +93,7 @@ namespace VRSketchingGeometry.Splines
 
             if (ControlPoints.Count < 3 && InterpolatedPoints.Count < 2 * Steps)
             {
-                Debug.LogWarning("Control point was added but the line can only be interpolated when there are at least 3 control points.");
+                Debug.LogWarning("KochanekBartelsSpline: Control point was added but the line can only be interpolated when there are at least 3 control points.");
                 return new SplineModificationInfo(0, 0, 0);
             }
             else if (ControlPoints.Count == 3 && InterpolatedPoints.Count == Steps)
@@ -307,7 +307,8 @@ namespace VRSketchingGeometry.Splines
             InterpolatedPoints.Clear();
             if (ControlPoints.Count < 3)
             {
-                Debug.LogError("Not enough control points! Minimum is 3.");
+                Debug.LogWarning("KochanekBartelsSpline: Not enough control points! Minimum is 3.");
+                return;
             }
             for (int i = 0; i < ControlPoints.Count-1; i++)
             {

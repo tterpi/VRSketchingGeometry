@@ -126,12 +126,12 @@ namespace VRSketchingGeometry.Meshing {
 
             if(addCount == 0 && removeCount == 0)
             {
-                Debug.LogWarning("Nothing was added or removed.");
+                Debug.LogWarning("LineExtruder: Nothing was added or removed.");
                 return null;
             }
 
             if (points.Count < 2 && addCount > 0) {
-                Debug.LogWarning("Mesh generation failed. Points contains less than 2 points.");
+                Debug.LogWarning("LineExtruder: Mesh generation failed. Points contains less than 2 points.");
                 return null;
             }
 
