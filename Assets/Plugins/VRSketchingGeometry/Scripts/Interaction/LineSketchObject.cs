@@ -36,7 +36,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Linierly interpolated spline for displaying a segment only two control points
         /// </summary>
-        private SplineMesh LinearSplineMesh;
+        protected SplineMesh LinearSplineMesh;
 
         /// <summary>
         /// Object to be displayed for a line of a single control point
