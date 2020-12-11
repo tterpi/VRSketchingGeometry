@@ -89,8 +89,10 @@ namespace VRSketchingGeometry.Meshing
             Mesh patchMesh = new Mesh();
             patchMesh.SetVertices(vertices);
             patchMesh.SetTriangles(trianglesArray, 0);
+            patchMesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVs(vertices.Length, (height - 1) * (resolutionHeight)));
 
             patchMesh.RecalculateNormals();
+            patchMesh.RecalculateTangents();
 
             return patchMesh;
         }
