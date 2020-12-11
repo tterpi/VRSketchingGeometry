@@ -209,6 +209,7 @@ namespace VRSketchingGeometry.Meshing {
                 mesh.SetNormals(normals);
                 mesh.subMeshCount = 1;
                 mesh.SetTriangles(triangles.ToArray(), 0);
+                mesh.SetUVs(0, generateUVs(vertices.Count, crossSectionShape.Count));
 
             }
             return mesh;
@@ -287,14 +288,56 @@ namespace VRSketchingGeometry.Meshing {
             List<int> allTriangles = new List<int>(triangles);
             allTriangles.AddRange(capTriangles);
 
+            List<Vector2> uvs = generateUVs(vertices.Count, crossSectionShape.Count);
+            uvs.AddRange(generateEndCapUVs(crossSectionShape.Count));
+
             Mesh mesh = new Mesh();
 
             mesh.SetVertices(allVertices);
             mesh.SetNormals(allNormals);
             mesh.subMeshCount = 1;
             mesh.SetTriangles(allTriangles.ToArray(), 0);
+            mesh.SetUVs(0, uvs);
 
             return mesh;
+        }
+
+        /// <summary>
+        /// Generate UV coordinates for the spline mesh.
+        /// </summary>
+        /// <param name="verticesCount">Number of vertices of the mesh.</param>
+        /// <param name="crossSectionCount">Number of vertices per cross section.</param>
+        /// <returns></returns>
+        private static List<Vector2> generateUVs(int verticesCount, int crossSectionCount) {
+            List<Vector2> uvs = new List<Vector2>();
+            for (int i = 0; i < verticesCount; i++)
+            {
+                //around the spline
+                float u = i % crossSectionCount;
+                //along the spline
+                float v = (int)(i / crossSectionCount);
+                uvs.Add(new Vector2(u, v));
+            }
+            return uvs;
+        }
+
+        /// <summary>
+        /// Generate UVs for the end caps.
+        /// </summary>
+        /// <param name="crossSectionCount">Number of vertices per cross section.</param>
+        /// <returns></returns>
+        private static List<Vector2> generateEndCapUVs(int crossSectionCount) {
+            List<Vector2> uvs = new List<Vector2>();
+            for (int i = 0; i < crossSectionCount; i++)
+            {
+                uvs.Add(new Vector2(0, 0));
+            }
+            for (int i = 0; i < crossSectionCount; i++)
+            {
+                uvs.Add(new Vector2(1, 1));
+            }
+
+            return uvs;
         }
     }
 }
