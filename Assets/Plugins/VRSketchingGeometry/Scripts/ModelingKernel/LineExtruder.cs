@@ -212,6 +212,7 @@ namespace VRSketchingGeometry.Meshing {
                 mesh.SetUVs(0, generateUVs(vertices.Count, crossSectionShape.Count));
 
             }
+            mesh.RecalculateTangents();
             return mesh;
         }
 
