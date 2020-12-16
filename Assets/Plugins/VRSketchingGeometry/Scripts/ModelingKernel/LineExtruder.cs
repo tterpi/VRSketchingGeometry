@@ -202,7 +202,7 @@ namespace VRSketchingGeometry.Meshing {
                 mesh.SetNormals(normals);
                 mesh.subMeshCount = 1;
                 mesh.SetTriangles(triangles.ToArray(), 0);
-                mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVs(vertices.Count, crossSectionShape.Count));
+                mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count));
 
             }
             mesh.RecalculateTangents();
@@ -282,7 +282,7 @@ namespace VRSketchingGeometry.Meshing {
             List<int> allTriangles = new List<int>(triangles);
             allTriangles.AddRange(capTriangles);
 
-            List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVs(vertices.Count, crossSectionShape.Count);
+            List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count);
             uvs.AddRange(generateEndCapUVs(crossSectionShape.Count));
 
             Mesh mesh = new Mesh();
