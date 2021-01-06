@@ -63,21 +63,14 @@ namespace VRSketchingGeometry.Meshing {
 
             List<int> triangles = new List<int>();
 
+            //for each cross section
             for (int j = 0; j < numOfSections; j++)
             {
+                //for each vertex of the current cross section
                 for (int i = j * numOfCrossSectionVertices; i < (j + 1) * numOfCrossSectionVertices; i++)
                 {
-                    if (i % numOfCrossSectionVertices == numOfCrossSectionVertices - 1)
-                    {
-                        triangles.Add(i);
-                        triangles.Add(i + 1);
-                        triangles.Add(i - numOfCrossSectionVertices + 1);
-
-                        triangles.Add(i);
-                        triangles.Add(i + numOfCrossSectionVertices);
-                        triangles.Add(i + 1);
-                    }
-                    else
+                    //if not the last vertex of the cross section
+                    if (!(i % numOfCrossSectionVertices == numOfCrossSectionVertices - 1))
                     {
                         triangles.Add(i);
                         triangles.Add(i + 1 + numOfCrossSectionVertices);
@@ -209,7 +202,7 @@ namespace VRSketchingGeometry.Meshing {
                 mesh.SetNormals(normals);
                 mesh.subMeshCount = 1;
                 mesh.SetTriangles(triangles.ToArray(), 0);
-                mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVs(vertices.Count, crossSectionShape.Count));
+                mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count));
 
             }
             mesh.RecalculateTangents();
@@ -238,7 +231,7 @@ namespace VRSketchingGeometry.Meshing {
             //begin cap
             List<int> beginCapTriangles = new List<int>();
 
-            for (int i = 1; i <= firstCrossSectionVertices.Count - 2; i++)
+            for (int i = 1; i <= firstCrossSectionVertices.Count - 3; i++)
             {
                 int firstVertex = vertices.Count;
 
@@ -260,7 +253,7 @@ namespace VRSketchingGeometry.Meshing {
 
             List<int> endCapTriangles = new List<int>();
 
-            for (int i = 1; i <= lastCrossSectionVertices.Count - 2; i++)
+            for (int i = 1; i <= lastCrossSectionVertices.Count - 3; i++)
             {
                 int firstVertex = vertices.Count + capVertices.Count;
 
@@ -289,7 +282,8 @@ namespace VRSketchingGeometry.Meshing {
             List<int> allTriangles = new List<int>(triangles);
             allTriangles.AddRange(capTriangles);
 
-            List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVs(vertices.Count, crossSectionShape.Count);
+            List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count);
+
             uvs.AddRange(generateEndCapUVs(crossSectionShape.Count));
 
             Mesh mesh = new Mesh();

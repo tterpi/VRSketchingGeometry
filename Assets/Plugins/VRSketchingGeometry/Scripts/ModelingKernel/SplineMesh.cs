@@ -36,7 +36,7 @@ namespace VRSketchingGeometry.Meshing
 
         public SplineMesh(Spline spline, Vector3 crossSectionScale)
         {
-            crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f) };
+            crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f), new Vector3(1f, 0f, 0.5f) };
             crossSectionShape.Reverse();
             crossSectionShapeNormals = new List<Vector3>();
             foreach (Vector3 point in crossSectionShape)
