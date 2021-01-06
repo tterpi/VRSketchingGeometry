@@ -283,6 +283,7 @@ namespace VRSketchingGeometry.Meshing {
             allTriangles.AddRange(capTriangles);
 
             List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count);
+
             uvs.AddRange(generateEndCapUVs(crossSectionShape.Count));
 
             Mesh mesh = new Mesh();
