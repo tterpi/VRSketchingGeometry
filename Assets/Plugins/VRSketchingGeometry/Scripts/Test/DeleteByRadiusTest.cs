@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
+using VRSketchingGeometry.Export;
 
 public class DeleteByRadiusTest : MonoBehaviour
 {
@@ -22,13 +23,18 @@ public class DeleteByRadiusTest : MonoBehaviour
     }
 
     IEnumerator changeDiameter() {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         lineSketchObject.DeleteControlPoints(deletePoint.transform.position, deleteRadius);
+        OBJExporter exporter = new OBJExporter();
+        string exportPath = OBJExporter.GetDefaultExportPath();
+        exporter.ExportGameObject(lineSketchObject.gameObject, exportPath);
+        //exporter.ExportGameObject(controlPointParent, exportPath);
+
+        Debug.Log(exportPath);
         //lineSketchObject.setLineDiameter(.1f);
         //yield return new WaitForSeconds(2);
         //lineSketchObject.deleteControlPoint();
         //lineSketchObject.deleteControlPoint();
-
     }
 
     IEnumerator deactivateSelection(SketchObjectSelection selection) {
