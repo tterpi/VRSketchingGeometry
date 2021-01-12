@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.Splines;
 using VRSketchingGeometry.Meshing;
+using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
@@ -217,6 +218,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
             return SplineMesh.getNumberOfControlPoints();
         }
 
+        /// <summary>
+        /// Get the control points in local space.
+        /// </summary>
+        /// <returns></returns>
         public List<Vector3> getControlPoints() {
             return SplineMesh.getControlPoints();
         }
@@ -258,6 +263,23 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }
 
+        }
+
+        public LineSketchObjectData GetData() {
+            LineSketchObjectData data = new LineSketchObjectData
+            {
+                ControlPoints = getControlPoints(),
+                Position = this.transform.position,
+                Rotation = this.transform.rotation,
+
+            };
+
+            data.sketchMaterial = new SketchMaterial
+            {
+                AlbedoColor = this.meshRenderer.material.color
+            };
+
+            return data;
         }
     }
 }

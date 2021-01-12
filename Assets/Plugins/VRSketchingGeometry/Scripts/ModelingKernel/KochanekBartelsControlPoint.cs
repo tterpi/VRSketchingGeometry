@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.Splines {
     public class KochanekBartelsControlPoint {
+
+        public KochanekBartelsControlPoint() : this(Vector3.zero) { }
+
         public Vector3 Position { get; set; }
 
         public float Tension { get; set; }
