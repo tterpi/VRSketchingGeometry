@@ -271,7 +271,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 ControlPoints = getControlPoints(),
                 Position = this.transform.position,
                 Rotation = this.transform.rotation,
-
+                Scale = this.transform.localScale,
+                CrossSectionScale = this.lineDiameter
             };
 
             data.sketchMaterial = new SketchMaterial
@@ -280,6 +281,26 @@ namespace VRSketchingGeometry.SketchObjectManagement
             };
 
             return data;
+        }
+
+        public void ApplyData(LineSketchObjectData data) {
+
+            this.transform.position = Vector3.zero;
+            this.transform.rotation = Quaternion.identity;
+            this.SetControlPoints(data.ControlPoints);
+            this.transform.position = data.Position;
+            this.transform.rotation = data.Rotation;
+            this.transform.localScale = data.Scale;
+            this.setLineDiameter(data.CrossSectionScale);
+
+            this.meshRenderer.material = DefaultValues.GetMaterial(data.sketchMaterial.Shader);
+            if (data.sketchMaterial.Shader == SketchMaterial.ShaderType.Standard)
+            {
+                this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
+            }
+            else if (data.sketchMaterial.Shader == SketchMaterial.ShaderType.TwoSided) {
+                this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
+            }
         }
     }
 }

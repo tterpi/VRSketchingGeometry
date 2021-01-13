@@ -8,6 +8,8 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     /// </summary>
     public abstract class SketchObject : MonoBehaviour, IGroupable, IHighlightable
     {
+        public VRSketchingGeometry.Serialization.DefaultValues DefaultValues;
+
         private GameObject parentGroup;
 
         public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }

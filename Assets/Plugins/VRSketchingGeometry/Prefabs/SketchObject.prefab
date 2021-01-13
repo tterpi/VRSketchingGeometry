@@ -187,8 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91dd0f95fb9c694f961478406c145c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphereObject: {fileID: 1415086077552610675}
+  DefaultValues: {fileID: 11400000, guid: 80ac1fe1704d8434eac74bc2c69b9794, type: 2}
   highlightMaterial: {fileID: 2100000, guid: 9463805ee6ca2344397c6628a80a84d3, type: 2}
+  sphereObject: {fileID: 1415086077552610675}
+  minimumControlPointDistance: 1
 --- !u!64 &970630902529322114
 MeshCollider:
   m_ObjectHideFlags: 0

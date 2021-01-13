@@ -69,6 +69,12 @@ public class DeleteByRadiusTest : MonoBehaviour
         string path = Serializer.WriteTestXmlFile<VRSketchingGeometry.Serialization.LineSketchObjectData>
             (lineSketchObject.GetData());
         Serializer.DeserializeFromXmlFile(out LineSketchObjectData readData, System.IO.Path.Combine(Application.dataPath, "TestSerialization.xml"));
+        LineSketchObject deserLine = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        readData.sketchMaterial.AlbedoColor = Color.red;
+        deserLine.ApplyData(readData);
+
+        deserLine.transform.position += new Vector3(0,2,0);
+
         Debug.Log(readData.ControlPoints.Count);
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
+using VRSketchingGeometry.Serialization;
 
 public class LineSketchObjectTest : MonoBehaviour
 {
@@ -59,11 +60,46 @@ public class LineSketchObjectTest : MonoBehaviour
         StartCoroutine(deactivateSelection(selection));
     }
 
+    private void groupSerializationTest()
+    {
+        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.addControlPoint(Vector3.one);
+        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+
+        //lineSketchObject.setLineDiameter(.7f);
+        //StartCoroutine(changeDiameter());
+
+        lineSketchObject2.addControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        //lineSketchObject2.minimumControlPointDistance = 2f;
+        //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
+        GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
+        SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
+        group.addToGroup(lineSketchObject);
+        group.addToGroup(lineSketchObject2);
+
+        SketchObjectGroupData groupData = new SketchObjectGroupData(group);
+        string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
+        Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData readGrouptData, xmlFilePath);
+        Debug.Log(readGrouptData.SketchObjects[0].GetType());
+
+        //GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
+        //GameObject selectionGO = Instantiate(selectionPrefab);
+        //SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
+        //selection.addToSelection(lineSketchObject);
+        //selection.addToSelection(lineSketchObject2);
+        //selection.activate();
+        //StartCoroutine(deactivateSelection(selection));
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!ranOnce) {
-            lineSketchObjectTest();
+            //lineSketchObjectTest();
+            groupSerializationTest();
             ranOnce = true;
         }
     }
