@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
@@ -8,9 +9,11 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
     /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
     /// </summary>
-    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable
+    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable, ISerializableObject
     {
         private GameObject parentGroup;
+
+        public DefaultValues defaults;
 
         public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
 
@@ -71,6 +74,74 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         public void revertHighlight()
         {
             this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
+        }
+
+        public SketchObjectGroupData GetData()
+        {
+            SketchObjectGroupData data = new SketchObjectGroupData();
+            data.Position = this.transform.position;
+            data.Rotation = this.transform.rotation;
+            data.Scale = this.transform.localScale;
+
+            data.SketchObjects = new List<SketchObjectData>();
+            data.SketchObjectGroups = new List<SketchObjectGroupData>();
+
+            foreach (Transform childTransform in this.transform)
+            {
+                SketchObject sketchObject = childTransform.GetComponent<SketchObject>();
+                SketchObjectGroup childGroup = childTransform.GetComponent<SketchObjectGroup>();
+
+                if (sketchObject != null && sketchObject is ISerializableObject serializableObject)
+                {
+                    SerializableObjectData objectData = serializableObject.GetData();
+                    if (objectData is SketchObjectData sketchObjectData)
+                    {
+                        data.SketchObjects.Add(sketchObjectData);
+                    }
+                }
+                else if (childGroup != null)
+                {
+                    data.SketchObjectGroups.Add(childGroup.GetData());
+                }
+            }
+
+            return data;
+        }
+
+        public void ApplyData(SketchObjectGroupData data)
+        {
+            if (data == null) return;
+
+            this.transform.position = data.Position;
+            this.transform.rotation = data.Rotation;
+            this.transform.localScale = data.Scale;
+
+            foreach (SketchObjectData sketchObjectData in data.SketchObjects) {
+                if (sketchObjectData is LineSketchObjectData) {
+                    LineSketchObject sketchObject = Instantiate(defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+                    sketchObject.ApplyData(sketchObjectData);
+                    addToGroup(sketchObject);
+                }
+                //Todo: Handle other types of SketchObjects
+            }
+
+            foreach (SketchObjectGroupData groupData in data.SketchObjectGroups) {
+                SketchObjectGroup newGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
+                this.addToGroup(newGroup);
+                newGroup.ApplyData(groupData);
+            }
+        }
+
+        SerializableObjectData ISerializableObject.GetData()
+        {
+            return this.GetData();
+        }
+
+        public void ApplyData(SerializableObjectData data)
+        {
+            if (data is SketchObjectGroupData groupData) {
+                this.ApplyData(groupData);
+            }
         }
     }
 }

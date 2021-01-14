@@ -11,6 +11,8 @@ public class LineSketchObjectTest : MonoBehaviour
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
 
+    public DefaultValues defaults;
+
     private bool ranOnce = false;
 
     // Start is called before the first frame update
@@ -80,10 +82,15 @@ public class LineSketchObjectTest : MonoBehaviour
         group.addToGroup(lineSketchObject);
         group.addToGroup(lineSketchObject2);
 
-        SketchObjectGroupData groupData = new SketchObjectGroupData(group);
+        SketchObjectGroupData groupData = group.GetData();
         string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
         Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData readGrouptData, xmlFilePath);
         Debug.Log(readGrouptData.SketchObjects[0].GetType());
+
+        SketchObjectGroup deserGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
+        deserGroup.ApplyData(readGrouptData);
+
+        deserGroup.transform.position += new Vector3(3, 0, 0);
 
         //GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
         //GameObject selectionGO = Instantiate(selectionPrefab);

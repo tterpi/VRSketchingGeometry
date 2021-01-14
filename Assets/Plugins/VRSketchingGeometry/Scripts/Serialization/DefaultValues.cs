@@ -9,6 +9,11 @@ namespace VRSketchingGeometry.Serialization
     {
         public Material StandardSketchMaterial;
         public Material TwoSidedSketchMaterial;
+        public GameObject LineSketchObjectPrefab;
+        public GameObject LinearInterpolationLineSketchObjectPrefab;
+        public GameObject SketchObjectGroupPrefab;
+        public GameObject SketchObjectSelectionPrefab;
+        public GameObject PatchSketchObjectPrefab;
 
         public Material GetMaterial(SketchMaterial.ShaderType type)
         {

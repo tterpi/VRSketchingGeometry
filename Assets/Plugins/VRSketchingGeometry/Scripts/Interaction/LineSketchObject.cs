@@ -17,7 +17,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// Provides methods to interact with a line game object in the scene.
     /// </summary>
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-    public class LineSketchObject : SketchObject
+    public class LineSketchObject : SketchObject, ISerializableObject
     {
         /// <summary>
         /// The instance of the smoothly interpolated Catmul-Rom spline mesh
@@ -300,6 +300,22 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
             else if (data.sketchMaterial.Shader == SketchMaterial.ShaderType.TwoSided) {
                 this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
+            }
+        }
+
+        SerializableObjectData ISerializableObject.GetData()
+        {
+            return this.GetData();
+        }
+
+        public void ApplyData(SerializableObjectData data)
+        {
+            if (data is LineSketchObjectData)
+            {
+                this.ApplyData((LineSketchObjectData)data);
+            }
+            else {
+                Debug.LogError("Trying to deserialize object as LineSketchObject that is not a LineSketchObjectData object.");
             }
         }
     }
