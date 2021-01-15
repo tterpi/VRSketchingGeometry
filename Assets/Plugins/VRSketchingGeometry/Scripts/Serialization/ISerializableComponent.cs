@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VRSketchingGeometry.Serialization
 {
-    interface ISerializableObject
+    interface ISerializableComponent
     {
-        SerializableObjectData GetData();
-        void ApplyData(SerializableObjectData data);
+        SerializableComponentData GetData();
+        void ApplyData(SerializableComponentData data);
     }
 }

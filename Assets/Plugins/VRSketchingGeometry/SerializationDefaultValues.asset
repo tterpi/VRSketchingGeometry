@@ -16,3 +16,13 @@ MonoBehaviour:
     type: 2}
   TwoSidedSketchMaterial: {fileID: 2100000, guid: f7174271d3120fa49b5da504d0a40158,
     type: 2}
+  LineSketchObjectPrefab: {fileID: 1524500983091648832, guid: 7ee00a79cbb48fc44b9ada2a7fac529e,
+    type: 3}
+  LinearInterpolationLineSketchObjectPrefab: {fileID: 1524500983091648832, guid: f8d9aff7463b79649a9d76ebc53f39a7,
+    type: 3}
+  SketchObjectGroupPrefab: {fileID: 3810263403817002055, guid: 0973b0f6962b00d479e700076fc02bfd,
+    type: 3}
+  SketchObjectSelectionPrefab: {fileID: 1565193450362279123, guid: 80263d6ccfae2d946a931e6be3d3e021,
+    type: 3}
+  PatchSketchObjectPrefab: {fileID: 1583689454566765405, guid: 4d4802fdda75138449a38e9437d0afdd,
+    type: 3}

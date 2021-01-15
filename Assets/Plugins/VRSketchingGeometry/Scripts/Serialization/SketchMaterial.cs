@@ -3,7 +3,7 @@
 namespace VRSketchingGeometry.Serialization
 {
 
-    public class SketchMaterial
+    public class SketchMaterialData
     {
         public enum ShaderType
         {

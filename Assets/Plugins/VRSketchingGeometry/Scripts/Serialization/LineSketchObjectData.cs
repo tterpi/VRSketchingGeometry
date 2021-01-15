@@ -19,6 +19,6 @@ namespace VRSketchingGeometry.Serialization
         public List<Vector3> CrossSectionVertices;
         public List<Vector3> CrossSectionNormals;
         public float CrossSectionScale = 1.0f;
-        public SketchMaterial sketchMaterial;
+        public SketchMaterialData sketchMaterial;
     }
 }

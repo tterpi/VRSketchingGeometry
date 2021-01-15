@@ -2,7 +2,7 @@
 
 namespace VRSketchingGeometry.Serialization
 {
-    public class SerializableObjectData
+    public class SerializableComponentData
     {
         public Vector3 Position;
         public Quaternion Rotation;

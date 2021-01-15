@@ -15,13 +15,13 @@ namespace VRSketchingGeometry.Serialization
         public GameObject SketchObjectSelectionPrefab;
         public GameObject PatchSketchObjectPrefab;
 
-        public Material GetMaterial(SketchMaterial.ShaderType type)
+        public Material GetMaterial(SketchMaterialData.ShaderType type)
         {
             switch (type)
             {
-                case SketchMaterial.ShaderType.Standard:
+                case SketchMaterialData.ShaderType.Standard:
                     return Instantiate(StandardSketchMaterial);
-                case SketchMaterial.ShaderType.TwoSided:
+                case SketchMaterialData.ShaderType.TwoSided:
                     return Instantiate(TwoSidedSketchMaterial);
                 default:
                     Debug.LogError("ShaderType is unknown!");

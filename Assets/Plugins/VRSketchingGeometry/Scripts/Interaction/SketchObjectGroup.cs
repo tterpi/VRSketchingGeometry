@@ -9,7 +9,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
     /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
     /// </summary>
-    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable, ISerializableObject
+    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable, ISerializableComponent
     {
         private GameObject parentGroup;
 
@@ -25,6 +25,16 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         public void addToGroup(SketchObjectGroup sketchObjectGroup) {
             sketchObjectGroup.transform.SetParent(this.transform);
             sketchObjectGroup.parentGroup = this.gameObject;
+        }
+
+        public void addToGroup(IGroupable groupableComponent) {
+            if (groupableComponent is SketchObject sketchObject)
+            {
+                this.addToGroup(sketchObject);
+            }
+            else if (groupableComponent is SketchObjectGroup sketchObjectGroup) {
+                this.addToGroup(sketchObjectGroup);
+            }
         }
 
         public void addToGroup(SketchObjectSelection sketchObjectSelection) {
@@ -91,9 +101,9 @@ namespace VRSketchingGeometry.SketchObjectManagement {
                 SketchObject sketchObject = childTransform.GetComponent<SketchObject>();
                 SketchObjectGroup childGroup = childTransform.GetComponent<SketchObjectGroup>();
 
-                if (sketchObject != null && sketchObject is ISerializableObject serializableObject)
+                if (sketchObject != null && sketchObject is ISerializableComponent serializableObject)
                 {
-                    SerializableObjectData objectData = serializableObject.GetData();
+                    SerializableComponentData objectData = serializableObject.GetData();
                     if (objectData is SketchObjectData sketchObjectData)
                     {
                         data.SketchObjects.Add(sketchObjectData);
@@ -132,12 +142,12 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             }
         }
 
-        SerializableObjectData ISerializableObject.GetData()
+        SerializableComponentData ISerializableComponent.GetData()
         {
             return this.GetData();
         }
 
-        public void ApplyData(SerializableObjectData data)
+        public void ApplyData(SerializableComponentData data)
         {
             if (data is SketchObjectGroupData groupData) {
                 this.ApplyData(groupData);

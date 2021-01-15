@@ -13,6 +13,9 @@ public class LineSketchObjectTest : MonoBehaviour
 
     public DefaultValues defaults;
 
+    public SketchWorld SketchWorld;
+    public SketchWorld SketchWorld2;
+
     private bool ranOnce = false;
 
     // Start is called before the first frame update
@@ -101,12 +104,53 @@ public class LineSketchObjectTest : MonoBehaviour
         //StartCoroutine(deactivateSelection(selection));
     }
 
+    private void SketchWorldSerializationTest()
+    {
+        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.addControlPoint(Vector3.one);
+        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+
+        //lineSketchObject.setLineDiameter(.7f);
+        //StartCoroutine(changeDiameter());
+
+        lineSketchObject2.addControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.GetComponent<MeshRenderer>().material.color = Color.blue;
+        //lineSketchObject2.minimumControlPointDistance = 2f;
+        //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
+        GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
+        SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
+        SketchWorld.AddObject(lineSketchObject.gameObject);
+        group.addToGroup(lineSketchObject2);
+        group.transform.position += new Vector3(2.568f, 5.555f, 1.123f);
+        SketchWorld.AddObject(group.gameObject);
+
+        string worldXmlPath = System.IO.Path.Combine(Application.dataPath, "SketchWorldTest.xml");
+        SketchWorld.SaveSketchWorld(worldXmlPath);
+
+        SketchWorld2.LoadSketchWorld(worldXmlPath);
+
+
+        //SketchObjectGroupData groupData = group.GetData();
+        //string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
+        //Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData readGrouptData, xmlFilePath);
+        //Debug.Log(readGrouptData.SketchObjects[0].GetType());
+
+        //SketchObjectGroup deserGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
+        //deserGroup.ApplyData(readGrouptData);
+
+        //deserGroup.transform.position += new Vector3(3, 0, 0);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!ranOnce) {
             //lineSketchObjectTest();
-            groupSerializationTest();
+            //groupSerializationTest();
+            SketchWorldSerializationTest();
             ranOnce = true;
         }
     }

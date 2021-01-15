@@ -9,7 +9,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Serialization
 {
-    public class SketchObjectGroupData : SerializableObjectData
+    public class SketchObjectGroupData : SerializableComponentData
     {
         [XmlArrayItem(typeof(SketchObjectData)), XmlArrayItem(typeof(LineSketchObjectData))]
         public List<SketchObjectData> SketchObjects;

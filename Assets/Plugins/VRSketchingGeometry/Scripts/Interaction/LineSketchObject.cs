@@ -17,7 +17,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// Provides methods to interact with a line game object in the scene.
     /// </summary>
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-    public class LineSketchObject : SketchObject, ISerializableObject
+    public class LineSketchObject : SketchObject, ISerializableComponent
     {
         /// <summary>
         /// The instance of the smoothly interpolated Catmul-Rom spline mesh
@@ -275,7 +275,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 CrossSectionScale = this.lineDiameter
             };
 
-            data.sketchMaterial = new SketchMaterial
+            data.sketchMaterial = new SketchMaterialData
             {
                 AlbedoColor = this.meshRenderer.material.color
             };
@@ -294,21 +294,21 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.setLineDiameter(data.CrossSectionScale);
 
             this.meshRenderer.material = DefaultValues.GetMaterial(data.sketchMaterial.Shader);
-            if (data.sketchMaterial.Shader == SketchMaterial.ShaderType.Standard)
+            if (data.sketchMaterial.Shader == SketchMaterialData.ShaderType.Standard)
             {
                 this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
             }
-            else if (data.sketchMaterial.Shader == SketchMaterial.ShaderType.TwoSided) {
+            else if (data.sketchMaterial.Shader == SketchMaterialData.ShaderType.TwoSided) {
                 this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
             }
         }
 
-        SerializableObjectData ISerializableObject.GetData()
+        SerializableComponentData ISerializableComponent.GetData()
         {
             return this.GetData();
         }
 
-        public void ApplyData(SerializableObjectData data)
+        public void ApplyData(SerializableComponentData data)
         {
             if (data is LineSketchObjectData)
             {

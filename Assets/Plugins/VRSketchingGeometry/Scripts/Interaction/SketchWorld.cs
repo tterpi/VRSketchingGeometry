@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.Serialization;
+using VRSketchingGeometry.Export;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
@@ -10,8 +12,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public static SketchWorld ActiveSketchWorld { get => activeSketchWorld; private set => activeSketchWorld = value; }
 
-        //instantiate SketchObjects through the sketch world
-        //or parent them to the the sketch world when instantiating in the tool
+        public DefaultValues defaults;
 
         /// <summary>
         /// Deleted SketchObjects and Groups go here and are deactivated.
@@ -19,17 +20,17 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         private GameObject deletedBin;
 
+        private SketchObjectGroup RootGroup;
+
         // Start is called before the first frame update
         void Start()
         {
             deletedBin = new GameObject("Deleted Bin");
             deletedBin.transform.SetParent(this.transform);
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
+            RootGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
+            RootGroup.gameObject.name = "RootSketchObjectGroup";
+            RootGroup.transform.SetParent(this.transform);
         }
 
         /// <summary>
@@ -49,7 +50,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <param name="gameObject"></param>
         public void AddObject(GameObject gameObject)
         {
-            gameObject.transform.SetParent(this.transform);
+            //gameObject.transform.SetParent(this.transform);
+            IGroupable groupableComponent = gameObject.GetComponent<IGroupable>();
+            RootGroup.addToGroup(groupableComponent);
         }
 
 
@@ -67,7 +70,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
                 else
                 {
-                    gameObject.transform.SetParent(this.transform);
+                    //gameObject.transform.SetParent(this.transform);
+                    RootGroup.addToGroup(groupableObject);
                 }
                 gameObject.SetActive(true);
             }
@@ -79,9 +83,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Serializes the sketching game objects that are children of this sketch world. 
         /// </summary>
-        public void SaveSketchWorld()
+        public void SaveSketchWorld(string path)
         {
-            throw new System.NotImplementedException();
+            Serializer.SerializeToXmlFile<SketchObjectGroupData>(RootGroup.GetData(), path);
         }
 
         /// <summary>
@@ -90,7 +94,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <param name="path"></param>
         public void ExportSketchWorld(string path)
         {
-            throw new System.NotImplementedException();
+            OBJExporter exporter = new OBJExporter();
+            exporter.ExportGameObject(RootGroup.gameObject, OBJExporter.GetDefaultExportPath());
         }
 
         /// <summary>
@@ -98,9 +103,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static SketchWorld LoadSketchWorld(string path)
+        public void LoadSketchWorld(string path)
         {
-            throw new System.NotImplementedException();
+            Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData groupData, path);
+            if (RootGroup.transform.childCount != 0) {
+                Debug.LogError("Root group of sketch world is not empty! Please create empty sketch world to load file.");
+            }
+            RootGroup.ApplyData(groupData);
         }
     }
 

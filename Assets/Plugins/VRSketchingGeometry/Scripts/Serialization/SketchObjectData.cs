@@ -3,7 +3,7 @@
 namespace VRSketchingGeometry.Serialization
 {
 
-    public class SketchObjectData: SerializableObjectData
+    public class SketchObjectData: SerializableComponentData
     {
     }
 }
