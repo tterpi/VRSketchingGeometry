@@ -507,6 +507,7 @@ MonoBehaviour:
   defaults: {fileID: 11400000, guid: 80ac1fe1704d8434eac74bc2c69b9794, type: 2}
   SketchWorld: {fileID: 267700616}
   SketchWorld2: {fileID: 1229741338}
+  ropeMaterial: {fileID: 2100000, guid: 274332379a6c2294286e7f8a0bf3ee3f, type: 2}
 --- !u!4 &542928303
 Transform:
   m_ObjectHideFlags: 0
@@ -836,6 +837,7 @@ MonoBehaviour:
   defaults: {fileID: 0}
   SketchWorld: {fileID: 0}
   SketchWorld2: {fileID: 0}
+  ropeMaterial: {fileID: 0}
 --- !u!4 &651325229
 Transform:
   m_ObjectHideFlags: 0

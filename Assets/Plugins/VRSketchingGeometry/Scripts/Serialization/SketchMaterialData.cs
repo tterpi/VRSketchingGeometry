@@ -48,6 +48,26 @@ namespace VRSketchingGeometry.Serialization
             material.SetFloat("_Metallic", MetallicValue);
             material.SetFloat("_Glossiness", SmoothnessValue);
             material.SetTextureScale("_MainTex", UVTiling);
+
+            if (AlbedoMapName != null) {
+                Texture2D tex = new Texture2D(10, 10);
+                string texturePath = System.IO.Path.Combine(Application.dataPath, "textures", AlbedoMapName + ".png");
+                ImageConversion.LoadImage(tex, System.IO.File.ReadAllBytes(texturePath));
+
+                material.SetTexture("_MainTex", tex);
+            }
+
+            if (NormalMapName != null) {
+                material.EnableKeyword("_NORMALMAP");
+                Texture2D normalTex = LoadTextureFromPng(System.IO.Path.Combine(Application.dataPath, "textures", NormalMapName + ".png"));
+                material.SetTexture("_BumpMap", normalTex);
+            }
+        }
+
+        public static Texture2D LoadTextureFromPng(string path) {
+            Texture2D tex = new Texture2D(10, 10, TextureFormat.DXT5, false);
+            ImageConversion.LoadImage(tex, System.IO.File.ReadAllBytes(path));
+            return tex;
         }
     }
 }
