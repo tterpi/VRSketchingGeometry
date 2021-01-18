@@ -12,7 +12,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public static SketchWorld ActiveSketchWorld { get => activeSketchWorld; private set => activeSketchWorld = value; }
 
-        public DefaultValues defaults;
+        public DefaultReferences defaults;
 
         /// <summary>
         /// Deleted SketchObjects and Groups go here and are deactivated.

@@ -13,7 +13,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     {
         private GameObject parentGroup;
 
-        public DefaultValues defaults;
+        public DefaultReferences defaults;
 
         public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
 

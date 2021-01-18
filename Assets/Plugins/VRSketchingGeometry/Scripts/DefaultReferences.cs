@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.Serialization;
 
-namespace VRSketchingGeometry.Serialization
+namespace VRSketchingGeometry
 {
-    [CreateAssetMenu(fileName = "SerializationDefaultValues", menuName = "ScriptableObjects/SerializationDefaultValues", order = 1)]
-    public class DefaultValues : ScriptableObject
+    /// <summary>
+    /// This scriptable object contains references to frequently used prefabs, materials etc.
+    /// </summary>
+    [CreateAssetMenu(fileName = "DefaultReferences", menuName = "ScriptableObjects/DefaultReferences", order = 1)]
+    public class DefaultReferences : ScriptableObject
     {
         public Material StandardSketchMaterial;
         public Material TwoSidedSketchMaterial;

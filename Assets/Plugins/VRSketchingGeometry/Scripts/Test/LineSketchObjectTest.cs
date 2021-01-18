@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry;
 using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Serialization;
 
@@ -11,10 +12,12 @@ public class LineSketchObjectTest : MonoBehaviour
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
 
-    public DefaultValues defaults;
+    public DefaultReferences defaults;
 
     public SketchWorld SketchWorld;
     public SketchWorld SketchWorld2;
+
+    public Material ropeMaterial;
 
     private bool ranOnce = false;
 
@@ -118,6 +121,7 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
         lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
         lineSketchObject2.GetComponent<MeshRenderer>().material.color = Color.blue;
+        lineSketchObject2.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
         //lineSketchObject2.minimumControlPointDistance = 2f;
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));

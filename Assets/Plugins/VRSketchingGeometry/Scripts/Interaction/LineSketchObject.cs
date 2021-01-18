@@ -275,10 +275,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 CrossSectionScale = this.lineDiameter
             };
 
-            data.sketchMaterial = new SketchMaterialData
-            {
-                AlbedoColor = this.meshRenderer.material.color
-            };
+            data.sketchMaterial = new SketchMaterialData(this.meshRenderer.sharedMaterial);
 
             return data;
         }
@@ -293,13 +290,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.localScale = data.Scale;
             this.setLineDiameter(data.CrossSectionScale);
 
-            this.meshRenderer.material = DefaultValues.GetMaterial(data.sketchMaterial.Shader);
+            this.meshRenderer.material = Defaults.GetMaterial(data.sketchMaterial.Shader);
             if (data.sketchMaterial.Shader == SketchMaterialData.ShaderType.Standard)
             {
-                this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
-            }
-            else if (data.sketchMaterial.Shader == SketchMaterialData.ShaderType.TwoSided) {
-                this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
+                //this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
+                data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material);
             }
         }
 
