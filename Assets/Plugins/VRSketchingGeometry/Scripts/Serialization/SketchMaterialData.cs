@@ -25,6 +25,11 @@ namespace VRSketchingGeometry.Serialization
         public SketchMaterialData() { }
 
         public SketchMaterialData(Material material) {
+
+            if (material.shader.name == "Custom/TwoSidedSurfaceShader") {
+                Shader = ShaderType.TwoSided;
+            }
+
             AlbedoColor = material.color;
             MetallicValue = material.GetFloat("_Metallic");
             UVTiling = material.GetTextureScale("_MainTex");
@@ -43,30 +48,48 @@ namespace VRSketchingGeometry.Serialization
 
         }
 
-        public void ApplyMaterialProperties(in Material material) {
+        public void ApplyMaterialProperties(in Material material, string textureBasePath) {
             material.color = AlbedoColor;
             material.SetFloat("_Metallic", MetallicValue);
             material.SetFloat("_Glossiness", SmoothnessValue);
+            material.SetFloat("_GlossMapScale", SmoothnessValue);
             material.SetTextureScale("_MainTex", UVTiling);
 
             if (AlbedoMapName != null) {
-                Texture2D tex = new Texture2D(10, 10);
-                string texturePath = System.IO.Path.Combine(Application.dataPath, "textures", AlbedoMapName + ".png");
-                ImageConversion.LoadImage(tex, System.IO.File.ReadAllBytes(texturePath));
-
+                Texture2D tex = LoadTextureFromPng(System.IO.Path.Combine(textureBasePath, AlbedoMapName + ".png"));
                 material.SetTexture("_MainTex", tex);
             }
 
             if (NormalMapName != null) {
                 material.EnableKeyword("_NORMALMAP");
-                Texture2D normalTex = LoadTextureFromPng(System.IO.Path.Combine(Application.dataPath, "textures", NormalMapName + ".png"));
+                Texture2D normalTex = LoadTextureFromPng(System.IO.Path.Combine(textureBasePath, NormalMapName + ".png"));
                 material.SetTexture("_BumpMap", normalTex);
+            }
+
+            if (MetallicMapName != null) {
+                material.EnableKeyword("_METALLICGLOSSMAP");
+                Texture2D metallicTex = LoadTextureFromPng(System.IO.Path.Combine(textureBasePath, MetallicMapName + ".png"));
+                material.SetTexture("_MetallicGlossMap", metallicTex);
+            }
+
+            if (DisplacementMapName != null) {
+                material.EnableKeyword("_PARALLAXMAP");
+                Texture2D displacementTex = LoadTextureFromPng(System.IO.Path.Combine(textureBasePath, DisplacementMapName + ".png"));
+                material.SetTexture("_ParallaxMap", displacementTex);
             }
         }
 
         public static Texture2D LoadTextureFromPng(string path) {
             Texture2D tex = new Texture2D(10, 10, TextureFormat.DXT5, false);
-            ImageConversion.LoadImage(tex, System.IO.File.ReadAllBytes(path));
+            try
+            {
+                ImageConversion.LoadImage(tex, System.IO.File.ReadAllBytes(path));
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("An error occured while loading a texture from: " + path + "\n" + e.ToString());
+                return null;
+            }
             return tex;
         }
     }

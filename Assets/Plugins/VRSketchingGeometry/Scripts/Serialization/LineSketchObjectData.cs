@@ -7,6 +7,13 @@ namespace VRSketchingGeometry.Serialization
 {
     public class LineSketchObjectData : SketchObjectData
     {
+        public enum InterpolationType
+        {
+            Linear,
+            Cubic
+        }
+
+        public InterpolationType Interpolation;
         public List<Vector3> ControlPoints;
         /// <summary>
         /// Currently not used.

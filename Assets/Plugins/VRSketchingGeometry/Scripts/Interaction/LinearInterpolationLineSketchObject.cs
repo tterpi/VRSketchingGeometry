@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.Splines;
 using VRSketchingGeometry.Meshing;
+using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
@@ -71,6 +72,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }
 
+        }
+
+        public override SerializableComponentData GetData()
+        {
+            LineSketchObjectData data = base.GetData() as LineSketchObjectData;
+            data.Interpolation = LineSketchObjectData.InterpolationType.Linear;
+            return data;
         }
     }
 }

@@ -265,9 +265,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         }
 
-        public LineSketchObjectData GetData() {
+        public virtual SerializableComponentData GetData() {
             LineSketchObjectData data = new LineSketchObjectData
             {
+                Interpolation = LineSketchObjectData.InterpolationType.Cubic,
                 ControlPoints = getControlPoints(),
                 Position = this.transform.position,
                 Rotation = this.transform.rotation,
@@ -291,16 +292,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.setLineDiameter(data.CrossSectionScale);
 
             this.meshRenderer.material = Defaults.GetMaterial(data.sketchMaterial.Shader);
-            if (data.sketchMaterial.Shader == SketchMaterialData.ShaderType.Standard)
-            {
-                //this.meshRenderer.material.color = data.sketchMaterial.AlbedoColor;
-                data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material);
-            }
-        }
+            data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
 
-        SerializableComponentData ISerializableComponent.GetData()
-        {
-            return this.GetData();
         }
 
         public void ApplyData(SerializableComponentData data)

@@ -66,7 +66,7 @@ public class DeleteByRadiusTest : MonoBehaviour
     }
 
     private void XMLSerializeTest2() {
-        string path = Serializer.WriteTestXmlFile<VRSketchingGeometry.Serialization.LineSketchObjectData>
+        string path = Serializer.WriteTestXmlFile<VRSketchingGeometry.Serialization.SerializableComponentData>
             (lineSketchObject.GetData());
         Serializer.DeserializeFromXmlFile(out LineSketchObjectData readData, System.IO.Path.Combine(Application.dataPath, "TestSerialization.xml"));
         LineSketchObject deserLine = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();

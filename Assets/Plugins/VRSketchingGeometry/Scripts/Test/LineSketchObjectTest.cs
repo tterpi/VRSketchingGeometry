@@ -18,6 +18,7 @@ public class LineSketchObjectTest : MonoBehaviour
     public SketchWorld SketchWorld2;
 
     public Material ropeMaterial;
+    public Material twoSidedMaterial;
 
     private bool ranOnce = false;
 
@@ -26,7 +27,8 @@ public class LineSketchObjectTest : MonoBehaviour
     {
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject.setLineDiameter(.5f);
-        lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        //lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        lineSketchObject2 = Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<LineSketchObject>();
     }
 
     IEnumerator changeDiameter() {
@@ -113,6 +115,7 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject.addControlPoint(Vector3.one);
         lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
         lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+        lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = twoSidedMaterial;
 
         //lineSketchObject.setLineDiameter(.7f);
         //StartCoroutine(changeDiameter());

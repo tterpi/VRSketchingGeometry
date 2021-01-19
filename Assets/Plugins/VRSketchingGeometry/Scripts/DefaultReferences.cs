@@ -19,6 +19,13 @@ namespace VRSketchingGeometry
         public GameObject SketchObjectSelectionPrefab;
         public GameObject PatchSketchObjectPrefab;
 
+        public string DefaultTextureDirectory;
+
+        private void OnEnable()
+        {
+            DefaultTextureDirectory = System.IO.Path.Combine(Application.dataPath, "textures");
+        }
+
         public Material GetMaterial(SketchMaterialData.ShaderType type)
         {
             switch (type)
