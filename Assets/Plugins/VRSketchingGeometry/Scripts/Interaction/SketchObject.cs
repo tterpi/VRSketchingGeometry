@@ -21,6 +21,10 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         [SerializeField]
         protected Material highlightMaterial;
 
+        protected virtual void Awake() {
+            setUpOriginalMaterialAndMeshRenderer();
+        }
+
         public void resetToParentGroup()
         {
             this.transform.SetParent(ParentGroup?.transform);

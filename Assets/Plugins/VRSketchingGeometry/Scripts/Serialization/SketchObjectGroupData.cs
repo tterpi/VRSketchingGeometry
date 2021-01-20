@@ -11,7 +11,7 @@ namespace VRSketchingGeometry.Serialization
 {
     public class SketchObjectGroupData : SerializableComponentData
     {
-        [XmlArrayItem(typeof(SketchObjectData)), XmlArrayItem(typeof(LineSketchObjectData))]
+        [XmlArrayItem(typeof(SketchObjectData)), XmlArrayItem(typeof(LineSketchObjectData)), XmlArrayItem(typeof(PatchSketchObjectData))]
         public List<SketchObjectData> SketchObjects;
         public List<SketchObjectGroupData> SketchObjectGroups;
 

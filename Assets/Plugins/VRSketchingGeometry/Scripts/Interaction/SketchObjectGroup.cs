@@ -129,19 +129,26 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             foreach (SketchObjectData sketchObjectData in data.SketchObjects) {
                 if (sketchObjectData is LineSketchObjectData lineSketchObjectData)
                 {
-                    if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Cubic) {
+                    if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Cubic)
+                    {
                         LineSketchObject sketchObject = Instantiate(defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
                         sketchObject.ApplyData(sketchObjectData);
                         addToGroup(sketchObject);
                     }
-                    else if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Linear) {
-                        LinearInterpolationLineSketchObject sketchObject = 
+                    else if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Linear)
+                    {
+                        LinearInterpolationLineSketchObject sketchObject =
                             Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab)
                             .GetComponent<LinearInterpolationLineSketchObject>();
 
                         sketchObject.ApplyData(sketchObjectData);
                         addToGroup(sketchObject);
                     }
+                }
+                else if (sketchObjectData is PatchSketchObjectData patchData) {
+                    PatchSketchObject patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
+                    patchSketchObject.ApplyData(patchData);
+                    addToGroup(patchSketchObject);
                 }
                 //Todo: Handle other types of SketchObjects
             }

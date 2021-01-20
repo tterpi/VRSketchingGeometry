@@ -11,6 +11,7 @@ public class LineSketchObjectTest : MonoBehaviour
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
+    private PatchSketchObject patchSketchObject;
 
     public DefaultReferences defaults;
 
@@ -29,6 +30,7 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject.setLineDiameter(.5f);
         //lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject2 = Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
     }
 
     IEnumerator changeDiameter() {
@@ -125,12 +127,22 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
         lineSketchObject2.GetComponent<MeshRenderer>().material.color = Color.blue;
         lineSketchObject2.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
+
+        patchSketchObject.transform.position += new Vector3(3,0,0);
+        patchSketchObject.Width = 3;
+        patchSketchObject.AddPatchSegment(new List<Vector3> { new Vector3(0,0,0), new Vector3(1,0,0), new Vector3(2,0,0) });
+        patchSketchObject.AddPatchSegment(new List<Vector3> { new Vector3(0, 0, 1), new Vector3(1, 2, 1), new Vector3(2, 0, 1) });
+        patchSketchObject.AddPatchSegment(new List<Vector3> { new Vector3(0, 0, 2), new Vector3(1, 0, 2), new Vector3(2, 0, 2) });
+
+
+
         //lineSketchObject2.minimumControlPointDistance = 2f;
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
         SketchWorld.AddObject(lineSketchObject.gameObject);
         group.addToGroup(lineSketchObject2);
+        group.addToGroup(patchSketchObject);
         group.transform.position += new Vector3(2.568f, 5.555f, 1.123f);
         SketchWorld.AddObject(group.gameObject);
 
@@ -155,10 +167,10 @@ public class LineSketchObjectTest : MonoBehaviour
     void Update()
     {
         if (!ranOnce) {
+            ranOnce = true;
             //lineSketchObjectTest();
             //groupSerializationTest();
             SketchWorldSerializationTest();
-            ranOnce = true;
         }
     }
 }

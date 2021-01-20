@@ -508,6 +508,7 @@ MonoBehaviour:
   SketchWorld: {fileID: 267700616}
   SketchWorld2: {fileID: 1229741338}
   ropeMaterial: {fileID: 2100000, guid: 274332379a6c2294286e7f8a0bf3ee3f, type: 2}
+  twoSidedMaterial: {fileID: 2100000, guid: 7b2463b0af5094d40ab439dbf8e4d6dc, type: 2}
 --- !u!4 &542928303
 Transform:
   m_ObjectHideFlags: 0
@@ -838,6 +839,7 @@ MonoBehaviour:
   SketchWorld: {fileID: 0}
   SketchWorld2: {fileID: 0}
   ropeMaterial: {fileID: 0}
+  twoSidedMaterial: {fileID: 0}
 --- !u!4 &651325229
 Transform:
   m_ObjectHideFlags: 0

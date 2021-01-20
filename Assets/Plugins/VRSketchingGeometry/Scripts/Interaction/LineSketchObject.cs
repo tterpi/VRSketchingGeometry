@@ -55,8 +55,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         protected float lineDiameter = .2f;
 
-        // Start is called before the first frame update
-        protected virtual void Awake()
+        protected override void Awake()
         {
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
@@ -293,7 +292,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             this.meshRenderer.material = Defaults.GetMaterial(data.sketchMaterial.Shader);
             data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
-
+            originalMaterial = this.meshRenderer.sharedMaterial;
         }
 
         public void ApplyData(SerializableComponentData data)
