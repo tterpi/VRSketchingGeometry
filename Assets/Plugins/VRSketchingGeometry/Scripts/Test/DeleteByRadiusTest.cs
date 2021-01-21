@@ -34,8 +34,9 @@ public class DeleteByRadiusTest : MonoBehaviour
         //exporter.ExportGameObject(lineSketchObject.gameObject, exportPath);
         Debug.Log(JsonUtility.ToJson(lineSketchObject));
         //XMLSerializeTest();
-        XMLSerializeTest2();
+        //XMLSerializeTest2();
         //exporter.ExportGameObject(controlPointParent, exportPath);
+        lineSketchObject.RefineMesh();
 
         Debug.Log(exportPath);
         //lineSketchObject.setLineDiameter(.1f);

@@ -264,6 +264,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         }
 
+        public virtual void RefineMesh() {
+            meshFilter.mesh = this.SplineMesh.RefineMesh();
+            chooseDisplayMethod();
+        }
+
         public virtual SerializableComponentData GetData() {
             LineSketchObjectData data = new LineSketchObjectData
             {

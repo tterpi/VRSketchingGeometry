@@ -297,6 +297,33 @@ namespace VRSketchingGeometry.Meshing {
             return mesh;
         }
 
+        private Mesh getMeshWithCaps(List<Vector3> vertices, List<Vector3> normals, List<int> triangles)
+        {
+
+            List<Vector3> allVertices = new List<Vector3>(vertices);
+            allVertices.AddRange(capVertices);
+
+            List<Vector3> allNormals = new List<Vector3>(normals);
+            allNormals.AddRange(capNormals);
+
+            List<int> allTriangles = new List<int>(triangles);
+            allTriangles.AddRange(capTriangles);
+
+            List<Vector2> uvs = TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionShape.Count);
+
+            uvs.AddRange(generateEndCapUVs(crossSectionShape.Count));
+
+            Mesh mesh = new Mesh();
+
+            mesh.SetVertices(allVertices);
+            mesh.SetNormals(allNormals);
+            mesh.subMeshCount = 1;
+            mesh.SetTriangles(allTriangles.ToArray(), 0);
+            mesh.SetUVs(0, uvs);
+
+            return mesh;
+        }
+
         /// <summary>
         /// Generate UVs for the end caps.
         /// </summary>
@@ -315,6 +342,145 @@ namespace VRSketchingGeometry.Meshing {
 
             return uvs;
         }
+
+        public Mesh getMeshParallelTransport(List<Vector3> points) {
+
+            List<Vector3> tangents = getTangents(points);
+            Vector3 initialNormal = Vector3.Cross(tangents[0], Vector3.right);
+            if (initialNormal.magnitude == 0) {
+                initialNormal = Vector3.Cross(tangents[0], Vector3.forward);
+            }
+            List<Vector3> normals = getSplineNormals(initialNormal,tangents);
+
+            List<Vector3> meshVertices = new List<Vector3>();
+            List<Vector3> meshNormals = new List<Vector3>();
+            //transform cross sections and cross section normals
+            //add to mesh, generate caps
+            //get uvs and mesh tangents
+
+            for (int i = 0; i < points.Count; i++)
+            {
+                List<Vector3> transformedCrossSection = transformPointsParallelTransport(crossSectionShape, points[i], tangents[i], normals[i], crossSectionScale);
+                List<Vector3> transformedCrossSectionNormals = transformNormalsParallelTransport(crossSectionNormals, tangents[i], normals[i]);
+                meshVertices.AddRange(transformedCrossSection);
+                meshNormals.AddRange(transformedCrossSectionNormals);
+            }
+
+            //update triangles
+            List<int> meshTriangles = generateTriangles(crossSectionShape.Count, (meshVertices.Count / crossSectionShape.Count) - 1);
+
+            //mesh is empty or there is just a single cross section left because second to last control point or last control point was removed
+            if (meshVertices.Count <= crossSectionShape.Count && meshNormals.Count <= crossSectionShape.Count)
+            {
+                return new Mesh();
+            }
+
+            Mesh mesh;
+
+            if (generateCaps)
+            {
+                generateCapsMesh(meshVertices.GetRange(0, crossSectionShape.Count), meshVertices.GetRange(vertices.Count - crossSectionShape.Count, crossSectionShape.Count));
+                mesh = getMeshWithCaps(meshVertices, meshNormals, meshTriangles);
+            }
+            else
+            {
+                mesh = new Mesh();
+                mesh.SetVertices(meshVertices);
+                mesh.SetNormals(meshNormals);
+                mesh.subMeshCount = 1;
+                mesh.SetTriangles(meshTriangles.ToArray(), 0);
+                mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVsStretchU(meshVertices.Count, crossSectionShape.Count));
+
+            }
+            mesh.RecalculateTangents();
+            return mesh;
+        }
+
+        private static Vector3 GetTangent(Vector3 p1, Vector3 p2) {
+            return (p2 - p1).normalized;
+        }
+
+        private static Vector3 GetTangent(Vector3 p1, Vector3 p2, Vector3 p3) {
+            Vector3 tangent = ((p2 - p1).normalized + (p3 - p2).normalized).normalized;
+            return tangent;
+        }
+
+        private List<Vector3> getTangents(List<Vector3> points) {
+            List<Vector3> tangents = new List<Vector3>();
+            tangents.Add(GetTangent(points[0], points[1]));
+            for (int i = 1; i < points.Count-1; i++)
+            {
+                tangents.Add(GetTangent(points[i - 1], points[i + 1]));
+            }
+            tangents.Add(GetTangent(points[points.Count-2], points[points.Count-1]));
+            return tangents;
+        }
+
+        private List<Vector3> getSplineNormals(Vector3 initialNormal, List<Vector3> tangents) {
+            List<Vector3> normals = new List<Vector3>();
+            Vector3 currentNormal = initialNormal;
+            normals.Add(currentNormal);
+            for (int i = 1; i < tangents.Count; i++)
+            {
+                Vector3 nextNormal = ParallelTransport(currentNormal, tangents[i-1], tangents[i]);
+                currentNormal = nextNormal;
+                normals.Add(nextNormal);
+            }
+            return normals;
+        }
+
+        /// <summary>
+        /// Parallel transport step according to Hanson and Ma.
+        /// </summary>
+        /// <param name="currentNormal"></param>
+        /// <param name="currentTangent"></param>
+        /// <param name="nextTangent"></param>
+        /// <returns>Normal for next tangent.</returns>
+        private static Vector3 ParallelTransport(Vector3 currentNormal, Vector3 currentTangent, Vector3 nextTangent) {
+            Vector3 nextNormal;
+            Vector3 binormal = Vector3.Cross(currentTangent, nextTangent);
+            if (binormal.magnitude == 0)
+            {
+                nextNormal = currentNormal;
+            }
+            else {
+                binormal.Normalize();
+                float theta = Mathf.Acos(Vector3.Dot(currentTangent, nextTangent));
+                nextNormal = Quaternion.AngleAxis(Mathf.Rad2Deg * theta, binormal) * currentNormal;
+            }
+            return nextNormal;
+        }
+
+        public static List<Vector3> transformPointsParallelTransport(List<Vector3> points, Vector3 position, Vector3 tangent, Vector3 splineNormal, Vector3 scale)
+        {
+
+            Matrix4x4 matrix = Matrix4x4.TRS(position, Quaternion.LookRotation(splineNormal, tangent), scale);
+
+            List<Vector3> pointsTransformed = new List<Vector3>();
+
+            foreach (Vector3 point in points)
+            {
+                pointsTransformed.Add(matrix.MultiplyPoint3x4(point));
+            }
+
+            return pointsTransformed;
+        }
+
+        public static List<Vector3> transformNormalsParallelTransport(List<Vector3> normals, Vector3 tangent, Vector3 splineNormal)
+        {
+
+            Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.LookRotation(splineNormal, tangent), Vector3.one);
+
+            List<Vector3> normalsTransformed = new List<Vector3>();
+
+            foreach (Vector3 normal in normals)
+            {
+                normalsTransformed.Add(matrix.MultiplyVector(normal));
+            }
+
+            return normalsTransformed;
+        }
+
     }
 }
 

@@ -106,5 +106,9 @@ namespace VRSketchingGeometry.Meshing
             lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale / nativeCrossSectionShapeDiameter);
             return lineExtruder.getMesh(interpolatedPoints);
         }
+
+        public Mesh RefineMesh() {
+            return lineExtruder.getMeshParallelTransport(interpolatedPoints);
+        }
     }
 }
