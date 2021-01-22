@@ -53,7 +53,7 @@ namespace VRSketchingGeometry.Meshing
         private Mesh updateMesh(SplineModificationInfo info)
         {
             //Debug.Log(info);
-            Mesh newMesh = lineExtruder.replacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
+            Mesh newMesh = lineExtruder.ReplacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
             return newMesh;
         }
 
@@ -84,7 +84,7 @@ namespace VRSketchingGeometry.Meshing
         public Mesh setControlPoints(Vector3[] controlPoints)
         {
             Spline.setControlPoints(controlPoints);
-            return lineExtruder.getMesh(interpolatedPoints);
+            return lineExtruder.GetMesh(interpolatedPoints);
         }
 
         public int getNumberOfControlPoints()
@@ -104,11 +104,11 @@ namespace VRSketchingGeometry.Meshing
         public Mesh setCrossSectionScale(Vector3 scale)
         {
             lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale / nativeCrossSectionShapeDiameter);
-            return lineExtruder.getMesh(interpolatedPoints);
+            return lineExtruder.GetMesh(interpolatedPoints);
         }
 
         public Mesh RefineMesh() {
-            return lineExtruder.getMeshParallelTransport(interpolatedPoints);
+            return ParallelTransportTubeMesh.GetMesh(interpolatedPoints, crossSectionShape, crossSectionShapeNormals, lineExtruder.CrossSectionScale, true);
         }
     }
 }
