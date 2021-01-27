@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/Assets/ExportedSketches/
+/Assets/ExportedSketches.meta
+/Assets/textures
+/Assets/textures.meta

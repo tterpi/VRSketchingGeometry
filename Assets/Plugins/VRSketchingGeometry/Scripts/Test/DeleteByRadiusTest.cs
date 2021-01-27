@@ -13,6 +13,7 @@ public class DeleteByRadiusTest : MonoBehaviour
     public GameObject selectionPrefab;
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
+    private LineSketchObject lineSketchObject2;
     public GameObject controlPointParent;
     public GameObject deletePoint;
     public float deleteRadius;
@@ -24,6 +25,9 @@ public class DeleteByRadiusTest : MonoBehaviour
     {
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject.setLineDiameter(.5f);
+
+        lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        lineSketchObject2.setLineDiameter(.5f);
     }
 
     IEnumerator changeDiameter() {
@@ -88,8 +92,10 @@ public class DeleteByRadiusTest : MonoBehaviour
 
         foreach (Transform controlPoint in controlPointParent.transform) {
             lineSketchObject.addControlPoint(controlPoint.position);
+            lineSketchObject2.addControlPoint(controlPoint.position);
         }
 
+        lineSketchObject.SetLineCrossSection(SplineMesh.GetCircularCrossSectionVertices(16), SplineMesh.GetCircularCrossSectionVertices(16, 1f), .5f);
         //lineSketchObject.setLineDiameter(.7f);
         StartCoroutine(changeDiameter());
 

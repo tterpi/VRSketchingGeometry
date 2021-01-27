@@ -110,8 +110,26 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 return;
             }
 
-            Mesh smoothMesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter);
-            Mesh linearMesh = LinearSplineMesh.setCrossSectionScale(Vector3.one * diameter);
+            Mesh smoothMesh = SplineMesh.SetCrossSectionScale(Vector3.one * diameter);
+            Mesh linearMesh = LinearSplineMesh.SetCrossSectionScale(Vector3.one * diameter);
+
+            meshFilter.mesh = smoothMesh ?? linearMesh;
+
+            sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
+
+            chooseDisplayMethod();
+        }
+
+        public virtual void SetLineCrossSection(List<Vector3> crossSection, List<Vector3> crossSectionNormals, float diameter) {
+            this.lineDiameter = diameter;
+
+            if (SplineMesh == null || LinearSplineMesh == null)
+            {
+                return;
+            }
+
+            Mesh smoothMesh = SplineMesh.SetCrossSection(crossSection, crossSectionNormals, diameter * Vector3.one);
+            Mesh linearMesh = LinearSplineMesh.SetCrossSection(crossSection, crossSectionNormals, diameter * Vector3.one);
 
             meshFilter.mesh = smoothMesh ?? linearMesh;
 
@@ -174,7 +192,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 {
                     LineSketchObject newLine = Instantiate(this, this.transform.parent);
                     newLine.SetControlPoints(section);
-                    newLine.setLineDiameter(this.lineDiameter);
+                    //newLine.setLineDiameter(this.lineDiameter);
+                    this.SplineMesh.GetCrossSectionShape(out List<Vector3> crossSectionVertices, out List<Vector3> crossSectionNormals);
+
+                    newLine.SetLineCrossSection(crossSectionVertices, crossSectionNormals, this.lineDiameter);
                 }
             }
             else {
@@ -280,6 +301,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 CrossSectionScale = this.lineDiameter
             };
 
+            SplineMesh.GetCrossSectionShape(out data.CrossSectionVertices,out data.CrossSectionNormals);
+
             data.sketchMaterial = new SketchMaterialData(this.meshRenderer.sharedMaterial);
 
             return data;
@@ -289,11 +312,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             this.transform.position = Vector3.zero;
             this.transform.rotation = Quaternion.identity;
+            this.SetLineCrossSection(data.CrossSectionVertices, data.CrossSectionNormals, data.CrossSectionScale);
             this.SetControlPoints(data.ControlPoints);
             this.transform.position = data.Position;
             this.transform.rotation = data.Rotation;
             this.transform.localScale = data.Scale;
-            this.setLineDiameter(data.CrossSectionScale);
 
             this.meshRenderer.material = Defaults.GetMaterial(data.sketchMaterial.Shader);
             data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
@@ -302,9 +325,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public void ApplyData(SerializableComponentData data)
         {
-            if (data is LineSketchObjectData)
+            if (data is LineSketchObjectData lineSketchData)
             {
-                this.ApplyData((LineSketchObjectData)data);
+                this.ApplyData(lineSketchData);
             }
             else {
                 Debug.LogError("Trying to deserialize object as LineSketchObject that is not a LineSketchObjectData object.");

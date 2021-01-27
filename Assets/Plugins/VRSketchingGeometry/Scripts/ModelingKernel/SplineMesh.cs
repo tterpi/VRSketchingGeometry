@@ -34,10 +34,10 @@ namespace VRSketchingGeometry.Meshing
         public SplineMesh(Spline spline) : this(spline, new Vector3(.4f, .4f, .4f))
         {}
 
-        public SplineMesh(Spline spline, Vector3 crossSectionScale)
+        public SplineMesh(Spline spline, Vector3 crossSectionScale, int crossSectionResolution = 6)
         {
-            crossSectionShape = new List<Vector3> { new Vector3(1f, 0f, 0.5f), new Vector3(1f, 0f, -0.5f), new Vector3(0f, 0f, -1f), new Vector3(-1f, 0f, -0.5f), new Vector3(-1f, 0f, 0.5f), new Vector3(0f, 0f, 1f), new Vector3(1f, 0f, 0.5f) };
-            crossSectionShape.Reverse();
+            List<Vector3> vertices = GetCircularCrossSectionVertices(crossSectionResolution);
+            crossSectionShape = vertices;
             crossSectionShapeNormals = new List<Vector3>();
             foreach (Vector3 point in crossSectionShape)
             {
@@ -47,7 +47,8 @@ namespace VRSketchingGeometry.Meshing
             Spline = spline;
             interpolatedPoints = Spline.InterpolatedPoints;
 
-            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, crossSectionScale / nativeCrossSectionShapeDiameter);
+            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, crossSectionScale);
+
         }
 
         private Mesh updateMesh(SplineModificationInfo info)
@@ -98,13 +99,58 @@ namespace VRSketchingGeometry.Meshing
         }
 
         /// <summary>
-        /// At scale 1 the line will have an diameter of 1.
+        /// The diameter of the spline will depend on the native size of the set cross section.
+        /// The default circular cross section has a default diameter of 1.
         /// </summary>
         /// <param name="scale"></param>
-        public Mesh setCrossSectionScale(Vector3 scale)
+        public Mesh SetCrossSectionScale(Vector3 scale)
         {
-            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale / nativeCrossSectionShapeDiameter);
+            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, scale);
             return lineExtruder.GetMesh(interpolatedPoints);
+        }
+
+        /// <summary>
+        /// Get the cross section.
+        /// </summary>
+        /// <param name="crossSectionShape">A copy of the cross section shape is assigned to this variable.</param>
+        /// <param name="crossSectionShapeNormals">A copy of the cross section normals is assigned to this variable.</param>
+        public void GetCrossSectionShape(out List<Vector3> crossSectionShape, out List<Vector3> crossSectionShapeNormals) {
+            crossSectionShape = new List<Vector3>(this.crossSectionShape);
+            crossSectionShapeNormals = new List<Vector3>(this.crossSectionShapeNormals);
+        }
+
+        /// <summary>
+        /// Change the cross section of the mesh. This will regenerete the mesh.
+        /// </summary>
+        /// <param name="crossSectionShape"></param>
+        /// <param name="crossSectionNormals"></param>
+        /// <param name="crossSectionDiameter">The requested diameter of the cross section.</param>
+        /// <returns></returns>
+        public Mesh SetCrossSection(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionDiameter) {
+            this.crossSectionShape = crossSectionShape;
+            this.crossSectionShapeNormals = crossSectionNormals;
+            lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, crossSectionDiameter);
+            return lineExtruder.GetMesh(interpolatedPoints);
+        }
+
+        /// <summary>
+        /// Get vertices that approximate a circle.
+        /// The cross section will have resolution + 1 vertices.
+        /// </summary>
+        /// <param name="resolution">Number of vertices of the circle.</param>
+        /// <param name="scale">Radius of the cross section.</param>
+        /// <returns></returns>
+        public static List<Vector3> GetCircularCrossSectionVertices(int resolution, float scale = .5f) {
+            List<Vector3> vertices = new List<Vector3>();
+            for (int i = 0; i < resolution; i++)
+            {
+                float angle = (float)i / resolution * 2*Mathf.PI;
+                Vector3 vertex = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle)) * scale;
+                vertices.Add(vertex);
+            }
+            //duplicate first vertex as last vertex
+            vertices.Add(vertices[0]);
+            return vertices;
         }
 
         public Mesh RefineMesh() {

@@ -4,6 +4,7 @@ using UnityEngine;
 using VRSketchingGeometry;
 using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Serialization;
+using VRSketchingGeometry.Meshing;
 
 public class LineSketchObjectTest : MonoBehaviour
 {
@@ -118,6 +119,7 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
         lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
         lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = twoSidedMaterial;
+        lineSketchObject.SetLineCrossSection(SplineMesh.GetCircularCrossSectionVertices(4), SplineMesh.GetCircularCrossSectionVertices(4,1f), .4f);
 
         //lineSketchObject.setLineDiameter(.7f);
         //StartCoroutine(changeDiameter());

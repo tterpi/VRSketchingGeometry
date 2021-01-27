@@ -28,7 +28,23 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             if (SplineMesh == null) return;
 
-            meshFilter.mesh = SplineMesh.setCrossSectionScale(Vector3.one * diameter);
+            meshFilter.mesh = SplineMesh.SetCrossSectionScale(Vector3.one * diameter);
+
+            sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
+
+            chooseDisplayMethod();
+        }
+
+        public override void SetLineCrossSection(List<Vector3> crossSection, List<Vector3> crossSectionNormals, float diameter)
+        {
+            this.lineDiameter = diameter;
+
+            if (SplineMesh == null)
+            {
+                return;
+            }
+
+            meshFilter.mesh = SplineMesh.SetCrossSection(crossSection, crossSectionNormals, diameter * Vector3.one);
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
