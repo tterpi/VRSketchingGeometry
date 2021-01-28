@@ -12,7 +12,7 @@ namespace VRSketchingGeometry.Serialization
             //string path = System.IO.Path.Combine(Application.dataPath, "test_sketch.xml");
             Debug.Log("Serializing object of type " + objectToSerialize.GetType() + " to file at:\n" + path);
             // Serialize the object to a file.
-            var writer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+            var writer = new System.Xml.Serialization.XmlSerializer(typeof(T), "https://github.com/tterpi/VRSketchingGeometry");
             var wfile = new System.IO.StreamWriter(path);
             writer.Serialize(wfile, objectToSerialize);
             wfile.Close();
@@ -20,7 +20,7 @@ namespace VRSketchingGeometry.Serialization
 
         public static void DeserializeFromXmlFile<T>(out T targetObject, String path) {
             System.Xml.Serialization.XmlSerializer reader =
-                new System.Xml.Serialization.XmlSerializer(typeof(T));
+                new System.Xml.Serialization.XmlSerializer(typeof(T), "https://github.com/tterpi/VRSketchingGeometry");
             System.IO.StreamReader file = new System.IO.StreamReader(
                 path);
             T deserializedObject = (T) reader.Deserialize(file);

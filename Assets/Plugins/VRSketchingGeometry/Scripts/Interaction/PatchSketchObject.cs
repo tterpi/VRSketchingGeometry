@@ -111,7 +111,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 Height = this.Height,
                 ResolutionWidth = this.ResolutionWidth,
                 ResolutionHeight = this.ResolutionHeight,
-                Material = new SketchMaterialData(meshRenderer.material),
+                SketchMaterial = new SketchMaterialData(meshRenderer.material),
 
                 Position = this.transform.position,
                 Rotation = this.transform.rotation,
@@ -133,8 +133,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
                 SetControlPoints(patchData.ControlPoints, patchData.Width, patchData.Height);
 
-                meshRenderer.material = Defaults.GetMaterial(patchData.Material.Shader);
-                patchData.Material.ApplyMaterialProperties(meshRenderer.material, Defaults.DefaultTextureDirectory);
+                meshRenderer.material = Defaults.GetMaterial(patchData.SketchMaterial.Shader);
+                patchData.SketchMaterial.ApplyMaterialProperties(meshRenderer.material, Defaults.DefaultTextureDirectory);
                 originalMaterial = meshRenderer.sharedMaterial;
 
                 transform.position = patchData.Position;

@@ -14,6 +14,6 @@ namespace VRSketchingGeometry.Serialization
         public int ResolutionWidth;
         public int ResolutionHeight;
         public List<Vector3> ControlPoints;
-        public SketchMaterialData Material;
+        public SketchMaterialData SketchMaterial;
     }
 }

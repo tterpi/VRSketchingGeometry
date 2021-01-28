@@ -75,7 +75,7 @@ public class DeleteByRadiusTest : MonoBehaviour
             (lineSketchObject.GetData());
         Serializer.DeserializeFromXmlFile(out LineSketchObjectData readData, System.IO.Path.Combine(Application.dataPath, "TestSerialization.xml"));
         LineSketchObject deserLine = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-        readData.sketchMaterial.AlbedoColor = Color.red;
+        readData.SketchMaterial.AlbedoColor = Color.red;
         deserLine.ApplyData(readData);
 
         deserLine.transform.position += new Vector3(0,2,0);

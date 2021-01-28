@@ -303,7 +303,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             SplineMesh.GetCrossSectionShape(out data.CrossSectionVertices,out data.CrossSectionNormals);
 
-            data.sketchMaterial = new SketchMaterialData(this.meshRenderer.sharedMaterial);
+            data.SketchMaterial = new SketchMaterialData(this.meshRenderer.sharedMaterial);
 
             return data;
         }
@@ -318,8 +318,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.rotation = data.Rotation;
             this.transform.localScale = data.Scale;
 
-            this.meshRenderer.material = Defaults.GetMaterial(data.sketchMaterial.Shader);
-            data.sketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
+            this.meshRenderer.material = Defaults.GetMaterial(data.SketchMaterial.Shader);
+            data.SketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
             originalMaterial = this.meshRenderer.sharedMaterial;
         }
 
