@@ -133,8 +133,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
                 SetControlPoints(patchData.ControlPoints, patchData.Width, patchData.Height);
 
-                meshRenderer.material = Defaults.GetMaterial(patchData.SketchMaterial.Shader);
-                patchData.SketchMaterial.ApplyMaterialProperties(meshRenderer.material, Defaults.DefaultTextureDirectory);
+                meshRenderer.material = Defaults.GetMaterialFromDictionary(patchData.SketchMaterial);
+
                 originalMaterial = meshRenderer.sharedMaterial;
 
                 transform.position = patchData.Position;

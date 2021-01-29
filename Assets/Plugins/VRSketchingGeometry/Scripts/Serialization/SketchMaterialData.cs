@@ -3,7 +3,7 @@
 namespace VRSketchingGeometry.Serialization
 {
 
-    public class SketchMaterialData
+    public class SketchMaterialData : System.IEquatable<SketchMaterialData>
     {
         public enum ShaderType
         {
@@ -91,6 +91,52 @@ namespace VRSketchingGeometry.Serialization
                 return null;
             }
             return tex;
+        }
+
+        public override int GetHashCode()
+        {
+            return 
+                (Shader, 
+                AlbedoColor, 
+                MetallicValue, 
+                SmoothnessValue, 
+                AlbedoMapName, 
+                MetallicMapName, 
+                NormalMapName, 
+                DisplacementMapName, 
+                UVTiling)
+                .GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is SketchMaterialData data)
+            {
+                if (this.Shader == data.Shader &&
+                    this.AlbedoColor == data.AlbedoColor &&
+                    this.MetallicValue == data.MetallicValue &&
+                    this.SmoothnessValue == data.SmoothnessValue &&
+                    this.AlbedoMapName == data.AlbedoMapName &&
+                    this.MetallicMapName == data.MetallicMapName &&
+                    this.NormalMapName == data.NormalMapName &&
+                    this.DisplacementMapName == data.DisplacementMapName &&
+                    this.UVTiling == data.UVTiling
+                    )
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+
+        public bool Equals(SketchMaterialData other)
+        {
+            return this.Equals(other as object);
         }
     }
 }

@@ -118,7 +118,8 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject.addControlPoint(Vector3.one);
         lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
         lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
-        lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = twoSidedMaterial;
+        //lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = twoSidedMaterial;
+        lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
         lineSketchObject.SetLineCrossSection(SplineMesh.GetCircularCrossSectionVertices(4), SplineMesh.GetCircularCrossSectionVertices(4,1f), .4f);
 
         //lineSketchObject.setLineDiameter(.7f);

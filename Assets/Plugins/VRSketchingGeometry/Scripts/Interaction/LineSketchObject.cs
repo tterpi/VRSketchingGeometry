@@ -318,8 +318,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.rotation = data.Rotation;
             this.transform.localScale = data.Scale;
 
-            this.meshRenderer.material = Defaults.GetMaterial(data.SketchMaterial.Shader);
-            data.SketchMaterial.ApplyMaterialProperties(this.meshRenderer.material, Defaults.DefaultTextureDirectory);
+            this.meshRenderer.material = Defaults.GetMaterialFromDictionary(data.SketchMaterial);
+
             originalMaterial = this.meshRenderer.sharedMaterial;
         }
 

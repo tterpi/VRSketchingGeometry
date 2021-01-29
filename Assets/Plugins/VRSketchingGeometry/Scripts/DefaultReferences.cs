@@ -21,6 +21,8 @@ namespace VRSketchingGeometry
 
         public string DefaultTextureDirectory;
 
+        private Dictionary<SketchMaterialData, Material> MaterialsDict = new Dictionary<SketchMaterialData, Material>();
+
         private void OnEnable()
         {
             DefaultTextureDirectory = System.IO.Path.Combine(Application.dataPath, "textures");
@@ -37,6 +39,19 @@ namespace VRSketchingGeometry
                 default:
                     Debug.LogError("ShaderType is unknown!");
                     return null;
+            }
+        }
+
+        public Material GetMaterialFromDictionary(SketchMaterialData sketchMaterialData) {
+            if (MaterialsDict.ContainsKey(sketchMaterialData))
+            {
+                return MaterialsDict[sketchMaterialData];
+            }
+            else {
+                Material material = GetMaterial(sketchMaterialData.Shader);
+                sketchMaterialData.ApplyMaterialProperties(material, DefaultTextureDirectory);
+                MaterialsDict.Add(sketchMaterialData, material);
+                return material;
             }
         }
     }
