@@ -5,19 +5,13 @@ using VRSketchingGeometry.Splines;
 
 namespace VRSketchingGeometry.Serialization
 {
-    public class LineSketchObjectData : SketchObjectData
+    public class RibbonSketchObjectData : SketchObjectData
     {
-        public enum InterpolationType
-        {
-            Linear,
-            Cubic
-        }
-
-        public InterpolationType Interpolation;
         public List<Vector3> ControlPoints;
+        public List<Quaternion> ControlPointOrientations;
         public List<Vector3> CrossSectionVertices;
         public List<Vector3> CrossSectionNormals;
-        public float CrossSectionScale = 1.0f;
+        public Vector3 CrossSectionScale = Vector3.one;
         public SketchMaterialData SketchMaterial;
     }
 }
