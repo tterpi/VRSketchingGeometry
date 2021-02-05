@@ -13,6 +13,7 @@ public class LineSketchObjectTest : MonoBehaviour
     private LineSketchObject lineSketchObject;
     private LineSketchObject lineSketchObject2;
     private PatchSketchObject patchSketchObject;
+    private RibbonSketchObject ribbonSketchObject;
 
     public DefaultReferences defaults;
 
@@ -21,6 +22,8 @@ public class LineSketchObjectTest : MonoBehaviour
 
     public Material ropeMaterial;
     public Material twoSidedMaterial;
+
+    public GameObject ControlPointParent;
 
     private bool ranOnce = false;
 
@@ -32,6 +35,7 @@ public class LineSketchObjectTest : MonoBehaviour
         //lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject2 = Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<LineSketchObject>();
         patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
+        ribbonSketchObject = Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
     }
 
     IEnumerator changeDiameter() {
@@ -137,7 +141,9 @@ public class LineSketchObjectTest : MonoBehaviour
         patchSketchObject.AddPatchSegment(new List<Vector3> { new Vector3(0, 0, 1), new Vector3(1, 2, 1), new Vector3(2, 0, 1) });
         patchSketchObject.AddPatchSegment(new List<Vector3> { new Vector3(0, 0, 2), new Vector3(1, 0, 2), new Vector3(2, 0, 2) });
 
-
+        (List<Vector3> points, List<Quaternion> rotations) = RibbonTest.GetPointTransformation(ControlPointParent);
+        ribbonSketchObject.SetControlPoints(points, rotations);
+        SketchWorld.AddObject(ribbonSketchObject.gameObject);
 
         //lineSketchObject2.minimumControlPointDistance = 2f;
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));

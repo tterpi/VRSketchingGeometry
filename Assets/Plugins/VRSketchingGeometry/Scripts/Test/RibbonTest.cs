@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.Meshing;
+using VRSketchingGeometry.SketchObjectManagement;
 
 public class RibbonTest : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class RibbonTest : MonoBehaviour
     public GameObject ControlPointParent;
 
     private RibbonMesh ribbonMesh;
+
+    public GameObject RibbonPrefab;
+    private RibbonSketchObject RibbonSketchObject;
 
     private void generateRibbon() {
         List<Vector3> points = new List<Vector3>();
@@ -59,11 +63,36 @@ public class RibbonTest : MonoBehaviour
         StartCoroutine(addPointCoroutine());
     }
 
+    public void addPointRibbonSketchObject()
+    {
+        RibbonSketchObject.AddControlPointContinuous(pointerObject.transform.position, pointerObject.transform.rotation);
+    }
+
+    public static (List<Vector3>, List<Quaternion>) GetPointTransformation(GameObject parent) {
+        List<Vector3> points = new List<Vector3>();
+        List<Quaternion> rotations = new List<Quaternion>();
+        foreach (Transform controlPoint in parent.transform)
+        {
+            points.Add(controlPoint.position);
+            rotations.Add(controlPoint.rotation);
+        }
+
+        return (points, rotations);
+    }
+
+    private void RibbonSketchObjectTest() {
+        (List<Vector3> thePoints, List<Quaternion> theRotations) = GetPointTransformation(ControlPointParent);
+        RibbonSketchObject.SetControlPoints(thePoints, theRotations);
+        RibbonSketchObject.DeleteControlPoint();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        ribbonMesh = new RibbonMesh(Vector3.one * .5f);
-        StartCoroutine(addPointCoroutine());
+        RibbonSketchObject = Instantiate(RibbonPrefab).GetComponent<RibbonSketchObject>();
+        //RibbonSketchObjectTest();
+        //ribbonMesh = new RibbonMesh(Vector3.one * .5f);
+        //StartCoroutine(addPointCoroutine());
         //setPointsToRibbon();
         //addPointsToRibbon();
 
@@ -73,5 +102,6 @@ public class RibbonTest : MonoBehaviour
     void Update()
     {
         //generateRibbon();
+        addPointRibbonSketchObject();
     }
 }

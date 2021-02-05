@@ -20,8 +20,9 @@ namespace VRSketchingGeometry.SketchObjectManagement{
 
         private RibbonMesh RibbonMesh;
 
-        private List<Vector3> Points;
-        private List<Quaternion> Rotations;
+        private List<Vector3> Points = new List<Vector3>();
+        private List<Quaternion> Rotations = new List<Quaternion>();
+        public float MinimumControlPointDistance = .02f;
 
         protected override void Awake()
         {
@@ -50,6 +51,23 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             Rotations.Add(rotation);
             Mesh mesh = RibbonMesh.AddPoint(point, rotation);
             UpdateMesh(mesh);
+        }
+
+        /// <summary>
+        /// Adds a control point to the spline if it is far enough away from the previous control point.
+        /// The distance is controlled by minimumControlPointDistance.
+        /// </summary>
+        /// <param name="point"></param>
+        public void AddControlPointContinuous(Vector3 point, Quaternion rotation)
+        {
+            //Check that new control point is far enough away from previous control point
+            if (
+                Points.Count == 0 ||
+                (transform.InverseTransformPoint(point) - Points[Points.Count -1]).magnitude > MinimumControlPointDistance
+               )
+            {
+                AddControlPoint(point, rotation);
+            }
         }
 
         public void AddControlPoints(List<Vector3> points, List<Quaternion> rotations) {

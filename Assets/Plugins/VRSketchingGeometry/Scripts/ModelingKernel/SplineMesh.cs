@@ -27,7 +27,6 @@ namespace VRSketchingGeometry.Meshing
 
         private List<Vector3> crossSectionShape;
         private List<Vector3> crossSectionShapeNormals;
-        private float nativeCrossSectionShapeDiameter = 2f;
 
         public Mesh Mesh { get => mesh; private set => mesh = value; }
 

@@ -18,6 +18,7 @@ namespace VRSketchingGeometry
         public GameObject SketchObjectGroupPrefab;
         public GameObject SketchObjectSelectionPrefab;
         public GameObject PatchSketchObjectPrefab;
+        public GameObject RibbonSketchObjectPrefab;
 
         public string DefaultTextureDirectory;
 

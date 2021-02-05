@@ -145,12 +145,17 @@ namespace VRSketchingGeometry.SketchObjectManagement {
                         addToGroup(sketchObject);
                     }
                 }
-                else if (sketchObjectData is PatchSketchObjectData patchData) {
+                else if (sketchObjectData is PatchSketchObjectData patchData)
+                {
                     PatchSketchObject patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
                     patchSketchObject.ApplyData(patchData);
                     addToGroup(patchSketchObject);
                 }
-                //Todo: Handle other types of SketchObjects
+                else if (sketchObjectData is RibbonSketchObjectData ribbonData) {
+                    RibbonSketchObject ribbonSketchObject = Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
+                    ribbonSketchObject.ApplyData(ribbonData);
+                    addToGroup(ribbonSketchObject);
+                }
             }
 
             foreach (SketchObjectGroupData groupData in data.SketchObjectGroups) {

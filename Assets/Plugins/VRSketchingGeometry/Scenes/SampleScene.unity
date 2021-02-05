@@ -1515,6 +1515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointerObject: {fileID: 1815539598}
   ControlPointParent: {fileID: 1063458402}
+  RibbonPrefab: {fileID: 349737115531584894, guid: 58fc0e4001c274e4a9909bece435b440,
+    type: 3}
 --- !u!23 &1063458404
 MeshRenderer:
   m_ObjectHideFlags: 0
