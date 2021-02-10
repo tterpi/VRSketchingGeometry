@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Commands;
+using VRSketchingGeometry.Commands.Line;
 
 public class CommandsTest : MonoBehaviour
 {

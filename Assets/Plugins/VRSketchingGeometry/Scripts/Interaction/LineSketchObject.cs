@@ -153,7 +153,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="point">Point in world space.</param>
         /// <param name="radius">Radius in world space.</param>
-        public void DeleteControlPoints(Vector3 point, float radius) {
+        /// <returns>List of new line sketch objects that were created for the deletion.</returns>
+        public List<LineSketchObject> DeleteControlPoints(Vector3 point, float radius) {
             List<List<Vector3>> contiguousSections = new List<List<Vector3>>();
             List<Vector3> contiguousSection = new List<Vector3>();
 
@@ -175,12 +176,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 contiguousSections.Add(contiguousSection);
             }
 
+            List<LineSketchObject> newLines = new List<LineSketchObject>();
+
             //create lines from the sections
             if (contiguousSections.Count > 0)
             {
                 if (contiguousSections.Count == 1 && contiguousSections[0].Count == this.getNumberOfControlPoints()) {
                     //if this is the case, no control points were deleted and the line stays unchanged
-                    return;
+                    return newLines;
                 }
 
                 //this line becomes the first section
@@ -196,6 +199,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                     this.SplineMesh.GetCrossSectionShape(out List<Vector3> crossSectionVertices, out List<Vector3> crossSectionNormals);
 
                     newLine.SetLineCrossSection(crossSectionVertices, crossSectionNormals, this.lineDiameter);
+                    newLines.Add(newLine);
                 }
             }
             else {
@@ -208,6 +212,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
             }
 
+            return newLines;
         }
 
         /// <summary>

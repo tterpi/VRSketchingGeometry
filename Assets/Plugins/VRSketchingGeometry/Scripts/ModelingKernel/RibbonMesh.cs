@@ -170,7 +170,9 @@ namespace VRSketchingGeometry.Meshing
         /// </summary>
         /// <returns></returns>
         public Mesh DeletePoint() {
-            Vertices.RemoveAt(Vertices.Count - 1);
+            if (Vertices.Count <= CrossSection.Count) return null;
+
+            Vertices.RemoveRange(Vertices.Count - CrossSection.Count, CrossSection.Count);
             return GetMeshFromVertices(Vertices, CrossSection.Count);
         }
 

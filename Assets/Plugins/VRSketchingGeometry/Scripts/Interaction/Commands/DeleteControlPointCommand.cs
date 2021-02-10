@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 
-namespace VRSketchingGeometry.Commands
+namespace VRSketchingGeometry.Commands.Line
 {
     /// <summary>
     /// Delete control point at the end of spline.
