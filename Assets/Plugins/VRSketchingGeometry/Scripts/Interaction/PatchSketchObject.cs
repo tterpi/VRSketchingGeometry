@@ -48,7 +48,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
             else
             {
-                Debug.LogError("Width and Height have to be at least 3.");
+                Debug.LogWarning("Width and Height of patch control points have to be at least 3.");
             }
         }
 
@@ -98,15 +98,32 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Returns a copy of the control points in local space.
         /// </summary>
         /// <returns></returns>
-        public List<Vector3> getControlPoints() {
+        public List<Vector3> GetControlPoints() {
             return new List<Vector3>(ControlPoints);
+        }
+
+        /// <summary>
+        /// Get a segment of control points of length Width.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public List<Vector3> GetSegment(int index) {
+            return ControlPoints.GetRange(index * Width, Width);
+        }
+
+        /// <summary>
+        /// Get the last segment of control points of length width.
+        /// </summary>
+        /// <returns></returns>
+        public List<Vector3> GetLastSegment() {
+            return GetSegment(ControlPoints.Count/Width -1);
         }
 
         public SerializableComponentData GetData()
         {
             PatchSketchObjectData data = new PatchSketchObjectData
             {
-                ControlPoints = this.getControlPoints(),
+                ControlPoints = this.GetControlPoints(),
                 Width = this.Width,
                 Height = this.Height,
                 ResolutionWidth = this.ResolutionWidth,

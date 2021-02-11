@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79371292d6123424d931f7f44e4376f0, type: 3}
-  m_Name: SerializationDefaultValues
+  m_Name: DefaultReferences
   m_EditorClassIdentifier: 
   StandardSketchMaterial: {fileID: 2100000, guid: df5e34890b5dfef40a23e7ad5019312c,
     type: 2}
