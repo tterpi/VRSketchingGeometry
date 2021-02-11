@@ -17,9 +17,10 @@ namespace VRSketchingGeometry.Commands.Patch {
             this.NewSegment = newSegment;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             this.PatchSketchObject.AddPatchSegment(NewSegment);
+            return true;
         }
 
         public void Redo()

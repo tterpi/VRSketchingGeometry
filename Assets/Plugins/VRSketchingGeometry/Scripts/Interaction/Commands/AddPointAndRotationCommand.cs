@@ -22,9 +22,10 @@ namespace VRSketchingGeometry.Commands.Ribbon {
             Rotation = rotation;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             this.RibbonSketchObject.AddControlPoint(Point, Rotation);
+            return true;
         }
 
         public void Redo()

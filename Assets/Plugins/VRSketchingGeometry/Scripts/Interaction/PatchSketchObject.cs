@@ -16,6 +16,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         public int ResolutionWidth = 4;
         public int ResolutionHeight = 4;
 
+        public float MinimumDistanceToLastSegment = .05f;
+
         private List<Vector3> ControlPoints = new List<Vector3>();
 
         /// <summary>
@@ -82,6 +84,33 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.ControlPoints.AddRange(newControlPoints.Select( ct => this.transform.InverseTransformPoint(ct)));
             Height++;
             UpdatePatchMesh();
+        }
+
+        public bool AddPatchSegmentContinuous(List<Vector3> newControlPoints) {
+            if (newControlPoints.Count != Width) return false;
+
+            bool distanceExceeded = true;
+
+            List<Vector3> lastSegment = this.GetLastSegment();
+
+            for (int i = 0; i < lastSegment.Count; i++)
+            {
+                if ((lastSegment[i] - newControlPoints[i]).magnitude < MinimumDistanceToLastSegment)
+                {
+                    distanceExceeded = false;
+                }
+            }
+
+
+            if (distanceExceeded)
+            {
+                this.AddPatchSegment(newControlPoints);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

@@ -11,10 +11,21 @@ namespace VRSketchingGeometry.Commands{
         private Stack<ICommand> undoStack = new Stack<ICommand>();
         private Stack<ICommand> redoStack = new Stack<ICommand>();
 
-        public void ExecuteCommand(ICommand command) {
-            command.Execute();
-            undoStack.Push(command);
-            redoStack.Clear();
+        /// <summary>
+        /// Execute a command and add it to the undo redo system.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns>False if the command was discarded because it was not executed successfully.</returns>
+        public bool ExecuteCommand(ICommand command) {
+            if (command.Execute())
+            {
+                undoStack.Push(command);
+                redoStack.Clear();
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         public void Undo() {

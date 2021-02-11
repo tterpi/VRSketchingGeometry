@@ -43,10 +43,10 @@ namespace VRSketchingGeometry.Commands.Line
             this.OriginalLineSketchObject = lineSketchObject;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             this.OriginalControlPoints = OriginalLineSketchObject.getControlPoints();
-            NewLines = OriginalLineSketchObject.DeleteControlPoints(Point, Radius);
+            bool didDelete = OriginalLineSketchObject.DeleteControlPoints(Point, Radius, out NewLines);
             if (OriginalLineSketchObject.gameObject.activeInHierarchy)
             {
                 NewControlPoints = OriginalLineSketchObject.getControlPoints();
@@ -54,6 +54,7 @@ namespace VRSketchingGeometry.Commands.Line
             else {
                 NewControlPoints = null;
             }
+            return didDelete;
         }
 
         public void Redo()

@@ -7,24 +7,19 @@ namespace VRSketchingGeometry.Commands.Patch {
     /// <summary>
     /// Add control point at the end of spline.
     /// </summary>
-    public class DeleteSegmentCommand : ICommand
+    public class AddSegmentContinuousCommand : ICommand
     {
         private PatchSketchObject PatchSketchObject;
-        private List<Vector3> OldSegment;
+        private List<Vector3> NewSegment;
 
-        /// <summary>
-        /// Delete the last segment of the patch sketch object.
-        /// </summary>
-        /// <param name="patchSketchObject"></param>
-        public DeleteSegmentCommand(PatchSketchObject patchSketchObject) {
+        public AddSegmentContinuousCommand(PatchSketchObject patchSketchObject, List<Vector3> newSegment) {
             this.PatchSketchObject = patchSketchObject;
+            this.NewSegment = newSegment;
         }
 
         public bool Execute()
         {
-            OldSegment = this.PatchSketchObject.GetLastSegment();
-            this.PatchSketchObject.RemovePatchSegment();
-            return true;
+            return this.PatchSketchObject.AddPatchSegmentContinuous(NewSegment);
         }
 
         public void Redo()
@@ -34,7 +29,7 @@ namespace VRSketchingGeometry.Commands.Patch {
 
         public void Undo()
         {
-            this.PatchSketchObject.AddPatchSegment(OldSegment);
+            this.PatchSketchObject.RemovePatchSegment();
         }
     }
 }

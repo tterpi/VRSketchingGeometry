@@ -4,26 +4,27 @@ using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Commands.Ribbon {
-    public class DeletePointAndRotationCommand : ICommand
+    public class AddPointAndRotationContinuousCommand : ICommand
     {
         private RibbonSketchObject RibbonSketchObject;
         private Vector3 Point;
         private Quaternion Rotation;
 
         /// <summary>
-        /// Create a command that represents deleting the last control point at the end of a ribbon sketch object.
+        /// Create a command that represents adding a new control point to the end of a ribbon sketch object.
         /// </summary>
         /// <param name="ribbonSketchObject">The ribbon to add the control point to.</param>
-        public DeletePointAndRotationCommand(RibbonSketchObject ribbonSketchObject) {
+        /// <param name="point">The point to add.</param>
+        /// <param name="rotation">The rotation of the cross section at this point.</param>
+        public AddPointAndRotationContinuousCommand(RibbonSketchObject ribbonSketchObject, Vector3 point, Quaternion rotation) {
             this.RibbonSketchObject = ribbonSketchObject;
-            Point = ribbonSketchObject.Points[ribbonSketchObject.Points.Count-1];
-            Rotation = ribbonSketchObject.Rotations[ribbonSketchObject.Rotations.Count - 1];
+            Point = point;
+            Rotation = rotation;
         }
 
         public bool Execute()
         {
-            this.RibbonSketchObject.DeleteControlPoint();
-            return true;
+            return this.RibbonSketchObject.AddControlPointContinuous(Point, Rotation);
         }
 
         public void Redo()
@@ -33,7 +34,7 @@ namespace VRSketchingGeometry.Commands.Ribbon {
 
         public void Undo()
         {
-            this.RibbonSketchObject.AddControlPoint(Point, Rotation);
+            this.RibbonSketchObject.DeleteControlPoint();
         }
     }
 }

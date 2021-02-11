@@ -18,10 +18,11 @@ namespace VRSketchingGeometry.Commands.Line
             this.LineSketchObject = lineSketchObject;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             this.OldControlPoint = LineSketchObject.getControlPoints()[LineSketchObject.getNumberOfControlPoints() - 1];
             LineSketchObject.deleteControlPoint();
+            return true;
         }
 
         public void Redo()

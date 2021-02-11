@@ -61,7 +61,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         /// The distance is controlled by minimumControlPointDistance.
         /// </summary>
         /// <param name="point"></param>
-        public void AddControlPointContinuous(Vector3 point, Quaternion rotation)
+        public bool AddControlPointContinuous(Vector3 point, Quaternion rotation)
         {
             //Check that new control point is far enough away from previous control point
             if (
@@ -70,6 +70,11 @@ namespace VRSketchingGeometry.SketchObjectManagement{
                )
             {
                 AddControlPoint(point, rotation);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

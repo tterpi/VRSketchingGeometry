@@ -17,9 +17,10 @@ namespace VRSketchingGeometry.Commands.Line {
             this.NewControlPoint = controlPoint;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             LineSketchObject.addControlPoint(NewControlPoint);
+            return true;
         }
 
         public void Redo()

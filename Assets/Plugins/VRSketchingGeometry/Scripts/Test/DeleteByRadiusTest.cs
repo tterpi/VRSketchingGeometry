@@ -32,7 +32,7 @@ public class DeleteByRadiusTest : MonoBehaviour
 
     IEnumerator changeDiameter() {
         yield return new WaitForSeconds(5);
-        lineSketchObject.DeleteControlPoints(deletePoint.transform.position, deleteRadius);
+        lineSketchObject.DeleteControlPoints(deletePoint.transform.position, deleteRadius, out List<LineSketchObject> newLines);
         OBJExporter exporter = new OBJExporter();
         string exportPath = OBJExporter.GetDefaultExportPath();
         //exporter.ExportGameObject(lineSketchObject.gameObject, exportPath);

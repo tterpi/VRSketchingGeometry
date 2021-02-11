@@ -19,9 +19,10 @@ namespace VRSketchingGeometry.Commands
             this.SketchWorld = sketchWorld;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             SketchWorld.AddObject(this.SketchObject.gameObject);
+            return true;
         }
 
         public void Redo()

@@ -85,7 +85,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// The distance is controlled by minimumControlPointDistance.
         /// </summary>
         /// <param name="point"></param>
-        public void addControlPointContinuous(Vector3 point)
+        /// <returns>True if the control point was added.</returns>
+        public bool addControlPointContinuous(Vector3 point)
         {
             //Check that new control point is far enough away from previous control point
             if (
@@ -94,6 +95,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
                )
             {
                 addControlPoint(point);
+                return true;
+            }
+            else {
+                return false;
             }
         }
 
@@ -153,8 +158,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="point">Point in world space.</param>
         /// <param name="radius">Radius in world space.</param>
-        /// <returns>List of new line sketch objects that were created for the deletion.</returns>
-        public List<LineSketchObject> DeleteControlPoints(Vector3 point, float radius) {
+        /// <param name="newLineSketchObjects">List of new line sketch objects that were created for the deletion.</param>
+        /// <returns>Returns true if at least one control point was deleted, false otherwise.</returns>
+        public bool DeleteControlPoints(Vector3 point, float radius, out List<LineSketchObject> newLineSketchObjects) {
             List<List<Vector3>> contiguousSections = new List<List<Vector3>>();
             List<Vector3> contiguousSection = new List<Vector3>();
 
@@ -176,14 +182,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 contiguousSections.Add(contiguousSection);
             }
 
-            List<LineSketchObject> newLines = new List<LineSketchObject>();
+            newLineSketchObjects = new List<LineSketchObject>();
 
             //create lines from the sections
             if (contiguousSections.Count > 0)
             {
                 if (contiguousSections.Count == 1 && contiguousSections[0].Count == this.getNumberOfControlPoints()) {
                     //if this is the case, no control points were deleted and the line stays unchanged
-                    return newLines;
+                    return false;
                 }
 
                 //this line becomes the first section
@@ -199,7 +205,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                     this.SplineMesh.GetCrossSectionShape(out List<Vector3> crossSectionVertices, out List<Vector3> crossSectionNormals);
 
                     newLine.SetLineCrossSection(crossSectionVertices, crossSectionNormals, this.lineDiameter);
-                    newLines.Add(newLine);
+                    newLineSketchObjects.Add(newLine);
                 }
             }
             else {
@@ -212,7 +218,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
             }
 
-            return newLines;
+            return true;
         }
 
         /// <summary>
@@ -231,7 +237,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 line = gameObject.transform.parent.GetComponent<LineSketchObject>();
             }
 
-            line?.DeleteControlPoints(point, radius);
+            line?.DeleteControlPoints(point, radius, out List<LineSketchObject> newLines);
         }
 
         private static bool IsInRadius(Vector3 a, Vector3 b, float radius) {
