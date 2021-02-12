@@ -6,7 +6,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 namespace VRSketchingGeometry.Commands
 {
     /// <summary>
-    /// Delete control point at the end of spline.
+    /// Add a new sketch object to the sketch world.
     /// </summary>
     public class CreateSketchObjectCommand : ICommand
     {

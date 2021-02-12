@@ -6,7 +6,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 namespace VRSketchingGeometry.Commands.Line
 {
     /// <summary>
-    /// Delete control point at the end of spline.
+    /// Delete control points within a sphere volume defined by a point and radius.
     /// </summary>
     public class DeleteControlPointsByRadiusCommand : ICommand
     {

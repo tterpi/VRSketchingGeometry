@@ -9,7 +9,7 @@ using VRSketchingGeometry.Serialization;
 namespace VRSketchingGeometry.SketchObjectManagement
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-    public class PatchSketchObject : SketchObject, ISerializableComponent
+    public class PatchSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
         public int Width = 4;
         public int Height = 0;
@@ -148,6 +148,16 @@ namespace VRSketchingGeometry.SketchObjectManagement
             return GetSegment(ControlPoints.Count/Width -1);
         }
 
+        public Brush GetBrush() {
+            Brush brush = new Brush();
+            brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
+            return brush;
+        }
+
+        public void SetBrush(Brush brush) {
+            meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(brush.SketchMaterial);
+        }
+
         public SerializableComponentData GetData()
         {
             PatchSketchObjectData data = new PatchSketchObjectData
@@ -157,7 +167,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 Height = this.Height,
                 ResolutionWidth = this.ResolutionWidth,
                 ResolutionHeight = this.ResolutionHeight,
-                SketchMaterial = new SketchMaterialData(meshRenderer.material),
+                SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial),
 
                 Position = this.transform.position,
                 Rotation = this.transform.rotation,

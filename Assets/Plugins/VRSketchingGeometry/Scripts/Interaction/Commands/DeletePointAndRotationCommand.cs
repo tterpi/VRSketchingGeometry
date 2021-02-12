@@ -4,6 +4,9 @@ using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Commands.Ribbon {
+    /// <summary>
+    /// Delete the last control point of the ribbon.
+    /// </summary>
     public class DeletePointAndRotationCommand : ICommand
     {
         private RibbonSketchObject RibbonSketchObject;

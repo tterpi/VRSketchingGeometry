@@ -5,7 +5,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Commands.Line {
     /// <summary>
-    /// Add control point at the end of spline.
+    /// Add control point at the end of the spline.
     /// </summary>
     public class AddControlPointCommand : ICommand
     {

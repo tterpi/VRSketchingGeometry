@@ -6,7 +6,7 @@ using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement{
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-    public class RibbonSketchObject : SketchObject, ISerializableComponent
+    public class RibbonSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
         /// <summary>
         /// Mesh filter for the mesh of the ribbon
@@ -95,6 +95,27 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             RibbonMesh = new RibbonMesh(scale);
             Mesh mesh = RibbonMesh.GetMesh(Points, Rotations);
             UpdateMesh(mesh);
+        }
+
+        public void SetCrossSection(List<Vector3> CrossSectionVertices, Vector3 CrossSectionScale) {
+            RibbonMesh = new RibbonMesh(CrossSectionVertices, CrossSectionScale);
+            UpdateMesh(RibbonMesh.GetMesh(Points, Rotations));
+        }
+
+        public void SetBrush(Brush brush) {
+            meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(brush.SketchMaterial);
+            if (brush is RibbonBrush ribbonBrush)
+            {
+                SetCrossSection(ribbonBrush.CrossSectionVertices, ribbonBrush.CrossSectionScale);
+            }
+        }
+
+        public Brush GetBrush() {
+            RibbonBrush brush = new RibbonBrush();
+            brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
+            brush.CrossSectionScale = RibbonMesh.Scale;
+            brush.CrossSectionVertices = RibbonMesh.CrossSection;
+            return brush;
         }
 
         public SerializableComponentData GetData()

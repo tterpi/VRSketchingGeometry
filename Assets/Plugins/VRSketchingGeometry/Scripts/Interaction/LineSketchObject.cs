@@ -17,7 +17,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// Provides methods to interact with a line game object in the scene.
     /// </summary>
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-    public class LineSketchObject : SketchObject, ISerializableComponent
+    public class LineSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
         /// <summary>
         /// The instance of the smoothly interpolated Catmul-Rom spline mesh
@@ -301,6 +301,27 @@ namespace VRSketchingGeometry.SketchObjectManagement
             chooseDisplayMethod();
         }
 
+        private void SetMaterial(Material material) {
+            this.meshRenderer.sharedMaterial = material;
+            this.sphereObject.GetComponent<MeshRenderer>().sharedMaterial = material;
+        }
+
+        public Brush GetBrush() {
+            LineBrush brush = new LineBrush();
+            brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
+            brush.CrossSectionScale = this.lineDiameter;
+            SplineMesh.GetCrossSectionShape(out brush.CrossSectionVertices, out brush.CrossSectionNormals);
+            return brush;
+        }
+
+        public void SetBrush(Brush brush) {
+            this.SetMaterial(Defaults.GetMaterialFromDictionary(brush.SketchMaterial));
+            if (brush is LineBrush lineBrush)
+            {
+                this.SetLineCrossSection(lineBrush.CrossSectionVertices, lineBrush.CrossSectionNormals, lineBrush.CrossSectionScale);
+            }
+        }
+
         public virtual SerializableComponentData GetData() {
             LineSketchObjectData data = new LineSketchObjectData
             {
@@ -329,7 +350,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.rotation = data.Rotation;
             this.transform.localScale = data.Scale;
 
-            this.meshRenderer.material = Defaults.GetMaterialFromDictionary(data.SketchMaterial);
+            this.SetMaterial(Defaults.GetMaterialFromDictionary(data.SketchMaterial));
 
             originalMaterial = this.meshRenderer.sharedMaterial;
         }

@@ -5,7 +5,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Commands.Patch {
     /// <summary>
-    /// Add control point at the end of spline.
+    /// Delete the last segment of the patch.
     /// </summary>
     public class DeleteSegmentCommand : ICommand
     {

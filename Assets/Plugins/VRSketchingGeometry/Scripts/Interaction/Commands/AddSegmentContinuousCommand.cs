@@ -5,7 +5,7 @@ using VRSketchingGeometry.SketchObjectManagement;
 
 namespace VRSketchingGeometry.Commands.Patch {
     /// <summary>
-    /// Add control point at the end of spline.
+    /// Add a segment at the end of the patch if it is at least a minimum distance away form the last segment.
     /// </summary>
     public class AddSegmentContinuousCommand : ICommand
     {
