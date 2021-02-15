@@ -26,79 +26,90 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
+        public List<GameObject> SketchObjectsOfSelection { get => new List<GameObject>(sketchObjectsOfSelection); private set => sketchObjectsOfSelection = value; }
+
         [SerializeField]
         private GameObject boundsVisualizationObject;
 
-        public void addToSelection(SketchObject sketchObject)
+        public void AddToSelection(SketchObject sketchObject)
         {
-            addToSelection(sketchObject.gameObject);
+            AddToSelection(sketchObject.gameObject);
         }
 
-        public void addToSelection(SketchObjectGroup sketchObjectGroup)
+        public void AddToSelection(SketchObjectGroup sketchObjectGroup)
         {
-            addToSelection(sketchObjectGroup.gameObject);
+            AddToSelection(sketchObjectGroup.gameObject);
         }
 
-        private void addToSelection(GameObject gameObject)
+        private void AddToSelection(GameObject gameObject)
         {
-            //gameObject.transform.SetParent(this.transform);
-            sketchObjectsOfSelection.Add(gameObject);
+            SketchObjectsOfSelection.Add(gameObject);
         }
 
-        public void removeFromSelection(SketchObject sketchObject)
+        public void RemoveFromSelection(SketchObject sketchObject)
         {
-            //removeFromSelection(sketchObject.gameObject);
             sketchObject.revertHighlight();
-            sketchObject.transform.SetParent(sketchObject.ParentGroup.transform);
-            removeFromSelection(sketchObject.gameObject);
+            sketchObject.resetToParentGroup();
+            RemoveFromSelection(sketchObject.gameObject);
         }
 
-        public void removeFromSelection(SketchObjectGroup sketchObjectGroup)
+        public void RemoveFromSelection(SketchObjectGroup sketchObjectGroup)
         {
-            //removeFromSelection(sketchObjectGroup.gameObject);
             sketchObjectGroup.BroadcastMessage(nameof(SketchObject.revertHighlight));
-            sketchObjectGroup.transform.SetParent(sketchObjectGroup.ParentGroup.transform);
-            removeFromSelection(sketchObjectGroup.gameObject);
+            sketchObjectGroup.resetToParentGroup();
+            RemoveFromSelection(sketchObjectGroup.gameObject);
         }
 
-        private void removeFromSelection(GameObject gameObject) {
-            sketchObjectsOfSelection.Remove(gameObject);
+        private void RemoveFromSelection(GameObject gameObject) {
+            SketchObjectsOfSelection.Remove(gameObject);
         }
 
-        public void removeAllFromSelection() {
-            deactivate();
-            sketchObjectsOfSelection.Clear();
+        /// <summary>
+        /// Deactivate selection and clear the added objects.
+        /// </summary>
+        public void RemoveAllFromSelection() {
+            Deactivate();
+            SketchObjectsOfSelection.Clear();
         }
 
-        public void deleteObjectsOfSelection()
+        /// <summary>
+        /// Deactivate this selection and delete all selected objects via the active sketch world.
+        /// Selection doesn't have to be active.
+        /// </summary>
+        public void DeleteObjectsOfSelection()
         {
-            //deactivate game objects
-            //parent to bin object
-            foreach (Transform child in this.transform) {
-                SketchWorld.ActiveSketchWorld.DeleteObject(child.gameObject);
+            Deactivate();
+            foreach (GameObject selectedObject in SketchObjectsOfSelection) {
+                SketchWorld.ActiveSketchWorld.DeleteObject(selectedObject);
             }
         }
 
-        public void activate()
+        /// <summary>
+        /// Highlight all objects added to this selection and set this selection as active selection.
+        /// </summary>
+        public void Activate()
         {
             if (ActiveSketchObjectSelection != this)
             {
                 if (ActiveSketchObjectSelection != null)
                 {
-                    ActiveSketchObjectSelection.deactivate();
+                    ActiveSketchObjectSelection.Deactivate();
                 }
                 ActiveSketchObjectSelection = this;
             }
 
-            foreach (GameObject selected in sketchObjectsOfSelection) {
+            foreach (GameObject selected in SketchObjectsOfSelection) {
                 selected.transform.SetParent(this.transform);
             }
 
-            setUpBoundingBoxVisualization(getBoundsOfSelection(this));
+            SetUpBoundingBoxVisualization(GetBoundsOfSelection(this));
             this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
         }
 
-        public void deactivate()
+        /// <summary>
+        /// Reverts the high light of all selected objects and resets the active selection.
+        /// </summary>
+        public void Deactivate()
         {
             if (ActiveSketchObjectSelection == this)
             {
@@ -108,15 +119,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
             gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
             boundsVisualizationObject.SetActive(false);
 
-            foreach (GameObject selected in sketchObjectsOfSelection)
+            foreach (GameObject selected in SketchObjectsOfSelection)
             {
                 selected.GetComponent<IGroupable>().resetToParentGroup();
             }
 
         }
 
-        private void setUpBoundingBoxVisualization(Bounds bounds) {
-            //boundsVisualizationObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        private void SetUpBoundingBoxVisualization(Bounds bounds) {
             boundsVisualizationObject.transform.SetParent(null);
 
             boundsVisualizationObject.transform.position = bounds.center;
@@ -125,7 +135,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             boundsVisualizationObject.transform.SetParent(this.transform, true);
         }
 
-        private static Bounds getBoundsOfSelection(SketchObjectSelection selection) {
+        private static Bounds GetBoundsOfSelection(SketchObjectSelection selection) {
             Bounds selectionBounds = new Bounds();
             MeshRenderer[] renderers = selection.gameObject.GetComponentsInChildren<MeshRenderer>();
 

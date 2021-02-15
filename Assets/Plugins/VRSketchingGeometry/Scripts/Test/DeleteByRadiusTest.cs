@@ -85,7 +85,7 @@ public class DeleteByRadiusTest : MonoBehaviour
 
     IEnumerator deactivateSelection(SketchObjectSelection selection) {
         yield return new WaitForSeconds(3);
-        selection.deactivate();
+        selection.Deactivate();
     }
 
     private void lineSketchObjectTest() {

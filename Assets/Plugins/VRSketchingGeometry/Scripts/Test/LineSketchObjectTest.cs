@@ -49,7 +49,7 @@ public class LineSketchObjectTest : MonoBehaviour
 
     IEnumerator deactivateSelection(SketchObjectSelection selection) {
         yield return new WaitForSeconds(3);
-        selection.deactivate();
+        selection.Deactivate();
     }
 
     private void lineSketchObjectTest() {
@@ -71,9 +71,9 @@ public class LineSketchObjectTest : MonoBehaviour
         GameObject selectionGO = Instantiate(selectionPrefab);
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
-        selection.addToSelection(lineSketchObject);
-        selection.addToSelection(lineSketchObject2);
-        selection.activate();
+        selection.AddToSelection(lineSketchObject);
+        selection.AddToSelection(lineSketchObject2);
+        selection.Activate();
         StartCoroutine(deactivateSelection(selection));
     }
 
@@ -94,8 +94,8 @@ public class LineSketchObjectTest : MonoBehaviour
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
-        group.addToGroup(lineSketchObject);
-        group.addToGroup(lineSketchObject2);
+        group.AddToGroup(lineSketchObject);
+        group.AddToGroup(lineSketchObject2);
 
         SketchObjectGroupData groupData = group.GetData();
         string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
@@ -143,17 +143,17 @@ public class LineSketchObjectTest : MonoBehaviour
 
         (List<Vector3> points, List<Quaternion> rotations) = RibbonTest.GetPointTransformation(ControlPointParent);
         ribbonSketchObject.SetControlPoints(points, rotations);
-        SketchWorld.AddObject(ribbonSketchObject.gameObject);
+        SketchWorld.AddObject(ribbonSketchObject);
 
         //lineSketchObject2.minimumControlPointDistance = 2f;
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
-        SketchWorld.AddObject(lineSketchObject.gameObject);
-        group.addToGroup(lineSketchObject2);
-        group.addToGroup(patchSketchObject);
+        SketchWorld.AddObject(lineSketchObject);
+        group.AddToGroup(lineSketchObject2);
+        group.AddToGroup(patchSketchObject);
         group.transform.position += new Vector3(2.568f, 5.555f, 1.123f);
-        SketchWorld.AddObject(group.gameObject);
+        SketchWorld.AddObject(group);
 
         string worldXmlPath = System.IO.Path.Combine(Application.dataPath, "SketchWorldTest.xml");
         SketchWorld.SaveSketchWorld(worldXmlPath);

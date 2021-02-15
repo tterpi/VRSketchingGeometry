@@ -48,11 +48,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// 
         /// </summary>
         /// <param name="gameObject"></param>
-        public void AddObject(GameObject gameObject)
+        public void AddObject(IGroupable groupableObject)
         {
-            //gameObject.transform.SetParent(this.transform);
-            IGroupable groupableComponent = gameObject.GetComponent<IGroupable>();
-            RootGroup.addToGroup(groupableComponent);
+            RootGroup.AddToGroup(groupableObject);
         }
 
 
@@ -70,8 +68,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
                 else
                 {
-                    //gameObject.transform.SetParent(this.transform);
-                    RootGroup.addToGroup(groupableObject);
+                    RootGroup.AddToGroup(groupableObject);
                 }
                 gameObject.SetActive(true);
             }

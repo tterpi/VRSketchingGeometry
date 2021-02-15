@@ -22,7 +22,7 @@ public class CommandsTest : MonoBehaviour
 
         invoker = new CommandInvoker();
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-        invoker.ExecuteCommand(new CreateSketchObjectCommand(lineSketchObject, sketchWorld));
+        invoker.ExecuteCommand(new AddObjectToSketchWorldRootCommand(lineSketchObject, sketchWorld));
 
         lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
     }
@@ -36,7 +36,7 @@ public class CommandsTest : MonoBehaviour
     IEnumerator deactivateSelection(SketchObjectSelection selection)
     {
         yield return new WaitForSeconds(3);
-        selection.deactivate();
+        selection.Deactivate();
     }
 
     private void lineSketchObjectTest()
@@ -59,9 +59,9 @@ public class CommandsTest : MonoBehaviour
         GameObject selectionGO = Instantiate(selectionPrefab);
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectSelection selection = selectionGO.GetComponent<SketchObjectSelection>();
-        selection.addToSelection(lineSketchObject);
-        selection.addToSelection(lineSketchObject2);
-        selection.activate();
+        selection.AddToSelection(lineSketchObject);
+        selection.AddToSelection(lineSketchObject2);
+        selection.Activate();
         StartCoroutine(deactivateSelection(selection));
     }
 
@@ -88,7 +88,7 @@ public class CommandsTest : MonoBehaviour
         invoker.Redo();
         invoker.Redo();
 
-        invoker.ExecuteCommand(new DeleteSketchObjectCommand(lineSketchObject, sketchWorld));
+        invoker.ExecuteCommand(new DeleteObjectCommand(lineSketchObject, sketchWorld));
 
         invoker.Undo();
         invoker.Redo();

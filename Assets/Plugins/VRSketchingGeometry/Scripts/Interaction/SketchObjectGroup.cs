@@ -17,58 +17,27 @@ namespace VRSketchingGeometry.SketchObjectManagement {
 
         public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
 
-        public void addToGroup(SketchObject sketchObject) {
-            sketchObject.transform.SetParent(this.transform);
-            sketchObject.ParentGroup = this.gameObject;
+        public void AddToGroup(IGroupable groupableComponent) {
+            groupableComponent.ParentGroup = this.gameObject;
+            groupableComponent.resetToParentGroup();
         }
 
-        public void addToGroup(SketchObjectGroup sketchObjectGroup) {
-            sketchObjectGroup.transform.SetParent(this.transform);
-            sketchObjectGroup.parentGroup = this.gameObject;
+        public void AddToGroup(SketchObjectSelection sketchObjectSelection) {
+            IGroupable[] groupables = sketchObjectSelection.GetComponentsInChildren<IGroupable>();
+            foreach (IGroupable groupable in groupables) {
+                this.AddToGroup(groupable);
+            }
         }
 
-        public void addToGroup(IGroupable groupableComponent) {
-            if (groupableComponent is SketchObject sketchObject)
+        public static void RemoveFromGroup(IGroupable groupedObject) {
+            if (SketchWorld.ActiveSketchWorld != null && groupedObject != null)
             {
-                this.addToGroup(sketchObject);
+                SketchWorld.ActiveSketchWorld.AddObject(groupedObject);
             }
-            else if (groupableComponent is SketchObjectGroup sketchObjectGroup) {
-                this.addToGroup(sketchObjectGroup);
-            }
-        }
-
-        public void addToGroup(SketchObjectSelection sketchObjectSelection) {
-            foreach (Transform selected in sketchObjectSelection.transform) {
-                SketchObject so = selected.gameObject.GetComponent<SketchObject>();
-                SketchObjectGroup sog = selected.gameObject.GetComponent<SketchObjectGroup>();
-
-                if (so != null)
-                {
-                    addToGroup(so);
-                }
-                else if (sog != null) {
-                    addToGroup(sog);
-                }
-            }
-        }
-
-
-        public void removeFromGroup(SketchObject sketchObject) {
-            removeFromGroup(sketchObject.gameObject);
-        }
-
-        public void removeFromGroup(SketchObjectGroup sketchObjectGroup)
-        {
-            removeFromGroup(sketchObjectGroup.gameObject);
-        }
-
-        private void removeFromGroup(GameObject gameObject) {
-            if (SketchWorld.ActiveSketchWorld != null)
+            else
             {
-                gameObject.transform.SetParent(SketchWorld.ActiveSketchWorld.transform);
-            }
-            else {
-                gameObject.transform.SetParent(null);
+                groupedObject.ParentGroup = null;
+                groupedObject.resetToParentGroup();
             }
         }
 
@@ -133,7 +102,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
                     {
                         LineSketchObject sketchObject = Instantiate(defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
                         sketchObject.ApplyData(sketchObjectData);
-                        addToGroup(sketchObject);
+                        AddToGroup(sketchObject);
                     }
                     else if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Linear)
                     {
@@ -142,25 +111,25 @@ namespace VRSketchingGeometry.SketchObjectManagement {
                             .GetComponent<LinearInterpolationLineSketchObject>();
 
                         sketchObject.ApplyData(sketchObjectData);
-                        addToGroup(sketchObject);
+                        AddToGroup(sketchObject);
                     }
                 }
                 else if (sketchObjectData is PatchSketchObjectData patchData)
                 {
                     PatchSketchObject patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
                     patchSketchObject.ApplyData(patchData);
-                    addToGroup(patchSketchObject);
+                    AddToGroup(patchSketchObject);
                 }
                 else if (sketchObjectData is RibbonSketchObjectData ribbonData) {
                     RibbonSketchObject ribbonSketchObject = Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
                     ribbonSketchObject.ApplyData(ribbonData);
-                    addToGroup(ribbonSketchObject);
+                    AddToGroup(ribbonSketchObject);
                 }
             }
 
             foreach (SketchObjectGroupData groupData in data.SketchObjectGroups) {
                 SketchObjectGroup newGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
-                this.addToGroup(newGroup);
+                this.AddToGroup(newGroup);
                 newGroup.ApplyData(groupData);
             }
         }
