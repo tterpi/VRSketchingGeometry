@@ -10,7 +10,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     {
         private static SketchWorld activeSketchWorld;
 
-        public static SketchWorld ActiveSketchWorld { get => activeSketchWorld; private set => activeSketchWorld = value; }
+        public static SketchWorld ActiveSketchWorld { get => activeSketchWorld; set => activeSketchWorld = value; }
 
         public DefaultReferences defaults;
 
@@ -31,6 +31,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
             RootGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
             RootGroup.gameObject.name = "RootSketchObjectGroup";
             RootGroup.transform.SetParent(this.transform);
+
+            if (ActiveSketchWorld == null) {
+                ActiveSketchWorld = this;
+            }
         }
 
         /// <summary>

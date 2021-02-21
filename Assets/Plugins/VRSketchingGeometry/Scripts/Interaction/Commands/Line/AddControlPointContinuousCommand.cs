@@ -24,7 +24,7 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public void Redo()
         {
-            this.Execute();
+            LineSketchObject.addControlPoint(NewControlPoint);
         }
 
         public void Undo()

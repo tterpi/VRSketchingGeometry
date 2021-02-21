@@ -41,6 +41,8 @@ namespace VRSketchingGeometry.Commands.Line
         public DeleteControlPointsByRadiusCommand(LineSketchObject lineSketchObject, Vector3 point, float radius)
         {
             this.OriginalLineSketchObject = lineSketchObject;
+            this.Point = point;
+            this.Radius = radius;
         }
 
         public bool Execute()
