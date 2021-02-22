@@ -16,7 +16,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         public int ResolutionWidth = 4;
         public int ResolutionHeight = 4;
 
-        public float MinimumDistanceToLastSegment = .05f;
+        public float MinimumDistanceToLastSegment = .2f;
 
         private List<Vector3> ControlPoints = new List<Vector3>();
 
@@ -28,30 +28,28 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <param name="height">Number of control points in y direction</param>
         private void UpdatePatchMesh(List<Vector3> controlPoints, int width, int height)
         {
-            if (controlPoints.Count % width != 0) {
-                Debug.LogWarning("The amount of control points is invalid. It's not a multiple of width.");
+            if (height < 3 || width < 3 || controlPoints.Count / width != height) {
+                Debug.LogWarning("The amount of control points is invalid! \n There must at least be 3x3 control points. Amount of control ponits must be a multiple of width.");
+                SetMesh(null);
                 return;
             }
+
             Mesh patchMesh = PatchMesh.GeneratePatchMesh(controlPoints, width, height, this.ResolutionWidth, this.ResolutionHeight);
+            SetMesh(patchMesh);
+        }
+
+        private void SetMesh(Mesh mesh) {
             Mesh oldMesh = this.GetComponent<MeshFilter>().sharedMesh;
             Destroy(oldMesh);
-            this.GetComponent<MeshFilter>().mesh = patchMesh;
-            this.GetComponent<MeshCollider>().sharedMesh = patchMesh;
+            this.GetComponent<MeshFilter>().sharedMesh = mesh;
+            this.GetComponent<MeshCollider>().sharedMesh = mesh;
         }
 
         /// <summary>
         /// Regenerates the mesh from the currently set control points.
         /// </summary>
         public void UpdatePatchMesh() {
-
-            if (Height >= 3 && Width >= 3)
-            {
-                UpdatePatchMesh(this.ControlPoints, this.Width, this.Height);
-            }
-            else
-            {
-                Debug.LogWarning("Width and Height of patch control points have to be at least 3.");
-            }
+            UpdatePatchMesh(this.ControlPoints, this.Width, this.Height);
         }
 
         /// <summary>
