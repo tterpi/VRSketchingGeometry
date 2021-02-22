@@ -20,12 +20,9 @@ namespace VRSketchingGeometry.SketchObjectManagement{
 
         private RibbonMesh RibbonMesh;
 
-        private List<Vector3> points = new List<Vector3>();
-        private List<Quaternion> rotations = new List<Quaternion>();
+        private List<Vector3> Points = new List<Vector3>();
+        private List<Quaternion> Rotations = new List<Quaternion>();
         public float MinimumControlPointDistance = .02f;
-
-        public List<Vector3> Points { get => new List<Vector3>(points);private set => points = value; }
-        public List<Quaternion> Rotations { get => new List<Quaternion>(rotations);private set => rotations = value; }
 
         protected override void Awake()
         {
@@ -42,10 +39,10 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             meshCollider.sharedMesh = mesh;
         }
 
-        public void SetControlPoints(List<Vector3> points, List<Quaternion> rotations) {
-            Points = points;
-            this.Rotations = rotations;
-            Mesh mesh = RibbonMesh.GetMesh(points, rotations);
+        public void SetControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
+            this.Points = newPoints;
+            this.Rotations = newRotations;
+            Mesh mesh = RibbonMesh.GetMesh(this.Points, this.Rotations);
             UpdateMesh(mesh);
         }
 
@@ -78,15 +75,17 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             }
         }
 
-        public void AddControlPoints(List<Vector3> points, List<Quaternion> rotations) {
-            Points.AddRange(points);
-            this.Rotations.AddRange(rotations);
-            Mesh mesh = RibbonMesh.AddPoints(points, rotations);
+        public void AddControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
+            this.Points.AddRange(newPoints);
+            this.Rotations.AddRange(newRotations);
+            Mesh mesh = RibbonMesh.AddPoints(this.Points, this.Rotations);
             UpdateMesh(mesh);
         }
 
         public void DeleteControlPoint() {
-            if (points.Count <= 0) return;
+            Points.RemoveAt(Points.Count - 1);
+            Rotations.RemoveAt(Rotations.Count - 1);
+            if (Points.Count <= 0) return;
             Mesh mesh = RibbonMesh.DeletePoint();
             UpdateMesh(mesh);
         }
@@ -110,6 +109,9 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             }
         }
 
+        public List<Vector3> GetPoints() => new List<Vector3>(Points);
+        public List<Quaternion> GetRotations() => new List<Quaternion>(Rotations);
+
         public Brush GetBrush() {
             RibbonBrush brush = new RibbonBrush();
             brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
@@ -121,8 +123,8 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         public SerializableComponentData GetData()
         {
             RibbonSketchObjectData ribbonData = new RibbonSketchObjectData();
-            ribbonData.ControlPoints = Points;
-            ribbonData.ControlPointOrientations = Rotations;
+            ribbonData.ControlPoints = GetPoints();
+            ribbonData.ControlPointOrientations = GetRotations();
             ribbonData.CrossSectionScale = RibbonMesh.Scale;
             ribbonData.CrossSectionVertices = RibbonMesh.CrossSection;
             ribbonData.Position = this.transform.position;

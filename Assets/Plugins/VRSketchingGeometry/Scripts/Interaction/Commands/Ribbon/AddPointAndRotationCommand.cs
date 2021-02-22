@@ -50,7 +50,7 @@ namespace VRSketchingGeometry.Commands.Ribbon {
         /// <param name="minimumDistanceToLastControlPoint"></param>
         /// <returns>A command or null if the distance is smaller than minimumDistance.</returns>
         public static AddPointAndRotationCommand GetAddPointAndRotationCommandContinuous(RibbonSketchObject ribbonSketchObject, Vector3 point, Quaternion rotation, float minimumDistanceToLastControlPoint){
-            if ((ribbonSketchObject.Points[ribbonSketchObject.Points.Count - 1] - point).magnitude >= minimumDistanceToLastControlPoint)
+            if ((ribbonSketchObject.GetPoints()[ribbonSketchObject.GetPoints().Count - 1] - point).magnitude >= minimumDistanceToLastControlPoint)
             {
                 return new AddPointAndRotationCommand(ribbonSketchObject, point, rotation);
             }

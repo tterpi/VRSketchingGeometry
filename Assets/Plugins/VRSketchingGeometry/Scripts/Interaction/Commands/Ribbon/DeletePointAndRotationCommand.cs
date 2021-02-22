@@ -19,8 +19,10 @@ namespace VRSketchingGeometry.Commands.Ribbon {
         /// <param name="ribbonSketchObject">The ribbon to add the control point to.</param>
         public DeletePointAndRotationCommand(RibbonSketchObject ribbonSketchObject) {
             this.RibbonSketchObject = ribbonSketchObject;
-            Point = ribbonSketchObject.Points[ribbonSketchObject.Points.Count-1];
-            Rotation = ribbonSketchObject.Rotations[ribbonSketchObject.Rotations.Count - 1];
+            List<Vector3> Points = ribbonSketchObject.GetPoints();
+            List<Quaternion> Rotations = ribbonSketchObject.GetRotations();
+            Point = Points[Points.Count-1];
+            Rotation = Rotations[Rotations.Count - 1];
         }
 
         public bool Execute()
