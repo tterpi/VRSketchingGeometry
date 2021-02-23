@@ -15,7 +15,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
     {
         private static SketchObjectSelection activeSketchObjectSelection;
 
-        private List<GameObject> sketchObjectsOfSelection = new List<GameObject>();
+        private List<GameObject> SketchObjectsOfSelection = new List<GameObject>();
+        public List<GameObject> GetObjectsOfSelection() => new List<GameObject>(SketchObjectsOfSelection);
 
         public static SketchObjectSelection ActiveSketchObjectSelection
         {
@@ -26,7 +27,6 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
-        public List<GameObject> SketchObjectsOfSelection { get => new List<GameObject>(sketchObjectsOfSelection); private set => sketchObjectsOfSelection = value; }
 
         [SerializeField]
         private GameObject boundsVisualizationObject;
@@ -103,6 +103,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
 
             SetUpBoundingBoxVisualization(GetBoundsOfSelection(this));
+            boundsVisualizationObject.SetActive(true);
             this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
         }
 

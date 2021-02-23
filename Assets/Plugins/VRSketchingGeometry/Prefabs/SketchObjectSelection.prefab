@@ -57,6 +57,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoundsVisualizationObject
       objectReference: {fileID: 0}
+    - target: {fileID: 2217554552450165491, guid: a1eb40eae828d0048b91ae99d48a9541,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6398327258709528555, guid: a1eb40eae828d0048b91ae99d48a9541,
         type: 3}
       propertyPath: m_LocalPosition.x

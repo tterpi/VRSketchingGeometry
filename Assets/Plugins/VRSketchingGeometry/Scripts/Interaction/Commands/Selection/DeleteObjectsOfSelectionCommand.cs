@@ -17,7 +17,7 @@ namespace VRSketchingGeometry.Commands.Selection
         public DeleteObjectsOfSelectionCommand(SketchObjectSelection selection)
         {
             this.Selection = selection;
-            this.selectedObjects = selection.SketchObjectsOfSelection;
+            this.selectedObjects = selection.GetObjectsOfSelection();
         }
 
         public bool Execute()
