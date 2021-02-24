@@ -28,6 +28,10 @@ namespace VRSketchingGeometry.Commands.Ribbon {
         public bool Execute()
         {
             this.RibbonSketchObject.DeleteControlPoint();
+            if (this.RibbonSketchObject.GetPointsCount() == 0)
+            {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.RibbonSketchObject);
+            }
             return true;
         }
 
@@ -38,6 +42,10 @@ namespace VRSketchingGeometry.Commands.Ribbon {
 
         public void Undo()
         {
+            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject))
+            {
+                SketchWorld.ActiveSketchWorld.RestoreObject(this.RibbonSketchObject);
+            }
             this.RibbonSketchObject.AddControlPoint(Point, Rotation);
         }
     }

@@ -85,7 +85,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         public void DeleteControlPoint() {
             Points.RemoveAt(Points.Count - 1);
             Rotations.RemoveAt(Rotations.Count - 1);
-            if (Points.Count <= 0) return;
+            if (Points.Count < 0) return;
             Mesh mesh = RibbonMesh.DeletePoint();
             UpdateMesh(mesh);
         }
@@ -110,6 +110,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         }
 
         public List<Vector3> GetPoints() => new List<Vector3>(Points);
+        public int GetPointsCount() => this.Points.Count;
         public List<Quaternion> GetRotations() => new List<Quaternion>(Rotations);
 
         public Brush GetBrush() {

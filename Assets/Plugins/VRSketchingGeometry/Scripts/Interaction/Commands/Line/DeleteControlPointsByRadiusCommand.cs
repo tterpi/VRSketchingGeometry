@@ -63,7 +63,7 @@ namespace VRSketchingGeometry.Commands.Line
         {
             if (NewControlPoints == null)
             {
-                SketchWorld.ActiveSketchWorld.DeleteObject(OriginalLineSketchObject.gameObject);
+                SketchWorld.ActiveSketchWorld.DeleteObject(OriginalLineSketchObject);
             }
             else {
                 OriginalLineSketchObject.SetControlPoints(NewControlPoints);
@@ -71,19 +71,19 @@ namespace VRSketchingGeometry.Commands.Line
 
             foreach (LineSketchObject line in NewLines)
             {
-                SketchWorld.ActiveSketchWorld.RestoreObject(line.gameObject);
+                SketchWorld.ActiveSketchWorld.RestoreObject(line);
             }
         }
 
         public void Undo()
         {
             if (!OriginalLineSketchObject.gameObject.activeInHierarchy) {
-                SketchWorld.ActiveSketchWorld.RestoreObject(OriginalLineSketchObject.gameObject);
+                SketchWorld.ActiveSketchWorld.RestoreObject(OriginalLineSketchObject);
             }
             OriginalLineSketchObject.SetControlPoints(OriginalControlPoints);
 
             foreach (LineSketchObject line in NewLines) {
-                SketchWorld.ActiveSketchWorld.DeleteObject(line.gameObject);
+                SketchWorld.ActiveSketchWorld.DeleteObject(line);
             }
 
         }

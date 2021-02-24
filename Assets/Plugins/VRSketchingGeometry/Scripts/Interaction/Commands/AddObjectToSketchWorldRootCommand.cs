@@ -10,10 +10,10 @@ namespace VRSketchingGeometry.Commands
     /// </summary>
     public class AddObjectToSketchWorldRootCommand : ICommand
     {
-        private IGroupable NewObject = null;
+        private SelectableObject NewObject = null;
         private SketchWorld SketchWorld;
 
-        public AddObjectToSketchWorldRootCommand(IGroupable newObject, SketchWorld sketchWorld)
+        public AddObjectToSketchWorldRootCommand(SelectableObject newObject, SketchWorld sketchWorld)
         {
             this.NewObject = newObject;
             this.SketchWorld = sketchWorld;
@@ -26,17 +26,13 @@ namespace VRSketchingGeometry.Commands
         }
 
         public void Redo()
-        {
-            if (NewObject is MonoBehaviour component) {
-                SketchWorld.RestoreObject(component.gameObject);
-            }
+        {        
+            SketchWorld.RestoreObject(NewObject);
         }
 
         public void Undo()
         {
-            if (NewObject is MonoBehaviour component) {
-                SketchWorld.DeleteObject(component.gameObject);
-            }
+            SketchWorld.DeleteObject(NewObject);
         }
     }
 }

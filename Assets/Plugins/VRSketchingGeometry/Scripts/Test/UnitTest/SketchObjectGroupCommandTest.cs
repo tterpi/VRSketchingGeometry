@@ -33,7 +33,7 @@ namespace Tests
             Assert.AreNotEqual(Group.transform, Ribbon.transform.parent);
             ICommand addCommand = new AddToGroupCommand(Group, Ribbon);
             Invoker.ExecuteCommand(addCommand);
-            Assert.AreEqual(Group.gameObject, Ribbon.ParentGroup);
+            Assert.AreEqual(Group, Ribbon.ParentGroup);
             Assert.AreEqual(Group.transform, Ribbon.transform.parent);
         }
 
@@ -56,7 +56,7 @@ namespace Tests
             Invoker.ExecuteCommand(addCommand);
             Invoker.Undo();
             Invoker.Redo();
-            Assert.AreEqual(Group.gameObject, Ribbon.ParentGroup);
+            Assert.AreEqual(Group, Ribbon.ParentGroup);
             Assert.AreEqual(Group.transform, Ribbon.transform.parent);
         }
 
@@ -100,7 +100,7 @@ namespace Tests
             Invoker.ExecuteCommand(removeCommand);
             Invoker.Undo();
 
-            Assert.AreEqual(Group.gameObject, Ribbon.ParentGroup);
+            Assert.AreEqual(Group, Ribbon.ParentGroup);
             Assert.AreEqual(Group.transform, Ribbon.transform.parent);
         }
 

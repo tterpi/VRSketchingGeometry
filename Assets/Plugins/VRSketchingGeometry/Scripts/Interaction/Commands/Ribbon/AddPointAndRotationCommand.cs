@@ -33,12 +33,18 @@ namespace VRSketchingGeometry.Commands.Ribbon {
 
         public void Redo()
         {
+            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject)) {
+                SketchWorld.ActiveSketchWorld.RestoreObject(this.RibbonSketchObject);
+            }
             this.Execute();
         }
 
         public void Undo()
         {
             this.RibbonSketchObject.DeleteControlPoint();
+            if (this.RibbonSketchObject.GetPointsCount() == 0) {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.RibbonSketchObject);
+            }
         }
 
         /// <summary>

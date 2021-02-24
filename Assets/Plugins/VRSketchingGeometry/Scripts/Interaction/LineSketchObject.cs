@@ -211,7 +211,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             else {
                 if (SketchWorld.ActiveSketchWorld)
                 {
-                    SketchWorld.ActiveSketchWorld.DeleteObject(this.gameObject);
+                    SketchWorld.ActiveSketchWorld.DeleteObject(this);
                 }
                 else {
                     Destroy(this.gameObject);

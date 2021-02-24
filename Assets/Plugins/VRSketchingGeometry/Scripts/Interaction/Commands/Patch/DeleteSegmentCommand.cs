@@ -24,6 +24,10 @@ namespace VRSketchingGeometry.Commands.Patch {
         {
             OldSegment = this.PatchSketchObject.GetLastSegment();
             this.PatchSketchObject.RemovePatchSegment();
+            if (this.PatchSketchObject.GetControlPointsCount() == 0)
+            {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.PatchSketchObject);
+            }
             return true;
         }
 
@@ -34,6 +38,10 @@ namespace VRSketchingGeometry.Commands.Patch {
 
         public void Undo()
         {
+            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject))
+            {
+                SketchWorld.ActiveSketchWorld.RestoreObject(this.PatchSketchObject);
+            }
             this.PatchSketchObject.AddPatchSegment(OldSegment);
         }
     }

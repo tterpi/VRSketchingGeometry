@@ -12,7 +12,7 @@ namespace VRSketchingGeometry.Commands.Group
     public class RemoveFromGroupCommand : ICommand
     {
         IGroupable Object;
-        GameObject OriginalParent;
+        SketchObjectGroup OriginalParent;
 
         public RemoveFromGroupCommand(IGroupable Object)
         {

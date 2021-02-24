@@ -252,5 +252,74 @@ namespace Tests
             Assert.IsTrue(this.Ribbon.transform.IsChildOf(SketchWorld.ActiveSketchWorld.transform));
         }
 
+        [Test]
+        public void AddToSelectionCommandTest()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+
+            Assert.IsTrue(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
+
+        [Test]
+        public void AddToSelectionCommandTestUndo()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+
+            Assert.IsFalse(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreNotEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
+
+        [Test]
+        public void AddToSelectionCommandTestRedo()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.IsTrue(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
+
+        [Test]
+        public void RemoveFromSelectionCommandTest()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+            ICommand removeCommand = new RemoveFromSelectionAndRevertHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(removeCommand);
+
+            Assert.IsFalse(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreNotEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
+
+        [Test]
+        public void RemoveFromSelectionCommandTestUndo()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+            ICommand removeCommand = new RemoveFromSelectionAndRevertHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(removeCommand);
+            Invoker.Undo();
+
+            Assert.IsTrue(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
+
+        [Test]
+        public void RemoveFromSelectionCommandTestRedo()
+        {
+            ICommand addCommand = new AddToSelectionAndHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(addCommand);
+            ICommand removeCommand = new RemoveFromSelectionAndRevertHighlightCommand(this.Selection, this.Ribbon);
+            Invoker.ExecuteCommand(removeCommand);
+
+            Assert.IsFalse(this.Selection.GetObjectsOfSelection().Contains(this.Ribbon));
+            Assert.AreNotEqual("HighlightSelectionMaterial (Instance)", this.Ribbon.GetComponent<MeshRenderer>().material.name);
+        }
     }
 }

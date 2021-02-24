@@ -40,11 +40,20 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Disables the game object and places it under the deleted bin.
         /// </summary>
-        /// <param name="gameObject"></param>
-        public void DeleteObject(GameObject gameObject)
+        /// <param name="selectableObject"></param>
+        public void DeleteObject(SelectableObject selectableObject)
         {
-            gameObject.SetActive(false);
-            gameObject.transform.SetParent(deletedBin.transform);
+            selectableObject.gameObject.SetActive(false);
+            selectableObject.transform.SetParent(deletedBin.transform);
+        }
+
+        /// <summary>
+        /// Is this object in the deleted bin of this sketch world?
+        /// </summary>
+        /// <param name="selectableObject"></param>
+        /// <returns></returns>
+        public bool IsObjectDeleted(SelectableObject selectableObject) {
+            return selectableObject.transform.IsChildOf(this.deletedBin.transform);
         }
 
         /// <summary>
@@ -52,29 +61,28 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// 
         /// </summary>
         /// <param name="gameObject"></param>
-        public void AddObject(IGroupable groupableObject)
+        public void AddObject(SelectableObject selectableObject)
         {
-            RootGroup.AddToGroup(groupableObject);
+            RootGroup.AddToGroup(selectableObject);
         }
 
 
         /// <summary>
         /// Restores a previously deleted object.
         /// </summary>
-        /// <param name="gameObject"></param>
-        public void RestoreObject(GameObject gameObject) {
-            if (gameObject.transform.IsChildOf(this.deletedBin.transform))
+        /// <param name="selectableObject"></param>
+        public void RestoreObject(SelectableObject selectableObject) {
+            if (selectableObject.transform.IsChildOf(this.deletedBin.transform))
             {
-                IGroupable groupableObject = gameObject.GetComponent<IGroupable>();
-                if (groupableObject != null && groupableObject.ParentGroup != null)
+                if (selectableObject != null && selectableObject.ParentGroup != null)
                 {
-                    groupableObject.resetToParentGroup();
+                    selectableObject.resetToParentGroup();
                 }
                 else
                 {
-                    RootGroup.AddToGroup(groupableObject);
+                    RootGroup.AddToGroup(selectableObject);
                 }
-                gameObject.SetActive(true);
+                selectableObject.gameObject.SetActive(true);
             }
             else {
                 Debug.LogWarning("Object can not be restored because it was not deleted before.");

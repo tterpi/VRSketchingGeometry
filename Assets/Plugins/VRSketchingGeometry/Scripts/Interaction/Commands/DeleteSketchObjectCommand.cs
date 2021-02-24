@@ -10,10 +10,10 @@ namespace VRSketchingGeometry.Commands
     /// </summary>
     public class DeleteObjectCommand : ICommand
     {
-        private IGroupable ObjectToDelete = null;
+        private SelectableObject ObjectToDelete = null;
         private SketchWorld SketchWorld;
 
-        public DeleteObjectCommand(IGroupable objectToDelete, SketchWorld sketchWorld)
+        public DeleteObjectCommand(SelectableObject objectToDelete, SketchWorld sketchWorld)
         {
             this.ObjectToDelete = objectToDelete;
             this.SketchWorld = sketchWorld;
@@ -21,14 +21,8 @@ namespace VRSketchingGeometry.Commands
 
         public bool Execute()
         {
-            if (this.ObjectToDelete is MonoBehaviour component)
-            {
-                SketchWorld.DeleteObject(component.gameObject);
-                return true;
-            }
-            else {
-                return false;
-            }
+            SketchWorld.DeleteObject(ObjectToDelete);
+            return true;
         }
 
         public void Redo()
@@ -38,9 +32,7 @@ namespace VRSketchingGeometry.Commands
 
         public void Undo()
         {
-            if (this.ObjectToDelete is MonoBehaviour component) {
-                SketchWorld.RestoreObject(component.gameObject);
-            }
+            SketchWorld.RestoreObject(ObjectToDelete);
         }
     }
 }

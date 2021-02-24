@@ -94,6 +94,56 @@ namespace Tests
         }
 
         [Test]
+        public void AddFirstSegmentCommand()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(3, this.PatchSketchObject.GetControlPointsCount());
+        }
+
+        [Test]
+        public void AddFirstSegmentCommandUndo()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(0, this.PatchSketchObject.GetControlPointsCount());
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject));
+        }
+
+        [Test]
+        public void AddFirstSegmentCommandRedo()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(3, this.PatchSketchObject.GetControlPointsCount());
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject));
+        }
+
+        [Test]
         public void DeleteSegmentCommand()
         {
             this.PatchSketchObject.Width = 3;
@@ -172,6 +222,66 @@ namespace Tests
 
             Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
             Assert.AreEqual(6, this.PatchSketchObject.GetControlPoints().Count);
+        }
+
+        [Test]
+        public void DeleteFirstSegmentCommand()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+
+            DeleteSegmentCommand deleteCommand = new DeleteSegmentCommand(this.PatchSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(0, this.PatchSketchObject.GetControlPoints().Count);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject));
+        }
+
+        [Test]
+        public void DeleteFirstSegmentCommandUndo()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+
+            DeleteSegmentCommand deleteCommand = new DeleteSegmentCommand(this.PatchSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(3, this.PatchSketchObject.GetControlPoints().Count);
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject));
+        }
+
+        [Test]
+        public void DeleteFirstSegmentCommandRedo()
+        {
+            this.PatchSketchObject.Width = 3;
+            this.PatchSketchObject.ResolutionWidth = 4;
+            this.PatchSketchObject.ResolutionHeight = 4;
+
+            AddSegmentCommand addCommand = new AddSegmentCommand(this.PatchSketchObject,
+                new List<Vector3> { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) });
+            Invoker.ExecuteCommand(addCommand);
+
+            DeleteSegmentCommand deleteCommand = new DeleteSegmentCommand(this.PatchSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.AreEqual(null, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.AreEqual(0, this.PatchSketchObject.GetControlPoints().Count);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject));
         }
 
         [Test]

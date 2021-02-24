@@ -25,12 +25,19 @@ namespace VRSketchingGeometry.Commands.Patch {
 
         public void Redo()
         {
+            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.PatchSketchObject))
+            {
+                SketchWorld.ActiveSketchWorld.RestoreObject(this.PatchSketchObject);
+            }
             this.Execute();
         }
 
         public void Undo()
         {
             this.PatchSketchObject.RemovePatchSegment();
+            if (this.PatchSketchObject.GetControlPointsCount() == 0) {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.PatchSketchObject);
+            }
         }
 
         /// <summary>

@@ -9,16 +9,16 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
     /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
     /// </summary>
-    public class SketchObjectGroup : MonoBehaviour, IGroupable, IHighlightable, ISerializableComponent
+    public class SketchObjectGroup : SelectableObject, ISerializableComponent
     {
-        private GameObject parentGroup;
+        private SketchObjectGroup parentGroup;
 
         public DefaultReferences defaults;
 
-        public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
+        public override SketchObjectGroup ParentGroup { get => parentGroup; set => parentGroup = value; }
 
         public void AddToGroup(IGroupable groupableComponent) {
-            groupableComponent.ParentGroup = this.gameObject;
+            groupableComponent.ParentGroup = this;
             groupableComponent.resetToParentGroup();
         }
 
@@ -32,7 +32,9 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         public static void RemoveFromGroup(IGroupable groupedObject) {
             if (SketchWorld.ActiveSketchWorld != null && groupedObject != null)
             {
-                SketchWorld.ActiveSketchWorld.AddObject(groupedObject);
+                if (groupedObject is SelectableObject selectableObject) {
+                    SketchWorld.ActiveSketchWorld.AddObject(selectableObject);
+                }
             }
             else
             {
@@ -41,16 +43,16 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             }
         }
 
-        public void resetToParentGroup() {
+        public override void resetToParentGroup() {
             this.transform.SetParent(ParentGroup?.transform);
         }
 
-        public void highlight()
+        public override void highlight()
         {
             this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
         }
 
-        public void revertHighlight()
+        public override void revertHighlight()
         {
             this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
         }

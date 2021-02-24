@@ -25,12 +25,18 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public void Redo()
         {
+            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject)) {
+                SketchWorld.ActiveSketchWorld.RestoreObject(this.LineSketchObject);
+            }
             this.Execute();
         }
 
         public void Undo()
         {
             LineSketchObject.deleteControlPoint();
+            if (this.LineSketchObject.getNumberOfControlPoints() == 0) {
+                SketchWorld.ActiveSketchWorld.DeleteObject(this.LineSketchObject);
+            }
         }
 
         /// <summary>

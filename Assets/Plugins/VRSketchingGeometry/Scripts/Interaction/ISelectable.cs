@@ -4,9 +4,7 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
-    public interface IGroupable
+    public interface ISelectable : IGroupable, IHighlightable
     {
-        SketchObjectGroup ParentGroup { get; set; }
-        void resetToParentGroup();
     }
 }

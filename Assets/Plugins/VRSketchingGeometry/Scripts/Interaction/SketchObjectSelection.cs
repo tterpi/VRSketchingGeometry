@@ -15,8 +15,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
     {
         private static SketchObjectSelection activeSketchObjectSelection;
 
-        private List<GameObject> SketchObjectsOfSelection = new List<GameObject>();
-        public List<GameObject> GetObjectsOfSelection() => new List<GameObject>(SketchObjectsOfSelection);
+        private List<SelectableObject> SketchObjectsOfSelection = new List<SelectableObject>();
+        public List<SelectableObject> GetObjectsOfSelection() => new List<SelectableObject>(SketchObjectsOfSelection);
 
         public static SketchObjectSelection ActiveSketchObjectSelection
         {
@@ -27,41 +27,17 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
-
         [SerializeField]
         private GameObject boundsVisualizationObject;
 
-        public void AddToSelection(SketchObject sketchObject)
-        {
-            AddToSelection(sketchObject.gameObject);
+        public void AddToSelection(SelectableObject selectableObject) {
+            SketchObjectsOfSelection.Add(selectableObject);
         }
 
-        public void AddToSelection(SketchObjectGroup sketchObjectGroup)
-        {
-            AddToSelection(sketchObjectGroup.gameObject);
-        }
-
-        private void AddToSelection(GameObject gameObject)
-        {
-            SketchObjectsOfSelection.Add(gameObject);
-        }
-
-        public void RemoveFromSelection(SketchObject sketchObject)
-        {
-            sketchObject.revertHighlight();
-            sketchObject.resetToParentGroup();
-            RemoveFromSelection(sketchObject.gameObject);
-        }
-
-        public void RemoveFromSelection(SketchObjectGroup sketchObjectGroup)
-        {
-            sketchObjectGroup.BroadcastMessage(nameof(SketchObject.revertHighlight));
-            sketchObjectGroup.resetToParentGroup();
-            RemoveFromSelection(sketchObjectGroup.gameObject);
-        }
-
-        private void RemoveFromSelection(GameObject gameObject) {
-            SketchObjectsOfSelection.Remove(gameObject);
+        public void RemoveFromSelection(SelectableObject selectableObject) {
+            selectableObject.revertHighlight();
+            selectableObject.resetToParentGroup();
+            SketchObjectsOfSelection.Remove(selectableObject);
         }
 
         /// <summary>
@@ -79,7 +55,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         public void DeleteObjectsOfSelection()
         {
             Deactivate();
-            foreach (GameObject selectedObject in SketchObjectsOfSelection) {
+            foreach (SelectableObject selectedObject in SketchObjectsOfSelection) {
                 SketchWorld.ActiveSketchWorld.DeleteObject(selectedObject);
             }
         }
@@ -98,7 +74,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 ActiveSketchObjectSelection = this;
             }
 
-            foreach (GameObject selected in SketchObjectsOfSelection) {
+            foreach (SelectableObject selected in SketchObjectsOfSelection) {
                 selected.transform.SetParent(this.transform);
             }
 
@@ -120,9 +96,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
             gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
             boundsVisualizationObject.SetActive(false);
 
-            foreach (GameObject selected in SketchObjectsOfSelection)
+            foreach (SelectableObject selected in SketchObjectsOfSelection)
             {
-                selected.GetComponent<IGroupable>().resetToParentGroup();
+                selected.resetToParentGroup();
             }
 
         }

@@ -13,7 +13,7 @@ namespace VRSketchingGeometry.Commands.Group
     {
         SketchObjectGroup Group;
         IGroupable NewObject;
-        GameObject OriginalParent;
+        SketchObjectGroup OriginalParent;
 
         public AddToGroupCommand(SketchObjectGroup group, IGroupable NewObject)
         {

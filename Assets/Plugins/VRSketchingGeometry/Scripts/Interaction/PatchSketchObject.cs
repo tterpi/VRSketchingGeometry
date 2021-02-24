@@ -129,6 +129,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
             return new List<Vector3>(ControlPoints);
         }
 
+        public int GetControlPointsCount() {
+            return this.ControlPoints.Count();
+        }
+
         /// <summary>
         /// Get a segment of control points of length Width.
         /// </summary>

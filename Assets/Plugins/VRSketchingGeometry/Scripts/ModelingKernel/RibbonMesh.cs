@@ -97,6 +97,10 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="crossSectionCount">Number of vertices per cross section.</param>
         /// <returns></returns>
         public static Mesh GetMeshFromVertices(List<Vector3> vertices, int crossSectionCount) {
+            if (vertices.Count < crossSectionCount * 2) {
+                return null;
+            }
+
             List<int> triangles = LineExtruder.GenerateTriangles(crossSectionCount, (vertices.Count / crossSectionCount) - 1);
 
             Mesh mesh = new Mesh();
@@ -170,7 +174,7 @@ namespace VRSketchingGeometry.Meshing
         /// </summary>
         /// <returns></returns>
         public Mesh DeletePoint() {
-            if (Vertices.Count <= CrossSection.Count) return null;
+            if (Vertices.Count == 0) return null;
 
             Vertices.RemoveRange(Vertices.Count - CrossSection.Count, CrossSection.Count);
             return GetMeshFromVertices(Vertices, CrossSection.Count);

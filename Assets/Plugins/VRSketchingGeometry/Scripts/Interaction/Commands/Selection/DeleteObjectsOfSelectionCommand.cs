@@ -12,7 +12,7 @@ namespace VRSketchingGeometry.Commands.Selection
     public class DeleteObjectsOfSelectionCommand : ICommand
     {
         SketchObjectSelection Selection;
-        List<GameObject> selectedObjects;
+        List<SelectableObject> selectedObjects;
 
         public DeleteObjectsOfSelectionCommand(SketchObjectSelection selection)
         {
@@ -33,7 +33,7 @@ namespace VRSketchingGeometry.Commands.Selection
 
         public void Undo()
         {
-            foreach (GameObject selectedObject in selectedObjects)
+            foreach (SelectableObject selectedObject in selectedObjects)
             {
                 SketchWorld.ActiveSketchWorld.RestoreObject(selectedObject);
             }

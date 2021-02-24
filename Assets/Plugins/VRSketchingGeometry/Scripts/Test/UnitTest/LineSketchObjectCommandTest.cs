@@ -33,6 +33,29 @@ namespace Tests
         }
 
         [Test]
+        public void AddOneControlPointToLineWithCommandRedo()
+        {
+            AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
+            Invoker.ExecuteCommand(command);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.IsTrue(this.LineSketchObject.getControlPoints()[0] == new Vector3(1, 2, 3));
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
+        }
+
+        [Test]
+        public void AddOneControlPointToLineWithCommandUndo()
+        {
+            AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
+            Invoker.ExecuteCommand(command);
+            Invoker.Undo();
+
+            Assert.AreEqual(this.LineSketchObject.getNumberOfControlPoints(), 0);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
+        }
+
+        [Test]
         public void DeleteOneControlPointWithCommand()
         {
             AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
@@ -41,6 +64,36 @@ namespace Tests
             DeleteControlPointCommand deleteCommand = new DeleteControlPointCommand(this.LineSketchObject);
             Invoker.ExecuteCommand(deleteCommand);
             Assert.AreEqual(this.LineSketchObject.getNumberOfControlPoints(), 0);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
+        }
+
+        [Test]
+        public void DeleteOneControlPointWithCommandUndo()
+        {
+            AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
+            Invoker.ExecuteCommand(command);
+
+            DeleteControlPointCommand deleteCommand = new DeleteControlPointCommand(this.LineSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+
+            Assert.AreEqual(this.LineSketchObject.getNumberOfControlPoints(), 1);
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
+        }
+
+        [Test]
+        public void DeleteOneControlPointWithCommandRedo()
+        {
+            AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
+            Invoker.ExecuteCommand(command);
+
+            DeleteControlPointCommand deleteCommand = new DeleteControlPointCommand(this.LineSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.AreEqual(this.LineSketchObject.getNumberOfControlPoints(), 0);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
         }
 
         [Test]

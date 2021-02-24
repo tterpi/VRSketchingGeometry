@@ -6,13 +6,13 @@ namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
     /// Base class for diferent kinds of SketchObjects.
     /// </summary>
-    public abstract class SketchObject : MonoBehaviour, IGroupable, IHighlightable
+    public abstract class SketchObject : SelectableObject
     {
         public VRSketchingGeometry.DefaultReferences Defaults;
 
-        private GameObject parentGroup;
+        private SketchObjectGroup parentGroup;
 
-        public GameObject ParentGroup { get => parentGroup; set => parentGroup = value; }
+        public override SketchObjectGroup ParentGroup { get => parentGroup; set => parentGroup = value; }
 
         protected MeshRenderer meshRenderer;
 
@@ -25,7 +25,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             setUpOriginalMaterialAndMeshRenderer();
         }
 
-        public void resetToParentGroup()
+        public override void resetToParentGroup()
         {
             this.transform.SetParent(ParentGroup?.transform);
         }
@@ -36,12 +36,12 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             originalMaterial = meshRenderer.sharedMaterial;
         }
 
-        public virtual void highlight()
+        public override void highlight()
         {
             meshRenderer.sharedMaterial = highlightMaterial;
         }
 
-        public virtual void revertHighlight()
+        public override void revertHighlight()
         {
             meshRenderer.sharedMaterial = originalMaterial;
         }

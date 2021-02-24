@@ -44,9 +44,12 @@ namespace Tests
 
             addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(1, 0, 0), Quaternion.Euler(-45, 0, 0));
             Invoker.ExecuteCommand(addCommand);
+
+            addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(2, 0, 0), Quaternion.Euler(-45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
             Invoker.Undo();
 
-            Assert.AreEqual(3, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
+            Assert.AreEqual(6, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertexCount);
         }
 
         [Test]
@@ -64,6 +67,41 @@ namespace Tests
         }
 
         [Test]
+        public void AddOneControlPointAndRotationCommand()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+
+            Assert.AreEqual(1, this.RibbonSketchObject.GetPointsCount());
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
+        }
+
+        [Test]
+        public void AddOneControlPointAndRotationCommandUndo()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
+        }
+
+        [Test]
+        public void AddOneControlPointAndRotationCommandRedo()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.AreEqual(1, this.RibbonSketchObject.GetPointsCount());
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
+        }
+
+        [Test]
         public void DeleteControlPointAndRotationCommand()
         {
             ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
@@ -72,10 +110,13 @@ namespace Tests
             addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(1, 0, 0), Quaternion.Euler(-45, 0, 0));
             Invoker.ExecuteCommand(addCommand);
 
+            addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(2, 0, 0), Quaternion.Euler(-45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+
             ICommand deleteCommand = new DeletePointAndRotationCommand(this.RibbonSketchObject);
             Invoker.ExecuteCommand(deleteCommand);
 
-            Assert.AreEqual(3, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
+            Assert.AreEqual(6, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
         }
 
         [Test]
@@ -103,12 +144,57 @@ namespace Tests
             addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(1, 0, 0), Quaternion.Euler(-45, 0, 0));
             Invoker.ExecuteCommand(addCommand);
 
+            addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(2, 0, 0), Quaternion.Euler(-45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+
             ICommand deleteCommand = new DeletePointAndRotationCommand(this.RibbonSketchObject);
             Invoker.ExecuteCommand(deleteCommand);
             Invoker.Undo();
             Invoker.Redo();
 
-            Assert.AreEqual(3, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
+            Assert.AreEqual(6, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
+        }
+
+        [Test]
+        public void DeleteFirstControlPointAndRotationCommand()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+                        
+            ICommand deleteCommand = new DeletePointAndRotationCommand(this.RibbonSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
+        }
+
+        [Test]
+        public void DeleteFirstControlPointAndRotationCommandUndo()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+
+            ICommand deleteCommand = new DeletePointAndRotationCommand(this.RibbonSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
+        }
+
+        [Test]
+        public void DeleteFirstControlPointAndRotationCommandRedo()
+        {
+            ICommand addCommand = new AddPointAndRotationCommand(this.RibbonSketchObject, new Vector3(0, 0, 0), Quaternion.Euler(45, 0, 0));
+            Invoker.ExecuteCommand(addCommand);
+
+            ICommand deleteCommand = new DeletePointAndRotationCommand(this.RibbonSketchObject);
+            Invoker.ExecuteCommand(deleteCommand);
+            Invoker.Undo();
+            Invoker.Redo();
+
+            Assert.AreEqual(null, RibbonSketchObject.GetComponent<MeshFilter>().sharedMesh);
+            Assert.IsTrue(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.RibbonSketchObject));
         }
 
         [Test]
