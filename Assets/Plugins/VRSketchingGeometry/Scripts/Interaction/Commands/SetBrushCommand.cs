@@ -4,7 +4,7 @@ using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Serialization;
 
-namespace VRSketchingGeometry.Commands.Line {
+namespace VRSketchingGeometry.Commands {
     /// <summary>
     /// Set the brush of the sketch object.
     /// </summary>
