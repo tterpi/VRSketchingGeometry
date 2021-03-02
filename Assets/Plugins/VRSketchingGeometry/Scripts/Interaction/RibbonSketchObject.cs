@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VRSketchingGeometry.Meshing;
 using VRSketchingGeometry.Serialization;
@@ -40,15 +41,19 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         }
 
         public void SetControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
-            this.Points = newPoints;
-            this.Rotations = newRotations;
+            if (newPoints.Count != newRotations.Count) {
+                Debug.LogError("RibbonSketchObject: Count of points and rotations is not equal.");
+                return;
+            }
+            this.Points = newPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
+            this.Rotations = newRotations.Select(rotation => Quaternion.Inverse(this.transform.rotation) * rotation).ToList(); ;
             Mesh mesh = RibbonMesh.GetMesh(this.Points, this.Rotations);
             UpdateMesh(mesh);
         }
 
         public void AddControlPoint(Vector3 point, Quaternion rotation) {
-            Points.Add(point);
-            Rotations.Add(rotation);
+            Points.Add(this.transform.InverseTransformPoint(point));
+            Rotations.Add(Quaternion.Inverse(this.transform.rotation)*rotation);
             Mesh mesh = RibbonMesh.AddPoint(point, rotation);
             UpdateMesh(mesh);
         }
@@ -101,6 +106,10 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             UpdateMesh(RibbonMesh.GetMesh(Points, Rotations));
         }
 
+        public List<Vector3> GetCrossSection() {
+            return this.RibbonMesh.GetCrossSection();
+        }
+
         public void SetBrush(Brush brush) {
             meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(brush.SketchMaterial);
             if (brush is RibbonBrush ribbonBrush)
@@ -117,7 +126,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             RibbonBrush brush = new RibbonBrush();
             brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
             brush.CrossSectionScale = RibbonMesh.Scale;
-            brush.CrossSectionVertices = RibbonMesh.CrossSection;
+            brush.CrossSectionVertices = RibbonMesh.GetCrossSection();
             return brush;
         }
 
@@ -127,7 +136,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             ribbonData.ControlPoints = GetPoints();
             ribbonData.ControlPointOrientations = GetRotations();
             ribbonData.CrossSectionScale = RibbonMesh.Scale;
-            ribbonData.CrossSectionVertices = RibbonMesh.CrossSection;
+            ribbonData.CrossSectionVertices = RibbonMesh.GetCrossSection();
             ribbonData.Position = this.transform.position;
             ribbonData.Rotation = this.transform.rotation;
             ribbonData.Scale = this.transform.localScale;

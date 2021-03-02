@@ -55,6 +55,8 @@ namespace VRSketchingGeometry.Serialization
             material.SetFloat("_GlossMapScale", SmoothnessValue);
             material.SetTextureScale("_MainTex", UVTiling);
 
+            if (textureBasePath == null) return;
+
             if (AlbedoMapName != null) {
                 Texture2D tex = LoadTextureFromPng(System.IO.Path.Combine(textureBasePath, AlbedoMapName + ".png"));
                 material.SetTexture("_MainTex", tex);

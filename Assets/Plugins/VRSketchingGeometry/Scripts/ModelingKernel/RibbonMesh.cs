@@ -16,10 +16,10 @@ namespace VRSketchingGeometry.Meshing
 
         private Vector3 scale;
         private List<Vector3> Vertices;
-        private List<Vector3> crossSection;
+        private List<Vector3> CrossSection;
+        public List<Vector3> GetCrossSection() => new List<Vector3>(CrossSection);
 
         public Vector3 Scale { get => scale; private set => scale = value; }
-        public List<Vector3> CrossSection { get => new List<Vector3>(crossSection); private set => crossSection = value; }
 
         /// <summary>
         /// Get a mesh with a cross section that is a straight line along local z axis.
