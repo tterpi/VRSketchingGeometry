@@ -97,7 +97,7 @@ public class LineSketchObjectTest : MonoBehaviour
         group.AddToGroup(lineSketchObject);
         group.AddToGroup(lineSketchObject2);
 
-        SketchObjectGroupData groupData = group.GetData();
+        SketchObjectGroupData groupData = group.GetData() as SketchObjectGroupData;
         string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
         Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData readGrouptData, xmlFilePath);
         Debug.Log(readGrouptData.SketchObjects[0].GetType());

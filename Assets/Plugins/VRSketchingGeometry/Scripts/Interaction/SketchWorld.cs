@@ -94,7 +94,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         public void SaveSketchWorld(string path)
         {
-            Serializer.SerializeToXmlFile<SketchObjectGroupData>(RootGroup.GetData(), path);
+            Serializer.SerializeToXmlFile<SketchObjectGroupData>(RootGroup.GetData() as SketchObjectGroupData, path);
         }
 
         /// <summary>

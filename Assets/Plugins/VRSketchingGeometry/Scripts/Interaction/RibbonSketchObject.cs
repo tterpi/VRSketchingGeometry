@@ -52,9 +52,11 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         }
 
         public void AddControlPoint(Vector3 point, Quaternion rotation) {
-            Points.Add(this.transform.InverseTransformPoint(point));
-            Rotations.Add(Quaternion.Inverse(this.transform.rotation)*rotation);
-            Mesh mesh = RibbonMesh.AddPoint(point, rotation);
+            Vector3 transformedPoint = this.transform.InverseTransformPoint(point);
+            Quaternion transformedRotation = Quaternion.Inverse(this.transform.rotation) * rotation;
+            Points.Add(transformedPoint);
+            Rotations.Add(transformedRotation);
+            Mesh mesh = RibbonMesh.AddPoint(transformedPoint, transformedRotation);
             UpdateMesh(mesh);
         }
 
@@ -68,7 +70,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             //Check that new control point is far enough away from previous control point
             if (
                 Points.Count == 0 ||
-                (transform.InverseTransformPoint(point) - Points[Points.Count -1]).magnitude > MinimumControlPointDistance
+                (this.transform.InverseTransformPoint(point) - Points[Points.Count -1]).magnitude > MinimumControlPointDistance
                )
             {
                 AddControlPoint(point, rotation);
@@ -81,8 +83,8 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         }
 
         public void AddControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
-            this.Points.AddRange(newPoints);
-            this.Rotations.AddRange(newRotations);
+            this.Points.AddRange(newPoints.Select(ct => this.transform.InverseTransformPoint(ct)));
+            this.Rotations.AddRange(newRotations.Select(rotation => Quaternion.Inverse(this.transform.rotation) * rotation));
             Mesh mesh = RibbonMesh.AddPoints(this.Points, this.Rotations);
             UpdateMesh(mesh);
         }
@@ -137,9 +139,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             ribbonData.ControlPointOrientations = GetRotations();
             ribbonData.CrossSectionScale = RibbonMesh.Scale;
             ribbonData.CrossSectionVertices = RibbonMesh.GetCrossSection();
-            ribbonData.Position = this.transform.position;
-            ribbonData.Rotation = this.transform.rotation;
-            ribbonData.Scale = this.transform.localScale;
+            ribbonData.SetDataFromTransform(this.transform);
             ribbonData.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
             return ribbonData;
         }
@@ -151,9 +151,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
                 RibbonMesh = new RibbonMesh(ribbonData.CrossSectionVertices, ribbonData.CrossSectionScale);
                 SetControlPoints(ribbonData.ControlPoints, ribbonData.ControlPointOrientations);
                 meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(ribbonData.SketchMaterial);
-                transform.position = ribbonData.Position;
-                transform.rotation = ribbonData.Rotation;
-                transform.localScale = ribbonData.Scale;
+                ribbonData.ApplyDataToTransform(this.transform);
             }
             else {
                 Debug.LogError("Invalid data for RibbonSketchObject.");

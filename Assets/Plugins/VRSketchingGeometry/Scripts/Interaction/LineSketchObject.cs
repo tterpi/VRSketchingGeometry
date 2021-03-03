@@ -327,11 +327,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
             {
                 Interpolation = LineSketchObjectData.InterpolationType.Cubic,
                 ControlPoints = getControlPoints(),
-                Position = this.transform.position,
-                Rotation = this.transform.rotation,
-                Scale = this.transform.localScale,
                 CrossSectionScale = this.lineDiameter
             };
+
+            data.SetDataFromTransform(this.transform);
 
             SplineMesh.GetCrossSectionShape(out data.CrossSectionVertices,out data.CrossSectionNormals);
 
@@ -346,9 +345,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.rotation = Quaternion.identity;
             this.SetLineCrossSection(data.CrossSectionVertices, data.CrossSectionNormals, data.CrossSectionScale);
             this.SetControlPoints(data.ControlPoints);
-            this.transform.position = data.Position;
-            this.transform.rotation = data.Rotation;
-            this.transform.localScale = data.Scale;
+            data.ApplyDataToTransform(this.transform);
 
             this.SetMaterial(Defaults.GetMaterialFromDictionary(data.SketchMaterial));
 

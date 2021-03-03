@@ -17,11 +17,19 @@ namespace VRSketchingGeometry.SketchObjectManagement {
 
         public override SketchObjectGroup ParentGroup { get => parentGroup; set => parentGroup = value; }
 
+        /// <summary>
+        /// Add a groupable object to the group.
+        /// </summary>
+        /// <param name="groupableComponent"></param>
         public void AddToGroup(IGroupable groupableComponent) {
             groupableComponent.ParentGroup = this;
             groupableComponent.resetToParentGroup();
         }
 
+        /// <summary>
+        /// Add all groupable objects of the selection to the group.
+        /// </summary>
+        /// <param name="sketchObjectSelection"></param>
         public void AddToGroup(SketchObjectSelection sketchObjectSelection) {
             IGroupable[] groupables = sketchObjectSelection.GetComponentsInChildren<IGroupable>();
             foreach (IGroupable groupable in groupables) {
@@ -29,6 +37,12 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             }
         }
 
+        /// <summary>
+        /// Remove a groupable object from any group.
+        /// This will put the object as first level child of the active sketch world if present.
+        /// Otherwise it is put on the root level of the scene.
+        /// </summary>
+        /// <param name="groupedObject"></param>
         public static void RemoveFromGroup(IGroupable groupedObject) {
             if (SketchWorld.ActiveSketchWorld != null && groupedObject != null)
             {
@@ -57,12 +71,10 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
         }
 
-        public SketchObjectGroupData GetData()
+        private SketchObjectGroupData GetSketchObjectGroupData()
         {
             SketchObjectGroupData data = new SketchObjectGroupData();
-            data.Position = this.transform.position;
-            data.Rotation = this.transform.rotation;
-            data.Scale = this.transform.localScale;
+            data.SetDataFromTransform(this.transform);
 
             data.SketchObjects = new List<SketchObjectData>();
             data.SketchObjectGroups = new List<SketchObjectGroupData>();
@@ -82,20 +94,22 @@ namespace VRSketchingGeometry.SketchObjectManagement {
                 }
                 else if (childGroup != null)
                 {
-                    data.SketchObjectGroups.Add(childGroup.GetData());
+                    data.SketchObjectGroups.Add(childGroup.GetSketchObjectGroupData());
                 }
             }
 
             return data;
         }
 
-        public void ApplyData(SketchObjectGroupData data)
+        public SerializableComponentData GetData() {
+            return this.GetSketchObjectGroupData();
+        }
+
+        private void ApplyData(SketchObjectGroupData data)
         {
             if (data == null) return;
 
-            this.transform.position = data.Position;
-            this.transform.rotation = data.Rotation;
-            this.transform.localScale = data.Scale;
+            data.ApplyDataToTransform(this.transform);
 
             foreach (SketchObjectData sketchObjectData in data.SketchObjects) {
                 if (sketchObjectData is LineSketchObjectData lineSketchObjectData)
@@ -136,15 +150,19 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             }
         }
 
-        SerializableComponentData ISerializableComponent.GetData()
-        {
-            return this.GetData();
-        }
-
+        /// <summary>
+        /// Recreate the children of this group according to the data object.
+        /// This will recursively recreate child groups.
+        /// </summary>
+        /// <param name="data"></param>
         public void ApplyData(SerializableComponentData data)
         {
-            if (data is SketchObjectGroupData groupData) {
+            if (data is SketchObjectGroupData groupData)
+            {
                 this.ApplyData(groupData);
+            }
+            else {
+                Debug.LogError("Invalid data object type for SketchObjectGroup.");
             }
         }
     }

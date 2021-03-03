@@ -169,12 +169,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 Height = this.Height,
                 ResolutionWidth = this.ResolutionWidth,
                 ResolutionHeight = this.ResolutionHeight,
-                SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial),
-
-                Position = this.transform.position,
-                Rotation = this.transform.rotation,
-                Scale = this.transform.localScale
+                SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial)
             };
+
+            data.SetDataFromTransform(this.transform);
 
             return data;
         }
@@ -195,9 +193,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
                 originalMaterial = meshRenderer.sharedMaterial;
 
-                transform.position = patchData.Position;
-                transform.rotation = patchData.Rotation;
-                transform.localScale = patchData.Scale;
+                patchData.ApplyDataToTransform(this.transform);
             }
         }
     }
