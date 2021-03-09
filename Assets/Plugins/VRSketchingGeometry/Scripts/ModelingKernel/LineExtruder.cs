@@ -61,34 +61,6 @@ namespace VRSketchingGeometry.Meshing {
             return normalsTransformed;
         }
 
-        public static List<int> GenerateTriangles(int numOfCrossSectionVertices, int numOfSections)
-        {
-
-            List<int> triangles = new List<int>();
-
-            //for each cross section
-            for (int j = 0; j < numOfSections; j++)
-            {
-                //for each vertex of the current cross section
-                for (int i = j * numOfCrossSectionVertices; i < (j + 1) * numOfCrossSectionVertices; i++)
-                {
-                    //if not the last vertex of the cross section
-                    if (!(i % numOfCrossSectionVertices == numOfCrossSectionVertices - 1))
-                    {
-                        triangles.Add(i);
-                        triangles.Add(i + 1 + numOfCrossSectionVertices);
-                        triangles.Add(i + 1);
-
-                        triangles.Add(i);
-                        triangles.Add(i + numOfCrossSectionVertices);
-                        triangles.Add(i + 1 + numOfCrossSectionVertices);
-                    }
-                }
-            }
-
-            return triangles;
-        }
-
         public LineExtruder(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
             this.crossSectionShape = crossSectionShape;
             this.crossSectionNormals = crossSectionNormals;
@@ -185,7 +157,8 @@ namespace VRSketchingGeometry.Meshing {
             normals.InsertRange(verticesIndex, normalsToInsert);
 
             //update triangles
-            triangles = GenerateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
+            triangles = new List<int>(Triangles.GenerateTrianglesCounterclockwise(vertices.Count / crossSectionShape.Count, crossSectionShape.Count));
+            //triangles = GenerateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
 
             //mesh is empty or there is just a single cross section left because second to last control point or last control point was removed
             if (vertices.Count <= crossSectionShape.Count && normals.Count <= crossSectionShape.Count) {

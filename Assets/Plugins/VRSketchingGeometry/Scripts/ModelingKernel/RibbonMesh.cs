@@ -11,7 +11,7 @@ namespace VRSketchingGeometry.Meshing
     /// Generate a mesh with a certain cross section along given points and rotations.
     /// Contrary to the LineExtruder and ParallelTransportTubeMesh, the rotations of the cross sections have to be given explicitly and are not calculated automatically.
     /// </summary>
-    class RibbonMesh
+    public class RibbonMesh
     {
 
         private Vector3 scale;
@@ -78,16 +78,7 @@ namespace VRSketchingGeometry.Meshing
 
             List<Vector3> vertices = GetVertices(crossSection, points, rotations, scale);
 
-            List<int> triangles = LineExtruder.GenerateTriangles(crossSection.Count, points.Count-1);
-
-            Mesh mesh = new Mesh();
-            mesh.SetVertices(vertices);
-            mesh.SetTriangles(triangles.ToArray(), 0);
-            mesh.RecalculateNormals();
-            mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSection.Count));
-            mesh.RecalculateTangents();
-
-            return mesh;
+            return GetMeshFromVertices(vertices, crossSection.Count);
         }
 
         /// <summary>
@@ -101,11 +92,12 @@ namespace VRSketchingGeometry.Meshing
                 return null;
             }
 
-            List<int> triangles = LineExtruder.GenerateTriangles(crossSectionCount, (vertices.Count / crossSectionCount) - 1);
+            //List<int> triangles = LineExtruder.GenerateTriangles(crossSectionCount, (vertices.Count / crossSectionCount) - 1);
+            int[] triangles = Triangles.GenerateTrianglesCounterclockwise((vertices.Count / crossSectionCount), crossSectionCount);
 
             Mesh mesh = new Mesh();
             mesh.SetVertices(vertices);
-            mesh.SetTriangles(triangles.ToArray(), 0);
+            mesh.SetTriangles(triangles, 0);
             mesh.RecalculateNormals();
             mesh.SetUVs(0, TextureCoordinates.GenerateQuadrilateralUVsStretchU(vertices.Count, crossSectionCount));
             mesh.RecalculateTangents();

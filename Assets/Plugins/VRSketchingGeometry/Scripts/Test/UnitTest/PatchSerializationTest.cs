@@ -66,8 +66,7 @@ namespace Tests
             data.SketchMaterial = new SketchMaterialData();
 
             this.PatchSketchObject.ApplyData(data);
-            Assert.AreEqual(3 * 6 * 3 * 6, this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh.vertexCount);
-
+            Assert.That(this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh.vertexCount, Is.EqualTo(3 * 6 * 3 * 6));
         }
     }
 }

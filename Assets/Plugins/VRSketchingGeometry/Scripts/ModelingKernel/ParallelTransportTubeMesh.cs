@@ -44,7 +44,7 @@ namespace VRSketchingGeometry.Meshing
             }
 
             //update triangles
-            List<int> meshTriangles = LineExtruder.GenerateTriangles(crossSectionShape.Count, (meshVertices.Count / crossSectionShape.Count) - 1);
+            List<int> meshTriangles = new List<int>(Triangles.GenerateTrianglesCounterclockwise((meshVertices.Count / crossSectionShape.Count), crossSectionShape.Count));
 
             //mesh is empty or there is just a single cross section left because second to last control point or last control point was removed
             if (meshVertices.Count <= crossSectionShape.Count && meshNormals.Count <= crossSectionShape.Count)
