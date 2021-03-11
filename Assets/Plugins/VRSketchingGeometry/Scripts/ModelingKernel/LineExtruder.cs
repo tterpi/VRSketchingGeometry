@@ -135,6 +135,7 @@ namespace VRSketchingGeometry.Meshing {
             verticesToInsert = new List<Vector3>();
             normalsToInsert = new List<Vector3>();
 
+            //This loop could be parallelized, the TransformCrossSection calls take a lot of time
             for (int i = pointIndex; i < pointIndex + pointAddCount; i++)
             {
                 if (i == 0)

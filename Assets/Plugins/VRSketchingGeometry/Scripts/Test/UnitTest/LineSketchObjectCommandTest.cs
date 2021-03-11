@@ -324,7 +324,27 @@ namespace Tests
                     Assert.AreEqual(new Vector3(4, 3, 2), line.getControlPoints()[0]);
                 }
             }
+        }
 
+        [Test]
+        public void RefineMeshTest()
+        {
+            AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
+            Invoker.ExecuteCommand(command);
+
+            command = new AddControlPointCommand(this.LineSketchObject, new Vector3(2, 3, 4));
+            Invoker.ExecuteCommand(command);
+
+            command = new AddControlPointCommand(this.LineSketchObject, new Vector3(3, 3, 3));
+            Invoker.ExecuteCommand(command);
+
+            command = new AddControlPointCommand(this.LineSketchObject, new Vector3(4, 3, 2));
+            Invoker.ExecuteCommand(command);
+
+            this.LineSketchObject.RefineMesh();
+
+            Assert.AreEqual(this.LineSketchObject.getNumberOfControlPoints(), 4);
+            Assert.AreEqual((3 * 20 + 2) * 7, this.LineSketchObject.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
         }
     }
 }

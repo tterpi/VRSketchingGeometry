@@ -42,28 +42,35 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void SetControlPoints_Performance([NUnit.Framework.Range(10,100,10)]int length) {
+        public void SketchObject_SetControlPoints_Performance([Values(3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50)]int length) {
+            List<Vector3> controlPoints = GenerateControlPoints(length);
             Measure.Method(() =>
             {
-                this.LineSketchObject.SetControlPoints(GenerateControlPoints(length));
-            }).Run();
+                this.LineSketchObject.SetControlPoints(controlPoints);
+            })
+            .WarmupCount(10)
+            .MeasurementCount(50)
+            .Run();
         }
 
         [Test, Performance]
-        public void SketchObject_AddControlPoint_Performance([NUnit.Framework.Range(9, 99, 10)]int length)
+        public void SketchObject_AddControlPoint_Performance([Values(3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50)]int length)
         {
+            List<Vector3> controlPoints = GenerateControlPoints(length-1);
             Measure.Method(() =>
             {
-                this.LineSketchObject.addControlPoint(new Vector3(length + 1, 0, 0));
+                this.LineSketchObject.addControlPoint(new Vector3(length, 0, 0));
             })
+            .WarmupCount(10)
+            .MeasurementCount(50)
             .SetUp(()=> {
-                this.LineSketchObject.SetControlPoints(GenerateControlPoints(length));
+                this.LineSketchObject.SetControlPoints(controlPoints);
             })
             .Run();
         }
 
         [Test, Performance]
-        public void RibbonMesh_AddControlPoint_Performance([NUnit.Framework.Range(9, 99, 10)]int length)
+        public void SplineMesh_AddControlPoint_Performance([NUnit.Framework.Range(9, 99, 10)]int length)
         {
             SplineMesh splineMesh = null;
             Measure.Method(() =>

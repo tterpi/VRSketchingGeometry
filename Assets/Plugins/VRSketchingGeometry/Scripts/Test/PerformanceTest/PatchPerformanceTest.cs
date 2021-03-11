@@ -48,6 +48,7 @@ namespace Tests
             {
                 this.PatchSketchObject.AddPatchSegment(segment4);
             })
+            .MeasurementCount(20)
             .SetUp(() => {
                 this.PatchSketchObject.SetControlPoints(new List<Vector3>(), 0,0);
                 this.PatchSketchObject.Width = 4;
@@ -59,7 +60,39 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void SetControlPoints5_Performance([Values(5,10,15)]int length) {
+        public void AddSegment_Performance([Values(3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 40, 50)]int length)
+        {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
+            List<Vector3> lastControlPoints = controlPoints.GetRange(controlPoints.Count - 4, 4);
+            controlPoints.RemoveRange(controlPoints.Count - 4, 4);
+
+            Measure.Method(() =>
+            {
+                this.PatchSketchObject.AddPatchSegment(lastControlPoints);
+            })
+            .WarmupCount(5)
+            .MeasurementCount(20)
+            .SetUp(() => {
+                this.PatchSketchObject.SetControlPoints(controlPoints, 4, length-1);
+            })
+            .Run();
+        }
+
+        [Test, Performance]
+        public void SetControlPoints_Performance([Values(3,4,5,6,7,8,9,10,15,20,25,30,40,50)]int length) {
+            Measure.Method(() =>
+            {
+                this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4, length);
+
+            })
+            .WarmupCount(5)
+            .MeasurementCount(20)
+            .Run();
+        }
+
+        [Test, Performance]
+        public void SetControlPointsBig_Performance([Values(100,200,300)]int length)
+        {
             Measure.Method(() =>
             {
                 this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4, length);
@@ -68,38 +101,61 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void SetControlPointsBig100_Performance([Values(100,200,300)]int length)
-        {
+        public void GeneratePatchVertices_Unoptimized([Values(10, 100)]int length) {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4, length);
-
+                PatchMesh.GenerateVerticesOfPatch_Original(controlPoints, 4, length, 4,4);
             }).Run();
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Unoptimized() {
+        public void GeneratePatchVerticesSmall_Unoptimized([NUnit.Framework.Range(3, 10)]int length)
+        {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                PatchMesh.GenerateVerticesOfPatch_Original(GenerateControlPoints(30, 30), 30, 30, 4,4);
+                PatchMesh.GenerateVerticesOfPatch_Original(controlPoints, 4, length, 4, 4);
             }).Run();
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Optimized()
+        public void GeneratePatchVertices_Optimized([Values(10, 100)]int length)
         {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                PatchMesh.GenerateVerticesOfPatch_Optimized(GenerateControlPoints(30, 30), 30, 30, 4, 4);
+                PatchMesh.GenerateVerticesOfPatch_Optimized(controlPoints, 4, length, 4, 4);
             }).Run();
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Parallel()
+        public void GeneratePatchVerticesSmall_Optimized([NUnit.Framework.Range(3, 10)]int length)
         {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                PatchMesh.GenerateVerticesOfPatch_Parallel(GenerateControlPoints(30, 30), 30, 30, 4, 4);
+                PatchMesh.GenerateVerticesOfPatch_Optimized(controlPoints, 4, length, 4, 4);
+            }).Run();
+        }
+
+        [Test, Performance]
+        public void GeneratePatchVertices_Parallel([Values(10,100)]int length)
+        {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
+            Measure.Method(() =>
+            {
+                PatchMesh.GenerateVerticesOfPatch_Parallel(controlPoints, 4, length, 4, 4);
+            }).Run();
+        }
+
+        [Test, Performance]
+        public void GeneratePatchVerticesSmall_Parallel([NUnit.Framework.Range(3,10)]int length)
+        {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
+            Measure.Method(() =>
+            {
+                PatchMesh.GenerateVerticesOfPatch_Parallel(controlPoints, 4, length, 4, 4);
             }).Run();
         }
     }
