@@ -22,7 +22,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             setUpOriginalMaterialAndMeshRenderer();
         }
 
-        public override void setLineDiameter(float diameter)
+        public override void SetLineDiameter(float diameter)
         {
             this.lineDiameter = diameter;
 
@@ -32,7 +32,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
         public override void SetLineCrossSection(List<Vector3> crossSection, List<Vector3> crossSectionNormals, float diameter)
@@ -48,13 +48,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
         /// <summary>
         /// Determines how to display the spline depending on the number of control points that are present.
         /// </summary>
-        protected override void chooseDisplayMethod()
+        protected override void ChooseDisplayMethod()
         {
             sphereObject.SetActive(false);
             if (SplineMesh.getNumberOfControlPoints() == 0)

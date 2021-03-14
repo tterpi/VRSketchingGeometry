@@ -24,10 +24,10 @@ public class DeleteByRadiusTest : MonoBehaviour
     void Start()
     {
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-        lineSketchObject.setLineDiameter(.5f);
+        lineSketchObject.SetLineDiameter(.5f);
 
         lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-        lineSketchObject2.setLineDiameter(.5f);
+        lineSketchObject2.SetLineDiameter(.5f);
     }
 
     IEnumerator changeDiameter() {
@@ -36,13 +36,14 @@ public class DeleteByRadiusTest : MonoBehaviour
         OBJExporter exporter = new OBJExporter();
         string exportPath = OBJExporter.GetDefaultExportPath();
         //exporter.ExportGameObject(lineSketchObject.gameObject, exportPath);
-        Debug.Log(JsonUtility.ToJson(lineSketchObject));
+        //Debug.Log(JsonUtility.ToJson(lineSketchObject));
         //XMLSerializeTest();
         //XMLSerializeTest2();
         //exporter.ExportGameObject(controlPointParent, exportPath);
+        lineSketchObject.SetInterpolationSteps(4);
         lineSketchObject.RefineMesh();
 
-        Debug.Log(exportPath);
+        //Debug.Log(exportPath);
         //lineSketchObject.setLineDiameter(.1f);
         //yield return new WaitForSeconds(2);
         //lineSketchObject.deleteControlPoint();
@@ -91,21 +92,35 @@ public class DeleteByRadiusTest : MonoBehaviour
     private void lineSketchObjectTest() {
 
         foreach (Transform controlPoint in controlPointParent.transform) {
-            lineSketchObject.addControlPoint(controlPoint.position);
-            lineSketchObject2.addControlPoint(controlPoint.position);
+            lineSketchObject.AddControlPoint(controlPoint.position);
+            lineSketchObject2.AddControlPoint(controlPoint.position);
         }
 
-        lineSketchObject.SetLineCrossSection(SplineMesh.GetCircularCrossSectionVertices(16), SplineMesh.GetCircularCrossSectionVertices(16, 1f), .5f);
+        lineSketchObject.SetLineCrossSection(CircularCrossSection.GenerateVertices(16), CircularCrossSection.GenerateVertices(16, 1f), .5f);
         //lineSketchObject.setLineDiameter(.7f);
         StartCoroutine(changeDiameter());
 
         //StartCoroutine(deactivateSelection(selection));
     }
 
+    private void SetAddComparison() {
+        List<Vector3> controlPoints = new List<Vector3>();
+        lineSketchObject.SetControlPoints(new List<Vector3>());
+        foreach (Transform controlPoint in controlPointParent.transform)
+        {
+            lineSketchObject.AddControlPoint(controlPoint.position);
+            controlPoints.Add(controlPoint.position);
+        }
+
+        lineSketchObject2.SetControlPoints(controlPoints);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (!ranOnce) {
+        //SetAddComparison();
+        if (!ranOnce)
+        {
             lineSketchObjectTest();
             ranOnce = true;
         }

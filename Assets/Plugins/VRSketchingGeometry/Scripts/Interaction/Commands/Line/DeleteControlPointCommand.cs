@@ -20,8 +20,8 @@ namespace VRSketchingGeometry.Commands.Line
 
         public bool Execute()
         {
-            this.OldControlPoint = LineSketchObject.getControlPoints()[LineSketchObject.getNumberOfControlPoints() - 1];
-            LineSketchObject.deleteControlPoint();
+            this.OldControlPoint = LineSketchObject.GetControlPoints()[LineSketchObject.getNumberOfControlPoints() - 1];
+            LineSketchObject.DeleteControlPoint();
             if (this.LineSketchObject.getNumberOfControlPoints() == 0)
             {
                 SketchWorld.ActiveSketchWorld.DeleteObject(this.LineSketchObject);
@@ -40,7 +40,7 @@ namespace VRSketchingGeometry.Commands.Line
             {
                 SketchWorld.ActiveSketchWorld.RestoreObject(this.LineSketchObject);
             }
-            LineSketchObject.addControlPoint(OldControlPoint);
+            LineSketchObject.AddControlPoint(OldControlPoint);
         }
     }
 }

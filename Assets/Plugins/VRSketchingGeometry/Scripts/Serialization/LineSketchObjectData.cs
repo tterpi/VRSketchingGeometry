@@ -14,6 +14,7 @@ namespace VRSketchingGeometry.Serialization
         }
 
         public InterpolationType Interpolation;
+        public int InterpolationSteps;
         public List<Vector3> ControlPoints;
         public List<Vector3> CrossSectionVertices;
         public List<Vector3> CrossSectionNormals;

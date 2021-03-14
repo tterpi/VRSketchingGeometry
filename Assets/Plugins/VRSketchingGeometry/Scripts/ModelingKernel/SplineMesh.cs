@@ -35,7 +35,7 @@ namespace VRSketchingGeometry.Meshing
 
         public SplineMesh(Spline spline, Vector3 crossSectionScale, int crossSectionResolution = 6)
         {
-            List<Vector3> vertices = GetCircularCrossSectionVertices(crossSectionResolution);
+            List<Vector3> vertices = CircularCrossSection.GenerateVertices(crossSectionResolution);
             crossSectionShape = vertices;
             crossSectionShapeNormals = new List<Vector3>();
             foreach (Vector3 point in crossSectionShape)
@@ -130,26 +130,6 @@ namespace VRSketchingGeometry.Meshing
             this.crossSectionShapeNormals = crossSectionNormals;
             lineExtruder = new LineExtruder(crossSectionShape, crossSectionShapeNormals, crossSectionDiameter);
             return lineExtruder.GetMesh(interpolatedPoints);
-        }
-
-        /// <summary>
-        /// Get vertices that approximate a circle.
-        /// The cross section will have resolution + 1 vertices.
-        /// </summary>
-        /// <param name="resolution">Number of vertices of the circle.</param>
-        /// <param name="scale">Radius of the cross section.</param>
-        /// <returns></returns>
-        public static List<Vector3> GetCircularCrossSectionVertices(int resolution, float scale = .5f) {
-            List<Vector3> vertices = new List<Vector3>();
-            for (int i = 0; i < resolution; i++)
-            {
-                float angle = (float)i / resolution * 2*Mathf.PI;
-                Vector3 vertex = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle)) * scale;
-                vertices.Add(vertex);
-            }
-            //duplicate first vertex as last vertex
-            vertices.Add(vertices[0]);
-            return vertices;
         }
 
         public Mesh RefineMesh() {

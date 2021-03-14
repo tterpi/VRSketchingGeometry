@@ -13,6 +13,7 @@ namespace VRSketchingGeometry.Serialization {
         public float CrossSectionScale;
         public List<Vector3> CrossSectionVertices;
         public List<Vector3> CrossSectionNormals;
+        public int InterpolationSteps;
     }
 
     public class RibbonBrush : Brush {

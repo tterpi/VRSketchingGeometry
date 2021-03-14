@@ -19,7 +19,7 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public bool Execute()
         {
-            LineSketchObject.addControlPoint(NewControlPoint);
+            LineSketchObject.AddControlPoint(NewControlPoint);
             return true;
         }
 
@@ -33,7 +33,7 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public void Undo()
         {
-            LineSketchObject.deleteControlPoint();
+            LineSketchObject.DeleteControlPoint();
             if (this.LineSketchObject.getNumberOfControlPoints() == 0) {
                 SketchWorld.ActiveSketchWorld.DeleteObject(this.LineSketchObject);
             }
@@ -49,7 +49,7 @@ namespace VRSketchingGeometry.Commands.Line {
         /// <returns>A command or null if the distance is smaller than minimumDistance.</returns>
         public static AddControlPointCommand GetAddPointAndRotationCommandContinuous(LineSketchObject lineSketchObject, Vector3 point, float minimumDistanceToLastControlPoint)
         {
-            if ((lineSketchObject.getControlPoints()[lineSketchObject.getNumberOfControlPoints() - 1] - point).magnitude >= minimumDistanceToLastControlPoint)
+            if ((lineSketchObject.GetControlPoints()[lineSketchObject.getNumberOfControlPoints() - 1] - point).magnitude >= minimumDistanceToLastControlPoint)
             {
                 return new AddControlPointCommand(lineSketchObject, point);
             }

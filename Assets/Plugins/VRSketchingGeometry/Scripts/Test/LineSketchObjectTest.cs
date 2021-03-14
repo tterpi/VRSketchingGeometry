@@ -31,7 +31,7 @@ public class LineSketchObjectTest : MonoBehaviour
     void Start()
     {
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-        lineSketchObject.setLineDiameter(.5f);
+        lineSketchObject.SetLineDiameter(.5f);
         //lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject2 = Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<LineSketchObject>();
         patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
@@ -40,10 +40,10 @@ public class LineSketchObjectTest : MonoBehaviour
 
     IEnumerator changeDiameter() {
         yield return new WaitForSeconds(5);
-        lineSketchObject.setLineDiameter(.1f);
+        lineSketchObject.SetLineDiameter(.1f);
         yield return new WaitForSeconds(2);
-        lineSketchObject.deleteControlPoint();
-        lineSketchObject.deleteControlPoint();
+        lineSketchObject.DeleteControlPoint();
+        lineSketchObject.DeleteControlPoint();
 
     }
 
@@ -53,19 +53,19 @@ public class LineSketchObjectTest : MonoBehaviour
     }
 
     private void lineSketchObjectTest() {
-        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
-        lineSketchObject.addControlPoint(Vector3.one);
-        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
-        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+        lineSketchObject.AddControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.AddControlPoint(Vector3.one);
+        lineSketchObject.AddControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.AddControlPoint(new Vector3(2, 1, 0));
 
         //lineSketchObject.setLineDiameter(.7f);
         StartCoroutine(changeDiameter());
 
-        lineSketchObject2.addControlPoint(new Vector3(1,0,0));
-        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
-        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(1,0,0));
+        lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
         lineSketchObject2.minimumControlPointDistance = 2f;
-        lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
+        lineSketchObject2.AddControlPointContinuous(new Vector3(3, 1, 0));
 
         //GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
         GameObject selectionGO = Instantiate(selectionPrefab);
@@ -79,17 +79,17 @@ public class LineSketchObjectTest : MonoBehaviour
 
     private void groupSerializationTest()
     {
-        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
-        lineSketchObject.addControlPoint(Vector3.one);
-        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
-        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+        lineSketchObject.AddControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.AddControlPoint(Vector3.one);
+        lineSketchObject.AddControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.AddControlPoint(new Vector3(2, 1, 0));
 
         //lineSketchObject.setLineDiameter(.7f);
         //StartCoroutine(changeDiameter());
 
-        lineSketchObject2.addControlPoint(new Vector3(1, 0, 0));
-        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
-        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
         //lineSketchObject2.minimumControlPointDistance = 2f;
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
@@ -118,20 +118,20 @@ public class LineSketchObjectTest : MonoBehaviour
 
     private void SketchWorldSerializationTest()
     {
-        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
-        lineSketchObject.addControlPoint(Vector3.one);
-        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
-        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+        lineSketchObject.AddControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.AddControlPoint(Vector3.one);
+        lineSketchObject.AddControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.AddControlPoint(new Vector3(2, 1, 0));
         //lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = twoSidedMaterial;
         lineSketchObject.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
-        lineSketchObject.SetLineCrossSection(SplineMesh.GetCircularCrossSectionVertices(4), SplineMesh.GetCircularCrossSectionVertices(4,1f), .4f);
+        lineSketchObject.SetLineCrossSection(CircularCrossSection.GenerateVertices(4), CircularCrossSection.GenerateVertices(4,1f), .4f);
 
         //lineSketchObject.setLineDiameter(.7f);
         //StartCoroutine(changeDiameter());
 
-        lineSketchObject2.addControlPoint(new Vector3(1, 0, 0));
-        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
-        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
         lineSketchObject2.GetComponent<MeshRenderer>().material.color = Color.blue;
         lineSketchObject2.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
 

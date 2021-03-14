@@ -19,7 +19,7 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public bool Execute()
         {
-            return LineSketchObject.addControlPointContinuous(NewControlPoint);
+            return LineSketchObject.AddControlPointContinuous(NewControlPoint);
         }
 
         public void Redo()
@@ -28,12 +28,12 @@ namespace VRSketchingGeometry.Commands.Line {
             {
                 SketchWorld.ActiveSketchWorld.RestoreObject(this.LineSketchObject);
             }
-            LineSketchObject.addControlPoint(NewControlPoint);
+            LineSketchObject.AddControlPoint(NewControlPoint);
         }
 
         public void Undo()
         {
-            LineSketchObject.deleteControlPoint();
+            LineSketchObject.DeleteControlPoint();
             if (this.LineSketchObject.getNumberOfControlPoints() == 0)
             {
                 SketchWorld.ActiveSketchWorld.DeleteObject(this.LineSketchObject);

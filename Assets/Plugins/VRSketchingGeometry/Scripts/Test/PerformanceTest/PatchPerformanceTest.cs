@@ -70,8 +70,6 @@ namespace Tests
             {
                 this.PatchSketchObject.AddPatchSegment(lastControlPoints);
             })
-            .WarmupCount(5)
-            .MeasurementCount(20)
             .SetUp(() => {
                 this.PatchSketchObject.SetControlPoints(controlPoints, 4, length-1);
             })
@@ -80,13 +78,12 @@ namespace Tests
 
         [Test, Performance]
         public void SetControlPoints_Performance([Values(3,4,5,6,7,8,9,10,15,20,25,30,40,50)]int length) {
+            List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4, length);
+                this.PatchSketchObject.SetControlPoints(controlPoints, 4, length);
 
             })
-            .WarmupCount(5)
-            .MeasurementCount(20)
             .Run();
         }
 
@@ -101,7 +98,7 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Unoptimized([Values(10, 100)]int length) {
+        public void GeneratePatchVertices_Unoptimized([Values(10,50, 100)]int length) {
             List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
@@ -120,7 +117,7 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Optimized([Values(10, 100)]int length)
+        public void GeneratePatchVertices_Optimized([Values(10,50, 100)]int length)
         {
             List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
@@ -140,7 +137,7 @@ namespace Tests
         }
 
         [Test, Performance]
-        public void GeneratePatchVertices_Parallel([Values(10,100)]int length)
+        public void GeneratePatchVertices_Parallel([Values(10,50,100)]int length)
         {
             List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>

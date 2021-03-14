@@ -29,7 +29,7 @@ namespace Tests
         {
             AddControlPointCommand command = new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3));
             Invoker.ExecuteCommand(command);
-            Assert.IsTrue(this.LineSketchObject.getControlPoints()[0] == new Vector3(1,2,3));
+            Assert.IsTrue(this.LineSketchObject.GetControlPoints()[0] == new Vector3(1,2,3));
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace Tests
             Invoker.Undo();
             Invoker.Redo();
 
-            Assert.IsTrue(this.LineSketchObject.getControlPoints()[0] == new Vector3(1, 2, 3));
+            Assert.IsTrue(this.LineSketchObject.GetControlPoints()[0] == new Vector3(1, 2, 3));
             Assert.IsFalse(SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject));
         }
 
@@ -321,7 +321,7 @@ namespace Tests
             foreach (LineSketchObject line in lines) {
                 if (line != this.LineSketchObject) {
                     Assert.AreEqual(1, line.getNumberOfControlPoints());
-                    Assert.AreEqual(new Vector3(4, 3, 2), line.getControlPoints()[0]);
+                    Assert.AreEqual(new Vector3(4, 3, 2), line.GetControlPoints()[0]);
                 }
             }
         }

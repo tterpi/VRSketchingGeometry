@@ -30,7 +30,7 @@ public class CommandsTest : MonoBehaviour
     IEnumerator changeDiameter()
     {
         yield return new WaitForSeconds(5);
-        lineSketchObject.setLineDiameter(.1f);
+        lineSketchObject.SetLineDiameter(.1f);
     }
 
     IEnumerator deactivateSelection(SketchObjectSelection selection)
@@ -41,19 +41,19 @@ public class CommandsTest : MonoBehaviour
 
     private void lineSketchObjectTest()
     {
-        lineSketchObject.addControlPoint(new Vector3(-2, 1, 0));
-        lineSketchObject.addControlPoint(Vector3.one);
-        lineSketchObject.addControlPoint(new Vector3(2, 2, 0));
-        lineSketchObject.addControlPoint(new Vector3(2, 1, 0));
+        lineSketchObject.AddControlPoint(new Vector3(-2, 1, 0));
+        lineSketchObject.AddControlPoint(Vector3.one);
+        lineSketchObject.AddControlPoint(new Vector3(2, 2, 0));
+        lineSketchObject.AddControlPoint(new Vector3(2, 1, 0));
 
-        lineSketchObject.setLineDiameter(.7f);
+        lineSketchObject.SetLineDiameter(.7f);
 
         //StartCoroutine(changeDiameter());
 
-        lineSketchObject2.addControlPoint(new Vector3(1, 0, 0));
-        lineSketchObject2.addControlPoint(new Vector3(2, 1, 1));
-        lineSketchObject2.addControlPoint(new Vector3(3, 2, 0));
-        lineSketchObject2.addControlPoint(new Vector3(3, 1, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 1, 0));
 
         //GameObject selectionGO = new GameObject("sketchObjectSelection", typeof(SketchObjectSelection));
         GameObject selectionGO = Instantiate(selectionPrefab);

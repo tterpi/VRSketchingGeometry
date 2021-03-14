@@ -48,8 +48,6 @@ namespace Tests
             {
                 this.LineSketchObject.SetControlPoints(controlPoints);
             })
-            .WarmupCount(10)
-            .MeasurementCount(50)
             .Run();
         }
 
@@ -59,10 +57,8 @@ namespace Tests
             List<Vector3> controlPoints = GenerateControlPoints(length-1);
             Measure.Method(() =>
             {
-                this.LineSketchObject.addControlPoint(new Vector3(length, 0, 0));
+                this.LineSketchObject.AddControlPoint(new Vector3(length, 0, 0));
             })
-            .WarmupCount(10)
-            .MeasurementCount(50)
             .SetUp(()=> {
                 this.LineSketchObject.SetControlPoints(controlPoints);
             })

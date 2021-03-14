@@ -14,7 +14,7 @@ public class RefineMeshCommand : ICommand
 
     public RefineMeshCommand(LineSketchObject lineSketchObject) {
         this.LineSketchObject = lineSketchObject;
-        OriginalControlPoints = lineSketchObject.getControlPoints();
+        OriginalControlPoints = lineSketchObject.GetControlPoints();
     }
 
     public bool Execute()

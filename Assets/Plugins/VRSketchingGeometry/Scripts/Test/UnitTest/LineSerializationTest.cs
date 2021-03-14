@@ -70,7 +70,7 @@ namespace Tests
             LineSketchObjectData data = this.LineSketchObject.GetData() as LineSketchObjectData;
             data.ControlPoints = new List<Vector3> { new Vector3(1, 2, 3), new Vector3(3, 2, 1), new Vector3(1, 1, 1), new Vector3(2, 2, 2) };
             this.LineSketchObject.ApplyData(data);
-            Assert.AreEqual(new Vector3(3, 2, 1), this.LineSketchObject.getControlPoints()[1]);
+            Assert.AreEqual(new Vector3(3, 2, 1), this.LineSketchObject.GetControlPoints()[1]);
             Assert.AreEqual((3 * 20 + 2) * 7, this.LineSketchObject.gameObject.GetComponent<MeshFilter>().sharedMesh.vertexCount);
         }
 
@@ -84,7 +84,7 @@ namespace Tests
             data.CrossSectionNormals = crossSection;
             data.CrossSectionScale = 3.0f;
             this.LineSketchObject.ApplyData(data);
-            Assert.AreEqual(new Vector3(3, 2, 1), this.LineSketchObject.getControlPoints()[1]);
+            Assert.AreEqual(new Vector3(3, 2, 1), this.LineSketchObject.GetControlPoints()[1]);
             Assert.AreEqual((3 * 20 + 2) * 3, this.LineSketchObject.gameObject.GetComponent<MeshFilter>().sharedMesh.vertexCount);
         }
 

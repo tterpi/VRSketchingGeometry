@@ -54,13 +54,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
         public float minimumControlPointDistance = 1f;
 
         protected float lineDiameter = .2f;
+        private int InterpolationSteps = 10;
 
         protected override void Awake()
         {
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
 
-            SplineMesh = new SplineMesh(new KochanekBartelsSpline(), Vector3.one * lineDiameter);
+            SplineMesh = new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
             LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
             meshCollider.sharedMesh = meshFilter.sharedMesh;
@@ -71,12 +72,12 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Adds a control point to the end of the spline.
         /// </summary>
         /// <param name="point"></param>
-        public void addControlPoint(Vector3 point)
+        public void AddControlPoint(Vector3 point)
         {
             //Transform the new control point from world to local space of sketch object
             Vector3 transformedPoint = transform.InverseTransformPoint(point);
             meshFilter.mesh = SplineMesh.addControlPoint(transformedPoint);
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
 
         }
 
@@ -86,7 +87,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="point"></param>
         /// <returns>True if the control point was added.</returns>
-        public bool addControlPointContinuous(Vector3 point)
+        public bool AddControlPointContinuous(Vector3 point)
         {
             //Check that new control point is far enough away from previous control point
             if (
@@ -94,7 +95,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 (transform.InverseTransformPoint(point) - SplineMesh.getControlPoints()[SplineMesh.getNumberOfControlPoints() - 1]).magnitude > minimumControlPointDistance
                )
             {
-                addControlPoint(point);
+                AddControlPoint(point);
                 return true;
             }
             else {
@@ -104,10 +105,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public void SetControlPoints(List<Vector3> controlPoints) {
             meshFilter.mesh = this.SplineMesh.setControlPoints(controlPoints.ToArray());
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
-        public virtual void setLineDiameter(float diameter)
+        public virtual void SetLineDiameter(float diameter)
         {
             this.lineDiameter = diameter;
 
@@ -122,7 +123,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
         public virtual void SetLineCrossSection(List<Vector3> crossSection, List<Vector3> crossSectionNormals, float diameter) {
@@ -140,17 +141,31 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
+        }
+
+        /// <summary>
+        /// Set the number of interpolation steps between two control points.
+        /// A higher number makes the line smoother.
+        /// </summary>
+        /// <param name="steps"></param>
+        public void SetInterpolationSteps(int steps) {
+            this.InterpolationSteps = steps;
+            List<Vector3> controlPoints = this.GetControlPoints();
+            this.SplineMesh.GetCrossSectionShape(out List<Vector3> CurrentCrossSectionShape, out List<Vector3> CurrentCrossSectionNormals);
+            SplineMesh = new SplineMesh(new KochanekBartelsSpline(steps), this.lineDiameter * Vector3.one);
+            this.SetLineCrossSection(CurrentCrossSectionShape, CurrentCrossSectionNormals, this.lineDiameter);
+            this.SetControlPoints(controlPoints);
         }
 
         /// <summary>
         /// Deletes the last control point of the spline.
         /// </summary>
-        public void deleteControlPoint()
+        public void DeleteControlPoint()
         {
             //delete the last control point of the spline
             meshFilter.mesh = SplineMesh.deleteControlPoint(SplineMesh.getNumberOfControlPoints() - 1);
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
         /// <summary>
@@ -165,7 +180,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             List<Vector3> contiguousSection = new List<Vector3>();
 
             //find contiguous sections of control points that are not in the radius
-            foreach (Vector3 controlPoint in getControlPoints()) {
+            foreach (Vector3 controlPoint in GetControlPoints()) {
                 if (!IsInRadius(controlPoint, this.transform.InverseTransformPoint(point), radius / this.transform.lossyScale.x))
                 {
                     contiguousSection.Add(controlPoint);
@@ -253,14 +268,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Get the control points in local space.
         /// </summary>
         /// <returns></returns>
-        public List<Vector3> getControlPoints() {
+        public List<Vector3> GetControlPoints() {
             return SplineMesh.getControlPoints();
         }
 
         /// <summary>
         /// Determines how to display the spline depending on the number of control points that are present.
         /// </summary>
-        protected virtual void chooseDisplayMethod()
+        protected virtual void ChooseDisplayMethod()
         {
             sphereObject.SetActive(false);
             if (SplineMesh.getNumberOfControlPoints() == 0)
@@ -298,18 +313,20 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public virtual void RefineMesh() {
             meshFilter.mesh = this.SplineMesh.RefineMesh();
-            chooseDisplayMethod();
+            ChooseDisplayMethod();
         }
 
         private void SetMaterial(Material material) {
             this.meshRenderer.sharedMaterial = material;
             this.sphereObject.GetComponent<MeshRenderer>().sharedMaterial = material;
+            originalMaterial = this.meshRenderer.sharedMaterial;
         }
 
         public Brush GetBrush() {
             LineBrush brush = new LineBrush();
             brush.SketchMaterial = new SketchMaterialData(meshRenderer.sharedMaterial);
             brush.CrossSectionScale = this.lineDiameter;
+            brush.InterpolationSteps = this.InterpolationSteps;
             SplineMesh.GetCrossSectionShape(out brush.CrossSectionVertices, out brush.CrossSectionNormals);
             return brush;
         }
@@ -318,6 +335,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.SetMaterial(Defaults.GetMaterialFromDictionary(brush.SketchMaterial));
             if (brush is LineBrush lineBrush)
             {
+                this.SetInterpolationSteps(lineBrush.InterpolationSteps);
                 this.SetLineCrossSection(lineBrush.CrossSectionVertices, lineBrush.CrossSectionNormals, lineBrush.CrossSectionScale);
             }
         }
@@ -326,8 +344,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
             LineSketchObjectData data = new LineSketchObjectData
             {
                 Interpolation = LineSketchObjectData.InterpolationType.Cubic,
-                ControlPoints = getControlPoints(),
-                CrossSectionScale = this.lineDiameter
+                ControlPoints = GetControlPoints(),
+                CrossSectionScale = this.lineDiameter,
+                InterpolationSteps = this.InterpolationSteps
             };
 
             data.SetDataFromTransform(this.transform);
@@ -343,13 +362,12 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             this.transform.position = Vector3.zero;
             this.transform.rotation = Quaternion.identity;
+            this.SetInterpolationSteps(data.InterpolationSteps);
             this.SetLineCrossSection(data.CrossSectionVertices, data.CrossSectionNormals, data.CrossSectionScale);
             this.SetControlPoints(data.ControlPoints);
             data.ApplyDataToTransform(this.transform);
 
             this.SetMaterial(Defaults.GetMaterialFromDictionary(data.SketchMaterial));
-
-            originalMaterial = this.meshRenderer.sharedMaterial;
         }
 
         public void ApplyData(SerializableComponentData data)

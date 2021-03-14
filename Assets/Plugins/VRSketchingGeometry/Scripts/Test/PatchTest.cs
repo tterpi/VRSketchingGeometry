@@ -44,6 +44,14 @@ public class PatchTest : MonoBehaviour
         }
     }
 
+    public void setAllControlPoints() {
+        List<Vector3> controlPoints = new List<Vector3>();
+        foreach (Transform child in controlPointParent.transform) {
+            controlPoints.Add(child.position);
+        }
+        this.patchSketchObject.SetControlPoints(controlPoints, 4, 5);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +59,12 @@ public class PatchTest : MonoBehaviour
         patchSketchObject.Width = 4;
         patchSketchObject.ResolutionHeight = 8;
         patchSketchObject.ResolutionWidth = 8;
-        StartCoroutine(AddSegmentTest());
+        //StartCoroutine(AddSegmentTest());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        setAllControlPoints();
     }
 }
