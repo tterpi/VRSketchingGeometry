@@ -32,6 +32,16 @@ namespace Tests
             return controlPoints;
         }
 
+        public List<Vector3> GenerateControlPointsYDirection(int length)
+        {
+            List<Vector3> controlPoints = new List<Vector3>();
+            for (int i = 0; i < length; i++)
+            {
+                controlPoints.Add(new Vector3(0, i, 0));
+            }
+            return controlPoints;
+        }
+
         public List<Quaternion> GenerateQuaternions(int length) {
             List<Quaternion> quaternions = new List<Quaternion>();
             for (int i = 0; i < length; i++)
@@ -78,6 +88,34 @@ namespace Tests
                 splineMesh.setControlPoints(GenerateControlPoints(length).ToArray());
             })
             .Run();
+        }
+
+        [Test, Performance]
+        public void SketchObject_SetControlPoints_InterpolationSteps_Performance([Values(5, 6, 7, 8, 9, 10, 15, 20, 25)]int steps)
+        {
+            List<Vector3> controlPoints = GenerateControlPoints(10);
+            Measure.Method(() =>
+            {
+                this.LineSketchObject.SetControlPoints(controlPoints);
+            })
+            .SetUp(() => {
+                this.LineSketchObject.SetInterpolationSteps(steps);
+            })
+            .Run();
+        }
+
+
+        [UnityTest, Performance]
+        public IEnumerator Framerate_LineSketchObjects([Values(5,10,20)]int steps, [Values(100, 500, 1000, 2000, 4000, 6000, 8000, 10000)]int count) {
+            List<Vector3> controlPoints = GenerateControlPointsYDirection(3);
+            for (int i = 0; i < count; i++)
+            {
+                LineSketchObject currentLine = GameObject.Instantiate(this.LineSketchObject).GetComponent<LineSketchObject>();
+                currentLine.SetInterpolationSteps(steps);
+                currentLine.SetControlPoints(controlPoints);
+                currentLine.transform.position = new Vector3(i%50, 0, i/50);
+            }
+            yield return Measure.Frames().Run();
         }
     }
 }
