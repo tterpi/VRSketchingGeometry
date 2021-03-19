@@ -66,6 +66,7 @@ public class RibbonTest : MonoBehaviour
     public void addPointRibbonSketchObject()
     {
         RibbonSketchObject.AddControlPointContinuous(pointerObject.transform.position, pointerObject.transform.rotation);
+        RibbonSketchObject.SetCrossSection(new List<Vector3> { new Vector3(.5f, 0, 0), new Vector3(0, .5f, 0),new Vector3(0, .5f, 0), new Vector3(-.5f, 0, 0) }, Vector3.one);
     }
 
     public static (List<Vector3>, List<Quaternion>) GetPointTransformation(GameObject parent) {

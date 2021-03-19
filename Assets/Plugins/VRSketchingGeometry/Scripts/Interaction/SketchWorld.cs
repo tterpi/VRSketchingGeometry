@@ -117,6 +117,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData groupData, path);
             if (RootGroup.transform.childCount != 0) {
                 Debug.LogError("Root group of sketch world is not empty! Please create empty sketch world to load file.");
+                return;
             }
             RootGroup.ApplyData(groupData);
         }
