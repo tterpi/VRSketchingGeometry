@@ -45,13 +45,14 @@ namespace Tests
             brush.SketchMaterial.AlbedoColor = Color.green;
             brush.CrossSectionVertices.Add(Vector3.one);
             brush.CrossSectionNormals.Add(Vector3.one);
+            brush.InterpolationSteps = 10;
             ICommand SetBrushCommand = new SetBrushCommand(this.Line, brush);
             Invoker.ExecuteCommand(SetBrushCommand);
 
             Assert.AreEqual(Color.green, this.Line.GetComponent<MeshRenderer>().sharedMaterial.color);
             LineBrush updatedBrush = this.Line.GetBrush() as LineBrush;
             Assert.AreEqual(Color.green, updatedBrush.SketchMaterial.AlbedoColor);
-            Assert.AreEqual((2 * 20 + 2) * 8, this.Line.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
+            Assert.AreEqual((2 * 10 + 2) * 8, this.Line.GetComponent<MeshFilter>().sharedMesh.vertices.Length);
         }
 
         [Test]

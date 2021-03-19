@@ -30,6 +30,6 @@ public class RefineMeshCommand : ICommand
 
     public void Undo()
     {
-        this.LineSketchObject.SetControlPoints(OriginalControlPoints);
+        this.LineSketchObject.SetControlPointsLocalSpace(OriginalControlPoints);
     }
 }

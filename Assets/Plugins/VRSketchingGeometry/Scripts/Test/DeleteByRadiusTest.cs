@@ -105,14 +105,14 @@ public class DeleteByRadiusTest : MonoBehaviour
 
     private void SetAddComparison() {
         List<Vector3> controlPoints = new List<Vector3>();
-        lineSketchObject.SetControlPoints(new List<Vector3>());
+        lineSketchObject.SetControlPointsLocalSpace(new List<Vector3>());
         foreach (Transform controlPoint in controlPointParent.transform)
         {
             lineSketchObject.AddControlPoint(controlPoint.position);
             controlPoints.Add(controlPoint.position);
         }
 
-        lineSketchObject2.SetControlPoints(controlPoints);
+        lineSketchObject2.SetControlPointsLocalSpace(controlPoints);
     }
 
     // Update is called once per frame

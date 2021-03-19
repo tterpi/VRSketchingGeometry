@@ -10,6 +10,7 @@ using UnityEngine;
 using VRSketchingGeometry.Splines;
 using VRSketchingGeometry.Meshing;
 using VRSketchingGeometry.Serialization;
+using System.Linq;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
@@ -103,9 +104,22 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
-        public void SetControlPoints(List<Vector3> controlPoints) {
+        /// <summary>
+        /// Set all control points. Control points are expected to be in local space.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        public void SetControlPointsLocalSpace(List<Vector3> controlPoints) {
             meshFilter.mesh = this.SplineMesh.setControlPoints(controlPoints.ToArray());
             ChooseDisplayMethod();
+        }
+
+        /// <summary>
+        /// Set all control points. Control points are expected to be in world space.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        public void SetControlPoints(List<Vector3> controlPoints) {
+            List<Vector3> transformedControlPoints = controlPoints.Select((point) => this.transform.InverseTransformPoint(point)).ToList();
+            SetControlPointsLocalSpace(transformedControlPoints);
         }
 
         public virtual void SetLineDiameter(float diameter)
@@ -155,7 +169,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.SplineMesh.GetCrossSectionShape(out List<Vector3> CurrentCrossSectionShape, out List<Vector3> CurrentCrossSectionNormals);
             SplineMesh = new SplineMesh(new KochanekBartelsSpline(steps), this.lineDiameter * Vector3.one);
             this.SetLineCrossSection(CurrentCrossSectionShape, CurrentCrossSectionNormals, this.lineDiameter);
-            this.SetControlPoints(controlPoints);
+            if (controlPoints.Count != 0) {
+                this.SetControlPointsLocalSpace(controlPoints);
+            }
         }
 
         /// <summary>
@@ -208,14 +224,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 }
 
                 //this line becomes the first section
-                this.SetControlPoints(contiguousSections[0]);
+                this.SetControlPointsLocalSpace(contiguousSections[0]);
                 contiguousSections.RemoveAt(0);
 
                 //create new lines for each additional section
                 foreach (List<Vector3> section in contiguousSections)
                 {
                     LineSketchObject newLine = Instantiate(this, this.transform.parent);
-                    newLine.SetControlPoints(section);
+                    newLine.SetControlPointsLocalSpace(section);
                     //newLine.setLineDiameter(this.lineDiameter);
                     this.SplineMesh.GetCrossSectionShape(out List<Vector3> crossSectionVertices, out List<Vector3> crossSectionNormals);
 
@@ -364,7 +380,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.transform.rotation = Quaternion.identity;
             this.SetInterpolationSteps(data.InterpolationSteps);
             this.SetLineCrossSection(data.CrossSectionVertices, data.CrossSectionNormals, data.CrossSectionScale);
-            this.SetControlPoints(data.ControlPoints);
+            this.SetControlPointsLocalSpace(data.ControlPoints);
             data.ApplyDataToTransform(this.transform);
 
             this.SetMaterial(Defaults.GetMaterialFromDictionary(data.SketchMaterial));

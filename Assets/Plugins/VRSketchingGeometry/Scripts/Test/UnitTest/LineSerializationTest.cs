@@ -25,7 +25,7 @@ namespace Tests
         [Test]
         public void GetData_ControlPoints()
         {
-            this.LineSketchObject.SetControlPoints(new List<Vector3> { new Vector3(1, 2, 3), new Vector3(3, 2, 1), new Vector3(1, 1, 1), new Vector3(2, 2, 2) });
+            this.LineSketchObject.SetControlPointsLocalSpace(new List<Vector3> { new Vector3(1, 2, 3), new Vector3(3, 2, 1), new Vector3(1, 1, 1), new Vector3(2, 2, 2) });
             LineSketchObjectData data = this.LineSketchObject.GetData() as LineSketchObjectData;
             Assert.AreEqual(new Vector3(3, 2, 1), data.ControlPoints[1]);
         }

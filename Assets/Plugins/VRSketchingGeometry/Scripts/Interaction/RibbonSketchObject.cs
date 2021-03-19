@@ -36,21 +36,44 @@ namespace VRSketchingGeometry.SketchObjectManagement{
 
         private void UpdateMesh(Mesh mesh)
         {
-            meshFilter.mesh = mesh;
+            meshFilter.sharedMesh = mesh;
             meshCollider.sharedMesh = mesh;
         }
 
+        /// <summary>
+        /// Set all control points. Points and rotations should be in world space.
+        /// </summary>
+        /// <param name="newPoints"></param>
+        /// <param name="newRotations"></param>
         public void SetControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
-            if (newPoints.Count != newRotations.Count) {
+            List<Vector3> transformedPoints = newPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
+            List<Quaternion> transformedRotations = newRotations.Select(rotation => Quaternion.Inverse(this.transform.rotation) * rotation).ToList();
+            SetControlPointsLocalSpace(transformedPoints, transformedRotations);
+        }
+
+
+        /// <summary>
+        /// Set all control points. Points and rotations should be in local space.
+        /// </summary>
+        /// <param name="newPoints"></param>
+        /// <param name="newRotations"></param>
+        public void SetControlPointsLocalSpace(List<Vector3> newPoints, List<Quaternion> newRotations) {
+            if (newPoints.Count != newRotations.Count)
+            {
                 Debug.LogError("RibbonSketchObject: Count of points and rotations is not equal.");
                 return;
             }
-            this.Points = newPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
-            this.Rotations = newRotations.Select(rotation => Quaternion.Inverse(this.transform.rotation) * rotation).ToList(); ;
+            this.Points = new List<Vector3>(newPoints);
+            this.Rotations = new List<Quaternion>(newRotations);
             Mesh mesh = RibbonMesh.GetMesh(this.Points, this.Rotations);
             UpdateMesh(mesh);
         }
 
+        /// <summary>
+        /// Add a single control point. Point and rotations should be in world space.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="rotation"></param>
         public void AddControlPoint(Vector3 point, Quaternion rotation) {
             Vector3 transformedPoint = this.transform.InverseTransformPoint(point);
             Quaternion transformedRotation = Quaternion.Inverse(this.transform.rotation) * rotation;
@@ -82,6 +105,11 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             }
         }
 
+        /// <summary>
+        /// Add multiple control points. Should be in world space.
+        /// </summary>
+        /// <param name="newPoints"></param>
+        /// <param name="newRotations"></param>
         public void AddControlPoints(List<Vector3> newPoints, List<Quaternion> newRotations) {
             this.Points.AddRange(newPoints.Select(ct => this.transform.InverseTransformPoint(ct)));
             this.Rotations.AddRange(newRotations.Select(rotation => Quaternion.Inverse(this.transform.rotation) * rotation));
@@ -89,6 +117,9 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             UpdateMesh(mesh);
         }
 
+        /// <summary>
+        /// Delete the last control point.
+        /// </summary>
         public void DeleteControlPoint() {
             Points.RemoveAt(Points.Count - 1);
             Rotations.RemoveAt(Rotations.Count - 1);
@@ -97,8 +128,13 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             UpdateMesh(mesh);
         }
 
+        /// <summary>
+        /// Set the scale of the ribbon cross section.
+        /// </summary>
+        /// <param name="scale"></param>
         public void SetRibbonScale(Vector3 scale) {
-            RibbonMesh = new RibbonMesh(scale);
+            List<Vector3> currentCrossSections = this.GetCrossSection();
+            RibbonMesh = new RibbonMesh(currentCrossSections, scale);
             Mesh mesh = RibbonMesh.GetMesh(Points, Rotations);
             UpdateMesh(mesh);
         }
@@ -120,8 +156,17 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             }
         }
 
+        /// <summary>
+        /// Get the control points in local space.
+        /// </summary>
+        /// <returns></returns>
         public List<Vector3> GetPoints() => new List<Vector3>(Points);
         public int GetPointsCount() => this.Points.Count;
+
+        /// <summary>
+        /// Get the rotations in local space.
+        /// </summary>
+        /// <returns></returns>
         public List<Quaternion> GetRotations() => new List<Quaternion>(Rotations);
 
         public Brush GetBrush() {
@@ -149,7 +194,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             if (data is RibbonSketchObjectData ribbonData)
             {
                 RibbonMesh = new RibbonMesh(ribbonData.CrossSectionVertices, ribbonData.CrossSectionScale);
-                SetControlPoints(ribbonData.ControlPoints, ribbonData.ControlPointOrientations);
+                SetControlPointsLocalSpace(ribbonData.ControlPoints, ribbonData.ControlPointOrientations);
                 meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(ribbonData.SketchMaterial);
                 ribbonData.ApplyDataToTransform(this.transform);
             }

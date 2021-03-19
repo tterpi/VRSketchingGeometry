@@ -49,7 +49,7 @@ public class PatchTest : MonoBehaviour
         foreach (Transform child in controlPointParent.transform) {
             controlPoints.Add(child.position);
         }
-        this.patchSketchObject.SetControlPoints(controlPoints, 4, 5);
+        this.patchSketchObject.SetControlPoints(controlPoints, 4);
     }
 
     // Start is called before the first frame update

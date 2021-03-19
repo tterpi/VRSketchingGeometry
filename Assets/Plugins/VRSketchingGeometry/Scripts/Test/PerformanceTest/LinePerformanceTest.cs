@@ -56,7 +56,7 @@ namespace Tests
             List<Vector3> controlPoints = GenerateControlPoints(length);
             Measure.Method(() =>
             {
-                this.LineSketchObject.SetControlPoints(controlPoints);
+                this.LineSketchObject.SetControlPointsLocalSpace(controlPoints);
             })
             .Run();
         }
@@ -70,7 +70,7 @@ namespace Tests
                 this.LineSketchObject.AddControlPoint(new Vector3(length, 0, 0));
             })
             .SetUp(()=> {
-                this.LineSketchObject.SetControlPoints(controlPoints);
+                this.LineSketchObject.SetControlPointsLocalSpace(controlPoints);
             })
             .Run();
         }
@@ -96,7 +96,7 @@ namespace Tests
             List<Vector3> controlPoints = GenerateControlPoints(10);
             Measure.Method(() =>
             {
-                this.LineSketchObject.SetControlPoints(controlPoints);
+                this.LineSketchObject.SetControlPointsLocalSpace(controlPoints);
             })
             .SetUp(() => {
                 this.LineSketchObject.SetInterpolationSteps(steps);
@@ -108,11 +108,13 @@ namespace Tests
         [UnityTest, Performance]
         public IEnumerator Framerate_LineSketchObjects([Values(5,10,20)]int steps, [Values(100, 500, 1000, 2000, 4000, 6000, 8000, 10000)]int count) {
             List<Vector3> controlPoints = GenerateControlPointsYDirection(3);
-            for (int i = 0; i < count; i++)
+            this.LineSketchObject.SetInterpolationSteps(steps);
+            this.LineSketchObject.SetControlPointsLocalSpace(controlPoints);
+            for (int i = 1; i < count; i++)
             {
                 LineSketchObject currentLine = GameObject.Instantiate(this.LineSketchObject).GetComponent<LineSketchObject>();
                 currentLine.SetInterpolationSteps(steps);
-                currentLine.SetControlPoints(controlPoints);
+                currentLine.SetControlPointsLocalSpace(controlPoints);
                 currentLine.transform.position = new Vector3(i%50, 0, i/50);
             }
             yield return Measure.Frames().Run();

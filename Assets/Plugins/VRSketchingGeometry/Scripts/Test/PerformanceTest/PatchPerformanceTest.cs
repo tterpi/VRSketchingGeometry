@@ -50,7 +50,7 @@ namespace Tests
             })
             .MeasurementCount(20)
             .SetUp(() => {
-                this.PatchSketchObject.SetControlPoints(new List<Vector3>(), 0,0);
+                this.PatchSketchObject.SetControlPoints(new List<Vector3>(), 0);
                 this.PatchSketchObject.Width = 4;
                 this.PatchSketchObject.AddPatchSegment(segment1);
                 this.PatchSketchObject.AddPatchSegment(segment2);
@@ -71,7 +71,7 @@ namespace Tests
                 this.PatchSketchObject.AddPatchSegment(lastControlPoints);
             })
             .SetUp(() => {
-                this.PatchSketchObject.SetControlPoints(controlPoints, 4, length-1);
+                this.PatchSketchObject.SetControlPoints(controlPoints, 4);
             })
             .Run();
         }
@@ -81,7 +81,7 @@ namespace Tests
             List<Vector3> controlPoints = GenerateControlPoints(4, length);
             Measure.Method(() =>
             {
-                this.PatchSketchObject.SetControlPoints(controlPoints, 4, length);
+                this.PatchSketchObject.SetControlPoints(controlPoints, 4);
 
             })
             .Run();
@@ -92,7 +92,7 @@ namespace Tests
         {
             Measure.Method(() =>
             {
-                this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4, length);
+                this.PatchSketchObject.SetControlPoints(GenerateControlPoints(4, length), 4);
 
             }).Run();
         }

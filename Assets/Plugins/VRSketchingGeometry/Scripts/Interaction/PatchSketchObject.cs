@@ -60,10 +60,15 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <param name="controlPoints"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void SetControlPoints(List<Vector3> controlPoints, int width, int height) {
-            this.ControlPoints = controlPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
+        public void SetControlPoints(List<Vector3> controlPoints, int width) {
+            List<Vector3> transformedPoints = controlPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
+            SetControlPointsLocalSpace(transformedPoints, width);
+        }
+
+        public void SetControlPointsLocalSpace(List<Vector3> controlPoints, int width) {
+            this.ControlPoints = new List<Vector3>(controlPoints);
             this.Width = width;
-            this.Height = height;
+            this.Height = this.ControlPoints.Count / width;
 
             UpdatePatchMesh();
         }
@@ -135,6 +140,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         /// <summary>
         /// Get a segment of control points of length Width.
+        /// Points are in local space.
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
@@ -144,6 +150,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         /// <summary>
         /// Get the last segment of control points of length width.
+        /// Points are in local space.
         /// </summary>
         /// <returns></returns>
         public List<Vector3> GetLastSegment() {
@@ -187,7 +194,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 ResolutionWidth = patchData.ResolutionWidth;
                 ResolutionHeight = patchData.ResolutionHeight;
 
-                SetControlPoints(patchData.ControlPoints, patchData.Width, patchData.Height);
+                SetControlPoints(patchData.ControlPoints, patchData.Width);
 
                 meshRenderer.material = Defaults.GetMaterialFromDictionary(patchData.SketchMaterial);
 
