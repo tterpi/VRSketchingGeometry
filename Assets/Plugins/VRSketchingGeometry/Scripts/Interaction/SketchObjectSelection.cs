@@ -28,7 +28,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
         }
 
         [SerializeField]
+#pragma warning disable CS0649
         private GameObject boundsVisualizationObject;
+#pragma warning restore CS0649
 
         public void AddToSelection(SelectableObject selectableObject) {
             SketchObjectsOfSelection.Add(selectableObject);

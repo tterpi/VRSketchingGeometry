@@ -77,7 +77,9 @@ namespace VRSketchingGeometry.Meshing {
         }
 
         public Mesh GetMesh(List<Vector3> points) {
-
+            if (points == null || points.Count == 0) {
+                return null;
+            }
             return ReplacePoints(points, 0, points.Count, vertices.Count / crossSectionShape.Count);
         }
 

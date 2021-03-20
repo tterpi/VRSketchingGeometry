@@ -10,7 +10,7 @@ namespace VRSketchingGeometry.Meshing
     /// <summary>
     /// Methods for creating a tube like mesh using the parallel transport algorithm.
     /// </summary>
-    static class ParallelTransportTubeMesh
+    public static class ParallelTransportTubeMesh
     {
         /// <summary>
         /// Generate a mesh for a spline according to the parallel transport algorithm.

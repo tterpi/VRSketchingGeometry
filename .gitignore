@@ -62,3 +62,6 @@ crashlytics-build.properties
 /Assets/ExportedSketches.meta
 /Assets/textures
 /Assets/textures.meta
+
+/_site/
+/Packages/docfx.console.2.56.7/

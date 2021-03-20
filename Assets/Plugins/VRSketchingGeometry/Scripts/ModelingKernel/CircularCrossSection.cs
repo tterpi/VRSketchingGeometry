@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.Meshing
 {
-    class CircularCrossSection
+    public class CircularCrossSection
     {
         /// <summary>
         /// Get vertices that approximate a circle.

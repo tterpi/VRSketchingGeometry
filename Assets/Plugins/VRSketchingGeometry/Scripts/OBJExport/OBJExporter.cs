@@ -136,8 +136,7 @@ namespace VRSketchingGeometry.Export
             Dictionary<string, bool> materialCache = new Dictionary<string, bool>();
             meshStringBuilder = new StringBuilder();
             materialStringBuilder = new StringBuilder();
-            meshStringBuilder.AppendLine("# Export of " + Application.loadedLevelName);
-            meshStringBuilder.AppendLine("# from Aaro4130 OBJ Exporter " + versionString);
+            meshStringBuilder.AppendLine("#Based on Aaro4130 OBJ Exporter " + versionString);
             if (generateMaterials)
             {
                 meshStringBuilder.AppendLine("mtllib " + baseFileName + ".mtl");
@@ -280,7 +279,7 @@ namespace VRSketchingGeometry.Export
             }
             catch (System.Exception ex)
             {
-                Debug.Log("Could not export texture : " + t.name + ". is it readable?");
+                Debug.Log("Could not export texture : " + t.name + ". is it readable?\n" + ex.ToString());
                 return "null";
             }
 
