@@ -1,0 +1,10 @@
+apiRules:
+- exclude:
+    uidRegex: ^Tests$
+    type: Namespace
+- exclude:
+    uidRegex: ^UnityEngine.*$
+    type: Namespace
+- exclude:
+    uidRegex: ^System.*$
+    type: Namespace

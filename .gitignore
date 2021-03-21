@@ -65,3 +65,4 @@ crashlytics-build.properties
 
 /_site/
 /Packages/docfx.console.2.56.7/
+/log.txt
