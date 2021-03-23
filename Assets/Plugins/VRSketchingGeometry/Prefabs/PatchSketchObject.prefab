@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df5e34890b5dfef40a23e7ad5019312c, type: 2}
+  - {fileID: 2100000, guid: f7174271d3120fa49b5da504d0a40158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,3 +113,4 @@ MonoBehaviour:
   Height: 0
   ResolutionWidth: 4
   ResolutionHeight: 4
+  MinimumDistanceToLastSegment: 0.2

@@ -34,3 +34,7 @@ The selection allows you to highlight and transform multiple sketch objects and 
 ## [IHighlightable](xref:VRSketchingGeometry.SketchObjectManagement.IHighlightable)
 Components that implement this interface can be highlighted using a specified highlight shader.
 The highlighting can be reverted.
+
+## [DefaultReferences](xref:VRSketchingGeometry.DefaultReferences)
+The DefaultReferences asset contains references to commonly used objects such as prefabs and materials.
+It defines the default path for loading textures when deserializing a sketch.
