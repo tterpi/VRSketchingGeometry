@@ -6,6 +6,7 @@ namespace VRSketchingGeometry.Commands{
     /// <summary>
     /// This class manages all commands that have been executed. It offers methods to undo and redo commands.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class CommandInvoker
     {
         private Stack<ICommand> undoStack = new Stack<ICommand>();
@@ -28,6 +29,9 @@ namespace VRSketchingGeometry.Commands{
             }
         }
 
+        /// <summary>
+        /// Reverse the command that was last executed.
+        /// </summary>
         public void Undo() {
             if (undoStack.Count <= 0) {
                 Debug.LogWarning("No commands to undo saved.");
@@ -38,6 +42,9 @@ namespace VRSketchingGeometry.Commands{
             redoStack.Push(executedCommand);
         }
 
+        /// <summary>
+        /// Replay the last undone command.
+        /// </summary>
         public void Redo() {
             if (redoStack.Count <= 0)
             {

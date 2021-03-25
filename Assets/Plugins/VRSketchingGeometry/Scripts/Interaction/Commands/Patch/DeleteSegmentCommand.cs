@@ -7,6 +7,7 @@ namespace VRSketchingGeometry.Commands.Patch {
     /// <summary>
     /// Delete the last segment of the patch.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeleteSegmentCommand : ICommand
     {
         private PatchSketchObject PatchSketchObject;

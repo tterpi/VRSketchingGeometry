@@ -9,6 +9,7 @@ namespace VRSketchingGeometry.Commands.Selection
     /// <summary>
     /// Delete all objects in the selection. Objects are restored and selection is activated when undone.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeleteObjectsOfSelectionCommand : ICommand
     {
         SketchObjectSelection Selection;

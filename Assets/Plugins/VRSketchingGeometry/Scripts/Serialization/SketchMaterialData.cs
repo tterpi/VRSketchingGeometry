@@ -2,7 +2,10 @@
 
 namespace VRSketchingGeometry.Serialization
 {
-
+    /// <summary>
+    /// Data class for the properties of a material.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SketchMaterialData : System.IEquatable<SketchMaterialData>
     {
         public enum ShaderType

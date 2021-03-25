@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.Serialization
 {
+    /// <summary>
+    /// Contains the serialization data of a <see cref="VRSketchingGeometry.SketchObjectManagement.PatchSketchObject"/>.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class PatchSketchObjectData : SketchObjectData
     {
         public int Width;

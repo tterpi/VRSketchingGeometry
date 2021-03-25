@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands {
     /// <summary>
     /// Set the brush of the sketch object.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SetBrushCommand : ICommand
     {
 

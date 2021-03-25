@@ -33,6 +33,7 @@ namespace VRSketchingGeometry.Splines
     /// <summary>
     /// Hermite interpolated spline with Kochanek-Bartels tangent calculation
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class KochanekBartelsSpline : Spline
     {
         private List<KochanekBartelsControlPoint> ControlPoints { get; set; }
@@ -53,7 +54,7 @@ namespace VRSketchingGeometry.Splines
         /// </summary>
         /// <param name="index"></param>
         /// <param name="controlPoints"></param>
-        public SplineModificationInfo setControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+        public SplineModificationInfo SetControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
             ControlPoints[index] = controlPoint;
 
             int start = (index - 2) >= 0 ? (index-2) : 0 ;
@@ -78,8 +79,8 @@ namespace VRSketchingGeometry.Splines
         /// Add control point at the end of the curve.
         /// </summary>
         /// <param name="controlPoint"></param>
-        public SplineModificationInfo addControlPoint(KochanekBartelsControlPoint controlPoint) {
-            return insertControlPoint(ControlPoints.Count, controlPoint);
+        public SplineModificationInfo AddControlPoint(KochanekBartelsControlPoint controlPoint) {
+            return InsertControlPoint(ControlPoints.Count, controlPoint);
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace VRSketchingGeometry.Splines
         /// </summary>
         /// <param name="index"></param>
         /// <param name="controlPoint"></param>
-        public SplineModificationInfo insertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
+        public SplineModificationInfo InsertControlPoint(int index, KochanekBartelsControlPoint controlPoint) {
 
             ControlPoints.Insert(index, controlPoint);
 
@@ -98,11 +99,11 @@ namespace VRSketchingGeometry.Splines
             }
             else if (ControlPoints.Count == 3 && InterpolatedPoints.Count == Steps)
             {
-                this.setControlPoints(ControlPoints.ToArray());
+                this.SetControlPoints(ControlPoints.ToArray());
                 return new SplineModificationInfo(0, Steps, 2 * Steps);
             }
             else if (ControlPoints.Count == 3) {
-                this.setControlPoints(ControlPoints.ToArray());
+                this.SetControlPoints(ControlPoints.ToArray());
                 return new SplineModificationInfo(0, 0, 2 * Steps);
             }
 
@@ -148,7 +149,7 @@ namespace VRSketchingGeometry.Splines
         /// If the index is not the first or last control point the curve will skip the deleted control point and connect the control point before and after the deleted one.
         /// </summary>
         /// <param name="index"></param>
-        public override SplineModificationInfo deleteControlPoint(int index) {
+        public override SplineModificationInfo DeleteControlPoint(int index) {
 
             //if ((ControlPoints.Count - 1) < 3) {
             //    Debug.LogError("Cannot remove more control points, minimum number is 3.");
@@ -202,7 +203,7 @@ namespace VRSketchingGeometry.Splines
         /// Set all control points and recalculate.
         /// </summary>
         /// <param name="controlPoints"></param>
-        public override void setControlPoints(Vector3[] controlPoints) {
+        public override void SetControlPoints(Vector3[] controlPoints) {
             ControlPoints.Clear();
             foreach (Vector3 controlPoint in controlPoints)
             {
@@ -211,7 +212,7 @@ namespace VRSketchingGeometry.Splines
             InterpolateSpline();
         }
 
-        public void setControlPoints(KochanekBartelsControlPoint[] controlPoints) {
+        public void SetControlPoints(KochanekBartelsControlPoint[] controlPoints) {
             ControlPoints.Clear();
             ControlPoints.AddRange(controlPoints);
             InterpolateSpline();
@@ -220,10 +221,10 @@ namespace VRSketchingGeometry.Splines
         private List<Vector3> InterpolateSegment(int controlPointIndex) {
             if (controlPointIndex == ControlPoints.Count - 2)
             {
-                return InterpolateSegment(getControlPointsForSegment(controlPointIndex), Steps, true);
+                return InterpolateSegment(GetControlPointsForSegment(controlPointIndex), Steps, true);
             }
             else {
-                return InterpolateSegment(getControlPointsForSegment(controlPointIndex), Steps);
+                return InterpolateSegment(GetControlPointsForSegment(controlPointIndex), Steps);
             }
         }
 
@@ -254,7 +255,7 @@ namespace VRSketchingGeometry.Splines
                     s = i / (float)(steps);
                 }
 
-                var newPoint = calculateInterpolatedPoint(point2.Position, point3.Position, point2DestinationTangent, point3SourceTangent, s);
+                var newPoint = CalculateInterpolatedPoint(point2.Position, point3.Position, point2DestinationTangent, point3SourceTangent, s);
 
                 interpolatedPoints.Add(newPoint);
             }
@@ -271,7 +272,7 @@ namespace VRSketchingGeometry.Splines
         /// <param name="tangent2"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        private static Vector3 calculateInterpolatedPoint(Vector3 point1, Vector3 point2, Vector3 tangent1, Vector3 tangent2, float parameter) {
+        private static Vector3 CalculateInterpolatedPoint(Vector3 point1, Vector3 point2, Vector3 tangent1, Vector3 tangent2, float parameter) {
 
             float h1 = (float)(2 * Math.Pow(parameter, 3) - 3 * Math.Pow(parameter, 2) + 1);
             float h2 = (float)((-2) * Math.Pow(parameter, 3) + 3 * Math.Pow(parameter, 2));
@@ -319,7 +320,7 @@ namespace VRSketchingGeometry.Splines
             }
         }
 
-        private List<KochanekBartelsControlPoint> getControlPointsForSegment(int index) {
+        private List<KochanekBartelsControlPoint> GetControlPointsForSegment(int index) {
             int i = index;
 
             if (i< 0 || i >= ControlPoints.Count - 1) {
@@ -360,29 +361,29 @@ namespace VRSketchingGeometry.Splines
             return controlPointsOfSegment;
         }
 
-        public override int getNumberOfControlPoints() {
+        public override int GetNumberOfControlPoints() {
             return ControlPoints.Count;
         }
 
-        public override List<Vector3> getControlPoints() {
+        public override List<Vector3> GetControlPoints() {
             List<Vector3> vectorControlPoints = ControlPoints.Select(controlPoint => controlPoint.Position).ToList();
             return vectorControlPoints;
         }
 
         //Adapters for the interface
-        public override SplineModificationInfo addControlPoint(Vector3 controlPoint)
+        public override SplineModificationInfo AddControlPoint(Vector3 controlPoint)
         {
-            return this.addControlPoint(controlPoint);
+            return this.AddControlPoint(controlPoint);
         }
 
-        public override SplineModificationInfo setControlPoint(int index, Vector3 controlPoint)
+        public override SplineModificationInfo SetControlPoint(int index, Vector3 controlPoint)
         {
-            return this.setControlPoint(index, controlPoint);
+            return this.SetControlPoint(index, controlPoint);
         }
 
-        public override SplineModificationInfo insertControlPoint(int index, Vector3 controlPoint)
+        public override SplineModificationInfo InsertControlPoint(int index, Vector3 controlPoint)
         {
-            return this.insertControlPoint(index, controlPoint);
+            return this.InsertControlPoint(index, controlPoint);
         }
 
 

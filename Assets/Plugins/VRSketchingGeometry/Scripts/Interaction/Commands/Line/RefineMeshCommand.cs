@@ -4,32 +4,37 @@ using UnityEngine;
 using VRSketchingGeometry.Commands;
 using VRSketchingGeometry.SketchObjectManagement;
 
-/// <summary>
-/// Refine the mesh of a line sketch object using the Parallel Transport algorithm.
-/// </summary>
-public class RefineMeshCommand : ICommand
+namespace VRSketchingGeometry.Commands.Line
 {
-    LineSketchObject LineSketchObject;
-    List<Vector3> OriginalControlPoints;
-
-    public RefineMeshCommand(LineSketchObject lineSketchObject) {
-        this.LineSketchObject = lineSketchObject;
-        OriginalControlPoints = lineSketchObject.GetControlPoints();
-    }
-
-    public bool Execute()
+    /// <summary>
+    /// Refine the mesh of a line sketch object using the Parallel Transport algorithm.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
+    public class RefineMeshCommand : ICommand
     {
-        LineSketchObject.RefineMesh();
-        return true;
-    }
+        LineSketchObject LineSketchObject;
+        List<Vector3> OriginalControlPoints;
 
-    public void Redo()
-    {
-        this.Execute();
-    }
+        public RefineMeshCommand(LineSketchObject lineSketchObject)
+        {
+            this.LineSketchObject = lineSketchObject;
+            OriginalControlPoints = lineSketchObject.GetControlPoints();
+        }
 
-    public void Undo()
-    {
-        this.LineSketchObject.SetControlPointsLocalSpace(OriginalControlPoints);
+        public bool Execute()
+        {
+            LineSketchObject.RefineMesh();
+            return true;
+        }
+
+        public void Redo()
+        {
+            this.Execute();
+        }
+
+        public void Undo()
+        {
+            this.LineSketchObject.SetControlPointsLocalSpace(OriginalControlPoints);
+        }
     }
 }

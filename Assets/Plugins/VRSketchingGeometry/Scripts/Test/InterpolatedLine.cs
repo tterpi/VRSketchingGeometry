@@ -43,10 +43,10 @@ public class InterpolatedLine : MonoBehaviour
         }
 
         InterpolatedPoints = kochanekBartelsSpline.InterpolatedPoints;
-        kochanekBartelsSpline.setControlPoints(ControlPoints);
+        kochanekBartelsSpline.SetControlPoints(ControlPoints);
         //kochanekBartelsSpline.insertControlPoint(0, extraControlPoint.transform.position);
-        kochanekBartelsSpline.addControlPoint(extraControlPoint.transform.position);
-        kochanekBartelsSpline.deleteControlPoint(9);
+        kochanekBartelsSpline.AddControlPoint(extraControlPoint.transform.position);
+        kochanekBartelsSpline.DeleteControlPoint(9);
     }
 
     private void Update()

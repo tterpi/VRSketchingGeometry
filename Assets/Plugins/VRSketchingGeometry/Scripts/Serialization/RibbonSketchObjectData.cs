@@ -5,6 +5,10 @@ using VRSketchingGeometry.Splines;
 
 namespace VRSketchingGeometry.Serialization
 {
+    /// <summary>
+    /// Contains the serialization data of a <see cref="VRSketchingGeometry.SketchObjectManagement.PatchSketchObject"/>.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class RibbonSketchObjectData : SketchObjectData
     {
         public List<Vector3> ControlPoints;

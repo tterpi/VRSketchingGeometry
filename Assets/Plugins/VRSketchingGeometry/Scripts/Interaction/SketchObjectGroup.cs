@@ -5,10 +5,10 @@ using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
-    /// Represents a group of SketchObjects.
-    /// This mostly uses the built in behaviour of GameObjects but limits the interface to SketchObjects and other SketchObjectGroups.
-    /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups
+    /// Represents a group of objects that implement IGroupable.
+    /// SketchObjectGroups can contain SketchObjects and other SketchObjectGroups.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SketchObjectGroup : SelectableObject, ISerializableComponent
     {
         private SketchObjectGroup parentGroup;

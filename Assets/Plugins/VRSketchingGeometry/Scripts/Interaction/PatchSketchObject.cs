@@ -8,6 +8,10 @@ using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
+    /// <summary>
+    /// Patch surface sketch object using a grid of control points.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class PatchSketchObject : SketchObject, ISerializableComponent, IBrushable
     {

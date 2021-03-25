@@ -17,6 +17,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// <summary>
     /// Provides methods to interact with a line game object in the scene.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class LineSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
@@ -77,7 +78,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         {
             //Transform the new control point from world to local space of sketch object
             Vector3 transformedPoint = transform.InverseTransformPoint(point);
-            meshFilter.mesh = SplineMesh.addControlPoint(transformedPoint);
+            meshFilter.mesh = SplineMesh.AddControlPoint(transformedPoint);
             ChooseDisplayMethod();
 
         }
@@ -92,8 +93,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         {
             //Check that new control point is far enough away from previous control point
             if (
-                SplineMesh.getNumberOfControlPoints() == 0 ||
-                (transform.InverseTransformPoint(point) - SplineMesh.getControlPoints()[SplineMesh.getNumberOfControlPoints() - 1]).magnitude > minimumControlPointDistance
+                SplineMesh.GetNumberOfControlPoints() == 0 ||
+                (transform.InverseTransformPoint(point) - SplineMesh.GetControlPoints()[SplineMesh.GetNumberOfControlPoints() - 1]).magnitude > minimumControlPointDistance
                )
             {
                 AddControlPoint(point);
@@ -109,7 +110,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="controlPoints"></param>
         public void SetControlPointsLocalSpace(List<Vector3> controlPoints) {
-            meshFilter.mesh = this.SplineMesh.setControlPoints(controlPoints.ToArray());
+            meshFilter.mesh = this.SplineMesh.SetControlPoints(controlPoints.ToArray());
             ChooseDisplayMethod();
         }
 
@@ -163,7 +164,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// A higher number makes the line smoother.
         /// </summary>
         /// <param name="steps"></param>
-        public void SetInterpolationSteps(int steps) {
+        public virtual void SetInterpolationSteps(int steps) {
             this.InterpolationSteps = steps;
             List<Vector3> controlPoints = this.GetControlPoints();
             this.SplineMesh.GetCrossSectionShape(out List<Vector3> CurrentCrossSectionShape, out List<Vector3> CurrentCrossSectionNormals);
@@ -180,7 +181,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         public void DeleteControlPoint()
         {
             //delete the last control point of the spline
-            meshFilter.mesh = SplineMesh.deleteControlPoint(SplineMesh.getNumberOfControlPoints() - 1);
+            meshFilter.mesh = SplineMesh.DeleteControlPoint(SplineMesh.GetNumberOfControlPoints() - 1);
             ChooseDisplayMethod();
         }
 
@@ -277,7 +278,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         public int getNumberOfControlPoints()
         {
-            return SplineMesh.getNumberOfControlPoints();
+            return SplineMesh.GetNumberOfControlPoints();
         }
 
         /// <summary>
@@ -285,7 +286,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <returns></returns>
         public List<Vector3> GetControlPoints() {
-            return SplineMesh.getControlPoints();
+            return SplineMesh.GetControlPoints();
         }
 
         /// <summary>
@@ -294,27 +295,27 @@ namespace VRSketchingGeometry.SketchObjectManagement
         protected virtual void ChooseDisplayMethod()
         {
             sphereObject.SetActive(false);
-            if (SplineMesh.getNumberOfControlPoints() == 0)
+            if (SplineMesh.GetNumberOfControlPoints() == 0)
             {
                 //display nothing
                 meshFilter.mesh = new Mesh();
                 //update collider
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }
-            else if (SplineMesh.getNumberOfControlPoints() == 1)
+            else if (SplineMesh.GetNumberOfControlPoints() == 1)
             {
                 //display sphere if there is only one control point
                 sphereObject.SetActive(true);
-                sphereObject.transform.localPosition = SplineMesh.getControlPoints()[0];
+                sphereObject.transform.localPosition = SplineMesh.GetControlPoints()[0];
                 //update collider
                 meshCollider.sharedMesh = null;
             }
-            else if (SplineMesh.getNumberOfControlPoints() == 2)
+            else if (SplineMesh.GetNumberOfControlPoints() == 2)
             {
                 //display linearly interpolated segment if there are two control points
-                List<Vector3> controlPoints = SplineMesh.getControlPoints();
+                List<Vector3> controlPoints = SplineMesh.GetControlPoints();
                 //set the two control points
-                meshFilter.mesh = LinearSplineMesh.setControlPoints(controlPoints.ToArray());
+                meshFilter.mesh = LinearSplineMesh.SetControlPoints(controlPoints.ToArray());
                 //update collider
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }

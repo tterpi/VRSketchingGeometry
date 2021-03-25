@@ -6,6 +6,11 @@ using VRSketchingGeometry.Export;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
+    /// <summary>
+    /// The root of a sketch.
+    /// This is used to serialize, deserialize and export sketches.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SketchWorld : MonoBehaviour
     {
         private static SketchWorld activeSketchWorld;

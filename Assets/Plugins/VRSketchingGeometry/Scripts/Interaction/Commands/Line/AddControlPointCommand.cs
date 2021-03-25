@@ -7,6 +7,7 @@ namespace VRSketchingGeometry.Commands.Line {
     /// <summary>
     /// Add control point at the end of the spline.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddControlPointCommand : ICommand
     {
         private LineSketchObject LineSketchObject;
@@ -36,26 +37,6 @@ namespace VRSketchingGeometry.Commands.Line {
             LineSketchObject.DeleteControlPoint();
             if (this.LineSketchObject.getNumberOfControlPoints() == 0) {
                 SketchWorld.ActiveSketchWorld.DeleteObject(this.LineSketchObject);
-            }
-        }
-
-        /// <summary>
-        /// This will only return a command object if the distance between the previous and new control point is at least minimumDistance.
-        /// </summary>
-        /// <param name="lineSketchObject"></param>
-        /// <param name="point"></param>
-        /// <param name="rotation"></param>
-        /// <param name="minimumDistanceToLastControlPoint"></param>
-        /// <returns>A command or null if the distance is smaller than minimumDistance.</returns>
-        public static AddControlPointCommand GetAddPointAndRotationCommandContinuous(LineSketchObject lineSketchObject, Vector3 point, float minimumDistanceToLastControlPoint)
-        {
-            if ((lineSketchObject.GetControlPoints()[lineSketchObject.getNumberOfControlPoints() - 1] - point).magnitude >= minimumDistanceToLastControlPoint)
-            {
-                return new AddControlPointCommand(lineSketchObject, point);
-            }
-            else
-            {
-                return null;
             }
         }
     }

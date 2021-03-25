@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.SketchObjectManagement {
     /// <summary>
-    /// Base class for diferent kinds of SketchObjects.
+    /// Base class for different kinds of SketchObjects.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public abstract class SketchObject : SelectableObject
     {
         public VRSketchingGeometry.DefaultReferences Defaults;

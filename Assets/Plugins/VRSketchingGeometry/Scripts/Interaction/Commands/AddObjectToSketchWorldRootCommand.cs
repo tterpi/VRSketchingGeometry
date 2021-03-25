@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands
     /// <summary>
     /// Add a new object to the sketch world root. The sketch object is deleted when undoing this command. 
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddObjectToSketchWorldRootCommand : ICommand
     {
         private SelectableObject NewObject = null;

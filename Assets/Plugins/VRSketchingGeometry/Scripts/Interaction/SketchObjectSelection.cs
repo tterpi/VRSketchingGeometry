@@ -11,6 +11,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// When deactivating the object return to their original position in the hierarchy.
     /// There can only be one active selection at a time.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SketchObjectSelection : MonoBehaviour
     {
         private static SketchObjectSelection activeSketchObjectSelection;

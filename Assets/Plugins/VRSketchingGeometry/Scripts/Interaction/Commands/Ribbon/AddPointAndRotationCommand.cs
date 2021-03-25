@@ -7,6 +7,7 @@ namespace VRSketchingGeometry.Commands.Ribbon {
     /// <summary>
     /// Add a new control point to the end of the ribbon.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddPointAndRotationCommand : ICommand
     {
         private RibbonSketchObject RibbonSketchObject;

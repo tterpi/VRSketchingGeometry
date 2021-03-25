@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace VRSketchingGeometry.Serialization
 {
+    /// <summary>
+    /// Interface that marks Unity components that can be serialized 
+    /// using <see cref="VRSketchingGeometry.Serialization.SerializableComponentData"/> objects.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     interface ISerializableComponent
     {
         SerializableComponentData GetData();

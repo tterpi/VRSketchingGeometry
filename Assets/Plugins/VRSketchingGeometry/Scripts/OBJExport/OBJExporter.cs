@@ -19,6 +19,9 @@ using System.Collections.Generic;
 
 namespace VRSketchingGeometry.Export
 {
+    /// <summary>
+    /// Export game objects as OBJ files at runtime.
+    /// </summary>
     public class OBJExporter
     {
         public bool applyPosition = true;

@@ -7,7 +7,10 @@ using VRSketchingGeometry.Serialization;
 
 namespace VRSketchingGeometry.SketchObjectManagement
 {
-
+    /// <summary>
+    /// A line sketch object with no smooth interpolation between control point.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class LinearInterpolationLineSketchObject : LineSketchObject
     {
         // Start is called before the first frame update
@@ -51,33 +54,41 @@ namespace VRSketchingGeometry.SketchObjectManagement
             ChooseDisplayMethod();
         }
 
+        /// <remarks>
+        /// This method is not supported in this class. This means that this inheritance is probaly not ideal.
+        /// </remarks>
+        /// <param name="steps"></param>
+        public override void SetInterpolationSteps(int steps) {
+            Debug.LogWarning("Interpolation steps are not supported by linear interpolation line sketch object!");
+        }
+
         /// <summary>
         /// Determines how to display the spline depending on the number of control points that are present.
         /// </summary>
         protected override void ChooseDisplayMethod()
         {
             sphereObject.SetActive(false);
-            if (SplineMesh.getNumberOfControlPoints() == 0)
+            if (SplineMesh.GetNumberOfControlPoints() == 0)
             {
                 //display nothing
                 meshFilter.mesh = new Mesh();
                 //update collider
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }
-            else if (SplineMesh.getNumberOfControlPoints() == 1)
+            else if (SplineMesh.GetNumberOfControlPoints() == 1)
             {
                 //display sphere if there is only one control point
                 sphereObject.SetActive(true);
-                sphereObject.transform.localPosition = SplineMesh.getControlPoints()[0];
+                sphereObject.transform.localPosition = SplineMesh.GetControlPoints()[0];
                 //update collider
                 meshCollider.sharedMesh = null;
             }
-            else if (SplineMesh.getNumberOfControlPoints() == 2)
+            else if (SplineMesh.GetNumberOfControlPoints() == 2)
             {
                 //display linearly interpolated segment if there are two control points
-                List<Vector3> controlPoints = SplineMesh.getControlPoints();
+                List<Vector3> controlPoints = SplineMesh.GetControlPoints();
                 //set the two control points
-                meshFilter.mesh = SplineMesh.setControlPoints(controlPoints.ToArray());
+                meshFilter.mesh = SplineMesh.SetControlPoints(controlPoints.ToArray());
                 //update collider
                 meshCollider.sharedMesh = meshFilter.sharedMesh;
             }

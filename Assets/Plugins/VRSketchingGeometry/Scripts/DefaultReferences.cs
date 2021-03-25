@@ -8,6 +8,7 @@ namespace VRSketchingGeometry
     /// <summary>
     /// This scriptable object contains references to frequently used prefabs, materials etc.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     [CreateAssetMenu(fileName = "DefaultReferences", menuName = "ScriptableObjects/DefaultReferences", order = 1)]
     public class DefaultReferences : ScriptableObject
     {
@@ -20,6 +21,9 @@ namespace VRSketchingGeometry
         public GameObject PatchSketchObjectPrefab;
         public GameObject RibbonSketchObjectPrefab;
 
+        /// <summary>
+        /// The directory for textures that are referenced in a serialized sketch.
+        /// </summary>
         public string DefaultTextureDirectory;
 
         private Dictionary<SketchMaterialData, Material> MaterialsDict = new Dictionary<SketchMaterialData, Material>();

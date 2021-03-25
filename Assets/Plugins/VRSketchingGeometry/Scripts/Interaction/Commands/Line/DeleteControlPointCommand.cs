@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands.Line
     /// <summary>
     /// Delete control point at the end of spline.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeleteControlPointCommand : ICommand
     {
         private LineSketchObject LineSketchObject;

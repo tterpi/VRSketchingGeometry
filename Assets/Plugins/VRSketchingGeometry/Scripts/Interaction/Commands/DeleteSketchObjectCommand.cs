@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands
     /// <summary>
     /// Delete a sketch object.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeleteObjectCommand : ICommand
     {
         private SelectableObject ObjectToDelete = null;

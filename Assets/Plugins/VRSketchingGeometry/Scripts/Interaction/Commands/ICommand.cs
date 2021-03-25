@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRSketchingGeometry.Commands {
+    /// <summary>
+    /// A command according to the command pattern.
+    /// It supports undo and redo.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public interface ICommand
     {
         /// <summary>

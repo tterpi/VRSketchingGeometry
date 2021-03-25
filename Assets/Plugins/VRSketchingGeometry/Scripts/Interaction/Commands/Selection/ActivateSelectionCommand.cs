@@ -9,6 +9,7 @@ namespace VRSketchingGeometry.Commands.Selection
     /// <summary>
     /// Activate the selection.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class ActivateSelectionCommand : ICommand
     {
         SketchObjectSelection Selection;

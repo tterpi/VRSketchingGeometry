@@ -9,6 +9,7 @@ namespace VRSketchingGeometry.Commands.Group
     /// <summary>
     /// Add an object to a sketch object group.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddToGroupCommand : ICommand
     {
         SketchObjectGroup Group;

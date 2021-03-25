@@ -5,6 +5,10 @@ using UnityEngine;
 using VRSketchingGeometry.Meshing;
 using VRSketchingGeometry.Serialization;
 
+/// <summary>
+/// Ribbon sketch object. Creates a flat ribbon shaped geometry along control points and rotations.
+/// </summary>
+/// <remarks>Original author: tterpi</remarks>
 namespace VRSketchingGeometry.SketchObjectManagement{
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class RibbonSketchObject : SketchObject, ISerializableComponent, IBrushable

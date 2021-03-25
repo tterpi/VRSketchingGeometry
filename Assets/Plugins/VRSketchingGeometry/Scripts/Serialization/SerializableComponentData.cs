@@ -2,6 +2,10 @@
 
 namespace VRSketchingGeometry.Serialization
 {
+    /// <summary>
+    /// Base class for the data of components that implement <see cref="VRSketchingGeometry.Serialization.ISerializableComponent"/>.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class SerializableComponentData
     {
         public Vector3 Position;

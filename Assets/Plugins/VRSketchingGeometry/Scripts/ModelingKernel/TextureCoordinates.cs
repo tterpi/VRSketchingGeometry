@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRSketchingGeometry.Meshing {
+    /// <summary>
+    /// Methods for generating UV texture coordinates for Mesh objects.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class TextureCoordinates
     {
         /// <summary>

@@ -5,6 +5,10 @@ using VRSketchingGeometry.Splines;
 
 namespace VRSketchingGeometry.Serialization
 {
+    /// <summary>
+    /// Contains the serialization data of a <see cref="VRSketchingGeometry.SketchObjectManagement.LineSketchObject"/>.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class LineSketchObjectData : SketchObjectData
     {
         public enum InterpolationType

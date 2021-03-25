@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands.Ribbon {
     /// Add new control point to the end of the ribbon,
     /// if the new point is at least a minimum distance away from the last control point of the ribbon.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddPointAndRotationContinuousCommand : ICommand
     {
         private RibbonSketchObject RibbonSketchObject;

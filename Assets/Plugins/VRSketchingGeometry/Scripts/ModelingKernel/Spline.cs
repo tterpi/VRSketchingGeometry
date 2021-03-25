@@ -12,22 +12,49 @@ namespace VRSketchingGeometry.Splines {
     /// <summary>
     /// Interface for a spline implementation
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public abstract class Spline {
         public List<Vector3> InterpolatedPoints { get; protected set; }
 
-        public abstract void setControlPoints(Vector3[] controlPoints);
+        /// <summary>
+        /// Set all control points.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        public abstract void SetControlPoints(Vector3[] controlPoints);
 
-        public abstract SplineModificationInfo setControlPoint(int index, Vector3 controlPoint);
+        /// <summary>
+        /// Replace control point at index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="controlPoint"></param>
+        /// <returns></returns>
+        public abstract SplineModificationInfo SetControlPoint(int index, Vector3 controlPoint);
 
-        public abstract SplineModificationInfo deleteControlPoint(int index);
+        /// <summary>
+        /// Delete a control point at index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public abstract SplineModificationInfo DeleteControlPoint(int index);
 
-        public abstract SplineModificationInfo addControlPoint(Vector3 controlPoint);
+        /// <summary>
+        /// Add control point at the end of the spline.
+        /// </summary>
+        /// <param name="controlPoint"></param>
+        /// <returns></returns>
+        public abstract SplineModificationInfo AddControlPoint(Vector3 controlPoint);
 
-        public abstract SplineModificationInfo insertControlPoint(int index, Vector3 controlPoint);
+        /// <summary>
+        /// Insert control point at index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="controlPoint"></param>
+        /// <returns></returns>
+        public abstract SplineModificationInfo InsertControlPoint(int index, Vector3 controlPoint);
 
-        public abstract int getNumberOfControlPoints();
+        public abstract int GetNumberOfControlPoints();
 
-        public abstract List<Vector3> getControlPoints();
+        public abstract List<Vector3> GetControlPoints();
     }
 }
 

@@ -11,6 +11,7 @@ namespace VRSketchingGeometry.Meshing
     /// Generate a mesh with a certain cross section along given points and rotations.
     /// Contrary to the LineExtruder and ParallelTransportTubeMesh, the rotations of the cross sections have to be given explicitly and are not calculated automatically.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class RibbonMesh
     {
 
@@ -28,13 +29,20 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="rotations">Orientation of the cross sections.</param>
         /// <param name="width">Width of the ribbon.</param>
         /// <returns></returns>
-        public static Mesh GetRibbonMesh(List<Vector3> points, List<Quaternion> rotations, float width) {
+        internal static Mesh GetRibbonMesh(List<Vector3> points, List<Quaternion> rotations, float width) {
 
             List<Vector3> ribbonCrossSection = new List<Vector3> { new Vector3(0, 0, .5f), new Vector3(0, 0, 0), new Vector3(0, 0, -.5f) };
             return GetMesh(ribbonCrossSection, points, rotations, Vector3.one * width);
         }
 
-
+        /// <summary>
+        /// Transform the points of a cross section according to position, rotation and scale.
+        /// </summary>
+        /// <param name="crossSection"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
         public static List<Vector3> TransformPoints(List<Vector3> crossSection, Vector3 position, Quaternion rotation, Vector3 scale) {
             List<Vector3> transformedCrossSection = new List<Vector3>();
             for (int j = 0; j < crossSection.Count; j++)
@@ -105,6 +113,14 @@ namespace VRSketchingGeometry.Meshing
             return mesh;
         }
 
+        /// <summary>
+        /// Transform a single point.
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
         public static Vector3 TransformPoint(Vector3 point, Vector3 position, Quaternion rotation, Vector3 scale) {
             Matrix4x4 matrix = Matrix4x4.TRS(position, rotation, scale);
             return matrix.MultiplyPoint3x4(point);
@@ -117,6 +133,7 @@ namespace VRSketchingGeometry.Meshing
         }
 
         /// <summary>
+        /// Flat ribbon shaped mesh.
         /// Cross section is a straight line along local z axis.
         /// </summary>
         /// <param name="scale"></param>
@@ -171,6 +188,5 @@ namespace VRSketchingGeometry.Meshing
             Vertices.RemoveRange(Vertices.Count - CrossSection.Count, CrossSection.Count);
             return GetMeshFromVertices(Vertices, CrossSection.Count);
         }
-
     }
 }

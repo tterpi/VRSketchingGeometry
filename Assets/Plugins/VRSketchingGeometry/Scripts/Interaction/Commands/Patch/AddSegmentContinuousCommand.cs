@@ -7,6 +7,7 @@ namespace VRSketchingGeometry.Commands.Patch {
     /// <summary>
     /// Add a segment at the end of the patch if it is at least a minimum distance away form the last segment.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class AddSegmentContinuousCommand : ICommand
     {
         private PatchSketchObject PatchSketchObject;

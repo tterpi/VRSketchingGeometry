@@ -9,6 +9,7 @@ namespace VRSketchingGeometry.Commands.Selection
     /// <summary>
     /// Deactivate the selection.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeactivateSelectionCommand : ICommand
     {
         private SketchObjectSelection Selection;

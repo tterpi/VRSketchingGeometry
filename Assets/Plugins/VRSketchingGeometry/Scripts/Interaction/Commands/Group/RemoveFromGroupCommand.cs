@@ -9,6 +9,7 @@ namespace VRSketchingGeometry.Commands.Group
     /// <summary>
     /// Remove an object from a group.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class RemoveFromGroupCommand : ICommand
     {
         IGroupable Object;

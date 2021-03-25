@@ -81,11 +81,11 @@ namespace Tests
             SplineMesh splineMesh = null;
             Measure.Method(() =>
             {
-                splineMesh.addControlPoint(new Vector3(length + 1, 0, 0));
+                splineMesh.AddControlPoint(new Vector3(length + 1, 0, 0));
             })
             .SetUp(() => {
                 splineMesh = new SplineMesh(new KochanekBartelsSpline());
-                splineMesh.setControlPoints(GenerateControlPoints(length).ToArray());
+                splineMesh.SetControlPoints(GenerateControlPoints(length).ToArray());
             })
             .Run();
         }

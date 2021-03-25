@@ -10,6 +10,7 @@ namespace VRSketchingGeometry.Meshing
     /// <summary>
     /// Methods for creating a tube like mesh using the parallel transport algorithm.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public static class ParallelTransportTubeMesh
     {
         /// <summary>
@@ -56,10 +57,10 @@ namespace VRSketchingGeometry.Meshing
 
             if (generateCaps)
             {
-                (List<Vector3> capVertices, List<Vector3> capNormals, List<int> capTriangles) = LineExtruder.GenerateCapsMesh(meshVertices.GetRange(0, crossSectionShape.Count), 
+                (List<Vector3> capVertices, List<Vector3> capNormals, List<int> capTriangles) = TubeMesh.GenerateCapsMesh(meshVertices.GetRange(0, crossSectionShape.Count), 
                     meshVertices.GetRange(meshVertices.Count - crossSectionShape.Count, crossSectionShape.Count),
                     meshVertices.Count);
-                mesh = LineExtruder.GetMeshWithCaps(meshVertices, meshNormals, meshTriangles, capVertices, capNormals, capTriangles, crossSectionShape.Count);
+                mesh = TubeMesh.GetMeshWithCaps(meshVertices, meshNormals, meshTriangles, capVertices, capNormals, capTriangles, crossSectionShape.Count);
             }
             else
             {

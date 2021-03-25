@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace VRSketchingGeometry.Meshing
 {
+    /// <summary>
+    /// Smoothly interpolated patch surface mesh controlled by a 2D grid of control points.
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class PatchMesh
     {
         /// <summary>
@@ -24,14 +28,23 @@ namespace VRSketchingGeometry.Meshing
             return GenerateVerticesOfPatch_Parallel(controlPoints, width, height, resolutionWidth, resolutionHeight);
         }
 
-        public static Vector3[] GenerateVerticesOfPatch_Optimized(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
+        /// <summary>
+        /// Optimized version.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="resolutionWidth"></param>
+        /// <param name="resolutionHeight"></param>
+        /// <returns></returns>
+        internal static Vector3[] GenerateVerticesOfPatch_Optimized(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
             //create horizontal splines through the control points
             List<List<Vector3>> horizontalPoints = new List<List<Vector3>>();
             KochanekBartelsSpline horizontalSpline = new KochanekBartelsSpline(resolutionWidth);
             for (int i = 0; i < height; i++)
             {
-                horizontalSpline.setControlPoints(controlPoints.GetRange(i * width, width).ToArray());
+                horizontalSpline.SetControlPoints(controlPoints.GetRange(i * width, width).ToArray());
                 horizontalPoints.Add(new List<Vector3>(horizontalSpline.InterpolatedPoints));
             }
 
@@ -46,21 +59,31 @@ namespace VRSketchingGeometry.Meshing
                 {
                     verticalControlPoints.Add(horizontalPointList[i]);
                 }
-                verticalSpline.setControlPoints(verticalControlPoints.ToArray());
+                verticalSpline.SetControlPoints(verticalControlPoints.ToArray());
                 vertices.AddRange(verticalSpline.InterpolatedPoints);
             }
 
             return vertices.ToArray();
         }
 
-        public static Vector3[] GenerateVerticesOfPatch_Parallel(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
+        /// <summary>
+        /// Optimized using parallel for loops. 
+        /// Using Unity jobs is probably better for multithreading than parallelized loops.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="resolutionWidth"></param>
+        /// <param name="resolutionHeight"></param>
+        /// <returns></returns>
+        internal static Vector3[] GenerateVerticesOfPatch_Parallel(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
             //create horizontal splines through the control points
             List<Vector3>[] horizontalPoints = new List<Vector3>[height];
             Parallel.For(0, height, (i) =>
             {
                 KochanekBartelsSpline horizontalSpline = new KochanekBartelsSpline(resolutionWidth);
-                horizontalSpline.setControlPoints(controlPoints.GetRange(i * width, width).ToArray());
+                horizontalSpline.SetControlPoints(controlPoints.GetRange(i * width, width).ToArray());
                 horizontalPoints[i] = new List<Vector3>(horizontalSpline.InterpolatedPoints);
             });
 
@@ -75,7 +98,7 @@ namespace VRSketchingGeometry.Meshing
                 {
                     verticalControlPoints.Add(horizontalPointList[i]);
                 }
-                verticalSpline.setControlPoints(verticalControlPoints.ToArray());
+                verticalSpline.SetControlPoints(verticalControlPoints.ToArray());
 
                 verticesLists[i] = new List<Vector3>(verticalSpline.InterpolatedPoints);
             });
@@ -88,7 +111,17 @@ namespace VRSketchingGeometry.Meshing
             return vertices.ToArray();
         }
 
-        public static Vector3[] GenerateVerticesOfPatch_Original(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
+        /// <summary>
+        /// Original unoptimized version of this method.
+        /// Only left for performance comparison.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="resolutionWidth"></param>
+        /// <param name="resolutionHeight"></param>
+        /// <returns></returns>
+        internal static Vector3[] GenerateVerticesOfPatch_Original(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
 
             //create horizontal splines through the control points
@@ -96,7 +129,7 @@ namespace VRSketchingGeometry.Meshing
             for (int i = 0; i < height; i++)
             {
                 KochanekBartelsSpline horizontalSpline = new KochanekBartelsSpline(resolutionWidth);
-                horizontalSpline.setControlPoints(controlPoints.GetRange(i * width, width).ToArray());
+                horizontalSpline.SetControlPoints(controlPoints.GetRange(i * width, width).ToArray());
                 horizontalSplines.Add(horizontalSpline);
             }
 
@@ -110,7 +143,7 @@ namespace VRSketchingGeometry.Meshing
                     verticalControlPoints.Add(horizontalSpline.InterpolatedPoints[i]);
                 }
                 KochanekBartelsSpline verticalSpline = new KochanekBartelsSpline(resolutionHeight);
-                verticalSpline.setControlPoints(verticalControlPoints.ToArray());
+                verticalSpline.SetControlPoints(verticalControlPoints.ToArray());
                 verticalSplines.Add(verticalSpline);
             }
 
@@ -124,6 +157,15 @@ namespace VRSketchingGeometry.Meshing
             return vertices.ToArray();
         }
 
+        /// <summary>
+        /// Generates a patch surface mesh from a grid of control points.
+        /// </summary>
+        /// <param name="controlPoints">Flattened list of control points grid.</param>
+        /// <param name="width">Number of control points horizontally.</param>
+        /// <param name="height">Number of control points vertically.</param>
+        /// <param name="resolutionWidth">Vertices between two control points horizontally.</param>
+        /// <param name="resolutionHeight">Vertices between two control points vertically.</param>
+        /// <returns></returns>
         public static Mesh GeneratePatchMesh(List<Vector3> controlPoints, int width, int height, int resolutionWidth, int resolutionHeight)
         {
             Vector3[] vertices = GenerateVerticesOfPatch(controlPoints, width, height, resolutionWidth, resolutionHeight);

@@ -8,6 +8,7 @@ namespace VRSketchingGeometry.Commands.Line
     /// <summary>
     /// Delete control points within a sphere volume defined by a point and radius.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeleteControlPointsByRadiusCommand : ICommand
     {
         private LineSketchObject OriginalLineSketchObject;

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace VRSketchingGeometry.Meshing
 {
-    class Triangles
+    /// <summary>
+    /// Methods for generating triangle index arrays for Mesh objects. 
+    /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
+    public class Triangles
     {
         /// <summary>
         /// Generate an indices array that defines a quadrilateral triangle topology.

@@ -7,6 +7,7 @@ namespace VRSketchingGeometry.Commands.Ribbon {
     /// <summary>
     /// Delete the last control point of the ribbon.
     /// </summary>
+    /// <remarks>Original author: tterpi</remarks>
     public class DeletePointAndRotationCommand : ICommand
     {
         private RibbonSketchObject RibbonSketchObject;

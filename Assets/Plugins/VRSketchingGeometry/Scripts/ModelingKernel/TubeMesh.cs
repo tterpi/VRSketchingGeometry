@@ -12,9 +12,12 @@ namespace VRSketchingGeometry.Meshing {
     /// <summary>
     /// Generates a tube like mesh according to a set of points on a line
     /// </summary>
-    public class LineExtruder
+    /// <remarks>Original author: tterpi
+    /// This class was originally called LineExtruder. 
+    /// It was renamed to make it consistant with the other mesh classes such as PatchMesh and RibbonMesh.
+    /// </remarks>
+    public class TubeMesh
     {
-
         private Vector3 crossSectionScale;
         public Vector3 CrossSectionScale { get => crossSectionScale; private set => crossSectionScale = value; }
 
@@ -30,7 +33,14 @@ namespace VRSketchingGeometry.Meshing {
         private List<Vector3> crossSectionShape;
         private List<Vector3> crossSectionNormals;
 
-
+        /// <summary>
+        /// Transform the points of a cross section for example.
+        /// </summary>
+        /// <param name="points">List of points to transform.</param>
+        /// <param name="position">Position of the origin of the points.</param>
+        /// <param name="tangent">Tangent to the spline at position.</param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
         public static List<Vector3> TransformPoints(List<Vector3> points, Vector3 position, Vector3 tangent, Vector3 scale)
         {
 
@@ -46,6 +56,12 @@ namespace VRSketchingGeometry.Meshing {
             return pointsTransformed;
         }
 
+        /// <summary>
+        /// Transform a list of normals.
+        /// </summary>
+        /// <param name="normals"></param>
+        /// <param name="tangent"></param>
+        /// <returns></returns>
         public static List<Vector3> TransformNormals(List<Vector3> normals, Vector3 tangent)
         {
 
@@ -61,7 +77,14 @@ namespace VRSketchingGeometry.Meshing {
             return normalsTransformed;
         }
 
-        public LineExtruder(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
+        /// <summary>
+        /// Constructor for a TubeMesh object.
+        /// </summary>
+        /// <param name="crossSectionShape">Vertices of the cross section.</param>
+        /// <param name="crossSectionNormals">Normals of the cross section.</param>
+        /// <param name="crossSectionScale">Scale of the cross section.</param>
+        /// <param name="generateCaps">Should the holes at the end of the tube be closed.</param>
+        public TubeMesh(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
             this.crossSectionShape = crossSectionShape;
             this.crossSectionNormals = crossSectionNormals;
             this.CrossSectionScale = crossSectionScale;
@@ -76,7 +99,12 @@ namespace VRSketchingGeometry.Meshing {
             return TransformPoints(crossSectionShape, position, tangent, CrossSectionScale);
         }
 
-        public Mesh GetMesh(List<Vector3> points) {
+        /// <summary>
+        /// Regenerate the whole mesh with the given points.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns></returns>
+        public Mesh GenerateMesh(List<Vector3> points) {
             if (points == null || points.Count == 0) {
                 return null;
             }
@@ -85,7 +113,7 @@ namespace VRSketchingGeometry.Meshing {
 
         /// <summary>
         /// Replaces and/or removes points from an existing mesh.
-        /// This should only be called when getMesh was called before at least once.
+        /// This should only be called when <see cref="GenerateMesh(List{Vector3})"/> was called before at least once.
         /// </summary>
         /// <param name="points">All points of the complete line.</param>
         /// <param name="index">First point to be added or removed.</param>
@@ -161,7 +189,6 @@ namespace VRSketchingGeometry.Meshing {
 
             //update triangles
             triangles = new List<int>(Triangles.GenerateTrianglesCounterclockwise(vertices.Count / crossSectionShape.Count, crossSectionShape.Count));
-            //triangles = GenerateTriangles(crossSectionShape.Count, (vertices.Count / crossSectionShape.Count) - 1);
 
             //mesh is empty or there is just a single cross section left because second to last control point or last control point was removed
             if (vertices.Count <= crossSectionShape.Count && normals.Count <= crossSectionShape.Count) {
@@ -205,6 +232,13 @@ namespace VRSketchingGeometry.Meshing {
             (capVertices, capNormals, capTriangles) = GenerateCapsMesh(firstCrossSectionVertices, lastCrossSectionVertices, vertices.Count);
         }
 
+        /// <summary>
+        /// Generate the mesh for the end caps that close the holes at the end of the tube.
+        /// </summary>
+        /// <param name="firstCrossSectionVertices"></param>
+        /// <param name="lastCrossSectionVertices"></param>
+        /// <param name="firstTriangleIndex"></param>
+        /// <returns>Vertices, normals, triangles.</returns>
         public static (List<Vector3>, List<Vector3>, List<int>) GenerateCapsMesh(List<Vector3> firstCrossSectionVertices, List<Vector3> lastCrossSectionVertices, int firstTriangleIndex)
         {
 
@@ -261,6 +295,17 @@ namespace VRSketchingGeometry.Meshing {
             return GetMeshWithCaps(vertices, normals, triangles, capVertices, capNormals, capTriangles, crossSectionShape.Count);
         }
 
+        /// <summary>
+        /// Put all parts of the mesh together in a Mesh object.
+        /// </summary>
+        /// <param name="vertices"></param>
+        /// <param name="normals"></param>
+        /// <param name="triangles"></param>
+        /// <param name="capVertices"></param>
+        /// <param name="capNormals"></param>
+        /// <param name="capTriangles"></param>
+        /// <param name="crossSectionVertexCount"></param>
+        /// <returns></returns>
         public static Mesh GetMeshWithCaps(List<Vector3> vertices, List<Vector3> normals, List<int> triangles, List<Vector3> capVertices, List<Vector3> capNormals, List<int> capTriangles, int crossSectionVertexCount)
         {
             List<Vector3> allVertices = new List<Vector3>(vertices);
