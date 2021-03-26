@@ -30,7 +30,7 @@ namespace VRSketchingGeometry
 
         private void OnEnable()
         {
-            DefaultTextureDirectory = System.IO.Path.Combine(Application.dataPath, "textures");
+            DefaultTextureDirectory = System.IO.Path.Combine(Application.dataPath, "Textures");
         }
 
         /// <summary>
