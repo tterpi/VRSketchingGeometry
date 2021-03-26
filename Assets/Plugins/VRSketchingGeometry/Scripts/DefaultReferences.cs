@@ -33,6 +33,11 @@ namespace VRSketchingGeometry
             DefaultTextureDirectory = System.IO.Path.Combine(Application.dataPath, "textures");
         }
 
+        /// <summary>
+        /// Get a material object according to the shader type.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Material GetMaterial(SketchMaterialData.ShaderType type)
         {
             switch (type)
@@ -47,6 +52,12 @@ namespace VRSketchingGeometry
             }
         }
 
+        /// <summary>
+        /// Get a material with the properties of the material data applied.
+        /// </summary>
+        /// <remarks>Returns an existing material instance if an identical material was created before.</remarks>
+        /// <param name="sketchMaterialData"></param>
+        /// <returns></returns>
         public Material GetMaterialFromDictionary(SketchMaterialData sketchMaterialData) {
             if (MaterialsDict.ContainsKey(sketchMaterialData))
             {
