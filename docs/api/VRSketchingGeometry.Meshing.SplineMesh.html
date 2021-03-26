@@ -1,0 +1,665 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SplineMesh
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SplineMesh
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRSketchingGeometry.Meshing.SplineMesh">
+  
+  
+  <h1 id="VRSketchingGeometry_Meshing_SplineMesh" data-uid="VRSketchingGeometry.Meshing.SplineMesh" class="text-break">Class SplineMesh
+  </h1>
+  <div class="markdown level0 summary"><p>Manages the communication between a spline object and the corresponding mesh.
+Provides methods to manipulate the spline and mesh simultaneously.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">SplineMesh</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Meshing.html">VRSketchingGeometry.Meshing</a></h6>
+  <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
+  <h5 id="VRSketchingGeometry_Meshing_SplineMesh_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SplineMesh</code></pre>
+  </div>
+  <h5 id="VRSketchingGeometry_Meshing_SplineMesh_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Original author: tterpi</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline)">SplineMesh(Spline)</h4>
+  <div class="markdown level1 summary"><p>Contructor with default circular cross section.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SplineMesh(Spline spline)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.Spline.html">Spline</a></td>
+        <td><span class="parametername">spline</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Scale is 0.4 and cross section resolution is 6.</p>
+</div>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_UnityEngine_Vector3_System_Int32_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,UnityEngine.Vector3,System.Int32)">SplineMesh(Spline, Vector3, Int32)</h4>
+  <div class="markdown level1 summary"><p>Contructor for a spline mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SplineMesh(Spline spline, Vector3 crossSectionScale, int crossSectionResolution = 6)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.Spline.html">Spline</a></td>
+        <td><span class="parametername">spline</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">crossSectionScale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">crossSectionResolution</span></td>
+        <td><p>Number of vertices per circular cross section. 
+There will be one more vertex per cross section to create a seam for UV mapping reasons.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_Mesh_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.Mesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_Mesh" data-uid="VRSketchingGeometry.Meshing.SplineMesh.Mesh">Mesh</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh Mesh { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_AddControlPoint_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.AddControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_AddControlPoint_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.AddControlPoint(UnityEngine.Vector3)">AddControlPoint(Vector3)</h4>
+  <div class="markdown level1 summary"><p>Add a control point to the end of the spline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh AddControlPoint(Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_DeleteControlPoint_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.DeleteControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_DeleteControlPoint_System_Int32_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.DeleteControlPoint(System.Int32)">DeleteControlPoint(Int32)</h4>
+  <div class="markdown level1 summary"><p>Delete the control point at index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh DeleteControlPoint(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_GetControlPoints_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_GetControlPoints" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetControlPoints">GetControlPoints()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Vector3&gt; GetControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSectionShape_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSectionShape*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSectionShape_System_Collections_Generic_List_UnityEngine_Vector3___System_Collections_Generic_List_UnityEngine_Vector3___" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSectionShape(System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@)">GetCrossSectionShape(out List&lt;Vector3&gt;, out List&lt;Vector3&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get the cross section.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GetCrossSectionShape(out List&lt;Vector3&gt; crossSectionShape, out List&lt;Vector3&gt; crossSectionShapeNormals)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionShape</span></td>
+        <td><p>A copy of the cross section shape is assigned to this variable.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionShapeNormals</span></td>
+        <td><p>A copy of the cross section normals is assigned to this variable.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_GetNumberOfControlPoints_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetNumberOfControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_GetNumberOfControlPoints" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetNumberOfControlPoints">GetNumberOfControlPoints()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetNumberOfControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_InsertControlPoint_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.InsertControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_InsertControlPoint_System_Int32_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.InsertControlPoint(System.Int32,UnityEngine.Vector3)">InsertControlPoint(Int32, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Insert control point at index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh InsertControlPoint(int index, Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_RefineMesh_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.RefineMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_RefineMesh" data-uid="VRSketchingGeometry.Meshing.SplineMesh.RefineMesh">RefineMesh()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh RefineMesh()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_SetControlPoint_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_SetControlPoint_System_Int32_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetControlPoint(System.Int32,UnityEngine.Vector3)">SetControlPoint(Int32, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Replace the control point at index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetControlPoint(int index, Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_SetControlPoints_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_SetControlPoints_UnityEngine_Vector3___" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetControlPoints(UnityEngine.Vector3[])">SetControlPoints(Vector3[])</h4>
+  <div class="markdown level1 summary"><p>Set all control points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetControlPoints(Vector3[] controlPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span>[]</td>
+        <td><span class="parametername">controlPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_SetCrossSection_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)">SetCrossSection(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Change the cross section of the mesh. This will regenerete the mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetCrossSection(List&lt;Vector3&gt; crossSectionShape, List&lt;Vector3&gt; crossSectionNormals, Vector3 crossSectionDiameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionShape</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionNormals</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">crossSectionDiameter</span></td>
+        <td><p>The requested diameter of the cross section.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_SetCrossSectionScale_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetCrossSectionScale*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_SetCrossSectionScale_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.SetCrossSectionScale(UnityEngine.Vector3)">SetCrossSectionScale(Vector3)</h4>
+  <div class="markdown level1 summary"><p>The diameter of the spline will depend on the native size of the set cross section.
+The default circular cross section has a default diameter of 1.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetCrossSectionScale(Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

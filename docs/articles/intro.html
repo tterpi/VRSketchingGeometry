@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Developer guide </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Developer guide ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="developer-guide">Developer guide</h1>
+
+<p>This guide is intended to give an overview about the most important classes and their usage.</p>
+<h2 id="sketch-worldxrefvrsketchinggeometrysketchobjectmanagementsketchworld"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html">Sketch World</a></h2>
+<p>The sketch world is the root of a sketch. It provides methods for serializing, deserializing and exporting sketches.
+Groups and Sketch-Objects can be added to the sketch world.</p>
+<h2 id="sketch-objectxrefvrsketchinggeometrysketchobjectmanagementsketchobject"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.SketchObject.html">Sketch Object</a></h2>
+<p>The sketch object class is the base class for all types of sketch objects.</p>
+<h2 id="line-sketch-objectxrefvrsketchinggeometrysketchobjectmanagementlinesketchobject"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html">Line Sketch Object</a></h2>
+<p>The line sketch objects allows to create continuous lines represented by a tube shaped mesh.
+It is created by specifying control points (Vector3) which are smoothly interpolated.</p>
+<h2 id="ribbon-sketch-objectxrefvrsketchinggeometrysketchobjectmanagementribbonsketchobject"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html">Ribbon Sketch Object</a></h2>
+<p>The ribbon sketch object allows to create flat ribbon shaped lines.
+For each point of the mesh you have to provide a position (Vector3) and rotation (Quaternion).
+It does not interpolate control points but connects them directly.
+There have to be at least two points for a mesh to be created.</p>
+<h2 id="patch-sketch-objectxrefvrsketchinggeometrysketchobjectmanagementpatchsketchobject"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html">Patch Sketch Object</a></h2>
+<p>This allows you to create a surface with four corners.
+A patch mesh is only created once you have provided at least three by three control points.
+The width of the patch has to be specified and then you can add segments of control points (list of Vector3). The width specifies a number of control points, not the spacial size of the patch.
+The control points are smoothly interpolated.</p>
+<h2 id="sketch-object-groupxrefvrsketchinggeometrysketchobjectmanagementsketchobjectgroup"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html">Sketch Object Group</a></h2>
+<p>The group object allows you to organize a sketch. You can add sketch objects and other groups to a group.</p>
+<h2 id="sketch-object-selectionxrefvrsketchinggeometrysketchobjectmanagementsketchobjectselection"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html">Sketch Object Selection</a></h2>
+<p>The selection allows you to highlight and transform multiple sketch objects and groups together.</p>
+<h2 id="ihighlightablexrefvrsketchinggeometrysketchobjectmanagementihighlightable"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></h2>
+<p>Components that implement this interface can be highlighted using a specified highlight shader.
+The highlighting can be reverted.</p>
+<h2 id="defaultreferencesxrefvrsketchinggeometrydefaultreferences"><a class="xref" href="../api/VRSketchingGeometry.DefaultReferences.html">DefaultReferences</a></h2>
+<p>The DefaultReferences asset contains references to commonly used objects such as prefabs and materials.
+It defines the default path for loading textures when deserializing a sketch.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

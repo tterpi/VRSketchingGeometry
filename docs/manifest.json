@@ -1,0 +1,1050 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/Theo/Files/AI M Sem 3/Forschungsprojekt_ICW/unity_project/VRSketchingGeometry",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "fY2X+H7gSc4aYybOCLEGog=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "9vKOrnX2JbGMEmoyFE0/ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "f8YwOVlzgVqH4TvrzRmMMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "vfNeVo1p3dLUyvKpqFxgDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "xh4fF7T4+mPczm9Z3V4qpA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.AddObjectToSketchWorldRootCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.AddObjectToSketchWorldRootCommand.html",
+          "hash": "0CaL6Am94pPPxkaLo8pn9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.CommandInvoker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.CommandInvoker.html",
+          "hash": "rOFvDpoiK7KthhJBcubUog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.DeleteObjectCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.DeleteObjectCommand.html",
+          "hash": "jvdYPLl0SWauKMegPPdiQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Group.AddToGroupCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Group.AddToGroupCommand.html",
+          "hash": "8AVJ9j8Fa4P/v9KuOlLikQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Group.RemoveFromGroupCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Group.RemoveFromGroupCommand.html",
+          "hash": "qdZWoAb03pwFlCNak3I73g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Group.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Group.html",
+          "hash": "JoTwJYNNve/r7KRlKttysw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.ICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.ICommand.html",
+          "hash": "t8Hj08A4HsMOFrFM0M5JGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.AddControlPointCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.AddControlPointCommand.html",
+          "hash": "RErJeYs2e1Kjs3CPniGnaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.AddControlPointContinuousCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.AddControlPointContinuousCommand.html",
+          "hash": "XpNfh+wju9J+1UCOwHIpmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.DeleteControlPointCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.DeleteControlPointCommand.html",
+          "hash": "3tgCpIQoszFf1PKlFkCoaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.DeleteControlPointsByRadiusCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.DeleteControlPointsByRadiusCommand.html",
+          "hash": "FKopKH+ZEyAAA8THpJB38Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.RefineMeshCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.RefineMeshCommand.html",
+          "hash": "uCU7w3TRAU8D76HCgr88wA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Line.html",
+          "hash": "jWRtBDGHLn2hALLk0fOYDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Patch.AddSegmentCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Patch.AddSegmentCommand.html",
+          "hash": "eDdxi1c7c399abqYs/kGuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Patch.AddSegmentContinuousCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Patch.AddSegmentContinuousCommand.html",
+          "hash": "9U8SVXp19AllFPLbE4u3zQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Patch.DeleteSegmentCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Patch.DeleteSegmentCommand.html",
+          "hash": "3+5nIHhuz2vDq8oNoE3dFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Patch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Patch.html",
+          "hash": "+ObRSu5gwA0mUqIqpyrnKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Ribbon.AddPointAndRotationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Ribbon.AddPointAndRotationCommand.html",
+          "hash": "Kw4G7tu+vhbszsp/+WI07w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Ribbon.AddPointAndRotationContinuousCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Ribbon.AddPointAndRotationContinuousCommand.html",
+          "hash": "ANHx+9UmPzr1u9SP2fXZoA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Ribbon.DeletePointAndRotationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Ribbon.DeletePointAndRotationCommand.html",
+          "hash": "V7y2Cs/UwV4NR+aqzIUxYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Ribbon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Ribbon.html",
+          "hash": "HGEipz1gOU0z/b/YKpGwLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.ActivateSelectionCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.ActivateSelectionCommand.html",
+          "hash": "SLKIvehr3QWXwHgvqKQl1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.AddToSelectionAndHighlightCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.AddToSelectionAndHighlightCommand.html",
+          "hash": "mWBjPLOV2a8exsMOgyhU7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.DeactivateSelectionCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.DeactivateSelectionCommand.html",
+          "hash": "aAGlbdNvy9BTJlPOuMTzvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.DeleteObjectsOfSelectionCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.DeleteObjectsOfSelectionCommand.html",
+          "hash": "3D6KgFlK9GSpzK6r+LLXoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.RemoveFromSelectionAndRevertHighlightCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.RemoveFromSelectionAndRevertHighlightCommand.html",
+          "hash": "GeVJNXHxOxDdjmCzEIsIYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.Selection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.Selection.html",
+          "hash": "hw6Kw5Ff/W5lWN8EnO7ydw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.SetBrushCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.SetBrushCommand.html",
+          "hash": "ySTOscvtzdXYXzMRYcdw5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Commands.html",
+          "hash": "K7O1gqD5g9cQSbV8H/UoXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.DefaultReferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.DefaultReferences.html",
+          "hash": "EBsdwExPPwV4gG0sx2S7CQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Export.OBJExporter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Export.OBJExporter.html",
+          "hash": "a5WFNqH0dC0GAh7o/qATHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Export.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Export.html",
+          "hash": "gFbz9WFMmaIHLAlXyheV2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.CircularCrossSection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.CircularCrossSection.html",
+          "hash": "7j77NGfFXSNvyjkJEPVYTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html",
+          "hash": "U25wzShuNQzLdVl/zPr9ww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.PatchMesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.PatchMesh.html",
+          "hash": "XFvF8mz+fD/iAFot/PoyKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.RibbonMesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.RibbonMesh.html",
+          "hash": "l3iWdR6SyPA0zN2rzf1yfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.SplineMesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.SplineMesh.html",
+          "hash": "gru3HnfX9wYsbs9dE5IQEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.TextureCoordinates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.TextureCoordinates.html",
+          "hash": "Idyow5s8/RaACw9iPy5XBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.Triangles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.Triangles.html",
+          "hash": "Fe/VaVTQRYWRDQ2jLY4Tzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.TubeMesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.TubeMesh.html",
+          "hash": "qTSQl9er3oSlqTI3NRt38A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Meshing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Meshing.html",
+          "hash": "pFbzAwWc2txTfKBUjbqHLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.Brush.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.Brush.html",
+          "hash": "JpKIwBuUloW9XHzmvYH7kg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.LineBrush.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.LineBrush.html",
+          "hash": "K69keUBi77h0j+EmK7Pg7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.LineSketchObjectData.InterpolationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.LineSketchObjectData.InterpolationType.html",
+          "hash": "3expGUIlmZuK5jnYlo3VEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.LineSketchObjectData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.LineSketchObjectData.html",
+          "hash": "NSfOGdHalXHW+j/LA9QH+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.PatchSketchObjectData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.PatchSketchObjectData.html",
+          "hash": "6/qONXJpz21lg1tg1C93JA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.RibbonBrush.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.RibbonBrush.html",
+          "hash": "PU2TgjOruCDr698K8gm9rA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.RibbonSketchObjectData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.RibbonSketchObjectData.html",
+          "hash": "Iv6q5gMLwrmdx6r32vjm6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.SerializableComponentData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.SerializableComponentData.html",
+          "hash": "IFknK3XqGaCboewJgjIiwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.Serializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.Serializer.html",
+          "hash": "FX/D521bvWcwyqlIQV7JJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.SketchMaterialData.ShaderType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.SketchMaterialData.ShaderType.html",
+          "hash": "M508QD3rAomXKKj2pCYQtA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.SketchMaterialData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.SketchMaterialData.html",
+          "hash": "5iclXATukGZ45CVUiO73Yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.SketchObjectData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.SketchObjectData.html",
+          "hash": "UZlCKPCjXzfrdMvTxgapxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.SketchObjectGroupData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.SketchObjectGroupData.html",
+          "hash": "ItWm82Gy40PR4o0N0GqY+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Serialization.html",
+          "hash": "3jdgZZnctjRVsl23LpmQFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.IBrushable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.IBrushable.html",
+          "hash": "BxVKZEhbIWV3N3CbYf3iMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.IGroupable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.IGroupable.html",
+          "hash": "2Id1xfQSM0/SCsR4vUvieg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.IHighlightable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.IHighlightable.html",
+          "hash": "cva5/JR1mMWF2YCVSN9Qjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.ISelectable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.ISelectable.html",
+          "hash": "6KZ2dj5OWKFymqfL/tgCtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html",
+          "hash": "6w4zzUsCSAql+6viZSMTHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html",
+          "hash": "c+nBAgTRkPGxmgz7Yf+oAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html",
+          "hash": "gEz6ra6rPtTD3K8GdgXeeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html",
+          "hash": "HpzDGCB+Z06Vtrl1G7cIaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.SelectableObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.SelectableObject.html",
+          "hash": "atxnqZyk43sd9Mcuu7Yp/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.SketchObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.SketchObject.html",
+          "hash": "fXH1/HnhBPtG8Peit766qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html",
+          "hash": "jG3lGzQzW5UndpT7N+xdnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html",
+          "hash": "UnmfzRslwEfisD2taWRbEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html",
+          "hash": "XZdbeXbi57eVoCOubKuL6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.SketchObjectManagement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.SketchObjectManagement.html",
+          "hash": "7ioqfsnOV7yOd162GJiwjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.KochanekBartelsControlPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.KochanekBartelsControlPoint.html",
+          "hash": "utQ7vjHJxMo+JCggF6A4vA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.KochanekBartelsSpline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.KochanekBartelsSpline.html",
+          "hash": "sF3Ok0v3Je5BmfuH3lR5xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.LinearInterpolationSpline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.LinearInterpolationSpline.html",
+          "hash": "BP6b21akPADsHcwxzK4UYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.Spline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.Spline.html",
+          "hash": "RG1z59hyvY/m3858+5uNOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.SplineModificationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.SplineModificationInfo.html",
+          "hash": "ySQ3oySBQpFNF5BQ67qmNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.Splines.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.Splines.html",
+          "hash": "074BJrOiHGw7KNfdFP/jrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/VRSketchingGeometry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/VRSketchingGeometry.html",
+          "hash": "LMw+Nq0Z15uKfLQjzG4jAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "1L/AYsvl96/EfWBcqywChg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "7YxOHv+nd0/yCd4nPAQyKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 4
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 76,
+          "skipped_file_count": 10
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

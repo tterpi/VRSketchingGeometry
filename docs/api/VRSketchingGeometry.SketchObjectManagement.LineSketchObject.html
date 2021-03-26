@@ -1,0 +1,913 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LineSketchObject
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LineSketchObject
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject">
+  
+  
+  <h1 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject" class="text-break">Class LineSketchObject
+  </h1>
+  <div class="markdown level0 summary"><p>Provides methods to interact with a line game object in the scene.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">UnityEngine.Object</span></div>
+    <div class="level2"><span class="xref">UnityEngine.Component</span></div>
+    <div class="level3"><span class="xref">UnityEngine.Behaviour</span></div>
+    <div class="level4"><span class="xref">UnityEngine.MonoBehaviour</span></div>
+    <div class="level5"><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SelectableObject.html">SelectableObject</a></div>
+    <div class="level6"><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html">SketchObject</a></div>
+    <div class="level7"><span class="xref">LineSketchObject</span></div>
+      <div class="level8"><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html">LinearInterpolationLineSketchObject</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_Defaults">SketchObject.Defaults</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_ParentGroup">SketchObject.ParentGroup</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_meshRenderer">SketchObject.meshRenderer</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_originalMaterial">SketchObject.originalMaterial</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_highlightMaterial">SketchObject.highlightMaterial</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_resetToParentGroup">SketchObject.resetToParentGroup()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_setUpOriginalMaterialAndMeshRenderer">SketchObject.setUpOriginalMaterialAndMeshRenderer()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_highlight">SketchObject.highlight()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_revertHighlight">SketchObject.revertHighlight()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.html">VRSketchingGeometry.SketchObjectManagement</a></h6>
+  <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
+  <h5 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
+public class LineSketchObject : SketchObject, ISelectable, IGroupable, IHighlightable, ISerializableComponent, IBrushable</code></pre>
+  </div>
+  <h5 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Original author: tterpi</p>
+</div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_LinearSplineMesh" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.LinearSplineMesh">LinearSplineMesh</h4>
+  <div class="markdown level1 summary"><p>Linierly interpolated spline for displaying a segment only two control points</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SplineMesh LinearSplineMesh</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.SplineMesh.html">SplineMesh</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_lineDiameter" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.lineDiameter">lineDiameter</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float lineDiameter</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_meshCollider" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.meshCollider">meshCollider</h4>
+  <div class="markdown level1 summary"><p>Collider for the mesh of the spline</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MeshCollider meshCollider</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.MeshCollider</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_meshFilter" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.meshFilter">meshFilter</h4>
+  <div class="markdown level1 summary"><p>Mesh filter for the mesh of the spline</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MeshFilter meshFilter</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.MeshFilter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_minimumControlPointDistance" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.minimumControlPointDistance">minimumControlPointDistance</h4>
+  <div class="markdown level1 summary"><p>The minimal distance a new control point has to have to the last control point.
+This is used by addControlPointContinuous.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float minimumControlPointDistance</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_sphereObject" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.sphereObject">sphereObject</h4>
+  <div class="markdown level1 summary"><p>Object to be displayed for a line of a single control point</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SerializeField]
+protected GameObject sphereObject</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SplineMesh" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SplineMesh">SplineMesh</h4>
+  <div class="markdown level1 summary"><p>The instance of the smoothly interpolated Catmul-Rom spline mesh</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SplineMesh SplineMesh</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.SplineMesh.html">SplineMesh</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPoint_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPoint_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint(UnityEngine.Vector3)">AddControlPoint(Vector3)</h4>
+  <div class="markdown level1 summary"><p>Adds a control point to the end of the spline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddControlPoint(Vector3 point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPointContinuous_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPointContinuous_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous(UnityEngine.Vector3)">AddControlPointContinuous(Vector3)</h4>
+  <div class="markdown level1 summary"><p>Adds a control point to the spline if it is far enough away from the previous control point.
+The distance is controlled by minimumControlPointDistance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddControlPointContinuous(Vector3 point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the control point was added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_LineSketchObjectData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.LineSketchObjectData)">ApplyData(LineSketchObjectData)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyData(LineSketchObjectData data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Serialization.LineSketchObjectData.html">LineSketchObjectData</a></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)">ApplyData(SerializableComponentData)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ApplyData(SerializableComponentData data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_Awake_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.Awake*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_Awake" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.Awake">Awake()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_Awake">SketchObject.Awake()</a></div>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ChooseDisplayMethod_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ChooseDisplayMethod*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ChooseDisplayMethod" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ChooseDisplayMethod">ChooseDisplayMethod()</h4>
+  <div class="markdown level1 summary"><p>Determines how to display the spline depending on the number of control points that are present.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void ChooseDisplayMethod()</code></pre>
+  </div>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoint_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoint" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint">DeleteControlPoint()</h4>
+  <div class="markdown level1 summary"><p>Deletes the last control point of the spline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteControlPoint()</code></pre>
+  </div>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_GameObject_UnityEngine_Vector3_System_Single_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.GameObject,UnityEngine.Vector3,System.Single)">DeleteControlPoints(GameObject, Vector3, Single)</h4>
+  <div class="markdown level1 summary"><p>Checks if gameObject is a LineSketchObject, then deletes control points of this LineSketchObject within radius</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeleteControlPoints(GameObject gameObject, Vector3 point, float radius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.GameObject</span></td>
+        <td><span class="parametername">gameObject</span></td>
+        <td><p>LineSketchObject of which control points should be deleted.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>Point in world space.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radius</span></td>
+        <td><p>Radius in world space.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_Vector3_System_Single_System_Collections_Generic_List_VRSketchingGeometry_SketchObjectManagement_LineSketchObject___" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.Vector3,System.Single,System.Collections.Generic.List{VRSketchingGeometry.SketchObjectManagement.LineSketchObject}@)">DeleteControlPoints(Vector3, Single, out List&lt;LineSketchObject&gt;)</h4>
+  <div class="markdown level1 summary"><p>Delete the control points of this line that are within the radius around point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DeleteControlPoints(Vector3 point, float radius, out List&lt;LineSketchObject&gt; newLineSketchObjects)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>Point in world space.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radius</span></td>
+        <td><p>Radius in world space.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html">LineSketchObject</a>&gt;</td>
+        <td><span class="parametername">newLineSketchObjects</span></td>
+        <td><p>List of new line sketch objects that were created for the deletion.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Returns true if at least one control point was deleted, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetBrush_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetBrush*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetBrush" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetBrush">GetBrush()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Brush GetBrush()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Serialization.Brush.html">Brush</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetControlPoints" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetControlPoints">GetControlPoints()</h4>
+  <div class="markdown level1 summary"><p>Get the control points in local space.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Vector3&gt; GetControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetData*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetData" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.GetData">GetData()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual SerializableComponentData GetData()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_getNumberOfControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.getNumberOfControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_getNumberOfControlPoints" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.getNumberOfControlPoints">getNumberOfControlPoints()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int getNumberOfControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_RefineMesh_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_RefineMesh" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh">RefineMesh()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void RefineMesh()</code></pre>
+  </div>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetBrush_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetBrush*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetBrush_VRSketchingGeometry_Serialization_Brush_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetBrush(VRSketchingGeometry.Serialization.Brush)">SetBrush(Brush)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBrush(Brush brush)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Serialization.Brush.html">Brush</a></td>
+        <td><span class="parametername">brush</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPoints_System_Collections_Generic_List_UnityEngine_Vector3__" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetControlPoints(System.Collections.Generic.List{UnityEngine.Vector3})">SetControlPoints(List&lt;Vector3&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set all control points. Control points are expected to be in world space.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetControlPoints(List&lt;Vector3&gt; controlPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">controlPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPointsLocalSpace_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetControlPointsLocalSpace*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPointsLocalSpace_System_Collections_Generic_List_UnityEngine_Vector3__" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetControlPointsLocalSpace(System.Collections.Generic.List{UnityEngine.Vector3})">SetControlPointsLocalSpace(List&lt;Vector3&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set all control points. Control points are expected to be in local space.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetControlPointsLocalSpace(List&lt;Vector3&gt; controlPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">controlPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetInterpolationSteps_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetInterpolationSteps*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetInterpolationSteps_System_Int32_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetInterpolationSteps(System.Int32)">SetInterpolationSteps(Int32)</h4>
+  <div class="markdown level1 summary"><p>Set the number of interpolation steps between two control points.
+A higher number makes the line smoother.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetInterpolationSteps(int steps)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">steps</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineCrossSection_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetLineCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Single_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetLineCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Single)">SetLineCrossSection(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetLineCrossSection(List&lt;Vector3&gt; crossSection, List&lt;Vector3&gt; crossSectionNormals, float diameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionNormals</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">diameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineDiameter_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetLineDiameter*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineDiameter_System_Single_" data-uid="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetLineDiameter(System.Single)">SetLineDiameter(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetLineDiameter(float diameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">diameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a>
+  </div>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
+  </div>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
+  </div>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

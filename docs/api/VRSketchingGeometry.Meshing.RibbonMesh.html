@@ -1,0 +1,701 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RibbonMesh
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RibbonMesh
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRSketchingGeometry.Meshing.RibbonMesh">
+  
+  
+  <h1 id="VRSketchingGeometry_Meshing_RibbonMesh" data-uid="VRSketchingGeometry.Meshing.RibbonMesh" class="text-break">Class RibbonMesh
+  </h1>
+  <div class="markdown level0 summary"><p>Generate a mesh with a certain cross section along given points and rotations.
+Contrary to the LineExtruder and ParallelTransportTubeMesh, the rotations of the cross sections have to be given explicitly and are not calculated automatically.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">RibbonMesh</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Meshing.html">VRSketchingGeometry.Meshing</a></h6>
+  <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
+  <h5 id="VRSketchingGeometry_Meshing_RibbonMesh_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RibbonMesh</code></pre>
+  </div>
+  <h5 id="VRSketchingGeometry_Meshing_RibbonMesh_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Original author: tterpi</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh__ctor_System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.#ctor(System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)">RibbonMesh(List&lt;Vector3&gt;, Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RibbonMesh(List&lt;Vector3&gt; crossSection, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh__ctor_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.#ctor(UnityEngine.Vector3)">RibbonMesh(Vector3)</h4>
+  <div class="markdown level1 summary"><p>Flat ribbon shaped mesh.
+Cross section is a straight line along local z axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RibbonMesh(Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_Scale_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.Scale*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_Scale" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.Scale">Scale</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Scale { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_AddPoint_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.AddPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_AddPoint_UnityEngine_Vector3_UnityEngine_Quaternion_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.AddPoint(UnityEngine.Vector3,UnityEngine.Quaternion)">AddPoint(Vector3, Quaternion)</h4>
+  <div class="markdown level1 summary"><p>Add single point to the end of the mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh AddPoint(Vector3 point, Quaternion rotation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Quaternion</span></td>
+        <td><span class="parametername">rotation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_AddPoints_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.AddPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_AddPoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.AddPoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion})">AddPoints(List&lt;Vector3&gt;, List&lt;Quaternion&gt;)</h4>
+  <div class="markdown level1 summary"><p>Add to the end of the existing mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh AddPoints(List&lt;Vector3&gt; points, List&lt;Quaternion&gt; rotations)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Quaternion</span>&gt;</td>
+        <td><span class="parametername">rotations</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_DeletePoint_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.DeletePoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_DeletePoint" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.DeletePoint">DeletePoint()</h4>
+  <div class="markdown level1 summary"><p>Delete the last point of the mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh DeletePoint()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_GetCrossSection_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_GetCrossSection" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetCrossSection">GetCrossSection()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Vector3&gt; GetCrossSection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_GetMesh_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_GetMesh_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMesh(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion})">GetMesh(List&lt;Vector3&gt;, List&lt;Quaternion&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get mesh for points and rotations.
+Existing mesh is overwritten.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh GetMesh(List&lt;Vector3&gt; points, List&lt;Quaternion&gt; rotations)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Quaternion</span>&gt;</td>
+        <td><span class="parametername">rotations</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_GetMesh_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_GetMesh_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMesh(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion},UnityEngine.Vector3)">GetMesh(List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Quaternion&gt;, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Get the mesh with the cross sections placed at the points oriented by the rotations.
+Cross sections are scaled by scale.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Mesh GetMesh(List&lt;Vector3&gt; crossSection, List&lt;Vector3&gt; points, List&lt;Quaternion&gt; rotations, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Quaternion</span>&gt;</td>
+        <td><span class="parametername">rotations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_GetMeshFromVertices_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMeshFromVertices*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_GetMeshFromVertices_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetMeshFromVertices(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32)">GetMeshFromVertices(List&lt;Vector3&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Generate a mesh object from the given vertices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Mesh GetMeshFromVertices(List&lt;Vector3&gt; vertices, int crossSectionCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">crossSectionCount</span></td>
+        <td><p>Number of vertices per cross section.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_GetVertices_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetVertices*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_GetVertices_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.GetVertices(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion},UnityEngine.Vector3)">GetVertices(List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Quaternion&gt;, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Place the cross sections at the points oriented by the rotations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Vector3&gt; GetVertices(List&lt;Vector3&gt; crossSection, List&lt;Vector3&gt; points, List&lt;Quaternion&gt; rotations, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Quaternion</span>&gt;</td>
+        <td><span class="parametername">rotations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td><p>Cross sections are scaled by this vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_TransformPoint_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.TransformPoint*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_TransformPoint_UnityEngine_Vector3_UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.TransformPoint(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)">TransformPoint(Vector3, Vector3, Quaternion, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Transform a single point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Vector3 TransformPoint(Vector3 point, Vector3 position, Quaternion rotation, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">point</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Quaternion</span></td>
+        <td><span class="parametername">rotation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_RibbonMesh_TransformPoints_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.TransformPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_RibbonMesh_TransformPoints_System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_UnityEngine_Quaternion_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.RibbonMesh.TransformPoints(System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)">TransformPoints(List&lt;Vector3&gt;, Vector3, Quaternion, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Transform the points of a cross section according to position, rotation and scale.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Vector3&gt; TransformPoints(List&lt;Vector3&gt; crossSection, Vector3 position, Quaternion rotation, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Quaternion</span></td>
+        <td><span class="parametername">rotation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

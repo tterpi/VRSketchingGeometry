@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>VRSketchingGeometry </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="VRSketchingGeometry ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="articles/toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="vrsketchinggeometry">VRSketchingGeometry</h1>
+
+<p>Work in progress. Features may not be complete and the API may change.</p>
+<p>This is a framework for developing 3D sketching applications in Unity.</p>
+<h2 id="features">Features:</h2>
+<ul>
+<li>smoothly interpolated lines</li>
+<li>patch surfaces</li>
+<li>ribbon shaped lines</li>
+<li>organisation of sketch objects with groups</li>
+<li>undo and redo</li>
+<li>serialization of sketches</li>
+<li>OBJ export of sketches</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Add the VRSketchingGeometry folder in the plugins folder of your Unity project.</p>
+<h2 id="quick-start">Quick start</h2>
+<ol>
+<li>Instantiate <code>Assets/Plugins/VRSketchingGeometry/PrefabsLineSketchObject.prefab</code> to create a new line.</li>
+<li>Use methods of attached LineSketchObject component to add and remove control points of the line.</li>
+</ol>
+<h2 id="workflow">Workflow</h2>
+<ol>
+<li>Instantiate a sketch world prefab. Prefabs can be found in <code>Assets/Plugins/VRSketchingGeometry/Prefabs</code>. </li>
+<li>Create sketch objects and groups from prefabs and add them to the sketch object world. Execute commands using a CommandInvoker object for undo and redo functionality. All scripts are in the VRSketchingGeometry namespace.</li>
+<li>Serialize or export using methods of the sketch world script.</li>
+<li>Load serialized sketch world from the serialized xml file for further editing.</li>
+</ol>
+<h2 id="sample-scene">Sample scene</h2>
+<p>The sample scene contains various messy test scripts and corresponding game object.</p>
+<h2 id="tests">Tests</h2>
+<p>There are unit tests using Unity Testing Framework. (<a href="https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/index.html">https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/index.html</a>)
+They mostly cover the undoable commands and the generation and applying of data objects.
+Coverage of the unit tests should be expanded.</p>
+<h2 id="notes">Notes</h2>
+<p>Originally based on code from: <a href="https://github.com/bittermanq/KochanekBartelsSplines">https://github.com/bittermanq/KochanekBartelsSplines</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,551 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TubeMesh
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TubeMesh
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRSketchingGeometry.Meshing.TubeMesh">
+  
+  
+  <h1 id="VRSketchingGeometry_Meshing_TubeMesh" data-uid="VRSketchingGeometry.Meshing.TubeMesh" class="text-break">Class TubeMesh
+  </h1>
+  <div class="markdown level0 summary"><p>Generates a tube like mesh according to a set of points on a line</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TubeMesh</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Meshing.html">VRSketchingGeometry.Meshing</a></h6>
+  <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
+  <h5 id="VRSketchingGeometry_Meshing_TubeMesh_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TubeMesh</code></pre>
+  </div>
+  <h5 id="VRSketchingGeometry_Meshing_TubeMesh_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Original author: tterpi
+This class was originally called LineExtruder. 
+It was renamed to make it consistant with the other mesh classes such as PatchMesh and RibbonMesh.</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh__ctor_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_System_Boolean_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.#ctor(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,System.Boolean)">TubeMesh(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Vector3, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Constructor for a TubeMesh object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TubeMesh(List&lt;Vector3&gt; crossSectionShape, List&lt;Vector3&gt; crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionShape</span></td>
+        <td><p>Vertices of the cross section.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">crossSectionNormals</span></td>
+        <td><p>Normals of the cross section.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">crossSectionScale</span></td>
+        <td><p>Scale of the cross section.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">generateCaps</span></td>
+        <td><p>Should the holes at the end of the tube be closed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_CrossSectionScale_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.CrossSectionScale*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_CrossSectionScale" data-uid="VRSketchingGeometry.Meshing.TubeMesh.CrossSectionScale">CrossSectionScale</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 CrossSectionScale { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_GenerateCapsMesh_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GenerateCapsMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_GenerateCapsMesh_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GenerateCapsMesh(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Int32)">GenerateCapsMesh(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Generate the mesh for the end caps that close the holes at the end of the tube.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static (List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;int&gt;) GenerateCapsMesh(List&lt;Vector3&gt; firstCrossSectionVertices, List&lt;Vector3&gt; lastCrossSectionVertices, int firstTriangleIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">firstCrossSectionVertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">lastCrossSectionVertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">firstTriangleIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Int32</span>&gt;&gt;</td>
+        <td><p>Vertices, normals, triangles.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GenerateMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})">GenerateMesh(List&lt;Vector3&gt;)</h4>
+  <div class="markdown level1 summary"><p>Regenerate the whole mesh with the given points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh GenerateMesh(List&lt;Vector3&gt; points)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_GetMeshWithCaps_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetMeshWithCaps*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_GetMeshWithCaps_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Int32_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetMeshWithCaps(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Int32)">GetMeshWithCaps(List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Int32&gt;, List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Int32&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Put all parts of the mesh together in a Mesh object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Mesh GetMeshWithCaps(List&lt;Vector3&gt; vertices, List&lt;Vector3&gt; normals, List&lt;int&gt; triangles, List&lt;Vector3&gt; capVertices, List&lt;Vector3&gt; capNormals, List&lt;int&gt; capTriangles, int crossSectionVertexCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">vertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">normals</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">triangles</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">capVertices</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">capNormals</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">capTriangles</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">crossSectionVertexCount</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_ReplacePoints_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.ReplacePoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_ReplacePoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_System_Int32_System_Int32_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)">ReplacePoints(List&lt;Vector3&gt;, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Replaces and/or removes points from an existing mesh.
+This should only be called when <a class="xref" href="VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__">GenerateMesh(List&lt;Vector3&gt;)</a> was called before at least once.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh ReplacePoints(List&lt;Vector3&gt; points, int index, int addCount, int removeCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td><p>All points of the complete line.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>First point to be added or removed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">addCount</span></td>
+        <td><p>Number of points to add at index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">removeCount</span></td>
+        <td><p>Number of points to remove at index before adding the new ones.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_TransformNormals_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.TransformNormals*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_TransformNormals_System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.TransformNormals(System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)">TransformNormals(List&lt;Vector3&gt;, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Transform a list of normals.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Vector3&gt; TransformNormals(List&lt;Vector3&gt; normals, Vector3 tangent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">normals</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">tangent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_TransformPoints_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.TransformPoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_TransformPoints_System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_UnityEngine_Vector3_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.TransformPoints(System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">TransformPoints(List&lt;Vector3&gt;, Vector3, Vector3, Vector3)</h4>
+  <div class="markdown level1 summary"><p>Transform the points of a cross section for example.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Vector3&gt; TransformPoints(List&lt;Vector3&gt; points, Vector3 position, Vector3 tangent, Vector3 scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td><p>List of points to transform.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>Position of the origin of the points.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">tangent</span></td>
+        <td><p>Tangent to the spline at position.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

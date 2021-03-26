@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class KochanekBartelsSpline
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class KochanekBartelsSpline
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline">
+  
+  
+  <h1 id="VRSketchingGeometry_Splines_KochanekBartelsSpline" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline" class="text-break">Class KochanekBartelsSpline
+  </h1>
+  <div class="markdown level0 summary"><p>Hermite interpolated spline with Kochanek-Bartels tangent calculation</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="VRSketchingGeometry.Splines.Spline.html">Spline</a></div>
+    <div class="level2"><span class="xref">KochanekBartelsSpline</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_InterpolatedPoints">Spline.InterpolatedPoints</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Splines.html">VRSketchingGeometry.Splines</a></h6>
+  <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
+  <h5 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class KochanekBartelsSpline : Spline</code></pre>
+  </div>
+  <h5 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Original author: tterpi</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline__ctor_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline__ctor_System_Int32_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.#ctor(System.Int32)">KochanekBartelsSpline(Int32)</h4>
+  <div class="markdown level1 summary"><p>Constructor for the KochanekBartelsSpline class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KochanekBartelsSpline(int steps = 20)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">steps</span></td>
+        <td><p>Number of interpolation steps for each segment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_AddControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.AddControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_AddControlPoint_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.AddControlPoint(UnityEngine.Vector3)">AddControlPoint(Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SplineModificationInfo AddControlPoint(Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_AddControlPoint_UnityEngine_Vector3_">Spline.AddControlPoint(Vector3)</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_AddControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.AddControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_AddControlPoint_VRSketchingGeometry_Splines_KochanekBartelsControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.AddControlPoint(VRSketchingGeometry.Splines.KochanekBartelsControlPoint)">AddControlPoint(KochanekBartelsControlPoint)</h4>
+  <div class="markdown level1 summary"><p>Add control point at the end of the curve.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SplineModificationInfo AddControlPoint(KochanekBartelsControlPoint controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.KochanekBartelsControlPoint.html">KochanekBartelsControlPoint</a></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_DeleteControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.DeleteControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_DeleteControlPoint_System_Int32_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.DeleteControlPoint(System.Int32)">DeleteControlPoint(Int32)</h4>
+  <div class="markdown level1 summary"><p>Delete the control point at index.
+If the index is not the first or last control point the curve will skip the deleted control point and connect the control point before and after the deleted one.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SplineModificationInfo DeleteControlPoint(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_DeleteControlPoint_System_Int32_">Spline.DeleteControlPoint(Int32)</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_GetControlPoints_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.GetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_GetControlPoints" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.GetControlPoints">GetControlPoints()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override List&lt;Vector3&gt; GetControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_GetControlPoints">Spline.GetControlPoints()</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_GetNumberOfControlPoints_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.GetNumberOfControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_GetNumberOfControlPoints" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.GetNumberOfControlPoints">GetNumberOfControlPoints()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetNumberOfControlPoints()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_GetNumberOfControlPoints">Spline.GetNumberOfControlPoints()</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_InsertControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.InsertControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_InsertControlPoint_System_Int32_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.InsertControlPoint(System.Int32,UnityEngine.Vector3)">InsertControlPoint(Int32, Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SplineModificationInfo InsertControlPoint(int index, Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_InsertControlPoint_System_Int32_UnityEngine_Vector3_">Spline.InsertControlPoint(Int32, Vector3)</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_InsertControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.InsertControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_InsertControlPoint_System_Int32_VRSketchingGeometry_Splines_KochanekBartelsControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.InsertControlPoint(System.Int32,VRSketchingGeometry.Splines.KochanekBartelsControlPoint)">InsertControlPoint(Int32, KochanekBartelsControlPoint)</h4>
+  <div class="markdown level1 summary"><p>Insert a control point at index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SplineModificationInfo InsertControlPoint(int index, KochanekBartelsControlPoint controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.KochanekBartelsControlPoint.html">KochanekBartelsControlPoint</a></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoint_System_Int32_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoint(System.Int32,UnityEngine.Vector3)">SetControlPoint(Int32, Vector3)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SplineModificationInfo SetControlPoint(int index, Vector3 controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_SetControlPoint_System_Int32_UnityEngine_Vector3_">Spline.SetControlPoint(Int32, Vector3)</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoint*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoint_System_Int32_VRSketchingGeometry_Splines_KochanekBartelsControlPoint_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoint(System.Int32,VRSketchingGeometry.Splines.KochanekBartelsControlPoint)">SetControlPoint(Int32, KochanekBartelsControlPoint)</h4>
+  <div class="markdown level1 summary"><p>Reset the existing control point at index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SplineModificationInfo SetControlPoint(int index, KochanekBartelsControlPoint controlPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.KochanekBartelsControlPoint.html">KochanekBartelsControlPoint</a></td>
+        <td><span class="parametername">controlPoint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.SplineModificationInfo.html">SplineModificationInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoints_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoints_UnityEngine_Vector3___" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoints(UnityEngine.Vector3[])">SetControlPoints(Vector3[])</h4>
+  <div class="markdown level1 summary"><p>Set all control points and recalculate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SetControlPoints(Vector3[] controlPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span>[]</td>
+        <td><span class="parametername">controlPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="VRSketchingGeometry.Splines.Spline.html#VRSketchingGeometry_Splines_Spline_SetControlPoints_UnityEngine_Vector3___">Spline.SetControlPoints(Vector3[])</a></div>
+  
+  
+  <a id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoints_" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoints*"></a>
+  <h4 id="VRSketchingGeometry_Splines_KochanekBartelsSpline_SetControlPoints_VRSketchingGeometry_Splines_KochanekBartelsControlPoint___" data-uid="VRSketchingGeometry.Splines.KochanekBartelsSpline.SetControlPoints(VRSketchingGeometry.Splines.KochanekBartelsControlPoint[])">SetControlPoints(KochanekBartelsControlPoint[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetControlPoints(KochanekBartelsControlPoint[] controlPoints)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.KochanekBartelsControlPoint.html">KochanekBartelsControlPoint</a>[]</td>
+        <td><span class="parametername">controlPoints</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
