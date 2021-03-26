@@ -13,10 +13,13 @@ This is a framework for developing 3D sketching applications in Unity.
 - OBJ export of sketches
 
 ## Installation 
-Add the VRSketchingGeometry folder in the plugins folder of your Unity project.
+Add the Assets/Plugins/VRSketchingGeometry folder in the plugins folder of your Unity project.
+
+## [API documentation](https://tterpi.github.io/VRSketchingGeometry/)
+Read the [developer guide](https://tterpi.github.io/VRSketchingGeometry/articles/intro.html) and [API documentation](https://tterpi.github.io/VRSketchingGeometry/api/index.html) at the github pages site.
 
 ## Quick start
-1. Instantiate `Assets/Plugins/VRSketchingGeometry/PrefabsLineSketchObject.prefab` to create a new line.
+1. Instantiate `Assets/Plugins/VRSketchingGeometry/Prefabs/LineSketchObject.prefab` to create a new line.
 2. Use methods of attached LineSketchObject component to add and remove control points of the line.
 
 ## Workflow
