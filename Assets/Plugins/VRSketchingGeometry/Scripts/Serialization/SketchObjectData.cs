@@ -9,7 +9,7 @@ namespace VRSketchingGeometry.Serialization
     /// Original author: tterpi
     /// Used to differentiate between group and sketch object data.
     /// </remarks>
-    public class SketchObjectData: SerializableComponentData
+    public abstract class SketchObjectData: SerializableComponentData
     {
     }
 }

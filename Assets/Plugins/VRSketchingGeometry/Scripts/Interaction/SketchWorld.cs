@@ -46,7 +46,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Disables the game object and places it under the deleted bin.
         /// </summary>
         /// <param name="selectableObject"></param>
-        public void DeleteObject(SelectableObject selectableObject)
+        internal void DeleteObject(SelectableObject selectableObject)
         {
             selectableObject.gameObject.SetActive(false);
             selectableObject.transform.SetParent(deletedBin.transform);
@@ -66,7 +66,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// 
         /// </summary>
         /// <param name="gameObject"></param>
-        public void AddObject(SelectableObject selectableObject)
+        internal void AddObject(SelectableObject selectableObject)
         {
             RootGroup.AddToGroup(selectableObject);
         }
@@ -99,7 +99,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         public void SaveSketchWorld(string path)
         {
-            Serializer.SerializeToXmlFile<SketchObjectGroupData>(RootGroup.GetData() as SketchObjectGroupData, path);
+            ISerializableComponent serializableGroup = RootGroup as ISerializableComponent;
+            Serializer.SerializeToXmlFile<SketchObjectGroupData>(serializableGroup.GetData() as SketchObjectGroupData, path);
         }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 Debug.LogError("Root group of sketch world is not empty! Please create empty sketch world to load file.");
                 return;
             }
-            RootGroup.ApplyData(groupData);
+            (RootGroup as ISerializableComponent).ApplyData(groupData);
         }
     }
 

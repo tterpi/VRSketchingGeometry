@@ -21,7 +21,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         /// Add a groupable object to the group.
         /// </summary>
         /// <param name="groupableComponent"></param>
-        public void AddToGroup(IGroupable groupableComponent) {
+        internal void AddToGroup(IGroupable groupableComponent) {
             groupableComponent.ParentGroup = this;
             groupableComponent.resetToParentGroup();
         }
@@ -43,7 +43,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         /// Otherwise it is put on the root level of the scene.
         /// </summary>
         /// <param name="groupedObject"></param>
-        public static void RemoveFromGroup(IGroupable groupedObject) {
+        internal static void RemoveFromGroup(IGroupable groupedObject) {
             if (SketchWorld.ActiveSketchWorld != null && groupedObject != null)
             {
                 if (groupedObject is SelectableObject selectableObject) {
@@ -101,8 +101,47 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             return data;
         }
 
-        public SerializableComponentData GetData() {
+        SerializableComponentData ISerializableComponent.GetData() {
             return this.GetSketchObjectGroupData();
+        }
+
+        /// <summary>
+        /// Create the correct type of sketch object according to the type of sketch object data.
+        /// </summary>
+        /// <param name="sketchObjectData"></param>
+        /// <returns></returns>
+        private ISerializableComponent CreateSketchObjectFromData(SketchObjectData sketchObjectData) {
+
+            ISerializableComponent serializableSketchObject = null;
+
+            if (sketchObjectData is LineSketchObjectData lineSketchObjectData)
+            {
+                if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Cubic)
+                {
+                    serializableSketchObject = Instantiate(defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+                }
+                else if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Linear)
+                {
+                    serializableSketchObject =
+                        Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab)
+                        .GetComponent<LinearInterpolationLineSketchObject>();
+
+                }
+            }
+            else if (sketchObjectData is PatchSketchObjectData patchData)
+            {
+                serializableSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
+            }
+            else if (sketchObjectData is RibbonSketchObjectData ribbonData)
+            {
+                serializableSketchObject = Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
+            }
+
+            if (serializableSketchObject == null) {
+                throw new System.ArgumentException("Provided SketchObjectData is of unknown concrete type.", nameof(sketchObjectData));
+            }
+
+            return serializableSketchObject;
         }
 
         private void ApplyData(SketchObjectGroupData data)
@@ -112,35 +151,16 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             data.ApplyDataToTransform(this.transform);
 
             foreach (SketchObjectData sketchObjectData in data.SketchObjects) {
-                if (sketchObjectData is LineSketchObjectData lineSketchObjectData)
+                try
                 {
-                    if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Cubic)
-                    {
-                        LineSketchObject sketchObject = Instantiate(defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
-                        sketchObject.ApplyData(sketchObjectData);
-                        AddToGroup(sketchObject);
-                    }
-                    else if (lineSketchObjectData.Interpolation == LineSketchObjectData.InterpolationType.Linear)
-                    {
-                        LinearInterpolationLineSketchObject sketchObject =
-                            Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab)
-                            .GetComponent<LinearInterpolationLineSketchObject>();
-
-                        sketchObject.ApplyData(sketchObjectData);
-                        AddToGroup(sketchObject);
-                    }
+                    ISerializableComponent serializableSketchObject = CreateSketchObjectFromData(sketchObjectData);
+                    serializableSketchObject.ApplyData(sketchObjectData);
+                    AddToGroup(serializableSketchObject);
                 }
-                else if (sketchObjectData is PatchSketchObjectData patchData)
-                {
-                    PatchSketchObject patchSketchObject = Instantiate(defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
-                    patchSketchObject.ApplyData(patchData);
-                    AddToGroup(patchSketchObject);
+                catch (System.ArgumentException ex) {
+                    Debug.LogError("SketchObject could not be deserialized.\n"+ex.ToString());
                 }
-                else if (sketchObjectData is RibbonSketchObjectData ribbonData) {
-                    RibbonSketchObject ribbonSketchObject = Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
-                    ribbonSketchObject.ApplyData(ribbonData);
-                    AddToGroup(ribbonSketchObject);
-                }
+                
             }
 
             foreach (SketchObjectGroupData groupData in data.SketchObjectGroups) {
@@ -155,7 +175,7 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         /// This will recursively recreate child groups.
         /// </summary>
         /// <param name="data"></param>
-        public void ApplyData(SerializableComponentData data)
+        void ISerializableComponent.ApplyData(SerializableComponentData data)
         {
             if (data is SketchObjectGroupData groupData)
             {

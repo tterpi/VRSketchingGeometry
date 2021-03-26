@@ -97,13 +97,13 @@ public class LineSketchObjectTest : MonoBehaviour
         group.AddToGroup(lineSketchObject);
         group.AddToGroup(lineSketchObject2);
 
-        SketchObjectGroupData groupData = group.GetData() as SketchObjectGroupData;
+        SketchObjectGroupData groupData = (group as ISerializableComponent).GetData() as SketchObjectGroupData;
         string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
         Serializer.DeserializeFromXmlFile<SketchObjectGroupData>(out SketchObjectGroupData readGrouptData, xmlFilePath);
         Debug.Log(readGrouptData.SketchObjects[0].GetType());
 
         SketchObjectGroup deserGroup = Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
-        deserGroup.ApplyData(readGrouptData);
+        (deserGroup as ISerializableComponent).ApplyData(readGrouptData);
 
         deserGroup.transform.position += new Vector3(3, 0, 0);
 
@@ -149,6 +149,8 @@ public class LineSketchObjectTest : MonoBehaviour
         //lineSketchObject2.addControlPointContinuous(new Vector3(3, 1, 0));
         GameObject groupGO = new GameObject("sketchObjectGroup", typeof(SketchObjectGroup));
         SketchObjectGroup group = groupGO.GetComponent<SketchObjectGroup>();
+        group.defaults = this.defaults;
+
         SketchWorld.AddObject(lineSketchObject);
         group.AddToGroup(lineSketchObject2);
         group.AddToGroup(patchSketchObject);

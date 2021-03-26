@@ -39,7 +39,7 @@ namespace Tests
             this.Group.AddToGroup(this.Patch);
             this.Group.AddToGroup(this.Line);
 
-            SketchObjectGroupData data = this.Group.GetData() as SketchObjectGroupData;
+            SketchObjectGroupData data = (this.Group as ISerializableComponent).GetData() as SketchObjectGroupData;
             Assert.AreEqual(3, data.SketchObjects.Count);
         }
 
@@ -47,14 +47,14 @@ namespace Tests
         public void GetData_ChildGroup() {
             SketchObjectGroup newGroup = GameObject.Instantiate(this.Group);
             this.Group.AddToGroup(newGroup);
-            SketchObjectGroupData data = this.Group.GetData() as SketchObjectGroupData;
+            SketchObjectGroupData data = (this.Group as ISerializableComponent).GetData() as SketchObjectGroupData;
             Assert.AreEqual(1, data.SketchObjectGroups.Count);
         }
 
         [Test]
         public void GetData_Position() {
             this.Group.transform.position = new Vector3(1,2,3);
-            SerializableComponentData data = this.Group.GetData();
+            SerializableComponentData data = (this.Group as ISerializableComponent).GetData();
             Assert.AreEqual(new Vector3(1, 2, 3), data.Position);
         }
 
@@ -62,7 +62,7 @@ namespace Tests
         public void GetData_Scale()
         {
             this.Group.transform.localScale = new Vector3(1, 2, 3);
-            SerializableComponentData data = this.Group.GetData();
+            SerializableComponentData data = (this.Group as ISerializableComponent).GetData();
             Assert.AreEqual(new Vector3(1, 2, 3), data.Scale);
         }
 
@@ -70,7 +70,7 @@ namespace Tests
         public void GetData_Rotation()
         {
             this.Group.transform.rotation = Quaternion.Euler(10,20,30);
-            SerializableComponentData data = this.Group.GetData();
+            SerializableComponentData data = (this.Group as ISerializableComponent).GetData();
             Assert.That(data.Rotation, Is.EqualTo(Quaternion.Euler(10, 20, 30)).Using(QuaternionEqualityComparer.Instance));
         }
 
@@ -83,9 +83,9 @@ namespace Tests
             this.Group.AddToGroup(this.Patch);
             this.Group.AddToGroup(this.Line);
 
-            SketchObjectGroupData data = this.Group.GetData() as SketchObjectGroupData;
+            SketchObjectGroupData data = (this.Group as ISerializableComponent).GetData() as SketchObjectGroupData;
 
-            newGroup.ApplyData(data);
+            (newGroup as ISerializableComponent).ApplyData(data);
 
             Assert.AreEqual(3, newGroup.transform.childCount);
             Assert.AreEqual(1, newGroup.GetComponentsInChildren<RibbonSketchObject>().Length);
@@ -100,9 +100,9 @@ namespace Tests
 
             this.Group.AddToGroup(newGroup);
 
-            SerializableComponentData data = this.Group.GetData();
+            SerializableComponentData data = (this.Group as ISerializableComponent).GetData();
 
-            targetGroup.ApplyData(data);
+            (targetGroup as ISerializableComponent).ApplyData(data);
 
             Assert.AreEqual(1, targetGroup.transform.childCount);
             Assert.AreEqual(2, targetGroup.GetComponentsInChildren<SketchObjectGroup>().Length);
@@ -124,9 +124,9 @@ namespace Tests
             SketchObjectGroup targetGroup = GameObject.Instantiate(this.Group);
 
 
-            SerializableComponentData data = this.Group.GetData();
+            SerializableComponentData data = (this.Group as ISerializableComponent).GetData();
 
-            targetGroup.ApplyData(data);
+            (targetGroup as ISerializableComponent).ApplyData(data);
 
             SketchObjectGroup deserializedChildGroup = targetGroup.transform.GetChild(0).GetComponent<SketchObjectGroup>();
             Assert.AreEqual(new Vector3(3, 2, 1), deserializedChildGroup.transform.position);

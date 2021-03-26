@@ -33,11 +33,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
         private GameObject boundsVisualizationObject;
 #pragma warning restore CS0649
 
-        public void AddToSelection(SelectableObject selectableObject) {
+        internal void AddToSelection(SelectableObject selectableObject) {
             SketchObjectsOfSelection.Add(selectableObject);
         }
 
-        public void RemoveFromSelection(SelectableObject selectableObject) {
+        internal void RemoveFromSelection(SelectableObject selectableObject) {
             selectableObject.revertHighlight();
             selectableObject.resetToParentGroup();
             SketchObjectsOfSelection.Remove(selectableObject);
@@ -55,7 +55,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Deactivate this selection and delete all selected objects via the active sketch world.
         /// Selection doesn't have to be active.
         /// </summary>
-        public void DeleteObjectsOfSelection()
+        internal void DeleteObjectsOfSelection()
         {
             Deactivate();
             foreach (SelectableObject selectedObject in SketchObjectsOfSelection) {
@@ -66,7 +66,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Highlight all objects added to this selection and set this selection as active selection.
         /// </summary>
-        public void Activate()
+        internal void Activate()
         {
             if (ActiveSketchObjectSelection != this)
             {
@@ -89,7 +89,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Reverts the high light of all selected objects and resets the active selection.
         /// </summary>
-        public void Deactivate()
+        internal void Deactivate()
         {
             if (ActiveSketchObjectSelection == this)
             {

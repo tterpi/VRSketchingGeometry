@@ -74,7 +74,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Adds a control point to the end of the spline.
         /// </summary>
         /// <param name="point"></param>
-        public void AddControlPoint(Vector3 point)
+        internal void AddControlPoint(Vector3 point)
         {
             //Transform the new control point from world to local space of sketch object
             Vector3 transformedPoint = transform.InverseTransformPoint(point);
@@ -89,7 +89,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="point"></param>
         /// <returns>True if the control point was added.</returns>
-        public bool AddControlPointContinuous(Vector3 point)
+        internal bool AddControlPointContinuous(Vector3 point)
         {
             //Check that new control point is far enough away from previous control point
             if (
@@ -178,7 +178,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Deletes the last control point of the spline.
         /// </summary>
-        public void DeleteControlPoint()
+        internal void DeleteControlPoint()
         {
             //delete the last control point of the spline
             meshFilter.mesh = SplineMesh.DeleteControlPoint(SplineMesh.GetNumberOfControlPoints() - 1);
@@ -192,7 +192,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <param name="radius">Radius in world space.</param>
         /// <param name="newLineSketchObjects">List of new line sketch objects that were created for the deletion.</param>
         /// <returns>Returns true if at least one control point was deleted, false otherwise.</returns>
-        public bool DeleteControlPoints(Vector3 point, float radius, out List<LineSketchObject> newLineSketchObjects) {
+        internal bool DeleteControlPoints(Vector3 point, float radius, out List<LineSketchObject> newLineSketchObjects) {
             List<List<Vector3>> contiguousSections = new List<List<Vector3>>();
             List<Vector3> contiguousSection = new List<Vector3>();
 
@@ -328,7 +328,10 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         }
 
-        public virtual void RefineMesh() {
+        /// <summary>
+        /// Refine the mesh using Parallel Transport algorithm.
+        /// </summary>
+        internal virtual void RefineMesh() {
             meshFilter.mesh = this.SplineMesh.RefineMesh();
             ChooseDisplayMethod();
         }
@@ -357,7 +360,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             }
         }
 
-        public virtual SerializableComponentData GetData() {
+        protected LineSketchObjectData GetData() {
             LineSketchObjectData data = new LineSketchObjectData
             {
                 Interpolation = LineSketchObjectData.InterpolationType.Cubic,
@@ -368,14 +371,18 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
             data.SetDataFromTransform(this.transform);
 
-            SplineMesh.GetCrossSectionShape(out data.CrossSectionVertices,out data.CrossSectionNormals);
+            SplineMesh.GetCrossSectionShape(out data.CrossSectionVertices, out data.CrossSectionNormals);
 
             data.SketchMaterial = new SketchMaterialData(this.meshRenderer.sharedMaterial);
 
             return data;
         }
 
-        public void ApplyData(LineSketchObjectData data) {
+        SerializableComponentData ISerializableComponent.GetData() {
+            return this.GetData();
+        }
+
+        private void ApplyData(LineSketchObjectData data) {
 
             this.transform.position = Vector3.zero;
             this.transform.rotation = Quaternion.identity;
@@ -387,7 +394,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.SetMaterial(Defaults.GetMaterialFromDictionary(data.SketchMaterial));
         }
 
-        public void ApplyData(SerializableComponentData data)
+        void ISerializableComponent.ApplyData(SerializableComponentData data)
         {
             if (data is LineSketchObjectData lineSketchData)
             {

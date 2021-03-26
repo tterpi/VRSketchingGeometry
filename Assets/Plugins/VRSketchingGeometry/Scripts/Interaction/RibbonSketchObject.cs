@@ -78,7 +78,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         /// </summary>
         /// <param name="point"></param>
         /// <param name="rotation"></param>
-        public void AddControlPoint(Vector3 point, Quaternion rotation) {
+        internal void AddControlPoint(Vector3 point, Quaternion rotation) {
             Vector3 transformedPoint = this.transform.InverseTransformPoint(point);
             Quaternion transformedRotation = Quaternion.Inverse(this.transform.rotation) * rotation;
             Points.Add(transformedPoint);
@@ -92,7 +92,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         /// The distance is controlled by minimumControlPointDistance.
         /// </summary>
         /// <param name="point"></param>
-        public bool AddControlPointContinuous(Vector3 point, Quaternion rotation)
+        internal bool AddControlPointContinuous(Vector3 point, Quaternion rotation)
         {
             //Check that new control point is far enough away from previous control point
             if (
@@ -124,7 +124,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         /// <summary>
         /// Delete the last control point.
         /// </summary>
-        public void DeleteControlPoint() {
+        internal void DeleteControlPoint() {
             Points.RemoveAt(Points.Count - 1);
             Rotations.RemoveAt(Rotations.Count - 1);
             if (Points.Count < 0) return;
@@ -181,7 +181,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             return brush;
         }
 
-        public SerializableComponentData GetData()
+        SerializableComponentData ISerializableComponent.GetData()
         {
             RibbonSketchObjectData ribbonData = new RibbonSketchObjectData();
             ribbonData.ControlPoints = GetPoints();
@@ -193,7 +193,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
             return ribbonData;
         }
 
-        public void ApplyData(SerializableComponentData data)
+        void ISerializableComponent.ApplyData(SerializableComponentData data)
         {
             if (data is RibbonSketchObjectData ribbonData)
             {

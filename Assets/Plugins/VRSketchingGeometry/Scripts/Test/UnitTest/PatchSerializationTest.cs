@@ -38,7 +38,7 @@ namespace Tests
             this.PatchSketchObject.AddPatchSegment(segment3);
             this.PatchSketchObject.AddPatchSegment(segment4);
 
-            PatchSketchObjectData data = this.PatchSketchObject.GetData() as PatchSketchObjectData;
+            PatchSketchObjectData data = (this.PatchSketchObject as ISerializableComponent).GetData() as PatchSketchObjectData;
 
             Assert.AreEqual(4 * 4, data.ControlPoints.Count);
             Assert.AreEqual(4, data.Width);
@@ -65,7 +65,7 @@ namespace Tests
             data.ResolutionWidth = 6;
             data.SketchMaterial = new SketchMaterialData();
 
-            this.PatchSketchObject.ApplyData(data);
+            (this.PatchSketchObject as ISerializableComponent).ApplyData(data);
             Assert.That(this.PatchSketchObject.GetComponent<MeshFilter>().sharedMesh.vertexCount, Is.EqualTo(3 * 6 * 3 * 6));
         }
     }

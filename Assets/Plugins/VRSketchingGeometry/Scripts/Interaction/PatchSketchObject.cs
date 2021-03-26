@@ -63,12 +63,18 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="controlPoints"></param>
         /// <param name="width"></param>
-        /// <param name="height"></param>
         public void SetControlPoints(List<Vector3> controlPoints, int width) {
             List<Vector3> transformedPoints = controlPoints.Select(ct => this.transform.InverseTransformPoint(ct)).ToList();
             SetControlPointsLocalSpace(transformedPoints, width);
         }
 
+        /// <summary>
+        /// Sets the control points.
+        /// Control points have to be at least 3x3. 
+        /// Control points are expected to be in local space.
+        /// </summary>
+        /// <param name="controlPoints"></param>
+        /// <param name="width"></param>
         public void SetControlPointsLocalSpace(List<Vector3> controlPoints, int width) {
             this.ControlPoints = new List<Vector3>(controlPoints);
             this.Width = width;
@@ -82,7 +88,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Control points are expected to be in world space.
         /// </summary>
         /// <param name="newControlPoints"></param>
-        public void AddPatchSegment(List<Vector3> newControlPoints) {
+        internal void AddPatchSegment(List<Vector3> newControlPoints) {
             if (newControlPoints.Count != Width)
             {
                 Debug.LogWarning("Segment has to have width number of control points.");
@@ -93,7 +99,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
             UpdatePatchMesh();
         }
 
-        public bool AddPatchSegmentContinuous(List<Vector3> newControlPoints) {
+        /// <summary>
+        /// Adds a segment if all control points of the new segement have 
+        /// a distance of <see cref="MinimumDistanceToLastSegment"/> to the control points of the previous segment.
+        /// </summary>
+        /// <param name="newControlPoints"></param>
+        /// <returns></returns>
+        internal bool AddPatchSegmentContinuous(List<Vector3> newControlPoints) {
             if (newControlPoints.Count != Width) return false;
 
             bool distanceExceeded = true;
@@ -124,7 +136,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Remove a segement at the end of the patch.
         /// </summary>
-        public void RemovePatchSegment() {
+        internal void RemovePatchSegment() {
             ControlPoints.RemoveRange(ControlPoints.Count - Width, Width);
             Height--;
             UpdatePatchMesh();
@@ -171,7 +183,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             meshRenderer.sharedMaterial = Defaults.GetMaterialFromDictionary(brush.SketchMaterial);
         }
 
-        public SerializableComponentData GetData()
+        SerializableComponentData ISerializableComponent.GetData()
         {
             PatchSketchObjectData data = new PatchSketchObjectData
             {
@@ -188,7 +200,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
             return data;
         }
 
-        public void ApplyData(SerializableComponentData data)
+        void ISerializableComponent.ApplyData(SerializableComponentData data)
         {
             if (data is PatchSketchObjectData patchData) {
                 transform.position = Vector3.zero;

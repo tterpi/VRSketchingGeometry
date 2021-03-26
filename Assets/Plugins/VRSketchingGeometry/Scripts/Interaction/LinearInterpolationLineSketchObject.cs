@@ -11,7 +11,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// A line sketch object with no smooth interpolation between control point.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
-    public class LinearInterpolationLineSketchObject : LineSketchObject
+    public class LinearInterpolationLineSketchObject : LineSketchObject, ISerializableComponent
     {
         // Start is called before the first frame update
         protected override void Awake()
@@ -101,9 +101,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         }
 
-        public override SerializableComponentData GetData()
+        SerializableComponentData ISerializableComponent.GetData()
         {
-            LineSketchObjectData data = base.GetData() as LineSketchObjectData;
+            LineSketchObjectData data = base.GetData();
             data.Interpolation = LineSketchObjectData.InterpolationType.Linear;
             return data;
         }
