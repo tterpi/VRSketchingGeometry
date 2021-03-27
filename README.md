@@ -13,14 +13,39 @@ This is a framework for developing 3D sketching applications in Unity.
 - OBJ export of sketches
 
 ## Installation 
-Add the Assets/Plugins/VRSketchingGeometry folder in the plugins folder of your Unity project.
+Add the Assets/Plugins/VRSketchingGeometry folder into the plugins folder of your Unity project.  
+If you downloaded a release import the Unity package using the editor into your project.
 
 ## [API documentation](https://tterpi.github.io/VRSketchingGeometry/)
 Read the [developer guide](https://tterpi.github.io/VRSketchingGeometry/articles/intro.html) and [API documentation](https://tterpi.github.io/VRSketchingGeometry/api/index.html) at the github pages site.
 
 ## Quick start
-1. Instantiate `Assets/Plugins/VRSketchingGeometry/Prefabs/LineSketchObject.prefab` to create a new line.
-2. Use methods of attached LineSketchObject component to add and remove control points of the line.
+The following example script shows how to create new line sketch object and add few control points to it using a command invoker. At the end one command is undone.  
+You will have to reference the file DefaultReferences.asset found in Assets/Plugins/VRSketchingGeometry in the public field `defaults`.  
+
+    using UnityEngine;
+    using VRSketchingGeometry.SketchObjectManagement;
+    using VRSketchingGeometry;
+    using VRSketchingGeometry.Commands;
+    using VRSketchingGeometry.Commands.Line;
+
+    public class CreateLineSketchObject : MonoBehaviour
+    {
+        public DefaultReferences Defaults;
+        private LineSketchObject LineSketchObject;
+        private CommandInvoker Invoker;
+
+        void Start()
+        {
+            LineSketchObject = Instantiate(Defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+            Invoker = new CommandInvoker();
+            Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3)));
+            Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 4, 2)));
+            Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 5, 3)));
+            Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 5, 2)));
+            Invoker.Undo();
+        }
+    }
 
 ## Workflow
 1. Instantiate a sketch world prefab. Prefabs can be found in `Assets/Plugins/VRSketchingGeometry/Prefabs`. 
