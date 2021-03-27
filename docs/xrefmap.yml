@@ -2853,19 +2853,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod
   nameWithType: LinearInterpolationLineSketchObject.ChooseDisplayMethod
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData
-  name: GetData()
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_GetData
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData()
-  nameWithType: LinearInterpolationLineSketchObject.GetData()
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData*
-  name: GetData
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_GetData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData
-  nameWithType: LinearInterpolationLineSketchObject.GetData
 - uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps(System.Int32)
   name: SetInterpolationSteps(Int32)
   href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_System_Int32_
@@ -2914,51 +2901,6 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.LineSketchObject
   fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject
   nameWithType: LineSketchObject
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint(UnityEngine.Vector3)
-  name: AddControlPoint(Vector3)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPoint_UnityEngine_Vector3_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint(UnityEngine.Vector3)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint(UnityEngine.Vector3)
-  nameWithType: LineSketchObject.AddControlPoint(Vector3)
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint*
-  name: AddControlPoint
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPoint_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPoint
-  nameWithType: LineSketchObject.AddControlPoint
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous(UnityEngine.Vector3)
-  name: AddControlPointContinuous(Vector3)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPointContinuous_UnityEngine_Vector3_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous(UnityEngine.Vector3)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous(UnityEngine.Vector3)
-  nameWithType: LineSketchObject.AddControlPointContinuous(Vector3)
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous*
-  name: AddControlPointContinuous
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPointContinuous_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.AddControlPointContinuous
-  nameWithType: LineSketchObject.AddControlPointContinuous
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.LineSketchObjectData)
-  name: ApplyData(LineSketchObjectData)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_LineSketchObjectData_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.LineSketchObjectData)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.LineSketchObjectData)
-  nameWithType: LineSketchObject.ApplyData(LineSketchObjectData)
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  name: ApplyData(SerializableComponentData)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  nameWithType: LineSketchObject.ApplyData(SerializableComponentData)
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData*
-  name: ApplyData
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ApplyData
-  nameWithType: LineSketchObject.ApplyData
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.Awake
   name: Awake()
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_Awake
@@ -2985,34 +2927,12 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.ChooseDisplayMethod
   nameWithType: LineSketchObject.ChooseDisplayMethod
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint
-  name: DeleteControlPoint()
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoint
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint()
-  nameWithType: LineSketchObject.DeleteControlPoint()
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint*
-  name: DeleteControlPoint
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoint_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoint
-  nameWithType: LineSketchObject.DeleteControlPoint
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.GameObject,UnityEngine.Vector3,System.Single)
   name: DeleteControlPoints(GameObject, Vector3, Single)
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_GameObject_UnityEngine_Vector3_System_Single_
   commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.GameObject,UnityEngine.Vector3,System.Single)
   fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.GameObject, UnityEngine.Vector3, System.Single)
   nameWithType: LineSketchObject.DeleteControlPoints(GameObject, Vector3, Single)
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.Vector3,System.Single,System.Collections.Generic.List{VRSketchingGeometry.SketchObjectManagement.LineSketchObject}@)
-  name: DeleteControlPoints(Vector3, Single, out List<LineSketchObject>)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_Vector3_System_Single_System_Collections_Generic_List_VRSketchingGeometry_SketchObjectManagement_LineSketchObject___
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.Vector3,System.Single,System.Collections.Generic.List{VRSketchingGeometry.SketchObjectManagement.LineSketchObject}@)
-  name.vb: DeleteControlPoints(Vector3, Single, ByRef List(Of LineSketchObject))
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.Vector3, System.Single, out System.Collections.Generic.List<VRSketchingGeometry.SketchObjectManagement.LineSketchObject>)
-  fullName.vb: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints(UnityEngine.Vector3, System.Single, ByRef System.Collections.Generic.List(Of VRSketchingGeometry.SketchObjectManagement.LineSketchObject))
-  nameWithType: LineSketchObject.DeleteControlPoints(Vector3, Single, out List<LineSketchObject>)
-  nameWithType.vb: LineSketchObject.DeleteControlPoints(Vector3, Single, ByRef List(Of LineSketchObject))
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.DeleteControlPoints*
   name: DeleteControlPoints
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_
@@ -3102,19 +3022,6 @@ references:
   commentId: F:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.minimumControlPointDistance
   fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.minimumControlPointDistance
   nameWithType: LineSketchObject.minimumControlPointDistance
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh
-  name: RefineMesh()
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_RefineMesh
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh()
-  nameWithType: LineSketchObject.RefineMesh()
-- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh*
-  name: RefineMesh
-  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_RefineMesh_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.RefineMesh
-  nameWithType: LineSketchObject.RefineMesh
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.SetBrush(VRSketchingGeometry.Serialization.Brush)
   name: SetBrush(Brush)
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetBrush_VRSketchingGeometry_Serialization_Brush_
@@ -3220,51 +3127,6 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject
   fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject
   nameWithType: PatchSketchObject
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment(System.Collections.Generic.List{UnityEngine.Vector3})
-  name: AddPatchSegment(List<Vector3>)
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_AddPatchSegment_System_Collections_Generic_List_UnityEngine_Vector3__
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment(System.Collections.Generic.List{UnityEngine.Vector3})
-  name.vb: AddPatchSegment(List(Of Vector3))
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment(System.Collections.Generic.List<UnityEngine.Vector3>)
-  fullName.vb: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment(System.Collections.Generic.List(Of UnityEngine.Vector3))
-  nameWithType: PatchSketchObject.AddPatchSegment(List<Vector3>)
-  nameWithType.vb: PatchSketchObject.AddPatchSegment(List(Of Vector3))
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment*
-  name: AddPatchSegment
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_AddPatchSegment_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegment
-  nameWithType: PatchSketchObject.AddPatchSegment
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous(System.Collections.Generic.List{UnityEngine.Vector3})
-  name: AddPatchSegmentContinuous(List<Vector3>)
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_AddPatchSegmentContinuous_System_Collections_Generic_List_UnityEngine_Vector3__
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous(System.Collections.Generic.List{UnityEngine.Vector3})
-  name.vb: AddPatchSegmentContinuous(List(Of Vector3))
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous(System.Collections.Generic.List<UnityEngine.Vector3>)
-  fullName.vb: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous(System.Collections.Generic.List(Of UnityEngine.Vector3))
-  nameWithType: PatchSketchObject.AddPatchSegmentContinuous(List<Vector3>)
-  nameWithType.vb: PatchSketchObject.AddPatchSegmentContinuous(List(Of Vector3))
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous*
-  name: AddPatchSegmentContinuous
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_AddPatchSegmentContinuous_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.AddPatchSegmentContinuous
-  nameWithType: PatchSketchObject.AddPatchSegmentContinuous
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  name: ApplyData(SerializableComponentData)
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  nameWithType: PatchSketchObject.ApplyData(SerializableComponentData)
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData*
-  name: ApplyData
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_ApplyData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ApplyData
-  nameWithType: PatchSketchObject.ApplyData
 - uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetBrush
   name: GetBrush()
   href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_GetBrush
@@ -3304,19 +3166,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetControlPointsCount
   nameWithType: PatchSketchObject.GetControlPointsCount
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData
-  name: GetData()
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_GetData
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData()
-  nameWithType: PatchSketchObject.GetData()
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData*
-  name: GetData
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_GetData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetData
-  nameWithType: PatchSketchObject.GetData
 - uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.GetLastSegment
   name: GetLastSegment()
   href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_GetLastSegment
@@ -3355,19 +3204,6 @@ references:
   commentId: F:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.MinimumDistanceToLastSegment
   fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.MinimumDistanceToLastSegment
   nameWithType: PatchSketchObject.MinimumDistanceToLastSegment
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment
-  name: RemovePatchSegment()
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_RemovePatchSegment
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment()
-  nameWithType: PatchSketchObject.RemovePatchSegment()
-- uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment*
-  name: RemovePatchSegment
-  href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_RemovePatchSegment_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.RemovePatchSegment
-  nameWithType: PatchSketchObject.RemovePatchSegment
 - uid: VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.ResolutionHeight
   name: ResolutionHeight
   href: api/VRSketchingGeometry.SketchObjectManagement.PatchSketchObject.html#VRSketchingGeometry_SketchObjectManagement_PatchSketchObject_ResolutionHeight
@@ -3450,32 +3286,6 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject
   fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject
   nameWithType: RibbonSketchObject
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint(UnityEngine.Vector3,UnityEngine.Quaternion)
-  name: AddControlPoint(Vector3, Quaternion)
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoint_UnityEngine_Vector3_UnityEngine_Quaternion_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint(UnityEngine.Vector3,UnityEngine.Quaternion)
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint(UnityEngine.Vector3, UnityEngine.Quaternion)
-  nameWithType: RibbonSketchObject.AddControlPoint(Vector3, Quaternion)
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint*
-  name: AddControlPoint
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoint_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint
-  nameWithType: RibbonSketchObject.AddControlPoint
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous(UnityEngine.Vector3,UnityEngine.Quaternion)
-  name: AddControlPointContinuous(Vector3, Quaternion)
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPointContinuous_UnityEngine_Vector3_UnityEngine_Quaternion_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous(UnityEngine.Vector3,UnityEngine.Quaternion)
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous(UnityEngine.Vector3, UnityEngine.Quaternion)
-  nameWithType: RibbonSketchObject.AddControlPointContinuous(Vector3, Quaternion)
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous*
-  name: AddControlPointContinuous
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPointContinuous_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous
-  nameWithType: RibbonSketchObject.AddControlPointContinuous
 - uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion})
   name: AddControlPoints(List<Vector3>, List<Quaternion>)
   href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__
@@ -3492,19 +3302,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoints
   nameWithType: RibbonSketchObject.AddControlPoints
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  name: ApplyData(SerializableComponentData)
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  nameWithType: RibbonSketchObject.ApplyData(SerializableComponentData)
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData*
-  name: ApplyData
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_ApplyData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData
-  nameWithType: RibbonSketchObject.ApplyData
 - uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.Awake
   name: Awake()
   href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_Awake
@@ -3518,19 +3315,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.Awake
   nameWithType: RibbonSketchObject.Awake
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint
-  name: DeleteControlPoint()
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_DeleteControlPoint
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint()
-  nameWithType: RibbonSketchObject.DeleteControlPoint()
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint*
-  name: DeleteControlPoint
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_DeleteControlPoint_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint
-  nameWithType: RibbonSketchObject.DeleteControlPoint
 - uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetBrush
   name: GetBrush()
   href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetBrush
@@ -3557,19 +3341,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetCrossSection
   nameWithType: RibbonSketchObject.GetCrossSection
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData
-  name: GetData()
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetData
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData()
-  nameWithType: RibbonSketchObject.GetData()
-- uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData*
-  name: GetData
-  href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData
-  nameWithType: RibbonSketchObject.GetData
 - uid: VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetPoints
   name: GetPoints()
   href: api/VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.html#VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetPoints
@@ -3873,12 +3644,6 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup
   nameWithType: SketchObjectGroup
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  name: AddToGroup(IGroupable)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_VRSketchingGeometry_SketchObjectManagement_IGroupable_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  nameWithType: SketchObjectGroup.AddToGroup(IGroupable)
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection)
   name: AddToGroup(SketchObjectSelection)
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_
@@ -3892,38 +3657,12 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup
   nameWithType: SketchObjectGroup.AddToGroup
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  name: ApplyData(SerializableComponentData)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)
-  nameWithType: SketchObjectGroup.ApplyData(SerializableComponentData)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData*
-  name: ApplyData
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_ApplyData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData
-  nameWithType: SketchObjectGroup.ApplyData
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.defaults
   name: defaults
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_defaults
   commentId: F:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.defaults
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.defaults
   nameWithType: SketchObjectGroup.defaults
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData
-  name: GetData()
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_GetData
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData()
-  nameWithType: SketchObjectGroup.GetData()
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData*
-  name: GetData
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_GetData_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData
-  nameWithType: SketchObjectGroup.GetData
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.highlight
   name: highlight()
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_highlight
@@ -3950,19 +3689,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ParentGroup
   nameWithType: SketchObjectGroup.ParentGroup
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  name: RemoveFromGroup(IGroupable)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_RemoveFromGroup_VRSketchingGeometry_SketchObjectManagement_IGroupable_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)
-  nameWithType: SketchObjectGroup.RemoveFromGroup(IGroupable)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup*
-  name: RemoveFromGroup
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_RemoveFromGroup_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup
-  nameWithType: SketchObjectGroup.RemoveFromGroup
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.resetToParentGroup
   name: resetToParentGroup()
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_resetToParentGroup
@@ -3995,19 +3721,6 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection
   nameWithType: SketchObjectSelection
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate
-  name: Activate()
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_Activate
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate()
-  nameWithType: SketchObjectSelection.Activate()
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate*
-  name: Activate
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_Activate_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Activate
-  nameWithType: SketchObjectSelection.Activate
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.ActiveSketchObjectSelection
   name: ActiveSketchObjectSelection
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_ActiveSketchObjectSelection
@@ -4021,45 +3734,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.ActiveSketchObjectSelection
   nameWithType: SketchObjectSelection.ActiveSketchObjectSelection
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  name: AddToSelection(SelectableObject)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_AddToSelection_VRSketchingGeometry_SketchObjectManagement_SelectableObject_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  nameWithType: SketchObjectSelection.AddToSelection(SelectableObject)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection*
-  name: AddToSelection
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_AddToSelection_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.AddToSelection
-  nameWithType: SketchObjectSelection.AddToSelection
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate
-  name: Deactivate()
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_Deactivate
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate()
-  nameWithType: SketchObjectSelection.Deactivate()
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate*
-  name: Deactivate
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_Deactivate_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.Deactivate
-  nameWithType: SketchObjectSelection.Deactivate
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection
-  name: DeleteObjectsOfSelection()
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_DeleteObjectsOfSelection
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection()
-  nameWithType: SketchObjectSelection.DeleteObjectsOfSelection()
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection*
-  name: DeleteObjectsOfSelection
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_DeleteObjectsOfSelection_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.DeleteObjectsOfSelection
-  nameWithType: SketchObjectSelection.DeleteObjectsOfSelection
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.GetObjectsOfSelection
   name: GetObjectsOfSelection()
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_GetObjectsOfSelection
@@ -4086,19 +3760,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveAllFromSelection
   nameWithType: SketchObjectSelection.RemoveAllFromSelection
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  name: RemoveFromSelection(SelectableObject)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_RemoveFromSelection_VRSketchingGeometry_SketchObjectManagement_SelectableObject_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  nameWithType: SketchObjectSelection.RemoveFromSelection(SelectableObject)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection*
-  name: RemoveFromSelection
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html#VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_RemoveFromSelection_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.RemoveFromSelection
-  nameWithType: SketchObjectSelection.RemoveFromSelection
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld
   name: SketchWorld
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html
@@ -4118,38 +3779,12 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ActiveSketchWorld
   nameWithType: SketchWorld.ActiveSketchWorld
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  name: AddObject(SelectableObject)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_AddObject_VRSketchingGeometry_SketchObjectManagement_SelectableObject_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  nameWithType: SketchWorld.AddObject(SelectableObject)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject*
-  name: AddObject
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_AddObject_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.AddObject
-  nameWithType: SketchWorld.AddObject
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.defaults
   name: defaults
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_defaults
   commentId: F:VRSketchingGeometry.SketchObjectManagement.SketchWorld.defaults
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.defaults
   nameWithType: SketchWorld.defaults
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  name: DeleteObject(SelectableObject)
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_DeleteObject_VRSketchingGeometry_SketchObjectManagement_SelectableObject_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
-  nameWithType: SketchWorld.DeleteObject(SelectableObject)
-- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject*
-  name: DeleteObject
-  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_DeleteObject_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.DeleteObject
-  nameWithType: SketchWorld.DeleteObject
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorld(System.String)
   name: ExportSketchWorld(String)
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_ExportSketchWorld_System_String_

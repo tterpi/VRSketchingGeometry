@@ -90,14 +90,14 @@ SketchObjectGroups can contain SketchObjects and other SketchObjectGroups.</p>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a></div>
-    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.html">VRSketchingGeometry.SketchObjectManagement</a></h6>
   <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
   <h5 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SketchObjectGroup : SelectableObject, ISelectable, IGroupable, IHighlightable, ISerializableComponent</code></pre>
+    <pre><code class="lang-csharp hljs">public class SketchObjectGroup : SelectableObject, ISelectable, IHighlightable, ISerializableComponent, IGroupable</code></pre>
   </div>
   <h5 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Original author: tterpi</p>
@@ -162,34 +162,6 @@ SketchObjectGroups can contain SketchObjects and other SketchObjectGroups.</p>
   
   
   <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_VRSketchingGeometry_SketchObjectManagement_IGroupable_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)">AddToGroup(IGroupable)</h4>
-  <div class="markdown level1 summary"><p>Add a groupable object to the group.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddToGroup(IGroupable groupableComponent)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></td>
-        <td><span class="parametername">groupableComponent</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup*"></a>
   <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_AddToGroup_VRSketchingGeometry_SketchObjectManagement_SketchObjectSelection_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.AddToGroup(VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection)">AddToGroup(SketchObjectSelection)</h4>
   <div class="markdown level1 summary"><p>Add all groupable objects of the selection to the group.</p>
 </div>
@@ -217,60 +189,6 @@ SketchObjectGroups can contain SketchObjects and other SketchObjectGroups.</p>
   </table>
   
   
-  <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_ApplyData_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)">ApplyData(SerializableComponentData)</h4>
-  <div class="markdown level1 summary"><p>Recreate the children of this group according to the data object.
-This will recursively recreate child groups.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ApplyData(SerializableComponentData data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_GetData_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_GetData" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.GetData">GetData()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SerializableComponentData GetData()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_highlight_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.highlight*"></a>
   <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_highlight" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.highlight">highlight()</h4>
   <div class="markdown level1 summary"></div>
@@ -281,36 +199,6 @@ This will recursively recreate child groups.</p>
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SelectableObject.html#VRSketchingGeometry_SketchObjectManagement_SelectableObject_highlight">SelectableObject.highlight()</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_RemoveFromGroup_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_RemoveFromGroup_VRSketchingGeometry_SketchObjectManagement_IGroupable_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.RemoveFromGroup(VRSketchingGeometry.SketchObjectManagement.IGroupable)">RemoveFromGroup(IGroupable)</h4>
-  <div class="markdown level1 summary"><p>Remove a groupable object from any group.
-This will put the object as first level child of the active sketch world if present.
-Otherwise it is put on the root level of the scene.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void RemoveFromGroup(IGroupable groupedObject)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></td>
-        <td><span class="parametername">groupedObject</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="VRSketchingGeometry_SketchObjectManagement_SketchObjectGroup_resetToParentGroup_" data-uid="VRSketchingGeometry.SketchObjectManagement.SketchObjectGroup.resetToParentGroup*"></a>
@@ -340,10 +228,10 @@ Otherwise it is put on the root level of the scene.</p>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a>
   </div>
   <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
   </div>
   <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
   </div>
 </article>
           </div>

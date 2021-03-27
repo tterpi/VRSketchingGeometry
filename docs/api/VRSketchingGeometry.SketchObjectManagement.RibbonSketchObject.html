@@ -89,8 +89,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a></div>
-    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a></div>
   </div>
   <div class="inheritedMembers">
@@ -128,7 +128,7 @@
   <h5 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
-public class RibbonSketchObject : SketchObject, ISelectable, IGroupable, IHighlightable, ISerializableComponent, IBrushable</code></pre>
+public class RibbonSketchObject : SketchObject, ISelectable, IHighlightable, ISerializableComponent, IGroupable, IBrushable</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -210,88 +210,6 @@ public class RibbonSketchObject : SketchObject, ISelectable, IGroupable, IHighli
   </h3>
   
   
-  <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoint_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoint_UnityEngine_Vector3_UnityEngine_Quaternion_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoint(UnityEngine.Vector3,UnityEngine.Quaternion)">AddControlPoint(Vector3, Quaternion)</h4>
-  <div class="markdown level1 summary"><p>Add a single control point. Point and rotations should be in world space.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddControlPoint(Vector3 point, Quaternion rotation)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
-        <td><span class="parametername">point</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">UnityEngine.Quaternion</span></td>
-        <td><span class="parametername">rotation</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPointContinuous_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPointContinuous_UnityEngine_Vector3_UnityEngine_Quaternion_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPointContinuous(UnityEngine.Vector3,UnityEngine.Quaternion)">AddControlPointContinuous(Vector3, Quaternion)</h4>
-  <div class="markdown level1 summary"><p>Adds a control point to the spline if it is far enough away from the previous control point.
-The distance is controlled by minimumControlPointDistance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AddControlPointContinuous(Vector3 point, Quaternion rotation)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">UnityEngine.Vector3</span></td>
-        <td><span class="parametername">point</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">UnityEngine.Quaternion</span></td>
-        <td><span class="parametername">rotation</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoints_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoints*"></a>
   <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_AddControlPoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Quaternion__" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.AddControlPoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Quaternion})">AddControlPoints(List&lt;Vector3&gt;, List&lt;Quaternion&gt;)</h4>
   <div class="markdown level1 summary"><p>Add multiple control points. Should be in world space.</p>
@@ -325,33 +243,6 @@ The distance is controlled by minimumControlPointDistance.</p>
   </table>
   
   
-  <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_ApplyData_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.ApplyData(VRSketchingGeometry.Serialization.SerializableComponentData)">ApplyData(SerializableComponentData)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ApplyData(SerializableComponentData data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_Awake_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.Awake*"></a>
   <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_Awake" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.Awake">Awake()</h4>
   <div class="markdown level1 summary"></div>
@@ -362,17 +253,6 @@ The distance is controlled by minimumControlPointDistance.</p>
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_Awake">SketchObject.Awake()</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_DeleteControlPoint_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_DeleteControlPoint" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.DeleteControlPoint">DeleteControlPoint()</h4>
-  <div class="markdown level1 summary"><p>Delete the last control point.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void DeleteControlPoint()</code></pre>
-  </div>
   
   
   <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetBrush_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetBrush*"></a>
@@ -419,31 +299,6 @@ The distance is controlled by minimumControlPointDistance.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetData_" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_RibbonSketchObject_GetData" data-uid="VRSketchingGeometry.SketchObjectManagement.RibbonSketchObject.GetData">GetData()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SerializableComponentData GetData()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -683,10 +538,10 @@ The distance is controlled by minimumControlPointDistance.</p>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a>
   </div>
   <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
   </div>
   <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
   </div>
   <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a>

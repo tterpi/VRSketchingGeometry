@@ -91,9 +91,9 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a></div>
-    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></div>
     <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a></div>
+    <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -119,22 +119,10 @@
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_lineDiameter">LineSketchObject.lineDiameter</a>
     </div>
     <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPoint_UnityEngine_Vector3_">LineSketchObject.AddControlPoint(Vector3)</a>
-    </div>
-    <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_AddControlPointContinuous_UnityEngine_Vector3_">LineSketchObject.AddControlPointContinuous(Vector3)</a>
-    </div>
-    <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPointsLocalSpace_System_Collections_Generic_List_UnityEngine_Vector3__">LineSketchObject.SetControlPointsLocalSpace(List&lt;Vector3&gt;)</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPoints_System_Collections_Generic_List_UnityEngine_Vector3__">LineSketchObject.SetControlPoints(List&lt;Vector3&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoint">LineSketchObject.DeleteControlPoint()</a>
-    </div>
-    <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_Vector3_System_Single_System_Collections_Generic_List_VRSketchingGeometry_SketchObjectManagement_LineSketchObject___">LineSketchObject.DeleteControlPoints(Vector3, Single, List&lt;LineSketchObject&gt;)</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_GameObject_UnityEngine_Vector3_System_Single_">LineSketchObject.DeleteControlPoints(GameObject, Vector3, Single)</a>
@@ -146,19 +134,13 @@
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetControlPoints">LineSketchObject.GetControlPoints()</a>
     </div>
     <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_RefineMesh">LineSketchObject.RefineMesh()</a>
-    </div>
-    <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetBrush">LineSketchObject.GetBrush()</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetBrush_VRSketchingGeometry_Serialization_Brush_">LineSketchObject.SetBrush(Brush)</a>
     </div>
     <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_LineSketchObjectData_">LineSketchObject.ApplyData(LineSketchObjectData)</a>
-    </div>
-    <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ApplyData_VRSketchingGeometry_Serialization_SerializableComponentData_">LineSketchObject.ApplyData(SerializableComponentData)</a>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetData">LineSketchObject.GetData()</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.SketchObject.html#VRSketchingGeometry_SketchObjectManagement_SketchObject_Defaults">SketchObject.Defaults</a>
@@ -192,7 +174,7 @@
   <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
   <h5 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LinearInterpolationLineSketchObject : LineSketchObject, ISelectable, IGroupable, IHighlightable, ISerializableComponent, IBrushable</code></pre>
+    <pre><code class="lang-csharp hljs">public class LinearInterpolationLineSketchObject : LineSketchObject, ISelectable, IHighlightable, IBrushable, ISerializableComponent, IGroupable</code></pre>
   </div>
   <h5 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Original author: tterpi</p>
@@ -224,33 +206,6 @@
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ChooseDisplayMethod">LineSketchObject.ChooseDisplayMethod()</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_GetData_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_GetData" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.GetData">GetData()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override SerializableComponentData GetData()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="VRSketchingGeometry.Serialization.SerializableComponentData.html">SerializableComponentData</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetData">LineSketchObject.GetData()</a></div>
   
   
   <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps*"></a>
@@ -356,13 +311,13 @@
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a>
   </div>
   <div>
-      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
-  </div>
-  <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a>
   </div>
   <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IBrushable.html">IBrushable</a>
+  </div>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.IGroupable.html">IGroupable</a>
   </div>
 </article>
           </div>
