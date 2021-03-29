@@ -31,6 +31,9 @@ The group object allows you to organize a sketch. You can add sketch objects and
 ## [Sketch Object Selection](xref:VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection)
 The selection allows you to highlight and transform multiple sketch objects and groups together.
 
+## [Command Invoker](xref:VRSketchingGeometry.Commands.CommandInvoker)
+The command invoker is the central element of the undo/redo feature. It keeps track of all executed commands and provides methods for executing, undoing and redoing commands. To perform a command pass a command object to the execute method. It is then added to the stack of executed commands. This command can now be undone using the undo method of the command invoker. It can be redone using the redo method. 
+
 ## [IHighlightable](xref:VRSketchingGeometry.SketchObjectManagement.IHighlightable)
 Components that implement this interface can be highlighted using a specified highlight shader.
 The highlighting can be reverted.
