@@ -92,6 +92,9 @@ The control points are smoothly interpolated.</p>
 <p>The group object allows you to organize a sketch. You can add sketch objects and other groups to a group.</p>
 <h2 id="sketch-object-selectionxrefvrsketchinggeometrysketchobjectmanagementsketchobjectselection"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.SketchObjectSelection.html">Sketch Object Selection</a></h2>
 <p>The selection allows you to highlight and transform multiple sketch objects and groups together.</p>
+<h2 id="command-invokerxrefvrsketchinggeometrycommandscommandinvoker"><a class="xref" href="../api/VRSketchingGeometry.Commands.CommandInvoker.html">Command Invoker</a></h2>
+<p>The command invoker is the central element of the undo/redo feature. It keeps track of all executed commands and provides methods for executing, undoing and redoing commands. To perform a command pass a command object to the execute method. It is then added to the stack of executed commands. This command can now be undone using the undo method of the command invoker. It can be redone using the redo method.  </p>
+<p>Many methods of the sketch objects, selection, group and sketch world are not intended to be called directly and are marked as internal. This means they can only be called through a command object. This was done to ensure that the undo/redo functionality will work correctly. Make sure to check the VRSketchingGeometry.Commands namespace for the available commands.</p>
 <h2 id="ihighlightablexrefvrsketchinggeometrysketchobjectmanagementihighlightable"><a class="xref" href="../api/VRSketchingGeometry.SketchObjectManagement.IHighlightable.html">IHighlightable</a></h2>
 <p>Components that implement this interface can be highlighted using a specified highlight shader.
 The highlighting can be reverted.</p>
