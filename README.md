@@ -14,7 +14,9 @@ This is a framework for developing 3D sketching applications in Unity.
 
 ## Installation 
 Add the Assets/Plugins/VRSketchingGeometry folder into the plugins folder of your Unity project.  
-If you downloaded a release import the Unity package using the editor into your project.
+If you downloaded a release import the Unity package using the editor into your project.  
+
+The materials and shaders provided are for the Built-In Render Pipeline as used by a normal 3D project template. If you want to use a Scriptable Render Pipeline you will have to upgrade the materials and replace the `Custom/TwoSidedSurfaceShader`.
 
 ## [API documentation](https://tterpi.github.io/VRSketchingGeometry/)
 Read the [developer guide](https://tterpi.github.io/VRSketchingGeometry/articles/intro.html) and [API documentation](https://tterpi.github.io/VRSketchingGeometry/api/index.html) at the github pages site.
