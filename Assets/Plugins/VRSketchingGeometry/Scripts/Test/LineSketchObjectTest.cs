@@ -162,6 +162,7 @@ public class LineSketchObjectTest : MonoBehaviour
 
         SketchWorld2.LoadSketchWorld(worldXmlPath);
 
+        SerializeBrushCollection();
 
         //SketchObjectGroupData groupData = group.GetData();
         //string xmlFilePath = Serializer.WriteTestXmlFile<SketchObjectGroupData>(groupData);
@@ -172,6 +173,20 @@ public class LineSketchObjectTest : MonoBehaviour
         //deserGroup.ApplyData(readGrouptData);
 
         //deserGroup.transform.position += new Vector3(3, 0, 0);
+    }
+
+    private void SerializeBrushCollection() {
+        string brushXmlPath = System.IO.Path.Combine(Application.dataPath, "BrushCollectionTest.xml");
+
+        BrushCollection brushes = new BrushCollection();
+        brushes.Brushes.Add(lineSketchObject.GetBrush());
+        brushes.Brushes.Add(patchSketchObject.GetBrush());
+        brushes.Brushes.Add(ribbonSketchObject.GetBrush());
+        Serializer.SerializeToXmlFile<BrushCollection>(brushes, brushXmlPath);
+
+        BrushCollection loadedBrushes;
+        Serializer.DeserializeFromXmlFile<BrushCollection>(out loadedBrushes, brushXmlPath);
+        Debug.Log(loadedBrushes.Brushes.Count);
     }
 
     // Update is called once per frame
