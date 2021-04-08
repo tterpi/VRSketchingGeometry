@@ -16,7 +16,7 @@ namespace VRSketchingGeometry.Meshing {
     /// This class was originally called LineExtruder. 
     /// It was renamed to make it consistant with the other mesh classes such as PatchMesh and RibbonMesh.
     /// </remarks>
-    public class TubeMesh
+    public class TubeMesh: ITubeMesh
     {
         private Vector3 crossSectionScale;
         public Vector3 CrossSectionScale { get => crossSectionScale; private set => crossSectionScale = value; }

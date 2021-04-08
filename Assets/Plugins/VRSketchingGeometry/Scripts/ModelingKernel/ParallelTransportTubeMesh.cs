@@ -11,8 +11,34 @@ namespace VRSketchingGeometry.Meshing
     /// Methods for creating a tube like mesh using the parallel transport algorithm.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
-    public static class ParallelTransportTubeMesh
+    public class ParallelTransportTubeMesh : ITubeMesh
     {
+        private List<Vector3> CrossSectionVertices;
+        private List<Vector3> CrossSectionNormals;
+        public Vector3 CrossSectionScale { get; private set; }
+        private bool GenerateCaps;
+
+        public ParallelTransportTubeMesh(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
+            this.CrossSectionNormals = crossSectionNormals;
+            this.CrossSectionVertices = crossSectionShape;
+            this.CrossSectionScale = crossSectionScale;
+            this.GenerateCaps = generateCaps;
+        }
+
+        public Mesh GenerateMesh(List<Vector3> points)
+        {
+            if (points == null || points.Count == 0)
+            {
+                return null;
+            }
+            return GetMesh(points, this.CrossSectionVertices, this.CrossSectionNormals, this.CrossSectionScale, this.GenerateCaps);
+        }
+
+        public Mesh ReplacePoints(List<Vector3> points, int index, int addCount, int removeCount)
+        {
+            return GenerateMesh(points);
+        }
+
         /// <summary>
         /// Generate a mesh for a spline according to the parallel transport algorithm.
         /// </summary>
