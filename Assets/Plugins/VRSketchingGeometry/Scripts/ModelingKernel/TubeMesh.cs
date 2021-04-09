@@ -95,6 +95,13 @@ namespace VRSketchingGeometry.Meshing {
             this.triangles = new List<int>();
         }
 
+        /// <summary>
+        /// Change the cross section used for generating the tube mesh.
+        /// </summary>
+        /// <remarks>Points have to be provided because this class does not keep a copy of the interpolated points.</remarks>
+        /// <param name="points"></param>
+        /// <param name="crossSection"></param>
+        /// <returns></returns>
         public Mesh SetCrossSection(List<Vector3> points, CrossSection crossSection) {
             this.vertices = new List<Vector3>();
             this.normals = new List<Vector3>();
@@ -106,6 +113,10 @@ namespace VRSketchingGeometry.Meshing {
             return GenerateMesh(points);
         }
 
+        /// <summary>
+        /// Get a copy of the cross section currently in use.
+        /// </summary>
+        /// <returns></returns>
         public CrossSection GetCrossSection() {
             CrossSection crossSection = 
                 new CrossSection(
@@ -135,6 +146,7 @@ namespace VRSketchingGeometry.Meshing {
         /// <summary>
         /// Replaces and/or removes points from an existing mesh.
         /// This should only be called when <see cref="GenerateMesh(List{Vector3})"/> was called before at least once.
+        /// Different from <see cref="GenerateMesh(List{Vector3})"/> this will only recalculate the parts that were changed according to the parameters.
         /// </summary>
         /// <param name="points">All points of the complete line.</param>
         /// <param name="index">First point to be added or removed.</param>

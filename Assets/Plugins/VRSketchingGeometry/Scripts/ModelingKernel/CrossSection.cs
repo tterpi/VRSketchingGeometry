@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace VRSketchingGeometry.Meshing
 {
+    /// <summary>
+    /// Represents a cross section for a ITubeMesh implementation.
+    /// </summary>
     public class CrossSection
     {
         public List<Vector3> Vertices;
@@ -16,6 +19,10 @@ namespace VRSketchingGeometry.Meshing
             this.Scale = scale;
         }
 
+        /// <summary>
+        /// Copy constructor.
+        /// </summary>
+        /// <param name="crossSection"></param>
         public CrossSection(CrossSection crossSection) {
             this.Vertices = new List<Vector3>(crossSection.Vertices);
             this.Normals = new List<Vector3>(crossSection.Normals);
