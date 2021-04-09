@@ -13,15 +13,11 @@ namespace VRSketchingGeometry.Meshing
     /// <remarks>Original author: tterpi</remarks>
     public class ParallelTransportTubeMesh : ITubeMesh
     {
-        private List<Vector3> CrossSectionVertices;
-        private List<Vector3> CrossSectionNormals;
-        public Vector3 CrossSectionScale { get; private set; }
+        private CrossSection CrossSection;
         private bool GenerateCaps;
 
-        public ParallelTransportTubeMesh(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionScale, bool generateCaps = true) {
-            this.CrossSectionNormals = crossSectionNormals;
-            this.CrossSectionVertices = crossSectionShape;
-            this.CrossSectionScale = crossSectionScale;
+        public ParallelTransportTubeMesh(CrossSection crossSection, bool generateCaps = true) {
+            this.CrossSection = crossSection;
             this.GenerateCaps = generateCaps;
         }
 
@@ -31,12 +27,21 @@ namespace VRSketchingGeometry.Meshing
             {
                 return null;
             }
-            return GetMesh(points, this.CrossSectionVertices, this.CrossSectionNormals, this.CrossSectionScale, this.GenerateCaps);
+            return GetMesh(points, this.CrossSection.Vertices, this.CrossSection.Normals, this.CrossSection.Scale, this.GenerateCaps);
         }
 
         public Mesh ReplacePoints(List<Vector3> points, int index, int addCount, int removeCount)
         {
             return GenerateMesh(points);
+        }
+
+        public Mesh SetCrossSection(List<Vector3> points, CrossSection crossSection) {
+            this.CrossSection = crossSection;
+            return this.GenerateMesh(points);
+        }
+
+        public CrossSection GetCrossSection() {
+            return new CrossSection(this.CrossSection);
         }
 
         /// <summary>

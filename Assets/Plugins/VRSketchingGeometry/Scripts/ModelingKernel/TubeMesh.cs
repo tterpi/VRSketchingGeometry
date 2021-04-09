@@ -95,6 +95,27 @@ namespace VRSketchingGeometry.Meshing {
             this.triangles = new List<int>();
         }
 
+        public Mesh SetCrossSection(List<Vector3> points, CrossSection crossSection) {
+            this.vertices = new List<Vector3>();
+            this.normals = new List<Vector3>();
+            this.triangles = new List<int>();
+
+            this.crossSectionShape = crossSection.Vertices;
+            this.crossSectionNormals = crossSection.Normals;
+            this.CrossSectionScale = crossSection.Scale;
+            return GenerateMesh(points);
+        }
+
+        public CrossSection GetCrossSection() {
+            CrossSection crossSection = 
+                new CrossSection(
+                    new List<Vector3>(crossSectionShape), 
+                    new List<Vector3>(crossSectionNormals), 
+                    crossSectionScale
+                );
+            return crossSection;
+        }
+
         private List<Vector3> TransformCrossSection(Vector3 position, Vector3 tangent) {
             return TransformPoints(crossSectionShape, position, tangent, CrossSectionScale);
         }
