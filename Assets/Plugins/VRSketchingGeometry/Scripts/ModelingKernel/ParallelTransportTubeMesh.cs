@@ -202,9 +202,8 @@ namespace VRSketchingGeometry.Meshing
             }
             else
             {
-                binormal.Normalize();
-                float theta = Mathf.Acos(Vector3.Dot(currentTangent, nextTangent));
-                nextNormal = Quaternion.AngleAxis(Mathf.Rad2Deg * theta, binormal) * currentNormal;
+                Quaternion rotation = Quaternion.AngleAxis(Vector3.Angle(currentTangent, nextTangent), binormal);
+                nextNormal = rotation * currentNormal;
             }
             return nextNormal;
         }
