@@ -17,6 +17,8 @@ namespace VRSketchingGeometry.SketchObjectManagement {
 
         public override SketchObjectGroup ParentGroup { get => parentGroup; set => parentGroup = value; }
 
+        private bool Highlighted = false;
+
         /// <summary>
         /// Add a groupable object to the group.
         /// </summary>
@@ -63,12 +65,18 @@ namespace VRSketchingGeometry.SketchObjectManagement {
 
         public override void highlight()
         {
-            this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
+            if (!Highlighted) {
+                Highlighted = true;
+                this.gameObject.BroadcastMessage(nameof(IHighlightable.highlight));
+            }
         }
 
         public override void revertHighlight()
         {
-            this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
+            if (Highlighted) {
+                Highlighted = false;
+                this.gameObject.BroadcastMessage(nameof(IHighlightable.revertHighlight));
+            }
         }
 
         private SketchObjectGroupData GetSketchObjectGroupData()

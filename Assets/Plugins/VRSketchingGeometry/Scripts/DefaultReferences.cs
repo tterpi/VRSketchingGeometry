@@ -14,6 +14,7 @@ namespace VRSketchingGeometry
     {
         public Material StandardSketchMaterial;
         public Material TwoSidedSketchMaterial;
+        public GameObject SketchWorldPrefab;
         public GameObject LineSketchObjectPrefab;
         public GameObject LinearInterpolationLineSketchObjectPrefab;
         public GameObject SketchObjectGroupPrefab;

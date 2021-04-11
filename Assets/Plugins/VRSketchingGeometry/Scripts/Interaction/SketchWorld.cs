@@ -27,8 +27,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         private SketchObjectGroup RootGroup;
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             deletedBin = new GameObject("Deleted Bin");
             deletedBin.transform.SetParent(this.transform);

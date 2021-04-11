@@ -26,7 +26,7 @@ namespace VRSketchingGeometry.Commands.Line {
 
         public void Redo()
         {
-            if (SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject)) {
+            if (SketchWorld.ActiveSketchWorld != null && SketchWorld.ActiveSketchWorld.IsObjectDeleted(this.LineSketchObject)) {
                 SketchWorld.ActiveSketchWorld.RestoreObject(this.LineSketchObject);
             }
             this.Execute();

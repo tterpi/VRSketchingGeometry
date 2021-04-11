@@ -19,7 +19,7 @@ using System.Collections.Generic;
  |
  *===========================================================================*/
 
-public class OBJExporter : ScriptableWizard
+public class EditorOBJExporter : ScriptableWizard
 {
     public bool onlySelectedObjects = false;
     public bool applyPosition = true;
@@ -448,7 +448,7 @@ public class OBJExporter : ScriptableWizard
     [MenuItem("File/Export/Wavefront OBJ")]
     static void CreateWizard()
     {
-        ScriptableWizard.DisplayWizard("Export OBJ", typeof(OBJExporter), "Export");
+        ScriptableWizard.DisplayWizard("Export OBJ", typeof(EditorOBJExporter), "Export");
     }
 }
 #endif
