@@ -23,7 +23,8 @@ Read the [developer guide](https://tterpi.github.io/VRSketchingGeometry/articles
 
 ## Quick start
 The following example script shows how to create new line sketch object and add few control points to it using a command invoker. At the end one command is undone.  
-You will have to reference the file DefaultReferences.asset found in Assets/Plugins/VRSketchingGeometry in the public field `defaults`.  
+You will have to reference the file DefaultReferences.asset found in `Assets/Plugins/VRSketchingGeometry` in the public field `defaults`.  
+See [the example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs) for a more comprehensive demonstration.
 
     using UnityEngine;
     using VRSketchingGeometry.SketchObjectManagement;
@@ -35,12 +36,15 @@ You will have to reference the file DefaultReferences.asset found in Assets/Plug
     {
         public DefaultReferences Defaults;
         private LineSketchObject LineSketchObject;
+        private SketchWorld SketchWorld;
         private CommandInvoker Invoker;
 
         void Start()
         {
+            SketchWorld = Instantiate(Defaults.SketchWorldPrefab).GetComponent<SketchWorld>();
             LineSketchObject = Instantiate(Defaults.LineSketchObjectPrefab).GetComponent<LineSketchObject>();
             Invoker = new CommandInvoker();
+            Invoker.ExecuteCommand(new AddObjectToSketchWorldRootCommand(LineSketchObject, SketchWorld));
             Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3)));
             Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 4, 2)));
             Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 5, 3)));
@@ -50,10 +54,12 @@ You will have to reference the file DefaultReferences.asset found in Assets/Plug
     }
 
 ## Workflow
-1. Instantiate a sketch world prefab. Prefabs can be found in `Assets/Plugins/VRSketchingGeometry/Prefabs`. 
+1. Instantiate a sketch world prefab. Easy access to prefabs is provided through the DefaultReferences asset at `Assets/Plugins/VRSketchingGeometry/DefaultReferences.asset`. 
 2. Create sketch objects and groups from prefabs and add them to the sketch object world. Execute commands using a CommandInvoker object for undo and redo functionality. All scripts are in the VRSketchingGeometry namespace.
 4. Serialize or export using methods of the sketch world script.
 5. Load serialized sketch world from the serialized xml file for further editing.
+
+An [example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs) was created to show this process in practice.
 
 ## Sample scene
 The sample scene contains various messy test scripts and corresponding game object.
