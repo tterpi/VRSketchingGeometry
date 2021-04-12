@@ -73,8 +73,7 @@ public class VRSketchingExample : MonoBehaviour
         DeserializedSketchWorld.transform.position += new Vector3(5, 0, 0);
 
         //Export the SketchWorld as an OBJ file
-        OBJExporter exporter = new OBJExporter();
-        exporter.ExportGameObject(SketchWorld.gameObject, OBJExporter.GetDefaultExportPath());
+        SketchWorld.ExportSketchWorldToDefaultPath();
 
         //Select the SketchObjectGroup
         SketchObjectSelection = Instantiate(Defaults.SketchObjectSelectionPrefab).GetComponent<SketchObjectSelection>();
