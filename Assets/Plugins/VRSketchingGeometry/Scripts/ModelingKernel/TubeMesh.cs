@@ -16,7 +16,7 @@ namespace VRSketchingGeometry.Meshing {
     /// This class was originally called LineExtruder. 
     /// It was renamed to make it consistant with the other mesh classes such as PatchMesh and RibbonMesh.
     /// </remarks>
-    public class TubeMesh
+    public class TubeMesh: ITubeMesh
     {
         private Vector3 crossSectionScale;
         public Vector3 CrossSectionScale { get => crossSectionScale; private set => crossSectionScale = value; }
@@ -95,6 +95,38 @@ namespace VRSketchingGeometry.Meshing {
             this.triangles = new List<int>();
         }
 
+        /// <summary>
+        /// Change the cross section used for generating the tube mesh.
+        /// </summary>
+        /// <remarks>Points have to be provided because this class does not keep a copy of the interpolated points.</remarks>
+        /// <param name="points"></param>
+        /// <param name="crossSection"></param>
+        /// <returns></returns>
+        public Mesh SetCrossSection(List<Vector3> points, CrossSection crossSection) {
+            this.vertices = new List<Vector3>();
+            this.normals = new List<Vector3>();
+            this.triangles = new List<int>();
+
+            this.crossSectionShape = crossSection.Vertices;
+            this.crossSectionNormals = crossSection.Normals;
+            this.CrossSectionScale = crossSection.Scale;
+            return GenerateMesh(points);
+        }
+
+        /// <summary>
+        /// Get a copy of the cross section currently in use.
+        /// </summary>
+        /// <returns></returns>
+        public CrossSection GetCrossSection() {
+            CrossSection crossSection = 
+                new CrossSection(
+                    new List<Vector3>(crossSectionShape), 
+                    new List<Vector3>(crossSectionNormals), 
+                    crossSectionScale
+                );
+            return crossSection;
+        }
+
         private List<Vector3> TransformCrossSection(Vector3 position, Vector3 tangent) {
             return TransformPoints(crossSectionShape, position, tangent, CrossSectionScale);
         }
@@ -114,6 +146,7 @@ namespace VRSketchingGeometry.Meshing {
         /// <summary>
         /// Replaces and/or removes points from an existing mesh.
         /// This should only be called when <see cref="GenerateMesh(List{Vector3})"/> was called before at least once.
+        /// Different from <see cref="GenerateMesh(List{Vector3})"/> this will only recalculate the parts that were changed according to the parameters.
         /// </summary>
         /// <param name="points">All points of the complete line.</param>
         /// <param name="index">First point to be added or removed.</param>

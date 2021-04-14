@@ -21,18 +21,10 @@ namespace VRSketchingGeometry.Meshing
     public class SplineMesh
     {
         private Spline Spline;
-        private List<Vector3> interpolatedPoints;
-
-        private TubeMesh lineExtruder;
-        private Mesh mesh;
-
-        private List<Vector3> crossSectionShape;
-        private List<Vector3> crossSectionShapeNormals;
-
-        public Mesh Mesh { get => mesh; private set => mesh = value; }
+        private ITubeMesh TubeMesh;
 
         /// <summary>
-        /// Contructor with default circular cross section.
+        /// Contructor with default circular cross section and default tube mesh implementation.
         /// </summary>
         /// <remarks>Scale is 0.4 and cross section resolution is 6.</remarks>
         /// <param name="spline"></param>
@@ -40,7 +32,7 @@ namespace VRSketchingGeometry.Meshing
         {}
 
         /// <summary>
-        /// Contructor for a spline mesh.
+        /// Contructor for a spline mesh using the default TubeMesh implementation.
         /// </summary>
         /// <param name="spline"></param>
         /// <param name="crossSectionScale"></param>
@@ -50,24 +42,32 @@ namespace VRSketchingGeometry.Meshing
         public SplineMesh(Spline spline, Vector3 crossSectionScale, int crossSectionResolution = 6)
         {
             List<Vector3> vertices = CircularCrossSection.GenerateVertices(crossSectionResolution);
-            crossSectionShape = vertices;
-            crossSectionShapeNormals = new List<Vector3>();
+            List<Vector3> crossSectionShape = vertices;
+            List<Vector3> crossSectionShapeNormals = new List<Vector3>();
             foreach (Vector3 point in crossSectionShape)
             {
                 crossSectionShapeNormals.Add(point.normalized);
             }
 
             Spline = spline;
-            interpolatedPoints = Spline.InterpolatedPoints;
 
-            lineExtruder = new TubeMesh(crossSectionShape, crossSectionShapeNormals, crossSectionScale);
+            TubeMesh = new TubeMesh(crossSectionShape, crossSectionShapeNormals, crossSectionScale);
+            //TubeMesh = new ParallelTransportTubeMesh(new CrossSection(crossSectionShape, crossSectionShapeNormals, crossSectionScale));
+        }
 
+        /// <summary>
+        /// Contructor for setting a specific ITubeMesh implementation.
+        /// </summary>
+        /// <param name="spline">The spline implementation to be used.</param>
+        /// <param name="tubeMesh">The <see cref="ITubeMesh"/> implementation to use.</param>
+        public SplineMesh(Spline spline, ITubeMesh tubeMesh) {
+            this.Spline = spline;
+            this.TubeMesh = tubeMesh;
         }
 
         private Mesh UpdateMesh(SplineModificationInfo info)
         {
-            //Debug.Log(info);
-            Mesh newMesh = lineExtruder.ReplacePoints(interpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
+            Mesh newMesh = TubeMesh.ReplacePoints(Spline.InterpolatedPoints, info.Index, info.AddCount, info.RemoveCount);
             return newMesh;
         }
 
@@ -125,7 +125,7 @@ namespace VRSketchingGeometry.Meshing
         public Mesh SetControlPoints(Vector3[] controlPoints)
         {
             Spline.SetControlPoints(controlPoints);
-            return lineExtruder.GenerateMesh(interpolatedPoints);
+            return TubeMesh.GenerateMesh(Spline.InterpolatedPoints);
         }
 
         public int GetNumberOfControlPoints()
@@ -145,8 +145,9 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="scale"></param>
         public Mesh SetCrossSectionScale(Vector3 scale)
         {
-            lineExtruder = new TubeMesh(crossSectionShape, crossSectionShapeNormals, scale);
-            return lineExtruder.GenerateMesh(interpolatedPoints);
+            CrossSection crossSection = TubeMesh.GetCrossSection();
+            crossSection.Scale = scale;
+            return TubeMesh.SetCrossSection(Spline.InterpolatedPoints, crossSection);
         }
 
         /// <summary>
@@ -155,8 +156,17 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="crossSectionShape">A copy of the cross section shape is assigned to this variable.</param>
         /// <param name="crossSectionShapeNormals">A copy of the cross section normals is assigned to this variable.</param>
         public void GetCrossSectionShape(out List<Vector3> crossSectionShape, out List<Vector3> crossSectionShapeNormals) {
-            crossSectionShape = new List<Vector3>(this.crossSectionShape);
-            crossSectionShapeNormals = new List<Vector3>(this.crossSectionShapeNormals);
+            CrossSection crossSection = this.TubeMesh.GetCrossSection();
+            crossSectionShape = crossSection.Vertices;
+            crossSectionShapeNormals = crossSection.Normals;
+        }
+
+        /// <summary>
+        /// Get a copy of the cross section used by the tube mesh.
+        /// </summary>
+        /// <returns></returns>
+        public CrossSection GetCrossSection() {
+            return TubeMesh.GetCrossSection();
         }
 
         /// <summary>
@@ -167,14 +177,16 @@ namespace VRSketchingGeometry.Meshing
         /// <param name="crossSectionDiameter">The requested diameter of the cross section.</param>
         /// <returns></returns>
         public Mesh SetCrossSection(List<Vector3> crossSectionShape, List<Vector3> crossSectionNormals, Vector3 crossSectionDiameter) {
-            this.crossSectionShape = crossSectionShape;
-            this.crossSectionShapeNormals = crossSectionNormals;
-            lineExtruder = new TubeMesh(crossSectionShape, crossSectionShapeNormals, crossSectionDiameter);
-            return lineExtruder.GenerateMesh(interpolatedPoints);
+            return TubeMesh.SetCrossSection(Spline.InterpolatedPoints, new CrossSection(crossSectionShape, crossSectionNormals, crossSectionDiameter));
         }
 
+        /// <summary>
+        /// Refine the current mesh using the Parallel Transport algorithm.
+        /// </summary>
+        /// <returns></returns>
         public Mesh RefineMesh() {
-            return ParallelTransportTubeMesh.GetMesh(interpolatedPoints, crossSectionShape, crossSectionShapeNormals, lineExtruder.CrossSectionScale, true);
+            CrossSection crossSection = this.TubeMesh.GetCrossSection();
+            return ParallelTransportTubeMesh.GetMesh(Spline.InterpolatedPoints, crossSection.Vertices, crossSection.Normals, crossSection.Scale, true);
         }
     }
 }

@@ -27,8 +27,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         private SketchObjectGroup RootGroup;
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             deletedBin = new GameObject("Deleted Bin");
             deletedBin.transform.SetParent(this.transform);
@@ -106,8 +105,18 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Export sketch world as .obj file.
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">Path of the exported .obj file including file name and file extension.</param>
         public void ExportSketchWorld(string path)
+        {
+            OBJExporter exporter = new OBJExporter();
+            exporter.ExportGameObject(RootGroup.gameObject, path);
+        }
+
+        /// <summary>
+        /// Exports as .obj to UnityEngine.Application.dataPath/ExportedSketches.
+        /// </summary>
+        /// <remarks>The folder is in the Assets folder when run in the editor and in the ***_Data folder in a build.</remarks>
+        public void ExportSketchWorldToDefaultPath()
         {
             OBJExporter exporter = new OBJExporter();
             exporter.ExportGameObject(RootGroup.gameObject, OBJExporter.GetDefaultExportPath());

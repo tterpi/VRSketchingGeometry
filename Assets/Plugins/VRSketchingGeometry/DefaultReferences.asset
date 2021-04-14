@@ -16,6 +16,8 @@ MonoBehaviour:
     type: 2}
   TwoSidedSketchMaterial: {fileID: 2100000, guid: f7174271d3120fa49b5da504d0a40158,
     type: 2}
+  SketchWorldPrefab: {fileID: 2880470070087909158, guid: e76a0342672e5944d88046002a7fa40b,
+    type: 3}
   LineSketchObjectPrefab: {fileID: 1524500983091648832, guid: 7ee00a79cbb48fc44b9ada2a7fac529e,
     type: 3}
   LinearInterpolationLineSketchObjectPrefab: {fileID: 1524500983091648832, guid: f8d9aff7463b79649a9d76ebc53f39a7,
@@ -28,4 +30,4 @@ MonoBehaviour:
     type: 3}
   RibbonSketchObjectPrefab: {fileID: 349737115531584894, guid: 58fc0e4001c274e4a9909bece435b440,
     type: 3}
-  DefaultTextureDirectory: D:/Theo/Files/AI M Sem 3/Forschungsprojekt_ICW/unity_project/VRSketchingGeometry/Assets\textures
+  DefaultTextureDirectory: 

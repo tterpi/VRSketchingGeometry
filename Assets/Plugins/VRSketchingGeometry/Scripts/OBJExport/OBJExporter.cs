@@ -46,7 +46,7 @@ namespace VRSketchingGeometry.Export
         }
 
         /// <summary>
-        /// Get a file path for an exported sketch at the default path.
+        /// Get a file path for an exported sketch inside UnityEngine.Application.dataPath.
         /// The default folder is created if it doesn't exist.
         /// A file name that doesn't exist is chosen.
         /// </summary>

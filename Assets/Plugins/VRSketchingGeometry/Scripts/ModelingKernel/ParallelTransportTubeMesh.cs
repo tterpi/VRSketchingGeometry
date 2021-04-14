@@ -11,8 +11,68 @@ namespace VRSketchingGeometry.Meshing
     /// Methods for creating a tube like mesh using the parallel transport algorithm.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
-    public static class ParallelTransportTubeMesh
+    public class ParallelTransportTubeMesh : ITubeMesh
     {
+        private CrossSection CrossSection;
+        private bool GenerateCaps;
+
+        /// <summary>
+        /// Contructor.
+        /// </summary>
+        /// <param name="crossSection">Cross section to be used for the tube mesh.</param>
+        /// <param name="generateCaps">Should the ends of the tube be closed?</param>
+        public ParallelTransportTubeMesh(CrossSection crossSection, bool generateCaps = true) {
+            this.CrossSection = crossSection;
+            this.GenerateCaps = generateCaps;
+        }
+
+        /// <summary>
+        /// Generate a mesh for all points.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <returns></returns>
+        public Mesh GenerateMesh(List<Vector3> points)
+        {
+            if (points == null || points.Count == 0)
+            {
+                return null;
+            }
+            return GetMesh(points, this.CrossSection.Vertices, this.CrossSection.Normals, this.CrossSection.Scale, this.GenerateCaps);
+        }
+
+        /// <summary>
+        /// The parameters except points are ignored.
+        /// This recalculates the whole mesh just like <see cref="GenerateMesh(List{Vector3})"/>.
+        /// </summary>
+        /// <param name="points">All points of the complete line.</param>
+        /// <param name="index">ignored</param>
+        /// <param name="addCount">ignored</param>
+        /// <param name="removeCount">ignored</param>
+        /// <returns></returns>
+        public Mesh ReplacePoints(List<Vector3> points, int index, int addCount, int removeCount)
+        {
+            return GenerateMesh(points);
+        }
+
+        /// <summary>
+        /// Set the cross section and recalculate the mesh for all points.
+        /// </summary>
+        /// <param name="points"></param>
+        /// <param name="crossSection"></param>
+        /// <returns></returns>
+        public Mesh SetCrossSection(List<Vector3> points, CrossSection crossSection) {
+            this.CrossSection = crossSection;
+            return this.GenerateMesh(points);
+        }
+
+        /// <summary>
+        /// Get a copy of the cross section used.
+        /// </summary>
+        /// <returns></returns>
+        public CrossSection GetCrossSection() {
+            return new CrossSection(this.CrossSection);
+        }
+
         /// <summary>
         /// Generate a mesh for a spline according to the parallel transport algorithm.
         /// </summary>
@@ -142,9 +202,8 @@ namespace VRSketchingGeometry.Meshing
             }
             else
             {
-                binormal.Normalize();
-                float theta = Mathf.Acos(Vector3.Dot(currentTangent, nextTangent));
-                nextNormal = Quaternion.AngleAxis(Mathf.Rad2Deg * theta, binormal) * currentNormal;
+                Quaternion rotation = Quaternion.AngleAxis(Vector3.Angle(currentTangent, nextTangent), binormal);
+                nextNormal = rotation * currentNormal;
             }
             return nextNormal;
         }
