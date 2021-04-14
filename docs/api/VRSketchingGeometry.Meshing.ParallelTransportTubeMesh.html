@@ -81,17 +81,127 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ParallelTransportTubeMesh</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Meshing.html">VRSketchingGeometry.Meshing</a></h6>
   <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
   <h5 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class ParallelTransportTubeMesh</code></pre>
+    <pre><code class="lang-csharp hljs">public class ParallelTransportTubeMesh : ITubeMesh</code></pre>
   </div>
   <h5 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Original author: tterpi</p>
 </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh__ctor_VRSketchingGeometry_Meshing_CrossSection_System_Boolean_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor(VRSketchingGeometry.Meshing.CrossSection,System.Boolean)">ParallelTransportTubeMesh(CrossSection, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Contructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ParallelTransportTubeMesh(CrossSection crossSection, bool generateCaps = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td><span class="parametername">crossSection</span></td>
+        <td><p>Cross section to be used for the tube mesh.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">generateCaps</span></td>
+        <td><p>Should the ends of the tube be closed?</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GenerateMesh_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})">GenerateMesh(List&lt;Vector3&gt;)</h4>
+  <div class="markdown level1 summary"><p>Generate a mesh for all points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh GenerateMesh(List&lt;Vector3&gt; points)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetCrossSection_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetCrossSection" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection">GetCrossSection()</h4>
+  <div class="markdown level1 summary"><p>Get a copy of the cross section used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CrossSection GetCrossSection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetMesh_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetMesh*"></a>
@@ -160,6 +270,121 @@
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_ReplacePoints_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_ReplacePoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_System_Int32_System_Int32_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)">ReplacePoints(List&lt;Vector3&gt;, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>The parameters except points are ignored.
+This recalculates the whole mesh just like <a class="xref" href="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__">GenerateMesh(List&lt;Vector3&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh ReplacePoints(List&lt;Vector3&gt; points, int index, int addCount, int removeCount)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td><p>All points of the complete line.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>ignored</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">addCount</span></td>
+        <td><p>ignored</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">removeCount</span></td>
+        <td><p>ignored</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_SetCrossSection_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection_" data-uid="VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)">SetCrossSection(List&lt;Vector3&gt;, CrossSection)</h4>
+  <div class="markdown level1 summary"><p>Set the cross section and recalculate the mesh for all points.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetCrossSection(List&lt;Vector3&gt; points, CrossSection crossSection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a>
+  </div>
 </article>
           </div>
           

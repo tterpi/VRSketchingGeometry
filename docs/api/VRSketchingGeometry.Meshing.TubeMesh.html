@@ -81,11 +81,15 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">TubeMesh</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a></div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="VRSketchingGeometry.Meshing.html">VRSketchingGeometry.Meshing</a></h6>
   <h6><strong>Assembly</strong>: VRSketchingGeometry.dll</h6>
   <h5 id="VRSketchingGeometry_Meshing_TubeMesh_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TubeMesh</code></pre>
+    <pre><code class="lang-csharp hljs">public class TubeMesh : ITubeMesh</code></pre>
   </div>
   <h5 id="VRSketchingGeometry_Meshing_TubeMesh_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Original author: tterpi
@@ -269,6 +273,32 @@ It was renamed to make it consistant with the other mesh classes such as PatchMe
   </table>
   
   
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_GetCrossSection_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_GetCrossSection" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection">GetCrossSection()</h4>
+  <div class="markdown level1 summary"><p>Get a copy of the cross section currently in use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CrossSection GetCrossSection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="VRSketchingGeometry_Meshing_TubeMesh_GetMeshWithCaps_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetMeshWithCaps*"></a>
   <h4 id="VRSketchingGeometry_Meshing_TubeMesh_GetMeshWithCaps_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Int32_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.GetMeshWithCaps(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Int32)">GetMeshWithCaps(List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Int32&gt;, List&lt;Vector3&gt;, List&lt;Vector3&gt;, List&lt;Int32&gt;, Int32)</h4>
   <div class="markdown level1 summary"><p>Put all parts of the mesh together in a Mesh object.</p>
@@ -345,7 +375,8 @@ It was renamed to make it consistant with the other mesh classes such as PatchMe
   <a id="VRSketchingGeometry_Meshing_TubeMesh_ReplacePoints_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.ReplacePoints*"></a>
   <h4 id="VRSketchingGeometry_Meshing_TubeMesh_ReplacePoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_System_Int32_System_Int32_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)">ReplacePoints(List&lt;Vector3&gt;, Int32, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Replaces and/or removes points from an existing mesh.
-This should only be called when <a class="xref" href="VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__">GenerateMesh(List&lt;Vector3&gt;)</a> was called before at least once.</p>
+This should only be called when <a class="xref" href="VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__">GenerateMesh(List&lt;Vector3&gt;)</a> was called before at least once.
+Different from <a class="xref" href="VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__">GenerateMesh(List&lt;Vector3&gt;)</a> this will only recalculate the parts that were changed according to the parameters.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -403,6 +434,57 @@ This should only be called when <a class="xref" href="VRSketchingGeometry.Meshin
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="VRSketchingGeometry_Meshing_TubeMesh_SetCrossSection_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_TubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)">SetCrossSection(List&lt;Vector3&gt;, CrossSection)</h4>
+  <div class="markdown level1 summary"><p>Change the cross section used for generating the tube mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mesh SetCrossSection(List&lt;Vector3&gt; points, CrossSection crossSection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td><span class="parametername">crossSection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.Mesh</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="VRSketchingGeometry_Meshing_TubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Points have to be provided because this class does not keep a copy of the interpolated points.</p>
+</div>
   
   
   <a id="VRSketchingGeometry_Meshing_TubeMesh_TransformNormals_" data-uid="VRSketchingGeometry.Meshing.TubeMesh.TransformNormals*"></a>
@@ -512,6 +594,10 @@ This should only be called when <a class="xref" href="VRSketchingGeometry.Meshin
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a>
+  </div>
 </article>
           </div>
           

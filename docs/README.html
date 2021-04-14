@@ -82,11 +82,12 @@
 <li>OBJ export of sketches</li>
 </ul>
 <h2 id="installation">Installation</h2>
-<p>Add the Assets/Plugins/VRSketchingGeometry folder into the plugins folder of your Unity project.<br>If you downloaded a release import the Unity package using the editor into your project.</p>
+<p>Add the Assets/Plugins/VRSketchingGeometry folder into the plugins folder of your Unity project.<br>If you downloaded a release import the Unity package using the editor into your project.  </p>
+<p>The materials and shaders provided are for the Built-In Render Pipeline as used by a normal 3D project template. If you want to use a Scriptable Render Pipeline you will have to upgrade the materials and replace the <code>Custom/TwoSidedSurfaceShader</code>.</p>
 <h2 id="api-documentationhttpstterpigithubiovrsketchinggeometry"><a href="https://tterpi.github.io/VRSketchingGeometry/">API documentation</a></h2>
 <p>Read the <a href="https://tterpi.github.io/VRSketchingGeometry/articles/intro.html">developer guide</a> and <a href="https://tterpi.github.io/VRSketchingGeometry/api/index.html">API documentation</a> at the github pages site.</p>
 <h2 id="quick-start">Quick start</h2>
-<p>The following example script shows how to create new line sketch object and add few control points to it using a command invoker. At the end one command is undone.<br>You will have to reference the file DefaultReferences.asset found in Assets/Plugins/VRSketchingGeometry in the public field <code>defaults</code>.  </p>
+<p>The following example script shows how to create new line sketch object and add few control points to it using a command invoker. At the end one command is undone.<br>You will have to reference the file DefaultReferences.asset found in <code>Assets/Plugins/VRSketchingGeometry</code> in the public field <code>defaults</code>.<br>See <a href="https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs">the example script</a> for a more comprehensive demonstration.</p>
 <pre><code>using UnityEngine;
 using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry;
@@ -97,12 +98,15 @@ public class CreateLineSketchObject : MonoBehaviour
 {
     public DefaultReferences Defaults;
     private LineSketchObject LineSketchObject;
+    private SketchWorld SketchWorld;
     private CommandInvoker Invoker;
 
     void Start()
     {
+        SketchWorld = Instantiate(Defaults.SketchWorldPrefab).GetComponent&lt;SketchWorld&gt;();
         LineSketchObject = Instantiate(Defaults.LineSketchObjectPrefab).GetComponent&lt;LineSketchObject&gt;();
         Invoker = new CommandInvoker();
+        Invoker.ExecuteCommand(new AddObjectToSketchWorldRootCommand(LineSketchObject, SketchWorld));
         Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 2, 3)));
         Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 4, 2)));
         Invoker.ExecuteCommand(new AddControlPointCommand(this.LineSketchObject, new Vector3(1, 5, 3)));
@@ -112,11 +116,12 @@ public class CreateLineSketchObject : MonoBehaviour
 }
 </code></pre><h2 id="workflow">Workflow</h2>
 <ol>
-<li>Instantiate a sketch world prefab. Prefabs can be found in <code>Assets/Plugins/VRSketchingGeometry/Prefabs</code>. </li>
+<li>Instantiate a sketch world prefab. Easy access to prefabs is provided through the DefaultReferences asset at <code>Assets/Plugins/VRSketchingGeometry/DefaultReferences.asset</code>. </li>
 <li>Create sketch objects and groups from prefabs and add them to the sketch object world. Execute commands using a CommandInvoker object for undo and redo functionality. All scripts are in the VRSketchingGeometry namespace.</li>
 <li>Serialize or export using methods of the sketch world script.</li>
 <li>Load serialized sketch world from the serialized xml file for further editing.</li>
 </ol>
+<p>An <a href="https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs">example script</a> was created to show this process in practice.</p>
 <h2 id="sample-scene">Sample scene</h2>
 <p>The sample scene contains various messy test scripts and corresponding game object.</p>
 <h2 id="tests">Tests</h2>

@@ -1444,6 +1444,12 @@ references:
   commentId: F:VRSketchingGeometry.DefaultReferences.SketchObjectSelectionPrefab
   fullName: VRSketchingGeometry.DefaultReferences.SketchObjectSelectionPrefab
   nameWithType: DefaultReferences.SketchObjectSelectionPrefab
+- uid: VRSketchingGeometry.DefaultReferences.SketchWorldPrefab
+  name: SketchWorldPrefab
+  href: api/VRSketchingGeometry.DefaultReferences.html#VRSketchingGeometry_DefaultReferences_SketchWorldPrefab
+  commentId: F:VRSketchingGeometry.DefaultReferences.SketchWorldPrefab
+  fullName: VRSketchingGeometry.DefaultReferences.SketchWorldPrefab
+  nameWithType: DefaultReferences.SketchWorldPrefab
 - uid: VRSketchingGeometry.DefaultReferences.StandardSketchMaterial
   name: StandardSketchMaterial
   href: api/VRSketchingGeometry.DefaultReferences.html#VRSketchingGeometry_DefaultReferences_StandardSketchMaterial
@@ -1577,12 +1583,167 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.CircularCrossSection.GenerateVertices
   nameWithType: CircularCrossSection.GenerateVertices
+- uid: VRSketchingGeometry.Meshing.CrossSection
+  name: CrossSection
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html
+  commentId: T:VRSketchingGeometry.Meshing.CrossSection
+  fullName: VRSketchingGeometry.Meshing.CrossSection
+  nameWithType: CrossSection
+- uid: VRSketchingGeometry.Meshing.CrossSection.#ctor(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)
+  name: CrossSection(List<Vector3>, List<Vector3>, Vector3)
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection__ctor_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_
+  commentId: M:VRSketchingGeometry.Meshing.CrossSection.#ctor(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)
+  name.vb: CrossSection(List(Of Vector3), List(Of Vector3), Vector3)
+  fullName: VRSketchingGeometry.Meshing.CrossSection.CrossSection(System.Collections.Generic.List<UnityEngine.Vector3>, System.Collections.Generic.List<UnityEngine.Vector3>, UnityEngine.Vector3)
+  fullName.vb: VRSketchingGeometry.Meshing.CrossSection.CrossSection(System.Collections.Generic.List(Of UnityEngine.Vector3), System.Collections.Generic.List(Of UnityEngine.Vector3), UnityEngine.Vector3)
+  nameWithType: CrossSection.CrossSection(List<Vector3>, List<Vector3>, Vector3)
+  nameWithType.vb: CrossSection.CrossSection(List(Of Vector3), List(Of Vector3), Vector3)
+- uid: VRSketchingGeometry.Meshing.CrossSection.#ctor(VRSketchingGeometry.Meshing.CrossSection)
+  name: CrossSection(CrossSection)
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection__ctor_VRSketchingGeometry_Meshing_CrossSection_
+  commentId: M:VRSketchingGeometry.Meshing.CrossSection.#ctor(VRSketchingGeometry.Meshing.CrossSection)
+  fullName: VRSketchingGeometry.Meshing.CrossSection.CrossSection(VRSketchingGeometry.Meshing.CrossSection)
+  nameWithType: CrossSection.CrossSection(CrossSection)
+- uid: VRSketchingGeometry.Meshing.CrossSection.#ctor*
+  name: CrossSection
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection__ctor_
+  commentId: Overload:VRSketchingGeometry.Meshing.CrossSection.#ctor
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.CrossSection.CrossSection
+  nameWithType: CrossSection.CrossSection
+- uid: VRSketchingGeometry.Meshing.CrossSection.Normals
+  name: Normals
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection_Normals
+  commentId: F:VRSketchingGeometry.Meshing.CrossSection.Normals
+  fullName: VRSketchingGeometry.Meshing.CrossSection.Normals
+  nameWithType: CrossSection.Normals
+- uid: VRSketchingGeometry.Meshing.CrossSection.Scale
+  name: Scale
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection_Scale
+  commentId: F:VRSketchingGeometry.Meshing.CrossSection.Scale
+  fullName: VRSketchingGeometry.Meshing.CrossSection.Scale
+  nameWithType: CrossSection.Scale
+- uid: VRSketchingGeometry.Meshing.CrossSection.Vertices
+  name: Vertices
+  href: api/VRSketchingGeometry.Meshing.CrossSection.html#VRSketchingGeometry_Meshing_CrossSection_Vertices
+  commentId: F:VRSketchingGeometry.Meshing.CrossSection.Vertices
+  fullName: VRSketchingGeometry.Meshing.CrossSection.Vertices
+  nameWithType: CrossSection.Vertices
+- uid: VRSketchingGeometry.Meshing.ITubeMesh
+  name: ITubeMesh
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html
+  commentId: T:VRSketchingGeometry.Meshing.ITubeMesh
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh
+  nameWithType: ITubeMesh
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})
+  name: GenerateMesh(List<Vector3>)
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__
+  commentId: M:VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})
+  name.vb: GenerateMesh(List(Of Vector3))
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh(System.Collections.Generic.List<UnityEngine.Vector3>)
+  fullName.vb: VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh(System.Collections.Generic.List(Of UnityEngine.Vector3))
+  nameWithType: ITubeMesh.GenerateMesh(List<Vector3>)
+  nameWithType.vb: ITubeMesh.GenerateMesh(List(Of Vector3))
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh*
+  name: GenerateMesh
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_GenerateMesh_
+  commentId: Overload:VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.GenerateMesh
+  nameWithType: ITubeMesh.GenerateMesh
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection
+  name: GetCrossSection()
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_GetCrossSection
+  commentId: M:VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection()
+  nameWithType: ITubeMesh.GetCrossSection()
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection*
+  name: GetCrossSection
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_GetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.GetCrossSection
+  nameWithType: ITubeMesh.GetCrossSection
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)
+  name: ReplacePoints(List<Vector3>, Int32, Int32, Int32)
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_ReplacePoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_System_Int32_System_Int32_
+  commentId: M:VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)
+  name.vb: ReplacePoints(List(Of Vector3), Int32, Int32, Int32)
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints(System.Collections.Generic.List<UnityEngine.Vector3>, System.Int32, System.Int32, System.Int32)
+  fullName.vb: VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints(System.Collections.Generic.List(Of UnityEngine.Vector3), System.Int32, System.Int32, System.Int32)
+  nameWithType: ITubeMesh.ReplacePoints(List<Vector3>, Int32, Int32, Int32)
+  nameWithType.vb: ITubeMesh.ReplacePoints(List(Of Vector3), Int32, Int32, Int32)
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints*
+  name: ReplacePoints
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_ReplacePoints_
+  commentId: Overload:VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.ReplacePoints
+  nameWithType: ITubeMesh.ReplacePoints
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name: SetCrossSection(List<Vector3>, CrossSection)
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection_
+  commentId: M:VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name.vb: SetCrossSection(List(Of Vector3), CrossSection)
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection(System.Collections.Generic.List<UnityEngine.Vector3>, VRSketchingGeometry.Meshing.CrossSection)
+  fullName.vb: VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection(System.Collections.Generic.List(Of UnityEngine.Vector3), VRSketchingGeometry.Meshing.CrossSection)
+  nameWithType: ITubeMesh.SetCrossSection(List<Vector3>, CrossSection)
+  nameWithType.vb: ITubeMesh.SetCrossSection(List(Of Vector3), CrossSection)
+- uid: VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection*
+  name: SetCrossSection
+  href: api/VRSketchingGeometry.Meshing.ITubeMesh.html#VRSketchingGeometry_Meshing_ITubeMesh_SetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ITubeMesh.SetCrossSection
+  nameWithType: ITubeMesh.SetCrossSection
 - uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh
   name: ParallelTransportTubeMesh
   href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html
   commentId: T:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh
   fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh
   nameWithType: ParallelTransportTubeMesh
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor(VRSketchingGeometry.Meshing.CrossSection,System.Boolean)
+  name: ParallelTransportTubeMesh(CrossSection, Boolean)
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh__ctor_VRSketchingGeometry_Meshing_CrossSection_System_Boolean_
+  commentId: M:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor(VRSketchingGeometry.Meshing.CrossSection,System.Boolean)
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ParallelTransportTubeMesh(VRSketchingGeometry.Meshing.CrossSection, System.Boolean)
+  nameWithType: ParallelTransportTubeMesh.ParallelTransportTubeMesh(CrossSection, Boolean)
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor*
+  name: ParallelTransportTubeMesh
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh__ctor_
+  commentId: Overload:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.#ctor
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ParallelTransportTubeMesh
+  nameWithType: ParallelTransportTubeMesh.ParallelTransportTubeMesh
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})
+  name: GenerateMesh(List<Vector3>)
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GenerateMesh_System_Collections_Generic_List_UnityEngine_Vector3__
+  commentId: M:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh(System.Collections.Generic.List{UnityEngine.Vector3})
+  name.vb: GenerateMesh(List(Of Vector3))
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh(System.Collections.Generic.List<UnityEngine.Vector3>)
+  fullName.vb: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh(System.Collections.Generic.List(Of UnityEngine.Vector3))
+  nameWithType: ParallelTransportTubeMesh.GenerateMesh(List<Vector3>)
+  nameWithType.vb: ParallelTransportTubeMesh.GenerateMesh(List(Of Vector3))
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh*
+  name: GenerateMesh
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GenerateMesh_
+  commentId: Overload:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GenerateMesh
+  nameWithType: ParallelTransportTubeMesh.GenerateMesh
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection
+  name: GetCrossSection()
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetCrossSection
+  commentId: M:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection()
+  nameWithType: ParallelTransportTubeMesh.GetCrossSection()
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection*
+  name: GetCrossSection
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetCrossSection
+  nameWithType: ParallelTransportTubeMesh.GetCrossSection
 - uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetMesh(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3,System.Boolean)
   name: GetMesh(List<Vector3>, List<Vector3>, List<Vector3>, Vector3, Boolean)
   href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_GetMesh_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_System_Boolean_
@@ -1599,6 +1760,38 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.GetMesh
   nameWithType: ParallelTransportTubeMesh.GetMesh
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)
+  name: ReplacePoints(List<Vector3>, Int32, Int32, Int32)
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_ReplacePoints_System_Collections_Generic_List_UnityEngine_Vector3__System_Int32_System_Int32_System_Int32_
+  commentId: M:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints(System.Collections.Generic.List{UnityEngine.Vector3},System.Int32,System.Int32,System.Int32)
+  name.vb: ReplacePoints(List(Of Vector3), Int32, Int32, Int32)
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints(System.Collections.Generic.List<UnityEngine.Vector3>, System.Int32, System.Int32, System.Int32)
+  fullName.vb: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints(System.Collections.Generic.List(Of UnityEngine.Vector3), System.Int32, System.Int32, System.Int32)
+  nameWithType: ParallelTransportTubeMesh.ReplacePoints(List<Vector3>, Int32, Int32, Int32)
+  nameWithType.vb: ParallelTransportTubeMesh.ReplacePoints(List(Of Vector3), Int32, Int32, Int32)
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints*
+  name: ReplacePoints
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_ReplacePoints_
+  commentId: Overload:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.ReplacePoints
+  nameWithType: ParallelTransportTubeMesh.ReplacePoints
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name: SetCrossSection(List<Vector3>, CrossSection)
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection_
+  commentId: M:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name.vb: SetCrossSection(List(Of Vector3), CrossSection)
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection(System.Collections.Generic.List<UnityEngine.Vector3>, VRSketchingGeometry.Meshing.CrossSection)
+  fullName.vb: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection(System.Collections.Generic.List(Of UnityEngine.Vector3), VRSketchingGeometry.Meshing.CrossSection)
+  nameWithType: ParallelTransportTubeMesh.SetCrossSection(List<Vector3>, CrossSection)
+  nameWithType.vb: ParallelTransportTubeMesh.SetCrossSection(List(Of Vector3), CrossSection)
+- uid: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection*
+  name: SetCrossSection
+  href: api/VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.html#VRSketchingGeometry_Meshing_ParallelTransportTubeMesh_SetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.ParallelTransportTubeMesh.SetCrossSection
+  nameWithType: ParallelTransportTubeMesh.SetCrossSection
 - uid: VRSketchingGeometry.Meshing.PatchMesh
   name: PatchMesh
   href: api/VRSketchingGeometry.Meshing.PatchMesh.html
@@ -1837,6 +2030,12 @@ references:
   commentId: M:VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,UnityEngine.Vector3,System.Int32)
   fullName: VRSketchingGeometry.Meshing.SplineMesh.SplineMesh(VRSketchingGeometry.Splines.Spline, UnityEngine.Vector3, System.Int32)
   nameWithType: SplineMesh.SplineMesh(Spline, Vector3, Int32)
+- uid: VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,VRSketchingGeometry.Meshing.ITubeMesh)
+  name: SplineMesh(Spline, ITubeMesh)
+  href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_VRSketchingGeometry_Meshing_ITubeMesh_
+  commentId: M:VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,VRSketchingGeometry.Meshing.ITubeMesh)
+  fullName: VRSketchingGeometry.Meshing.SplineMesh.SplineMesh(VRSketchingGeometry.Splines.Spline, VRSketchingGeometry.Meshing.ITubeMesh)
+  nameWithType: SplineMesh.SplineMesh(Spline, ITubeMesh)
 - uid: VRSketchingGeometry.Meshing.SplineMesh.#ctor*
   name: SplineMesh
   href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh__ctor_
@@ -1883,6 +2082,19 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.SplineMesh.GetControlPoints
   nameWithType: SplineMesh.GetControlPoints
+- uid: VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection
+  name: GetCrossSection()
+  href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_GetCrossSection
+  commentId: M:VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection
+  fullName: VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection()
+  nameWithType: SplineMesh.GetCrossSection()
+- uid: VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection*
+  name: GetCrossSection
+  href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_GetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection
+  nameWithType: SplineMesh.GetCrossSection
 - uid: VRSketchingGeometry.Meshing.SplineMesh.GetCrossSectionShape(System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@)
   name: GetCrossSectionShape(out List<Vector3>, out List<Vector3>)
   href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_GetCrossSectionShape_System_Collections_Generic_List_UnityEngine_Vector3___System_Collections_Generic_List_UnityEngine_Vector3___
@@ -1925,19 +2137,6 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.SplineMesh.InsertControlPoint
   nameWithType: SplineMesh.InsertControlPoint
-- uid: VRSketchingGeometry.Meshing.SplineMesh.Mesh
-  name: Mesh
-  href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_Mesh
-  commentId: P:VRSketchingGeometry.Meshing.SplineMesh.Mesh
-  fullName: VRSketchingGeometry.Meshing.SplineMesh.Mesh
-  nameWithType: SplineMesh.Mesh
-- uid: VRSketchingGeometry.Meshing.SplineMesh.Mesh*
-  name: Mesh
-  href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_Mesh_
-  commentId: Overload:VRSketchingGeometry.Meshing.SplineMesh.Mesh
-  isSpec: "True"
-  fullName: VRSketchingGeometry.Meshing.SplineMesh.Mesh
-  nameWithType: SplineMesh.Mesh
 - uid: VRSketchingGeometry.Meshing.SplineMesh.RefineMesh
   name: RefineMesh()
   href: api/VRSketchingGeometry.Meshing.SplineMesh.html#VRSketchingGeometry_Meshing_SplineMesh_RefineMesh
@@ -2140,6 +2339,19 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.TubeMesh.GenerateMesh
   nameWithType: TubeMesh.GenerateMesh
+- uid: VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection
+  name: GetCrossSection()
+  href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GetCrossSection
+  commentId: M:VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection
+  fullName: VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection()
+  nameWithType: TubeMesh.GetCrossSection()
+- uid: VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection*
+  name: GetCrossSection
+  href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.TubeMesh.GetCrossSection
+  nameWithType: TubeMesh.GetCrossSection
 - uid: VRSketchingGeometry.Meshing.TubeMesh.GetMeshWithCaps(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{System.Int32},System.Int32)
   name: GetMeshWithCaps(List<Vector3>, List<Vector3>, List<Int32>, List<Vector3>, List<Vector3>, List<Int32>, Int32)
   href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_GetMeshWithCaps_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_System_Int32__System_Int32_
@@ -2172,6 +2384,22 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.Meshing.TubeMesh.ReplacePoints
   nameWithType: TubeMesh.ReplacePoints
+- uid: VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name: SetCrossSection(List<Vector3>, CrossSection)
+  href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_SetCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__VRSketchingGeometry_Meshing_CrossSection_
+  commentId: M:VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},VRSketchingGeometry.Meshing.CrossSection)
+  name.vb: SetCrossSection(List(Of Vector3), CrossSection)
+  fullName: VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection(System.Collections.Generic.List<UnityEngine.Vector3>, VRSketchingGeometry.Meshing.CrossSection)
+  fullName.vb: VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection(System.Collections.Generic.List(Of UnityEngine.Vector3), VRSketchingGeometry.Meshing.CrossSection)
+  nameWithType: TubeMesh.SetCrossSection(List<Vector3>, CrossSection)
+  nameWithType.vb: TubeMesh.SetCrossSection(List(Of Vector3), CrossSection)
+- uid: VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection*
+  name: SetCrossSection
+  href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_SetCrossSection_
+  commentId: Overload:VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection
+  isSpec: "True"
+  fullName: VRSketchingGeometry.Meshing.TubeMesh.SetCrossSection
+  nameWithType: TubeMesh.SetCrossSection
 - uid: VRSketchingGeometry.Meshing.TubeMesh.TransformNormals(System.Collections.Generic.List{UnityEngine.Vector3},UnityEngine.Vector3)
   name: TransformNormals(List<Vector3>, Vector3)
   href: api/VRSketchingGeometry.Meshing.TubeMesh.html#VRSketchingGeometry_Meshing_TubeMesh_TransformNormals_System_Collections_Generic_List_UnityEngine_Vector3__UnityEngine_Vector3_
@@ -2222,6 +2450,18 @@ references:
   commentId: F:VRSketchingGeometry.Serialization.Brush.SketchMaterial
   fullName: VRSketchingGeometry.Serialization.Brush.SketchMaterial
   nameWithType: Brush.SketchMaterial
+- uid: VRSketchingGeometry.Serialization.BrushCollection
+  name: BrushCollection
+  href: api/VRSketchingGeometry.Serialization.BrushCollection.html
+  commentId: T:VRSketchingGeometry.Serialization.BrushCollection
+  fullName: VRSketchingGeometry.Serialization.BrushCollection
+  nameWithType: BrushCollection
+- uid: VRSketchingGeometry.Serialization.BrushCollection.Brushes
+  name: Brushes
+  href: api/VRSketchingGeometry.Serialization.BrushCollection.html#VRSketchingGeometry_Serialization_BrushCollection_Brushes
+  commentId: F:VRSketchingGeometry.Serialization.BrushCollection.Brushes
+  fullName: VRSketchingGeometry.Serialization.BrushCollection.Brushes
+  nameWithType: BrushCollection.Brushes
 - uid: VRSketchingGeometry.Serialization.LineBrush
   name: LineBrush
   href: api/VRSketchingGeometry.Serialization.LineBrush.html
@@ -3798,6 +4038,19 @@ references:
   isSpec: "True"
   fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorld
   nameWithType: SketchWorld.ExportSketchWorld
+- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath
+  name: ExportSketchWorldToDefaultPath()
+  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_ExportSketchWorldToDefaultPath
+  commentId: M:VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath
+  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath()
+  nameWithType: SketchWorld.ExportSketchWorldToDefaultPath()
+- uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath*
+  name: ExportSketchWorldToDefaultPath
+  href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_ExportSketchWorldToDefaultPath_
+  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath
+  isSpec: "True"
+  fullName: VRSketchingGeometry.SketchObjectManagement.SketchWorld.ExportSketchWorldToDefaultPath
+  nameWithType: SketchWorld.ExportSketchWorldToDefaultPath
 - uid: VRSketchingGeometry.SketchObjectManagement.SketchWorld.IsObjectDeleted(VRSketchingGeometry.SketchObjectManagement.SelectableObject)
   name: IsObjectDeleted(SelectableObject)
   href: api/VRSketchingGeometry.SketchObjectManagement.SketchWorld.html#VRSketchingGeometry_SketchObjectManagement_SketchWorld_IsObjectDeleted_VRSketchingGeometry_SketchObjectManagement_SelectableObject_

@@ -97,7 +97,7 @@ Provides methods to manipulate the spline and mesh simultaneously.</p>
   
   <a id="VRSketchingGeometry_Meshing_SplineMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor*"></a>
   <h4 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline)">SplineMesh(Spline)</h4>
-  <div class="markdown level1 summary"><p>Contructor with default circular cross section.</p>
+  <div class="markdown level1 summary"><p>Contructor with default circular cross section and default tube mesh implementation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -128,7 +128,7 @@ Provides methods to manipulate the spline and mesh simultaneously.</p>
   
   <a id="VRSketchingGeometry_Meshing_SplineMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor*"></a>
   <h4 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_UnityEngine_Vector3_System_Int32_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,UnityEngine.Vector3,System.Int32)">SplineMesh(Spline, Vector3, Int32)</h4>
-  <div class="markdown level1 summary"><p>Contructor for a spline mesh.</p>
+  <div class="markdown level1 summary"><p>Contructor for a spline mesh using the default TubeMesh implementation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -164,30 +164,38 @@ There will be one more vertex per cross section to create a seam for UV mapping 
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
   
   
-  <a id="VRSketchingGeometry_Meshing_SplineMesh_Mesh_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.Mesh*"></a>
-  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_Mesh" data-uid="VRSketchingGeometry.Meshing.SplineMesh.Mesh">Mesh</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="VRSketchingGeometry_Meshing_SplineMesh__ctor_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh__ctor_VRSketchingGeometry_Splines_Spline_VRSketchingGeometry_Meshing_ITubeMesh_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.#ctor(VRSketchingGeometry.Splines.Spline,VRSketchingGeometry.Meshing.ITubeMesh)">SplineMesh(Spline, ITubeMesh)</h4>
+  <div class="markdown level1 summary"><p>Contructor for setting a specific ITubeMesh implementation.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Mesh Mesh { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public SplineMesh(Spline spline, ITubeMesh tubeMesh)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UnityEngine.Mesh</span></td>
-        <td></td>
+        <td><a class="xref" href="VRSketchingGeometry.Splines.Spline.html">Spline</a></td>
+        <td><span class="parametername">spline</span></td>
+        <td><p>The spline implementation to be used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a></td>
+        <td><span class="parametername">tubeMesh</span></td>
+        <td><p>The <a class="xref" href="VRSketchingGeometry.Meshing.ITubeMesh.html">ITubeMesh</a> implementation to use.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -306,6 +314,32 @@ There will be one more vertex per cross section to create a seam for UV mapping 
   </table>
   
   
+  <a id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSection_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection*"></a>
+  <h4 id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSection" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSection">GetCrossSection()</h4>
+  <div class="markdown level1 summary"><p>Get a copy of the cross section used by the tube mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CrossSection GetCrossSection()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.CrossSection.html">CrossSection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSectionShape_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSectionShape*"></a>
   <h4 id="VRSketchingGeometry_Meshing_SplineMesh_GetCrossSectionShape_System_Collections_Generic_List_UnityEngine_Vector3___System_Collections_Generic_List_UnityEngine_Vector3___" data-uid="VRSketchingGeometry.Meshing.SplineMesh.GetCrossSectionShape(System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{UnityEngine.Vector3}@)">GetCrossSectionShape(out List&lt;Vector3&gt;, out List&lt;Vector3&gt;)</h4>
   <div class="markdown level1 summary"><p>Get the cross section.</p>
@@ -416,7 +450,8 @@ There will be one more vertex per cross section to create a seam for UV mapping 
   
   <a id="VRSketchingGeometry_Meshing_SplineMesh_RefineMesh_" data-uid="VRSketchingGeometry.Meshing.SplineMesh.RefineMesh*"></a>
   <h4 id="VRSketchingGeometry_Meshing_SplineMesh_RefineMesh" data-uid="VRSketchingGeometry.Meshing.SplineMesh.RefineMesh">RefineMesh()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Refine the current mesh using the Parallel Transport algorithm.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
