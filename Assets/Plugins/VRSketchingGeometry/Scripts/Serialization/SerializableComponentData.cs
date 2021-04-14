@@ -6,11 +6,29 @@ namespace VRSketchingGeometry.Serialization
     /// Base class for the data of components that implement <see cref="VRSketchingGeometry.Serialization.ISerializableComponent"/>.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
-    public class SerializableComponentData
+    public abstract class SerializableComponentData
     {
         public Vector3 Position;
         public Quaternion Rotation;
         public Vector3 Scale;
+
+        /// <summary>
+        /// This method instantiates a game object with the required components and applies this data object to the component.
+        /// </summary>
+        /// <param name="defaults">References to the prefabs.</param>
+        /// <returns></returns>
+        internal ISerializableComponent Deserialize(DefaultReferences defaults) {
+            ISerializableComponent serializableComponent = InstantiateComponent(defaults);
+            serializableComponent.ApplyData(this);
+            return serializableComponent;
+        }
+
+        /// <summary>
+        /// This method instantiates the correct prefab for the data object type and returns it.
+        /// </summary>
+        /// <param name="defaults">References to the prefabs.</param>
+        /// <returns></returns>
+        internal abstract ISerializableComponent InstantiateComponent(DefaultReferences defaults);
 
         /// <summary>
         /// Applies the transform data in the data object to a transform object of a game object.
