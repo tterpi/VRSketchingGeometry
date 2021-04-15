@@ -14,7 +14,6 @@ namespace VRSketchingGeometry.Serialization
     public class PatchSketchObjectData : SketchObjectData
     {
         public int Width;
-        public int Height;
         public int ResolutionWidth;
         public int ResolutionHeight;
         public List<Vector3> ControlPoints;

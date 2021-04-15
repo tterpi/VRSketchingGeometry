@@ -42,7 +42,6 @@ namespace Tests
 
             Assert.AreEqual(4 * 4, data.ControlPoints.Count);
             Assert.AreEqual(4, data.Width);
-            Assert.AreEqual(4, data.Height);
         }
 
         [Test]
@@ -60,7 +59,6 @@ namespace Tests
             data.ControlPoints.AddRange(segment3);
             data.ControlPoints.AddRange(segment4);
             data.Width = 4;
-            data.Height = 4;
             data.ResolutionHeight = 6;
             data.ResolutionWidth = 6;
             data.SketchMaterial = new SketchMaterialData();
