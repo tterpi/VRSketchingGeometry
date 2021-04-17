@@ -132,6 +132,16 @@ public class LineSketchObjectTest : MonoBehaviour
         lineSketchObject2.AddControlPoint(new Vector3(1, 0, 0));
         lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
         lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(4, 4, 4));
+        lineSketchObject2.DeleteControlPoint();
+        lineSketchObject2.DeleteControlPoint();
+        lineSketchObject2.DeleteControlPoint();
+        lineSketchObject2.DeleteControlPoint();
+        lineSketchObject2.DeleteControlPoint();
+        lineSketchObject2.AddControlPoint(new Vector3(1, 0, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(2, 1, 1));
+        lineSketchObject2.AddControlPoint(new Vector3(3, 2, 0));
+        lineSketchObject2.AddControlPoint(new Vector3(4, 4, 4));
         lineSketchObject2.GetComponent<MeshRenderer>().material.color = Color.blue;
         lineSketchObject2.gameObject.GetComponent<MeshRenderer>().material = ropeMaterial;
 

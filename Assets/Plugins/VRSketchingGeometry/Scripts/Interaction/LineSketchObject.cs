@@ -63,7 +63,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
 
-            SplineMesh = new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
+            SplineMesh = this.MakeSplineMesh(InterpolationSteps, Vector3.one * lineDiameter);
+            //SplineMesh = new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
             LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
             meshCollider.sharedMesh = meshFilter.sharedMesh;
@@ -168,7 +169,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.InterpolationSteps = steps;
             List<Vector3> controlPoints = this.GetControlPoints();
             this.SplineMesh.GetCrossSectionShape(out List<Vector3> CurrentCrossSectionShape, out List<Vector3> CurrentCrossSectionNormals);
-            SplineMesh = new SplineMesh(new KochanekBartelsSpline(steps), this.lineDiameter * Vector3.one);
+            //SplineMesh = new SplineMesh(new KochanekBartelsSpline(steps), this.lineDiameter * Vector3.one);
+            SplineMesh = this.MakeSplineMesh(steps, this.lineDiameter * Vector3.one);
             this.SetLineCrossSection(CurrentCrossSectionShape, CurrentCrossSectionNormals, this.lineDiameter);
             if (controlPoints.Count != 0) {
                 this.SetControlPointsLocalSpace(controlPoints);
@@ -340,6 +342,14 @@ namespace VRSketchingGeometry.SketchObjectManagement
             this.meshRenderer.sharedMaterial = material;
             this.sphereObject.GetComponent<MeshRenderer>().sharedMaterial = material;
             originalMaterial = this.meshRenderer.sharedMaterial;
+        }
+
+        //protected virtual SplineMesh MakeDefaultSplineMesh() {
+        //    return new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
+        //}
+
+        protected virtual SplineMesh MakeSplineMesh(int interpolationSteps, Vector3 lineDiameter) {
+            return new SplineMesh(new KochanekBartelsSpline(interpolationSteps), lineDiameter);
         }
 
         public Brush GetBrush() {
