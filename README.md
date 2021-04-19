@@ -24,7 +24,7 @@ Read the [developer guide](https://tterpi.github.io/VRSketchingGeometry/articles
 ## Quick start
 The following example script shows how to create new line sketch object and add few control points to it using a command invoker. At the end one command is undone.  
 You will have to reference the file DefaultReferences.asset found in `Assets/Plugins/VRSketchingGeometry` in the public field `defaults`.  
-See [the example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs) for a more comprehensive demonstration.
+See [the example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Plugins/VRSketchingGeometry/Example/VRSketchingExample.cs) for a more comprehensive demonstration.
 
     using UnityEngine;
     using VRSketchingGeometry.SketchObjectManagement;
@@ -59,7 +59,7 @@ See [the example script](https://github.com/tterpi/VRSketchingGeometry/blob/mast
 4. Serialize or export using methods of the sketch world script.
 5. Load serialized sketch world from the serialized xml file for further editing.
 
-An [example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Scripts/VRSketchingExample.cs) was created to show this process in practice.
+An [example script](https://github.com/tterpi/VRSketchingGeometry/blob/master/Assets/Plugins/VRSketchingGeometry/Example/VRSketchingExample.cs) was created to show this process in practice.
 
 ## Sample scene
 The sample scene contains various messy test scripts and corresponding game object.
