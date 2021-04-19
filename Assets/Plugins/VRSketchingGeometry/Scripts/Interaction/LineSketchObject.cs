@@ -64,7 +64,6 @@ namespace VRSketchingGeometry.SketchObjectManagement
             meshCollider = GetComponent<MeshCollider>();
 
             SplineMesh = this.MakeSplineMesh(InterpolationSteps, Vector3.one * lineDiameter);
-            //SplineMesh = new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
             LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
             meshCollider.sharedMesh = meshFilter.sharedMesh;
@@ -234,11 +233,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 foreach (List<Vector3> section in contiguousSections)
                 {
                     LineSketchObject newLine = Instantiate(this, this.transform.parent);
-                    newLine.SetControlPointsLocalSpace(section);
-                    //newLine.setLineDiameter(this.lineDiameter);
                     this.SplineMesh.GetCrossSectionShape(out List<Vector3> crossSectionVertices, out List<Vector3> crossSectionNormals);
-
                     newLine.SetLineCrossSection(crossSectionVertices, crossSectionNormals, this.lineDiameter);
+                    newLine.SetInterpolationSteps(this.InterpolationSteps);
+                    newLine.SetControlPointsLocalSpace(section);
+
                     newLineSketchObjects.Add(newLine);
                 }
             }
@@ -344,10 +343,13 @@ namespace VRSketchingGeometry.SketchObjectManagement
             originalMaterial = this.meshRenderer.sharedMaterial;
         }
 
-        //protected virtual SplineMesh MakeDefaultSplineMesh() {
-        //    return new SplineMesh(new KochanekBartelsSpline(InterpolationSteps), Vector3.one * lineDiameter);
-        //}
-
+        /// <summary>
+        /// Factory method for instantiating a SplineMesh.
+        /// </summary>
+        /// <remarks>This can be overridden to easily change the Spline and TubeMesh used for creating this line.</remarks>
+        /// <param name="interpolationSteps"></param>
+        /// <param name="lineDiameter"></param>
+        /// <returns></returns>
         protected virtual SplineMesh MakeSplineMesh(int interpolationSteps, Vector3 lineDiameter) {
             return new SplineMesh(new KochanekBartelsSpline(interpolationSteps), lineDiameter);
         }

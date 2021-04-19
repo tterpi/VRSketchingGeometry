@@ -5,11 +5,13 @@ using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Export;
 using System.Xml;
 using System.Xml.Serialization;
+using VRSketchingGeometry;
 using VRSketchingGeometry.Meshing;
 using VRSketchingGeometry.Serialization;
 
 public class DeleteByRadiusTest : MonoBehaviour
 {
+    public DefaultReferences defaults;
     public GameObject selectionPrefab;
     public GameObject LineSketchObjectPrefab;
     private LineSketchObject lineSketchObject;
@@ -26,7 +28,7 @@ public class DeleteByRadiusTest : MonoBehaviour
         lineSketchObject = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject.SetLineDiameter(.5f);
 
-        lineSketchObject2 = Instantiate(LineSketchObjectPrefab).GetComponent<LineSketchObject>();
+        lineSketchObject2 = Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<LineSketchObject>();
         lineSketchObject2.SetLineDiameter(.5f);
     }
 
@@ -42,6 +44,7 @@ public class DeleteByRadiusTest : MonoBehaviour
         //exporter.ExportGameObject(controlPointParent, exportPath);
         lineSketchObject.SetInterpolationSteps(4);
         lineSketchObject.RefineMesh();
+        lineSketchObject2.RefineMesh();
 
         //Debug.Log(exportPath);
         //lineSketchObject.setLineDiameter(.1f);
