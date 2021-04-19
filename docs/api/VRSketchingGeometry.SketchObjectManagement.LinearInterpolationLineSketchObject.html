@@ -119,10 +119,22 @@
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_lineDiameter">LineSketchObject.lineDiameter</a>
     </div>
     <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_Awake">LineSketchObject.Awake()</a>
+    </div>
+    <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPointsLocalSpace_System_Collections_Generic_List_UnityEngine_Vector3__">LineSketchObject.SetControlPointsLocalSpace(List&lt;Vector3&gt;)</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetControlPoints_System_Collections_Generic_List_UnityEngine_Vector3__">LineSketchObject.SetControlPoints(List&lt;Vector3&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineDiameter_System_Single_">LineSketchObject.SetLineDiameter(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Single_">LineSketchObject.SetLineCrossSection(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetInterpolationSteps_System_Int32_">LineSketchObject.SetInterpolationSteps(Int32)</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_DeleteControlPoints_UnityEngine_GameObject_UnityEngine_Vector3_System_Single_">LineSketchObject.DeleteControlPoints(GameObject, Vector3, Single)</a>
@@ -132,6 +144,9 @@
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetControlPoints">LineSketchObject.GetControlPoints()</a>
+    </div>
+    <div>
+      <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ChooseDisplayMethod">LineSketchObject.ChooseDisplayMethod()</a>
     </div>
     <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_GetBrush">LineSketchObject.GetBrush()</a>
@@ -183,38 +198,13 @@
   </h3>
   
   
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_Awake_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_Awake" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake">Awake()</h4>
+  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_MakeSplineMesh_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh*"></a>
+  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_MakeSplineMesh_System_Int32_UnityEngine_Vector3_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh(System.Int32,UnityEngine.Vector3)">MakeSplineMesh(Int32, Vector3)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
-  </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_Awake">LineSketchObject.Awake()</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_ChooseDisplayMethod_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_ChooseDisplayMethod" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod">ChooseDisplayMethod()</h4>
-  <div class="markdown level1 summary"><p>Determines how to display the spline depending on the number of control points that are present.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void ChooseDisplayMethod()</code></pre>
-  </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_ChooseDisplayMethod">LineSketchObject.ChooseDisplayMethod()</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_System_Int32_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps(System.Int32)">SetInterpolationSteps(Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void SetInterpolationSteps(int steps)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override SplineMesh MakeSplineMesh(int interpolationSteps, Vector3 lineDiameter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,84 +218,33 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">steps</span></td>
+        <td><span class="parametername">interpolationSteps</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.Vector3</span></td>
+        <td><span class="parametername">lineDiameter</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetInterpolationSteps_System_Int32_">LineSketchObject.SetInterpolationSteps(Int32)</a></div>
-  <h5 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This method is not supported in this class. This means that this inheritance is probaly not ideal.</p>
-</div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineCrossSection_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Single_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Single)">SetLineCrossSection(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Single)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void SetLineCrossSection(List&lt;Vector3&gt; crossSection, List&lt;Vector3&gt; crossSectionNormals, float diameter)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
-        <td><span class="parametername">crossSection</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">UnityEngine.Vector3</span>&gt;</td>
-        <td><span class="parametername">crossSectionNormals</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">diameter</span></td>
+        <td><a class="xref" href="VRSketchingGeometry.Meshing.SplineMesh.html">SplineMesh</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Single_">LineSketchObject.SetLineCrossSection(List&lt;Vector3&gt;, List&lt;Vector3&gt;, Single)</a></div>
-  
-  
-  <a id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineDiameter_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter*"></a>
-  <h4 id="VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineDiameter_System_Single_" data-uid="VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter(System.Single)">SetLineDiameter(Single)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void SetLineDiameter(float diameter)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">diameter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_SetLineDiameter_System_Single_">LineSketchObject.SetLineDiameter(Single)</a></div>
+  <div><a class="xref" href="VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_MakeSplineMesh_System_Int32_UnityEngine_Vector3_">LineSketchObject.MakeSplineMesh(Int32, Vector3)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="VRSketchingGeometry.SketchObjectManagement.ISelectable.html">ISelectable</a>

@@ -2570,12 +2570,6 @@ references:
   commentId: F:VRSketchingGeometry.Serialization.PatchSketchObjectData.ControlPoints
   fullName: VRSketchingGeometry.Serialization.PatchSketchObjectData.ControlPoints
   nameWithType: PatchSketchObjectData.ControlPoints
-- uid: VRSketchingGeometry.Serialization.PatchSketchObjectData.Height
-  name: Height
-  href: api/VRSketchingGeometry.Serialization.PatchSketchObjectData.html#VRSketchingGeometry_Serialization_PatchSketchObjectData_Height
-  commentId: F:VRSketchingGeometry.Serialization.PatchSketchObjectData.Height
-  fullName: VRSketchingGeometry.Serialization.PatchSketchObjectData.Height
-  nameWithType: PatchSketchObjectData.Height
 - uid: VRSketchingGeometry.Serialization.PatchSketchObjectData.ResolutionHeight
   name: ResolutionHeight
   href: api/VRSketchingGeometry.Serialization.PatchSketchObjectData.html#VRSketchingGeometry_Serialization_PatchSketchObjectData_ResolutionHeight
@@ -3067,74 +3061,19 @@ references:
   commentId: T:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject
   fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject
   nameWithType: LinearInterpolationLineSketchObject
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake
-  name: Awake()
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_Awake
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake()
-  nameWithType: LinearInterpolationLineSketchObject.Awake()
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake*
-  name: Awake
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_Awake_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake
+- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh(System.Int32,UnityEngine.Vector3)
+  name: MakeSplineMesh(Int32, Vector3)
+  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_MakeSplineMesh_System_Int32_UnityEngine_Vector3_
+  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh(System.Int32,UnityEngine.Vector3)
+  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh(System.Int32, UnityEngine.Vector3)
+  nameWithType: LinearInterpolationLineSketchObject.MakeSplineMesh(Int32, Vector3)
+- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh*
+  name: MakeSplineMesh
+  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_MakeSplineMesh_
+  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh
   isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.Awake
-  nameWithType: LinearInterpolationLineSketchObject.Awake
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod
-  name: ChooseDisplayMethod()
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_ChooseDisplayMethod
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod()
-  nameWithType: LinearInterpolationLineSketchObject.ChooseDisplayMethod()
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod*
-  name: ChooseDisplayMethod
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_ChooseDisplayMethod_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.ChooseDisplayMethod
-  nameWithType: LinearInterpolationLineSketchObject.ChooseDisplayMethod
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps(System.Int32)
-  name: SetInterpolationSteps(Int32)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_System_Int32_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps(System.Int32)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps(System.Int32)
-  nameWithType: LinearInterpolationLineSketchObject.SetInterpolationSteps(Int32)
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps*
-  name: SetInterpolationSteps
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetInterpolationSteps_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetInterpolationSteps
-  nameWithType: LinearInterpolationLineSketchObject.SetInterpolationSteps
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Single)
-  name: SetLineCrossSection(List<Vector3>, List<Vector3>, Single)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineCrossSection_System_Collections_Generic_List_UnityEngine_Vector3__System_Collections_Generic_List_UnityEngine_Vector3__System_Single_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection(System.Collections.Generic.List{UnityEngine.Vector3},System.Collections.Generic.List{UnityEngine.Vector3},System.Single)
-  name.vb: SetLineCrossSection(List(Of Vector3), List(Of Vector3), Single)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection(System.Collections.Generic.List<UnityEngine.Vector3>, System.Collections.Generic.List<UnityEngine.Vector3>, System.Single)
-  fullName.vb: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection(System.Collections.Generic.List(Of UnityEngine.Vector3), System.Collections.Generic.List(Of UnityEngine.Vector3), System.Single)
-  nameWithType: LinearInterpolationLineSketchObject.SetLineCrossSection(List<Vector3>, List<Vector3>, Single)
-  nameWithType.vb: LinearInterpolationLineSketchObject.SetLineCrossSection(List(Of Vector3), List(Of Vector3), Single)
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection*
-  name: SetLineCrossSection
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineCrossSection_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineCrossSection
-  nameWithType: LinearInterpolationLineSketchObject.SetLineCrossSection
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter(System.Single)
-  name: SetLineDiameter(Single)
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineDiameter_System_Single_
-  commentId: M:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter(System.Single)
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter(System.Single)
-  nameWithType: LinearInterpolationLineSketchObject.SetLineDiameter(Single)
-- uid: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter*
-  name: SetLineDiameter
-  href: api/VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LinearInterpolationLineSketchObject_SetLineDiameter_
-  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter
-  isSpec: "True"
-  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.SetLineDiameter
-  nameWithType: LinearInterpolationLineSketchObject.SetLineDiameter
+  fullName: VRSketchingGeometry.SketchObjectManagement.LinearInterpolationLineSketchObject.MakeSplineMesh
+  nameWithType: LinearInterpolationLineSketchObject.MakeSplineMesh
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject
   name: LineSketchObject
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html
@@ -3244,6 +3183,19 @@ references:
   commentId: F:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.lineDiameter
   fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.lineDiameter
   nameWithType: LineSketchObject.lineDiameter
+- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh(System.Int32,UnityEngine.Vector3)
+  name: MakeSplineMesh(Int32, Vector3)
+  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_MakeSplineMesh_System_Int32_UnityEngine_Vector3_
+  commentId: M:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh(System.Int32,UnityEngine.Vector3)
+  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh(System.Int32, UnityEngine.Vector3)
+  nameWithType: LineSketchObject.MakeSplineMesh(Int32, Vector3)
+- uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh*
+  name: MakeSplineMesh
+  href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_MakeSplineMesh_
+  commentId: Overload:VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh
+  isSpec: "True"
+  fullName: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.MakeSplineMesh
+  nameWithType: LineSketchObject.MakeSplineMesh
 - uid: VRSketchingGeometry.SketchObjectManagement.LineSketchObject.meshCollider
   name: meshCollider
   href: api/VRSketchingGeometry.SketchObjectManagement.LineSketchObject.html#VRSketchingGeometry_SketchObjectManagement_LineSketchObject_meshCollider
