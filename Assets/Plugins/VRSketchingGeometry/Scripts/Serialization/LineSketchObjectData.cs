@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Splines;
 
 namespace VRSketchingGeometry.Serialization
@@ -24,5 +25,18 @@ namespace VRSketchingGeometry.Serialization
         public List<Vector3> CrossSectionNormals;
         public float CrossSectionScale = 1.0f;
         public SketchMaterialData SketchMaterial;
+
+        internal override ISerializableComponent InstantiateComponent(DefaultReferences defaults)
+        {
+            ISerializableComponent serializableComponent = null;
+            if (Interpolation == InterpolationType.Cubic)
+            {
+                serializableComponent = GameObject.Instantiate(defaults.LineSketchObjectPrefab).GetComponent<ISerializableComponent>();
+            }
+            else if (Interpolation == InterpolationType.Linear) {
+                serializableComponent = GameObject.Instantiate(defaults.LinearInterpolationLineSketchObjectPrefab).GetComponent<ISerializableComponent>();
+            }
+            return serializableComponent;
+        }
     }
 }

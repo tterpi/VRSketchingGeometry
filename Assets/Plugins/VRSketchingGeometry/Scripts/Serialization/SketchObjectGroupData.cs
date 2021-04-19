@@ -25,5 +25,9 @@ namespace VRSketchingGeometry.Serialization
         public List<SketchObjectGroupData> SketchObjectGroups;
 
         public SketchObjectGroupData() { }
+
+        internal override ISerializableComponent InstantiateComponent(DefaultReferences defaults) {
+            return GameObject.Instantiate(defaults.SketchObjectGroupPrefab).GetComponent<SketchObjectGroup>();
+        }
     }
 }

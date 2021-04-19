@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRSketchingGeometry.SketchObjectManagement;
 using VRSketchingGeometry.Splines;
 
 namespace VRSketchingGeometry.Serialization
@@ -16,5 +17,10 @@ namespace VRSketchingGeometry.Serialization
         public List<Vector3> CrossSectionVertices;
         public Vector3 CrossSectionScale = Vector3.one;
         public SketchMaterialData SketchMaterial;
+
+        internal override ISerializableComponent InstantiateComponent(DefaultReferences defaults)
+        {
+            return GameObject.Instantiate(defaults.RibbonSketchObjectPrefab).GetComponent<ISerializableComponent>();
+        }
     }
 }

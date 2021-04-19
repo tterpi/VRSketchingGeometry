@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c75f878e91eeb448895eadc9792fd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaults: {fileID: 11400000, guid: 80ac1fe1704d8434eac74bc2c69b9794, type: 2}
   selectionPrefab: {fileID: 0}
   LineSketchObjectPrefab: {fileID: 1524500983091648832, guid: 7ee00a79cbb48fc44b9ada2a7fac529e,
     type: 3}
