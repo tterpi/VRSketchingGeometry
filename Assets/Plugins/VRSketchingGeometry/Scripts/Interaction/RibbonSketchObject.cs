@@ -10,6 +10,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
     /// Ribbon sketch object. Creates a flat ribbon shaped geometry along control points and rotations.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
+    [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class RibbonSketchObject : SketchObject, ISerializableComponent, IBrushable
     {

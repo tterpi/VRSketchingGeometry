@@ -18,6 +18,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
     /// Provides methods to interact with a line game object in the scene.
     /// </summary>
     /// <remarks>Original author: tterpi</remarks>
+    [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class LineSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
