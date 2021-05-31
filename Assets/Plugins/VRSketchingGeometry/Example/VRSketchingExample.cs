@@ -9,6 +9,8 @@ using VRSketchingGeometry.Commands.Patch;
 using VRSketchingGeometry.Commands.Group;
 using VRSketchingGeometry.Commands.Selection;
 using VRSketchingGeometry.SketchObjectManagement;
+using VRSketchingGeometry.Serialization;
+using VRSketchingGeometry.Meshing;
 using VRSketchingGeometry.Export;
 
 public class VRSketchingExample : MonoBehaviour
@@ -41,11 +43,23 @@ public class VRSketchingExample : MonoBehaviour
         Invoker.Undo();
         Invoker.Redo();
 
+        LineBrush brush = this.LineSketchObject.GetBrush() as LineBrush;
+        brush.CrossSectionVertices = CircularCrossSection.GenerateVertices(3);
+        brush.CrossSectionNormals = CircularCrossSection.GenerateVertices(3, 1);
+        Invoker.ExecuteCommand(new SetBrushCommand(this.LineSketchObject, brush));
+        //oder ohne Command
+        //this.LineSketchObject.SetBrush(brush);
+        //oder nur
+        //this.LineSketchObject.SetLineCrossSection(...
+
+
         //Create a RibbonSketchObject
         RibbonSketchObject = Instantiate(Defaults.RibbonSketchObjectPrefab).GetComponent<RibbonSketchObject>();
         Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(1, 1, 1), Quaternion.identity));
-        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(1, 2, 2), Quaternion.Euler(25, 45, 0)));
-        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(1, 2, 3), Quaternion.Euler(-25, 45, 0)));
+        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(1.5f, 1.1f, 1), Quaternion.Euler(0, 0, 0)));
+        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(2f, 1.2f, 1), Quaternion.Euler(22, 0, 0)));
+        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(2.5f, 1.3f, 1), Quaternion.Euler(45, 0, 0)));
+        Invoker.ExecuteCommand(new AddPointAndRotationCommand(RibbonSketchObject, new Vector3(3f, 1.4f, 1), Quaternion.Euler(60, 0, 0)));
 
         //Create a PatchSketchObject
         PatchSketchObject = Instantiate(Defaults.PatchSketchObjectPrefab).GetComponent<PatchSketchObject>();
@@ -73,7 +87,7 @@ public class VRSketchingExample : MonoBehaviour
         DeserializedSketchWorld.transform.position += new Vector3(5, 0, 0);
 
         //Export the SketchWorld as an OBJ file
-        SketchWorld.ExportSketchWorldToDefaultPath();
+        //SketchWorld.ExportSketchWorldToDefaultPath();
 
         //Select the SketchObjectGroup
         SketchObjectSelection = Instantiate(Defaults.SketchObjectSelectionPrefab).GetComponent<SketchObjectSelection>();
