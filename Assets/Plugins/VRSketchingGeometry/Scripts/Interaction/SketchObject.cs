@@ -16,6 +16,8 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         public override SketchObjectGroup ParentGroup { get => parentGroup; set => parentGroup = value; }
 
         protected MeshRenderer meshRenderer;
+        protected MeshFilter meshFilter;
+        protected MeshCollider meshCollider;
 
         protected Material originalMaterial;
 
@@ -33,6 +35,8 @@ namespace VRSketchingGeometry.SketchObjectManagement {
 
         protected void setUpOriginalMaterialAndMeshRenderer()
         {
+            meshFilter = GetComponent<MeshFilter>();
+            meshCollider = GetComponent<MeshCollider>();
             meshRenderer = GetComponent<MeshRenderer>();
             originalMaterial = meshRenderer.sharedMaterial;
         }
@@ -45,6 +49,19 @@ namespace VRSketchingGeometry.SketchObjectManagement {
         public override void revertHighlight()
         {
             meshRenderer.sharedMaterial = originalMaterial;
+        }
+
+        protected virtual void UpdateRenderedMesh(Mesh newMesh) {
+            Mesh oldMesh = meshFilter.sharedMesh;
+            meshFilter.sharedMesh = newMesh;
+            meshCollider.sharedMesh = newMesh;
+            if (Application.isEditor && !Application.isPlaying)
+            {
+                DestroyImmediate(oldMesh);
+            }
+            else{
+                Destroy(oldMesh);
+            }
         }
     }
 }

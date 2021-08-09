@@ -13,16 +13,6 @@ namespace VRSketchingGeometry.SketchObjectManagement{
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
     public class RibbonSketchObject : SketchObject, ISerializableComponent, IBrushable
     {
-        /// <summary>
-        /// Mesh filter for the mesh of the ribbon
-        /// </summary>
-        protected MeshFilter meshFilter;
-
-        /// <summary>
-        /// Collider for the mesh of the ribbon
-        /// </summary>
-        protected MeshCollider meshCollider;
-
         private RibbonMesh RibbonMesh;
 
         private List<Vector3> Points = new List<Vector3>();
@@ -32,16 +22,13 @@ namespace VRSketchingGeometry.SketchObjectManagement{
         protected override void Awake()
         {
             base.Awake();
-            meshFilter = GetComponent<MeshFilter>();
-            meshCollider = GetComponent<MeshCollider>();
 
             RibbonMesh = new RibbonMesh(Vector3.one * .3f);
         }
 
         private void UpdateMesh(Mesh mesh)
         {
-            meshFilter.sharedMesh = mesh;
-            meshCollider.sharedMesh = mesh;
+            UpdateRenderedMesh(mesh);
         }
 
         /// <summary>
