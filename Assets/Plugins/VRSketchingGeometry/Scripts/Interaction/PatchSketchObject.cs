@@ -43,10 +43,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         }
 
         private void SetMesh(Mesh mesh) {
-            Mesh oldMesh = this.GetComponent<MeshFilter>().sharedMesh;
-            Destroy(oldMesh);
-            this.GetComponent<MeshFilter>().sharedMesh = mesh;
-            this.GetComponent<MeshCollider>().sharedMesh = mesh;
+            UpdateRenderedMesh(mesh);
         }
 
         /// <summary>
