@@ -51,7 +51,12 @@ namespace VRSketchingGeometry.SketchObjectManagement {
             meshRenderer.sharedMaterial = originalMaterial;
         }
 
-        protected virtual void UpdateRenderedMesh(Mesh newMesh) {
+        /// <summary>
+        /// Replace both the renderer and collider mesh with a new one.
+        /// The old mesh is manually destroyed to prevent a memory leak.
+        /// </summary>
+        /// <param name="newMesh">The new mesh to replace the old one.</param>
+        protected virtual void UpdateSceneMesh(Mesh newMesh) {
             Mesh oldMesh = meshFilter.sharedMesh;
             meshFilter.sharedMesh = newMesh;
             meshCollider.sharedMesh = newMesh;

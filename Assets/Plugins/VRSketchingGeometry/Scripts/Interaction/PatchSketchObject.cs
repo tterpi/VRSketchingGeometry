@@ -43,7 +43,7 @@ namespace VRSketchingGeometry.SketchObjectManagement
         }
 
         private void SetMesh(Mesh mesh) {
-            UpdateRenderedMesh(mesh);
+            UpdateSceneMesh(mesh);
         }
 
         /// <summary>

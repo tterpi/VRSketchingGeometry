@@ -28,7 +28,7 @@ namespace VRSketchingGeometry.SketchObjectManagement{
 
         private void UpdateMesh(Mesh mesh)
         {
-            UpdateRenderedMesh(mesh);
+            UpdateSceneMesh(mesh);
         }
 
         /// <summary>

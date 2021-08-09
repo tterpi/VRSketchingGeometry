@@ -27,16 +27,6 @@ namespace VRSketchingGeometry.SketchObjectManagement
         protected SplineMesh SplineMesh;
 
         /// <summary>
-        /// Mesh filter for the mesh of the spline
-        /// </summary>
-        protected MeshFilter meshFilter;
-
-        /// <summary>
-        /// Collider for the mesh of the spline
-        /// </summary>
-        protected MeshCollider meshCollider;
-
-        /// <summary>
         /// Linierly interpolated spline for displaying a segment only two control points
         /// </summary>
         protected SplineMesh LinearSplineMesh;
@@ -60,13 +50,9 @@ namespace VRSketchingGeometry.SketchObjectManagement
 
         protected override void Awake()
         {
-            meshFilter = GetComponent<MeshFilter>();
-            meshCollider = GetComponent<MeshCollider>();
-
             SplineMesh = this.MakeSplineMesh(InterpolationSteps, Vector3.one * lineDiameter);
             LinearSplineMesh = new SplineMesh(new LinearInterpolationSpline(), Vector3.one * lineDiameter);
 
-            meshCollider.sharedMesh = meshFilter.sharedMesh;
             setUpOriginalMaterialAndMeshRenderer();
         }
 
@@ -78,8 +64,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         {
             //Transform the new control point from world to local space of sketch object
             Vector3 transformedPoint = transform.InverseTransformPoint(point);
-            meshFilter.mesh = SplineMesh.AddControlPoint(transformedPoint);
-            ChooseDisplayMethod();
+            Mesh newMesh = SplineMesh.AddControlPoint(transformedPoint);
+            ChooseDisplayMethod(newMesh);
 
         }
 
@@ -110,8 +96,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// </summary>
         /// <param name="controlPoints"></param>
         public void SetControlPointsLocalSpace(List<Vector3> controlPoints) {
-            meshFilter.mesh = this.SplineMesh.SetControlPoints(controlPoints.ToArray());
-            ChooseDisplayMethod();
+            Mesh newMesh = this.SplineMesh.SetControlPoints(controlPoints.ToArray());
+            ChooseDisplayMethod(newMesh);
         }
 
         /// <summary>
@@ -134,11 +120,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
             Mesh smoothMesh = SplineMesh.SetCrossSectionScale(Vector3.one * diameter);
             Mesh linearMesh = LinearSplineMesh.SetCrossSectionScale(Vector3.one * diameter);
 
-            meshFilter.mesh = smoothMesh ?? linearMesh;
+            Mesh newMesh = smoothMesh ?? linearMesh;
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            ChooseDisplayMethod();
+            ChooseDisplayMethod(newMesh);
         }
 
         public virtual void SetLineCrossSection(List<Vector3> crossSection, List<Vector3> crossSectionNormals, float diameter) {
@@ -152,11 +138,11 @@ namespace VRSketchingGeometry.SketchObjectManagement
             Mesh smoothMesh = SplineMesh.SetCrossSection(crossSection, crossSectionNormals, diameter * Vector3.one);
             Mesh linearMesh = LinearSplineMesh.SetCrossSection(crossSection, crossSectionNormals, diameter * Vector3.one);
 
-            meshFilter.mesh = smoothMesh ?? linearMesh;
+            Mesh newMesh = smoothMesh ?? linearMesh;
 
             sphereObject.transform.localScale = Vector3.one * diameter / sphereObject.GetComponent<MeshFilter>().sharedMesh.bounds.size.x;
 
-            ChooseDisplayMethod();
+            ChooseDisplayMethod(newMesh);
         }
 
         /// <summary>
@@ -182,8 +168,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         internal void DeleteControlPoint()
         {
             //delete the last control point of the spline
-            meshFilter.mesh = SplineMesh.DeleteControlPoint(SplineMesh.GetNumberOfControlPoints() - 1);
-            ChooseDisplayMethod();
+            Mesh newMesh = SplineMesh.DeleteControlPoint(SplineMesh.GetNumberOfControlPoints() - 1);
+            ChooseDisplayMethod(newMesh);
         }
 
         /// <summary>
@@ -293,15 +279,12 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// <summary>
         /// Determines how to display the spline depending on the number of control points that are present.
         /// </summary>
-        protected virtual void ChooseDisplayMethod()
+        protected virtual void ChooseDisplayMethod(Mesh newMesh)
         {
             sphereObject.SetActive(false);
             if (SplineMesh.GetNumberOfControlPoints() == 0)
             {
-                //display nothing
-                meshFilter.mesh = new Mesh();
-                //update collider
-                meshCollider.sharedMesh = meshFilter.sharedMesh;
+                UpdateSceneMesh(null);
             }
             else if (SplineMesh.GetNumberOfControlPoints() == 1)
             {
@@ -309,22 +292,18 @@ namespace VRSketchingGeometry.SketchObjectManagement
                 sphereObject.SetActive(true);
                 sphereObject.transform.localPosition = SplineMesh.GetControlPoints()[0];
                 //update collider
-                meshCollider.sharedMesh = null;
+                UpdateSceneMesh(null);
             }
             else if (SplineMesh.GetNumberOfControlPoints() == 2)
             {
                 //display linearly interpolated segment if there are two control points
                 List<Vector3> controlPoints = SplineMesh.GetControlPoints();
                 //set the two control points
-                meshFilter.mesh = LinearSplineMesh.SetControlPoints(controlPoints.ToArray());
-                //update collider
-                meshCollider.sharedMesh = meshFilter.sharedMesh;
+                UpdateSceneMesh(LinearSplineMesh.SetControlPoints(controlPoints.ToArray()));
             }
             else
             {
-                //display smoothly interpolated segments by not overwriting the previously generated mesh
-                //update collider
-                meshCollider.sharedMesh = meshFilter.sharedMesh;
+                UpdateSceneMesh(newMesh);
             }
 
         }
@@ -333,8 +312,8 @@ namespace VRSketchingGeometry.SketchObjectManagement
         /// Refine the mesh using Parallel Transport algorithm.
         /// </summary>
         internal virtual void RefineMesh() {
-            meshFilter.mesh = this.SplineMesh.RefineMesh();
-            ChooseDisplayMethod();
+            Mesh newMesh = this.SplineMesh.RefineMesh();
+            ChooseDisplayMethod(newMesh);
         }
 
         private void SetMaterial(Material material) {
