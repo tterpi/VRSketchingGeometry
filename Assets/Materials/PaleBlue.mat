@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PastelRed
+  m_Name: PaleBlue
   m_Shader: {fileID: 4800000, guid: 9a4f2d2a0d7b6bb45867c8eddff69aa0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
